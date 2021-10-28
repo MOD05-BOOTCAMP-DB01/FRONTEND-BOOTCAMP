@@ -1,12 +1,14 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom';
+import CardObjective from '../CardObjective';
 import Login from '../Pages/Login/Login';
 
 function Routes() {
   return (
     <div>
       <Switch>
-        <Route path="/" component={Login} />
+        <Route path="/" exact component={Login} />
+        <Route path="/objective" component={CardObjective} />
       </Switch>
     </div>
   )

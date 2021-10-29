@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
-import {BiCommentDots} from 'react-icons/bi'
-import {MdOutlineLibraryAdd} from 'react-icons/md'
-import {CgArrowsShrinkH} from 'react-icons/cg'
+import React, { useState } from "react";
+import { BiCommentDots } from "react-icons/bi";
+import { MdOutlineLibraryAdd } from "react-icons/md";
 
 //CSS
-import './cardObjective.css'
+import "./cardObjective.css";
 
 export default function CardObjective() {
   const objective = {
@@ -14,8 +13,8 @@ export default function CardObjective() {
     endDate: "29/10/2022",
     area: "DP",
     unity: "DB1 Global Software",
-    responsible: "Fulano de Tal" 
-  }
+    responsible: "Fulano de Tal",
+  };
 
   const krs = [
     {
@@ -26,7 +25,7 @@ export default function CardObjective() {
       frequency: "Semanal",
       classification: "Alta",
       vlInitial: "x",
-      vlGoal: "2x"
+      vlGoal: "2x",
     },
     {
       title: "Aumentar faturamento em 40%",
@@ -36,14 +35,14 @@ export default function CardObjective() {
       frequency: "Mensal",
       classification: "Media",
       vlInitial: "y",
-      vlGoal: "2y"
-    }
-  ]
-  const [changeView, setChangeView] = useState(true)
+      vlGoal: "2y",
+    },
+  ];
+  const [changeView, setChangeView] = useState(true);
 
   const alterChangeView = () => {
-    setChangeView(!changeView)
-  }
+    setChangeView(!changeView);
+  };
 
   return (
     // Objective
@@ -52,7 +51,9 @@ export default function CardObjective() {
         <div className="objective-header">
           <h3>{objective.unity}</h3>
         </div>
-        <button className="changeView" onClick={alterChangeView}>{ changeView ? "Ver CK" : "Ver Kr" }</button>
+        <button className="changeView" onClick={alterChangeView}>
+          {changeView ? "Ver CK" : "Ver Kr"}
+        </button>
         <div className="objective">
           <h3>{objective.area}</h3>
           <h3>{objective.objective}</h3>
@@ -60,117 +61,112 @@ export default function CardObjective() {
         </div>
 
         <div>
-          <h4>{objective.initialDate} {"-"} {objective.endDate}</h4>
+          <h4>
+            {objective.initialDate} {"-"} {objective.endDate}
+          </h4>
         </div>
-
       </div>
       {/* KR */}
-      { changeView ?
-          <div className="area-kr">
-            <div className="kr-title">
-              <div className="kr-header kr-title-header">
-                <h3></h3>
-                <h3>Titulo KR</h3>
-                <MdOutlineLibraryAdd/>
-              </div>
-              {krs.map( kr => (
-                <div className="kr-items kr-title-items">
-                  <h4>{kr.title}</h4>
-                </div>
-              ))}
+      {changeView ? (
+        <div className="area-kr">
+          <div className="kr-title">
+            <div className="kr-header kr-title-header">
+              <h3>Titulo KR</h3>
+              <MdOutlineLibraryAdd />
             </div>
-
-            
-            <div className="kr-owner">
-              <div className="kr-header kr-owner-header">
-                <h3>Dono KR</h3>
+            {krs.map((kr) => (
+              <div className="kr-items kr-title-items">
+                <h4>{kr.title}</h4>
               </div>
-              {krs.map( kr => (
-                <div className="kr-items kr-owner-items">
-                  <h4>{kr.owner}</h4>
-                </div>
-              ))}
-            </div>
-
-            <div className="kr-comment">
-              <div className="kr-header kr-comment-header">
-                <h3>Comentário</h3>
-              </div>
-              {krs.map( kr => (
-                <div className="kr-items kr-comment-items">
-                  <p>{kr.comment}</p>
-                  <BiCommentDots className="icon-comment"/>
-                </div>
-              ))}
-            </div>
-
-            <div className="kr-type">
-              <div className="kr-header kr-type-header">
-                <h3>Tipo KR</h3>
-              </div>
-              {krs.map( kr => (
-                <div className="kr-items kr-type-items">
-                  <h4>{kr.type}</h4>
-                </div>
-              ))}
-            </div>
-
-            <div className="kr-frequency">
-              <div className="kr-header kr-frequency-header">
-                <h3>Frequência Medição</h3>
-              </div>
-              {krs.map( kr => (
-                <div className="kr-items kr-frequency-items">
-                  <h4>{kr.frequency}</h4>
-                </div>
-              ))}
-            </div>
-
-            <div className="kr-classification">
-              <div className="kr-header kr-classification-header">
-                <h3>Classificação</h3>
-              </div>
-              {krs.map( kr => (
-                <div className="kr-items kr-classification-items">
-                  <h4>{kr.classification}</h4>
-                </div>
-              ))}
-            </div>
-
-            <div className="kr-vlInitial">
-              <div className="kr-header kr-vlInitial-header">
-                <h3>Vl. Inicial</h3>
-              </div>
-              {krs.map( kr => (
-                <div className="kr-items kr-vlInitial-items">
-                  <h4>{kr.vlInitial}</h4>
-                </div>
-              ))}
-            </div>
-
-            <div className="kr-vlGoal">
-              <div className="kr-header kr-vlGoal-header">
-                <h3>Vl. Meta</h3>
-              </div>
-              {krs.map( kr => (
-                <div className="kr-items kr-vlGoal-items">
-                  <h4>{kr.vlGoal}</h4>
-                </div>
-              ))}
-            </div>
-
+            ))}
           </div>
-        
 
+          <div className="kr-owner">
+            <div className="kr-header kr-owner-header">
+              <h3>Dono KR</h3>
+            </div>
+            {krs.map((kr) => (
+              <div className="kr-items kr-owner-items">
+                <h4>{kr.owner}</h4>
+              </div>
+            ))}
+          </div>
 
+          <div className="kr-comment">
+            <div className="kr-header kr-comment-header">
+              <h3>Comentário</h3>
+            </div>
+            {krs.map((kr) => (
+              <div className="kr-items kr-comment-items">
+                <p>{kr.comment}</p>
+                <BiCommentDots className="icon-comment" />
+              </div>
+            ))}
+          </div>
+
+          <div className="kr-type">
+            <div className="kr-header kr-type-header">
+              <h3>Tipo KR</h3>
+            </div>
+            {krs.map((kr) => (
+              <div className="kr-items kr-type-items">
+                <h4>{kr.type}</h4>
+              </div>
+            ))}
+          </div>
+
+          <div className="kr-frequency">
+            <div className="kr-header kr-frequency-header">
+              <h3>Frequência Medição</h3>
+            </div>
+            {krs.map((kr) => (
+              <div className="kr-items kr-frequency-items">
+                <h4>{kr.frequency}</h4>
+              </div>
+            ))}
+          </div>
+
+          <div className="kr-classification">
+            <div className="kr-header kr-classification-header">
+              <h3>Classificação</h3>
+            </div>
+            {krs.map((kr) => (
+              <div className="kr-items kr-classification-items">
+                <h4>{kr.classification}</h4>
+              </div>
+            ))}
+          </div>
+
+          <div className="kr-vlInitial">
+            <div className="kr-header kr-vlInitial-header">
+              <h3>Vl. Inicial</h3>
+            </div>
+            {krs.map((kr) => (
+              <div className="kr-items kr-vlInitial-items">
+                <h4>{kr.vlInitial}</h4>
+              </div>
+            ))}
+          </div>
+
+          <div className="kr-vlGoal">
+            <div className="kr-header kr-vlGoal-header">
+              <h3>Vl. Meta</h3>
+            </div>
+            {krs.map((kr) => (
+              <div className="kr-items kr-vlGoal-items">
+                <h4>{kr.vlGoal}</h4>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : (
         /* Checking */
-        :
         <div className="area-checkins">
           <div className="area-checkins-header">
             <h3>CK1</h3>
           </div>
         </div>
-      }
+      )}
     </div>
-  )
+  );
 }

@@ -12,7 +12,7 @@ export const SidebarData = [
     },
     {
         title: "Cadastro",
-        path: "/",
+        path: "/register",
         icon: <GiArchiveRegister />,
         cName: "nav-text"
     },

@@ -39,10 +39,37 @@ export default function CardObjective() {
       vlGoal: "2y"
     }
   ]
+
+  const cks = [
+    {
+      date: "29/10/2021",
+      status: ["Em andamento","Em andamento"]
+    },
+    {
+      date: "04/11/2021",
+      status: ["Em andamento","Concluído"]
+    },
+    {
+      date: "11/11/2021",
+      status: ["Em andamento","Concluído"]
+    }
+  ]
   const [changeView, setChangeView] = useState(true)
 
   const alterChangeView = () => {
     setChangeView(!changeView)
+  }
+
+  const statusColor = (status) => {
+    if(status === "Em andamento"){
+      return <h4 className="yellow">Em andamento</h4>
+    }else if (status === "Concluído"){
+      return <h4 className="gree">Concluído</h4>
+    }else if (status === "Atraso crítico"){
+      return <h4 className="red">Atraso crítico</h4>
+    }else{
+      return <h4></h4>
+    }
   }
 
   return (
@@ -52,7 +79,7 @@ export default function CardObjective() {
         <div className="objective-header">
           <h3>{objective.unity}</h3>
         </div>
-        <button className="changeView" onClick={alterChangeView}>{ changeView ? "Ver CK" : "Ver Kr" }</button>
+        <button className="changeView" onClick={alterChangeView}>{ changeView ? "Detalhes" : "Ver Status" }</button>
         <div className="objective">
           <h3>{objective.area}</h3>
           <h3>{objective.objective}</h3>
@@ -65,13 +92,13 @@ export default function CardObjective() {
 
       </div>
       {/* KR */}
-      { changeView ?
+      { !changeView ?
           <div className="area-kr">
             <div className="kr-title">
               <div className="kr-header kr-title-header">
                 <h3></h3>
                 <h3>Titulo KR</h3>
-                <MdOutlineLibraryAdd/>
+                <MdOutlineLibraryAdd className="icon-add"/>
               </div>
               {krs.map( kr => (
                 <div className="kr-items kr-title-items">
@@ -165,10 +192,33 @@ export default function CardObjective() {
 
         /* Checking */
         :
-        <div className="area-checkins">
-          <div className="area-checkins-header">
-            <h3>CK1</h3>
-          </div>
+        // repeat area title 
+        <div className="area-ck">
+          <div className="kr-title">
+              <div className="kr-header kr-title-header">
+                <h3></h3>
+                <h3>Titulo KR</h3>
+                <MdOutlineLibraryAdd/>
+              </div>
+              {krs.map( kr => (
+                <div className="kr-items kr-title-items">
+                  <h4>{kr.title}</h4>
+                </div>
+              ))}
+            </div>
+
+          {cks.map( ck => (
+            <div className="ck">
+              <div className="ck-header">
+                <h3>{ck.date}</h3>
+              </div>
+              {ck.status.map( st => (
+                <div className="ck-items">
+                  {statusColor(st)}
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       }
     </div>

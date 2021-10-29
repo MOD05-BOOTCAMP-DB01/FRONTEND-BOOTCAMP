@@ -1,37 +1,25 @@
 import React from 'react'
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io";
+import { AiFillHome } from "react-icons/ai";
+import { BiTask } from "react-icons/bi";
+import { GiArchiveRegister } from "react-icons/gi"
 
 export const SidebarData = [
     {
         title: "Login",
         path: "/",
-        icon: <AiIcons.AiFillHome />,
+        icon: <AiFillHome />,
         cName: "nav-text"
     },
     {
-        title: "Login",
+        title: "Cadastro",
         path: "/",
-        icon: <AiIcons.AiFillHome />,
+        icon: <GiArchiveRegister />,
         cName: "nav-text"
     },
     {
-        title: "Login",
+        title: "Objetivos",
         path: "/",
-        icon: <AiIcons.AiFillHome />,
+        icon: <BiTask />,
         cName: "nav-text"
-    },
-    {
-        title: "Login",
-        path: "/",
-        icon: <AiIcons.AiFillHome />,
-        cName: "nav-text"
-    },
-    {
-        title: "Login",
-        path: "/",
-        icon: <AiIcons.AiFillHome />,
-        cName: "nav-text"
-    },
+    }
 ];

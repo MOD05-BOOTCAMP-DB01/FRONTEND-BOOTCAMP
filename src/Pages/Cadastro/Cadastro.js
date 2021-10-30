@@ -2,20 +2,20 @@ import React from "react";
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaUserAlt } from 'react-icons/fa';
 import { RiLockPasswordLine } from 'react-icons/ri'
+import LinkButton from "../../components/LinkButton/LinkButton";
+import './Cadastro.css';
 
 export default function Cadastro() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const email = event.target.email.value;
-    const confirmEmail = event.prevent.confirmEmail.value;
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
     const role = event.target.role.value;
 
     const payload = {
       email,
-      confirmEmail,
       password,
       confirmPassword,
       role,
@@ -23,47 +23,47 @@ export default function Cadastro() {
   };
 
   return (
-    <div>
-      <form className="form" onSubmit={handleSubmit}>
-        <div>
+    <div className='form'>
+      <h1>User Register</h1>
+      <form className="form__card" onSubmit={handleSubmit}>
+          <div>
             <span><FaUserAlt /></span>
             <input
-                className="form-input"
+                className="form__card--input"
                 type="text"
                 placeholder="Coloque seu Username:"
                 name="username"
-            ></input>
-            <br />
-            <span><AiOutlineMail /></span>
+            />
+          </div>
+          <div>
             <input
-                className="form-input-email"
+                className="form__card--input"
                 type="text"
                 placeholder="Coloque seu E-mail:"
-                name="email"
-            ></input>
-            <br />
+                name="email" />
+            <span><AiOutlineMail /></span>
+          </div>
+          <div>
             <input
-                className="form-input-email-confirm"
-                type="text"
-                placeholder="Confirme seu E-mail:"
-                name="email"
-            ></input>
-            <br />
-            <span><RiLockPasswordLine /></span>
-            <input
-                className="form-input-password"
-                type="text"
+                className="form__card--input"
+                type="password"
                 placeholder="Coloque sua Senha:"
                 name="senha"
-            ></input>
-            <br />
+            />
+            <span><RiLockPasswordLine /></span>
+          </div>
+          <div>
             <input
-                className="form-input-password-confirm"
-                type="text"
+                className="form__card--input"
+                type="password"
                 placeholder="Confirme sua Senha:"
                 name="senha"
-            ></input>
-        </div>
+            />
+            <span><RiLockPasswordLine /></span>
+          </div>
+          <div>
+            <LinkButton>Cadastrar</LinkButton>
+          </div>
       </form>
     </div>
   );

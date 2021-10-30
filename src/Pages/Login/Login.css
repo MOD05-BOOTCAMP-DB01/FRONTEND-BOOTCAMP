@@ -1,9 +1,10 @@
 .form {
+  color: #fefefe;
+  background-image: linear-gradient(90deg, #060b26, #00335e);
   margin: 2.5rem auto;
   position: relative;
-  max-width: 440px;
-  padding: 44px;
-  background-color: #fefefe;
+  max-width: 400px;
+  padding: 30px;
   -webkit-box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
   -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
@@ -21,20 +22,31 @@
   align-items: center;
   margin: 20px;
 }
-
-.form__card--input input {
-  width: 100%;
-  border: none;
-  border-bottom: solid 1px black;
-  padding: 5px 8px;
-  height: 36px;
-  background-color: #fefefe;
-  margin: 2px 0.5rem;
+.form__card p {
+  font-size: 12px;
 }
 
-.form__card span {
-  padding: 10px;
-  border: solid 1px rgba(0, 0, 0, 0.4);
-  border-radius: 100%;
-  background-color: #fefefe;
+.form__card a {
+  text-decoration: none;
+  color: #fefefe;
+}
+
+.form__card--input input {
+  color: #fefefe;
+  width: 100%;
+  border: none;
+  border-bottom: solid 1px #fefefe;
+  padding: 5px 8px;
+  height: 36px;
+  background-color: transparent;
+  margin: 2px 0;
+}
+
+.form__card--input input::-webkit-input-placeholder {
+  font-size: 16px;
+  color: #fefefe;
+}
+
+.icons {
+  font-size: 1.5rem;
 }

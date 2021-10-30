@@ -25,11 +25,13 @@ export default function Login() {
   return (
     <div className="form">
       <div>
-        <IconContext.Provider value={{ color: "#006d99", className: "icons" }}>
+        <IconContext.Provider value={{ color: "#fefefe", className: "icons" }}>
           <h1>User Login</h1>
           <form className="form__card" onSubmit={handleSubmit}>
             <div className="form__card--input">
-              <FaUserAlt />
+              <span className="form__card--span">
+                <FaUserAlt />
+              </span>
 
               <input
                 type="text"
@@ -45,18 +47,20 @@ export default function Login() {
                 id="password"
                 placeholder="Senha:"
               />
-
-              <FaLock />
+              <span className="form__card--span">
+                <FaLock />
+              </span>
             </div>
 
             <div>
-              <LinkButton type="submit" className="button button--primary">
+              <LinkButton type="submit" className="button button--success">
                 Login
               </LinkButton>
             </div>
+            <p>
+              Não tem uma conta? <Link to="/">Crie uma aqui!</Link>
+            </p>
           </form>
-          <p>Não tem uma conta?</p>
-          <Link to="/">Crie uma Aqui!</Link>
         </IconContext.Provider>
       </div>
     </div>

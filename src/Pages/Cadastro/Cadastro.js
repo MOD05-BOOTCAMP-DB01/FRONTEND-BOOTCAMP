@@ -6,63 +6,67 @@ import LinkButton from "../../components/LinkButton/LinkButton";
 import './Cadastro.css';
 
 export default function Cadastro() {
-  const handleSubmit = async (event) => {
+  const handleSubmit =  (event) => {
     event.preventDefault();
 
+    const username = event.target.username.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
-    const role = event.target.role.value;
 
     const payload = {
+      username,
       email,
       password,
-      confirmPassword,
-      role,
+      confirmPassword
     };
+
+    console.log(payload)
   };
 
   return (
     <div className='form'>
       <h1>User Register</h1>
       <form className="form__card" onSubmit={handleSubmit}>
-          <div>
+          <div className="form__card--input">
             <span><FaUserAlt /></span>
             <input
-                className="form__card--input"
+                id="username"
                 type="text"
                 placeholder="Coloque seu Username:"
                 name="username"
             />
           </div>
-          <div>
+          <div className="form__card--input">
             <input
-                className="form__card--input"
+                id="email"
                 type="text"
                 placeholder="Coloque seu E-mail:"
                 name="email" />
             <span><AiOutlineMail /></span>
           </div>
-          <div>
+          <div className="form__card--input">
+            <span><RiLockPasswordLine /></span>
             <input
-                className="form__card--input"
+                id="password"
                 type="password"
                 placeholder="Coloque sua Senha:"
                 name="senha"
             />
-            <span><RiLockPasswordLine /></span>
           </div>
-          <div>
+          <div className="form__card--input">
             <input
-                className="form__card--input"
+                id="confirmPassword"
                 type="password"
                 placeholder="Confirme sua Senha:"
-                name="senha"
+                name="confirmPassword"
             />
             <span><RiLockPasswordLine /></span>
           </div>
           <div>
-            <LinkButton>Cadastrar</LinkButton>
+            <LinkButton type="submit" className="button button--primary">
+              Cadastrar
+            </LinkButton>
           </div>
       </form>
     </div>

@@ -11,7 +11,7 @@ function Routes() {
         <Route path="/objective" component={CardObjective} />
       </Switch>
     </div>
-  )
+  );
 }
 
-export default Routes
+export default Routes;

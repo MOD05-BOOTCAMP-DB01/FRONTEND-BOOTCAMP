@@ -25,10 +25,10 @@ export default function Cadastro() {
   };
 
   return (
-    <div className='form'>
+    <div className='form-register'>
       <h1>User Register</h1>
-      <form className="form__card" onSubmit={handleSubmit}>
-          <div className="form__card--input">
+      <form className="form__card-register" onSubmit={handleSubmit}>
+          <div className="form__card--input-register">
             <span><FaUserAlt /></span>
             <input
                 id="username"
@@ -37,7 +37,7 @@ export default function Cadastro() {
                 name="username"
             />
           </div>
-          <div className="form__card--input">
+          <div className="form__card--input-register">
             <input
                 id="email"
                 type="text"
@@ -45,7 +45,7 @@ export default function Cadastro() {
                 name="email" />
             <span><AiOutlineMail /></span>
           </div>
-          <div className="form__card--input">
+          <div className="form__card--input-register">
             <span><RiLockPasswordLine /></span>
             <input
                 id="password"
@@ -54,7 +54,7 @@ export default function Cadastro() {
                 name="senha"
             />
           </div>
-          <div className="form__card--input">
+          <div className="form__card--input-register">
             <input
                 id="confirmPassword"
                 type="password"

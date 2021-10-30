@@ -1,7 +1,8 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
-import CardObjective from "../CardObjective";
-import Login from "../Pages/Login/Login";
+import React from 'react'
+import { Switch, Route } from 'react-router-dom';
+import CardObjective from '../CardObjective';
+import Cadastro from '../Pages/Cadastro/Cadastro';
+import Login from '../Pages/Login/Login';
 
 function Routes() {
   return (
@@ -9,7 +10,7 @@ function Routes() {
       <Switch>
         <Route path="/" exact component={Login} />
         <Route path="/objective" component={CardObjective} />
-        <Route path="/" component={Login} />
+        <Route path="/register" component={Cadastro} />
       </Switch>
     </div>
   );

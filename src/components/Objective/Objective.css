@@ -1,0 +1,57 @@
+.objective-card {
+  background: #f8f8fa;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 0.45rem;
+  padding: 1rem;
+  display: grid;
+  margin-bottom: 1rem;
+  color: #006d99;
+}
+.objective-card:hover {
+  background-color: #d4d3d3;
+}
+.objective-container {
+  padding: 1rem;
+}
+
+.objective-info {
+  display: block;
+  max-width: 50px;
+  height: 20px;
+  margin: 0;
+  background: #006e996c;
+  border-radius: 0.45rem;
+  color: #f8f8fa;
+  font-size: 1rem;
+  text-transform: capitalize;
+  text-align: left;
+  padding-left: 5px;
+}
+
+@media (min-width: 768px) {
+  .objective-card {
+    grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr;
+    width: 65rem;
+
+    align-items: center;
+  }
+  .objective-card h4,
+  .objective-card h3 {
+    margin: 0;
+    padding-left: 10px;
+  }
+
+  .objective-container {
+    margin: 0 auto;
+    display: flex;
+    width: 85%;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 945px) {
+  .objective-card {
+    max-width: 50rem;
+  }
+}

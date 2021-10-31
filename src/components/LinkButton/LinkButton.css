@@ -1,4 +1,6 @@
 .button {
+  font-size: 16px;
+  color: #fefefe;
   border: none;
   border-radius: 0.25em;
   cursor: pointer;

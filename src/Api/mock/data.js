@@ -8,6 +8,7 @@ const krs = [
     classification: "Alta",
     vlInitial: "x",
     vlGoal: "2x",
+    done: "false"
   },
   {
     title: "Aumentar faturamento em 40%",

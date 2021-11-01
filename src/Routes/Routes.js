@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import CardObjective from "../CardObjective";
+import CardObjective from "../components/CardObjective/CardObjective";
 import Objective from "../components/Objective/Objective";
 import Cadastro from "../Pages/Cadastro/Cadastro";
 import Login from "../Pages/Login/Login";

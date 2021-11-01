@@ -4,8 +4,10 @@ import { MdOutlineLibraryAdd } from "react-icons/md";
 
 //CSS
 import "./cardObjective.css";
-import { cks } from "./Api/mock/data";
-import data from "./Api/mock/data";
+import { cks } from "../../Api/mock/data";
+import data from "../../Api/mock/data";
+
+
 export default function CardObjective() {
   const objective = {
     objective: "Objetivo 1",
@@ -57,112 +59,107 @@ export default function CardObjective() {
           </h4>
         </div>
       </div>
-      {/* KR */}
+      {/* Conditional render */}
       {!changeView ? (
+
+      // KR 
         <div className="area-kr">
-          <div className="kr-title">
-            <div className="kr-header kr-title-header">
-              <h3>Titulo KR</h3>
-              <MdOutlineLibraryAdd className="icon-add" />
+          <div className="kr-header">
+              <div className="kr-title-header">
+                <h3>Titulo KR</h3>
+                <MdOutlineLibraryAdd className="icon-add" />
+              </div>
+
+              <div className="kr-owner-header">
+                <h3>Dono KR</h3>
+              </div>
+
+              <div className="kr-comment-header">
+                <h3>Comentário</h3>
+              </div>
+
+              <div className="kr-type-header">
+                <h3>Tipo KR</h3>
+              </div>
+
+              <div className="kr-frequency-header">
+                <h3>Frequência Medição</h3>
+              </div>
+
+              <div className="kr-classification-header">
+                <h3>Classificação</h3>
+              </div>
+
+              <div className="kr-vlInitial-header">
+                <h3>Vl. Inicial</h3>
+              </div>
+
+              <div className="kr-vlGoal-header">
+                <h3>Vl. Meta</h3>
+              </div>
+
+              <div className="kr-done-header">
+                <h3>Concluído</h3>
+              </div>
+
             </div>
-            {data.map((kr) => (
-              <div className="kr-items kr-title-items">
+            
+          {/*Body KR  */}
+          {data.map((kr) => (
+            <div className="kr-items">
+              <div className="kr-title-items">
                 <h4>{kr.title}</h4>
               </div>
-            ))}
-          </div>
 
-          <div className="kr-owner">
-            <div className="kr-header kr-owner-header">
-              <h3>Dono KR</h3>
-            </div>
-            {data.map((kr) => (
-              <div className="kr-items kr-owner-items">
+              <div className="kr-owner-items">
                 <h4>{kr.owner}</h4>
               </div>
-            ))}
-          </div>
 
-          <div className="kr-comment">
-            <div className="kr-header kr-comment-header">
-              <h3>Comentário</h3>
-            </div>
-            {data.map((kr) => (
-              <div className="kr-items kr-comment-items">
+              <div className="kr-comment-items">
                 <p>{kr.comment}</p>
                 <BiCommentDots className="icon-comment" />
               </div>
-            ))}
-          </div>
 
-          <div className="kr-type">
-            <div className="kr-header kr-type-header">
-              <h3>Tipo KR</h3>
-            </div>
-            {data.map((kr) => (
-              <div className="kr-items kr-type-items">
+              <div className="kr-type-items">
                 <h4>{kr.type}</h4>
               </div>
-            ))}
-          </div>
 
-          <div className="kr-frequency">
-            <div className="kr-header kr-frequency-header">
-              <h3>Frequência Medição</h3>
-            </div>
-            {data.map((kr) => (
-              <div className="kr-items kr-frequency-items">
+              <div className="kr-frequency-items">
                 <h4>{kr.frequency}</h4>
               </div>
-            ))}
-          </div>
 
-          <div className="kr-classification">
-            <div className="kr-header kr-classification-header">
-              <h3>Classificação</h3>
-            </div>
-            {data.map((kr) => (
-              <div className="kr-items kr-classification-items">
+              <div className="kr-classification-items">
                 <h4>{kr.classification}</h4>
               </div>
-            ))}
-          </div>
 
-          <div className="kr-vlInitial">
-            <div className="kr-header kr-vlInitial-header">
-              <h3>Vl. Inicial</h3>
-            </div>
-            {data.map((kr) => (
-              <div className="kr-items kr-vlInitial-items">
+              <div className="kr-vlInitial-items">
                 <h4>{kr.vlInitial}</h4>
               </div>
-            ))}
-          </div>
 
-          <div className="kr-vlGoal">
-            <div className="kr-header kr-vlGoal-header">
-              <h3>Vl. Meta</h3>
-            </div>
-            {data.map((kr) => (
-              <div className="kr-items kr-vlGoal-items">
+              <div className="kr-vlGoal-items">
                 <h4>{kr.vlGoal}</h4>
               </div>
-            ))}
-          </div>
+              <div className="kr-done-items">
+                <input type="checkbox" />
+              </div>
+            </div>
+          ))}
+          
         </div>
       ) : (
         /* Checking */
         // repeat area title
         <div className="area-ck">
-          <div className="kr-title">
-            <div className="kr-header kr-title-header">
+          <div className="kr-header-ck">
+            <div className="kr-header">
               <h3>Titulo KR</h3>
               <MdOutlineLibraryAdd />
             </div>
             {data.map((kr) => (
-              <div className="kr-items kr-title-items">
+              <div className="kr-title-items-ck">
                 <h4>{kr.title}</h4>
               </div>
+              
             ))}
           </div>
 
@@ -172,10 +169,15 @@ export default function CardObjective() {
                 <h3>{ck.date}</h3>
               </div>
               {ck.status.map((st) => (
-                <div className="ck-items">{statusColor(st)}</div>
+                <div className="ck-items">
+                  {statusColor(st)}
+                </div>
               ))}
+              
             </div>
           ))}
+
+          
         </div>
       )}
     </div>

@@ -2,12 +2,14 @@ import React from "react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
+import { Api } from "../../Api/Api";
+import { JwtHandler } from "../../jwt-handler/JwtHandler";
 
 import LinkButton from "../../components/LinkButton/LinkButton";
 import "./Login.css";
 
 export default function Login() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const email = event.target.email.value;
@@ -18,8 +20,14 @@ export default function Login() {
       password,
     };
 
-    console.log(payload);
+    const response = await Api.buildApiPostRequest(Api.loginUrl(), payload);
+    const body = await response.json();
 
+    if (response.status === 200) {
+      const accessToken = body.accessToken;
+
+      JwtHandler.setJwt(accessToken);
+    }
     console.log("enviou");
   };
   return (

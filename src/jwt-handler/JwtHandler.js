@@ -1,7 +1,7 @@
 export const JwtHandler = {
-  JWT_KEY: 'JWT',
+  JWT_KEY: "token",
 
-  onChangeEvent: new CustomEvent('onJwtChange'),
+  onChangeEvent: new CustomEvent("onJwtChange"),
 
   onChange: () => {
     window.dispatchEvent(JwtHandler.onChangeEvent);

@@ -58,7 +58,7 @@ export default function Login() {
               </LinkButton>
             </div>
             <p>
-              Não tem uma conta? <Link to="/">Crie uma aqui!</Link>
+              Não tem uma conta? <Link to="/register">Crie uma aqui!</Link>
             </p>
           </form>
         </IconContext.Provider>

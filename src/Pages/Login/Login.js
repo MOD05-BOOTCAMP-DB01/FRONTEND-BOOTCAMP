@@ -4,7 +4,6 @@ import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
 import { Api } from "../../Api/Api";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
-
 import LinkButton from "../../components/LinkButton/LinkButton";
 import "./Login.css";
 
@@ -23,12 +22,11 @@ export default function Login() {
     const response = await Api.buildApiPostRequest(Api.loginUrl(), payload);
     const body = await response.json();
 
-    if (response.status === 200) {
-      const accessToken = body.accessToken;
+    if (response.status === 201) {
+      const accessToken = body.token;
 
       JwtHandler.setJwt(accessToken);
     }
-    console.log("enviou");
   };
   return (
     <div className="form">

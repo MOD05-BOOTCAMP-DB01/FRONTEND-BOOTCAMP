@@ -17,7 +17,7 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Objetivos",
+    title: "Meus objetivos",
     path: "/objectives",
     icon: <BiTask />,
     cName: "nav-text",

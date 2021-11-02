@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState }from "react";
+import { Api } from "../../Api/Api";
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaUserAlt } from 'react-icons/fa';
 import { RiLockPasswordLine } from 'react-icons/ri'
 import LinkButton from "../../components/LinkButton/LinkButton";
+import { IconContext } from "react-icons";
 import './Cadastro.css';
+import { Input } from "semantic-ui-react";
 
 export default function Cadastro() {
+  const [usuarios, setUsuarios] = useState([]);
+
+
   const handleSubmit =  (event) => {
     event.preventDefault();
 
@@ -13,12 +19,14 @@ export default function Cadastro() {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
+    const role = event.target.role.value;
 
     const payload = {
       username,
       email,
       password,
-      confirmPassword
+      confirmPassword,
+      role
     };
 
     console.log(payload)
@@ -26,49 +34,60 @@ export default function Cadastro() {
 
   return (
     <div className='form-register'>
-      <h1>User Register</h1>
-      <form className="form__card-register" onSubmit={handleSubmit}>
-          <div className="form__card--input-register">
-            <span><FaUserAlt /></span>
-            <input
-                id="username"
-                type="text"
-                placeholder="Coloque seu Username:"
-                name="username"
-            />
-          </div>
-          <div className="form__card--input-register">
-            <input
-                id="email"
-                type="text"
-                placeholder="Coloque seu E-mail:"
-                name="email" />
-            <span><AiOutlineMail /></span>
-          </div>
-          <div className="form__card--input-register">
-            <span><RiLockPasswordLine /></span>
-            <input
-                id="password"
-                type="password"
-                placeholder="Coloque sua Senha:"
-                name="senha"
-            />
-          </div>
-          <div className="form__card--input-register">
-            <input
-                id="confirmPassword"
-                type="password"
-                placeholder="Confirme sua Senha:"
-                name="confirmPassword"
-            />
-            <span><RiLockPasswordLine /></span>
-          </div>
-          <div>
-            <LinkButton type="submit" className="button button--primary">
-              Cadastrar
-            </LinkButton>
-          </div>
-      </form>
+      <IconContext.Provider value={{ color: "#fefefe", className: "icons" }}>
+        <h1>User Register</h1>
+        <form className="form__card-register" onSubmit={handleSubmit}>
+            <div className="form__card--input-register">
+              <span><FaUserAlt /></span>
+              <input
+                  id="username"
+                  type="text"
+                  placeholder="Coloque seu Username:"
+                  name="username"
+              />
+            </div>
+            <div className="form__card--input-register">
+              <input
+                  id="email"
+                  type="text"
+                  placeholder="Coloque seu E-mail:"
+                  name="email" />
+              <span><AiOutlineMail /></span>
+            </div>
+            <div className="form__card--input-register">
+              <span><RiLockPasswordLine /></span>
+              <input
+                  id="password"
+                  type="password"
+                  placeholder="Coloque sua Senha:"
+                  name="senha"
+              />
+            </div>
+            <div className="form__card--input-register">
+              <input
+                  id="confirmPassword"
+                  type="password"
+                  placeholder="Confirme sua Senha:"
+                  name="confirmPassword"
+              />
+              <span><RiLockPasswordLine /></span>
+            </div>
+            <div className="form__card--input-register">
+              <span><RiLockPasswordLine /></span>
+              <input
+                  id="role"
+                  type="text"
+                  placeholder="Coloque sua Senha:"
+                  name="role"
+              />
+            </div>
+            <div>
+              <LinkButton type="submit" className="button button--primary">
+                Cadastrar
+              </LinkButton>
+            </div>
+        </form>
+      </IconContext.Provider>
     </div>
   );
 }

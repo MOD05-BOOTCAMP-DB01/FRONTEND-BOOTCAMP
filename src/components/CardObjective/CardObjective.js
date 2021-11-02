@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiCommentDots } from "react-icons/bi";
 import { MdOutlineLibraryAdd } from "react-icons/md";
 
@@ -6,20 +6,38 @@ import { MdOutlineLibraryAdd } from "react-icons/md";
 import "./cardObjective.css";
 import { cks } from "../../Api/mock/data";
 import data from "../../Api/mock/data";
+import { Api } from "../../Api/Api";
 
 
 export default function CardObjective() {
-  const objective = {
-    objective: "Objetivo 1",
-    Type: "Anual",
-    initialDate: "29/10/2021",
-    endDate: "29/10/2022",
-    area: "DP",
-    unity: "DB1 Global Software",
-    responsible: "Fulano de Tal",
-  };
+  // const objective = {
+  //   objective: "Objetivo 1",
+  //   Type: "Anual",
+  //   initialDate: "29/10/2021",
+  //   endDate: "29/10/2022",
+  //   area: "DP",
+  //   unity: "DB1 Global Software",
+  //   responsible: "Fulano de Tal",
+  // };
+
+  const [objective, setObjective] = useState(undefined)
 
   const [changeView, setChangeView] = useState(true);
+
+  const id = "67615f4b-734e-4fce-8bf2-33d44160b864"
+
+  useEffect(() => {
+    const loadObjective = async () => {
+      const response = await Api.buildApiGetRequest(Api.readObjectivesById(id),true)
+      const results = await response.json()
+        setObjective(results.objective)
+    }
+    loadObjective()
+  }, []);
+  console.log(objective)
+  if (!objective) {
+    return <h3>Loading..</h3>
+  }
 
   const alterChangeView = () => {
     setChangeView(!changeView);
@@ -50,12 +68,12 @@ export default function CardObjective() {
         <div className="objective">
           <h3>{objective.area}</h3>
           <h3>{objective.objective}</h3>
-          <h3>{objective.responsible}</h3>
+          <h3>{objective.owner.username}</h3>
         </div>
 
         <div>
           <h4>
-            {objective.initialDate} {"-"} {objective.endDate}
+            {objective.initial_date} {"-"} {objective.end_date}
           </h4>
         </div>
       </div>
@@ -105,14 +123,14 @@ export default function CardObjective() {
             </div>
             
           {/*Body KR  */}
-          {data.map((kr) => (
-            <div className="kr-items">
+          {objective.key_results.map((kr,i) => (
+            <div className="kr-items" key={`kr-${i}`}>
               <div className="kr-title-items">
-                <h4>{kr.title}</h4>
+                <h4>{kr.key_result}</h4>
               </div>
 
               <div className="kr-owner-items">
-                <h4>{kr.owner}</h4>
+                <h4>{kr.owner.username}</h4>
               </div>
 
               <div className="kr-comment-items">
@@ -129,15 +147,15 @@ export default function CardObjective() {
               </div>
 
               <div className="kr-classification-items">
-                <h4>{kr.classification}</h4>
+                <h4>{kr.rating}</h4>
               </div>
 
               <div className="kr-vlInitial-items">
-                <h4>{kr.vlInitial}</h4>
+                <h4>{kr.initial_value}</h4>
               </div>
 
               <div className="kr-vlGoal-items">
-                <h4>{kr.vlGoal}</h4>
+                <h4>{kr.goal_value}</h4>
               </div>
               <div className="kr-done-items">
                 <input type="checkbox" />
@@ -155,16 +173,16 @@ export default function CardObjective() {
               <h3>Titulo KR</h3>
               <MdOutlineLibraryAdd />
             </div>
-            {data.map((kr) => (
-              <div className="kr-title-items-ck">
-                <h4>{kr.title}</h4>
+            {objective.key_results.map((kr,i) => (
+              <div key={`kr-ch-${i}`} className="kr-title-items-ck">
+                <h4>{kr.key_result}</h4>
               </div>
               
             ))}
           </div>
 
-          {cks.map((ck) => (
-            <div className="ck">
+          {cks.map((ck,i) => (
+            <div key={`ck-${i}`} className="ck">
               <div className="ck-header">
                 <h3>{ck.date}</h3>
               </div>

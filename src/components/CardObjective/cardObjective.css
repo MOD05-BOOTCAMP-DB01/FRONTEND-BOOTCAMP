@@ -47,6 +47,9 @@
   justify-content: space-around;
   align-items: center;
 }
+.objective h3{
+  text-align: center;
+}
 
 .area-kr{
   width: 100%;

@@ -2,12 +2,13 @@ import React from "react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
-
+import { Api } from "../../Api/Api";
+import { JwtHandler } from "../../jwt-handler/JwtHandler";
 import LinkButton from "../../components/LinkButton/LinkButton";
 import "./Login.css";
 
 export default function Login() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const email = event.target.email.value;
@@ -18,9 +19,14 @@ export default function Login() {
       password,
     };
 
-    console.log(payload);
+    const response = await Api.buildApiPostRequest(Api.loginUrl(), payload);
+    const body = await response.json();
 
-    console.log("enviou");
+    if (response.status === 201) {
+      const accessToken = body.token;
+
+      JwtHandler.setJwt(accessToken);
+    }
   };
   return (
     <div className="form">
@@ -58,7 +64,7 @@ export default function Login() {
               </LinkButton>
             </div>
             <p>
-              Não tem uma conta? <Link to="/">Crie uma aqui!</Link>
+              Não tem uma conta? <Link to="/register">Crie uma aqui!</Link>
             </p>
           </form>
         </IconContext.Provider>

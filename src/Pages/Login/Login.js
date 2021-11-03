@@ -2,12 +2,13 @@ import React from "react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
-
+import { Api } from "../../Api/Api";
+import { JwtHandler } from "../../jwt-handler/JwtHandler";
 import LinkButton from "../../components/LinkButton/LinkButton";
 import "./Login.css";
 
-export default function Login() {
-  const handleSubmit = (event) => {
+export default function Login(props) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const email = event.target.email.value;
@@ -18,14 +19,20 @@ export default function Login() {
       password,
     };
 
-    console.log(payload);
+    const response = await Api.buildApiPostRequest(Api.loginUrl(), payload);
+    const body = await response.json();
 
-    console.log("enviou");
+    if (response.status === 201) {
+      const accessToken = body.token;
+
+      JwtHandler.setJwt(accessToken);
+      props.history.push(`/objectives`);
+    }
   };
   return (
     <div className="form">
       <div>
-        <IconContext.Provider value={{ color: "#fefefe", className: "icons" }}>
+        <IconContext.Provider value={{ className: "icons__login" }}>
           <h1>User Login</h1>
           <form className="form__card" onSubmit={handleSubmit}>
             <div className="form__card--input">

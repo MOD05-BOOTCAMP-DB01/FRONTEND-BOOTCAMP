@@ -23,14 +23,13 @@ export const Api = {
   readAllUsers: () => `${Api.baseUrl}/users`,
   readAllUsersbyId: (id) => `${Api.baseUrl}/users/${id}`,
 
-  authHeader: () => ({
-    Authorization: "Bearer " + JwtHandler.getJwt(),
-  }),
+  //   authHeader: () => ({
+  //     Authorization: "Bearer " + JwtHandler.getJwt(),
+  //   }),
 
-  buildApiGetRequest: (url, auth) =>
+  buildApiGetRequest: (url) =>
     fetch(url, {
       method: "GET",
-      headers: auth ? new Headers(Api.authHeader()) : undefined,
     }),
 
   buildApiPostRequest: (url, body, auth) =>

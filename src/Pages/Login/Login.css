@@ -47,6 +47,14 @@
   color: #fefefe;
 }
 
-.icons {
+.form__card--span {
+  background-color: #fefefe;
+  padding: 10px;
+  border-radius: 50%;
+  margin: 0 -2px;
+}
+.icons__login {
+  color: black;
   font-size: 1.5rem;
+  float: left;
 }

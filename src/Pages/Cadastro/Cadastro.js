@@ -35,11 +35,6 @@ export default function Cadastro() {
 
     console.log(response)
 
-    if (response.status === 200) {
-      const accessToken = body.accessToken;
-
-      JwtHandler.setJwt(accessToken);
-    }
   };
 
   return (

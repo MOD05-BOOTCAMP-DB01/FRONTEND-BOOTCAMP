@@ -1,35 +1,45 @@
-import React, { useState }from "react";
+import React from "react";
 import { Api } from "../../Api/Api";
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaUserAlt } from 'react-icons/fa';
-import { RiLockPasswordLine } from 'react-icons/ri'
+import { RiLockPasswordLine } from 'react-icons/ri';
 import LinkButton from "../../components/LinkButton/LinkButton";
 import { IconContext } from "react-icons";
 import './Cadastro.css';
-import { Input } from "semantic-ui-react";
+import { JwtHandler } from "../../jwt-handler/JwtHandler";
 
 export default function Cadastro() {
-  const [usuarios, setUsuarios] = useState([]);
-
-
-  const handleSubmit =  (event) => {
+  const handleSubmit =  async event => {
     event.preventDefault();
 
     const username = event.target.username.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
-    const role = event.target.role.value;
+    // const role = event.target.role.value;
 
     const payload = {
       username,
       email,
       password,
       confirmPassword,
-      role
+      // role
     };
 
-    console.log(payload)
+    const response = await Api.buildApiPostRequest(
+      Api.createUserUrl(),
+      payload
+    );
+
+    const body = await response.json();
+
+    console.log(response)
+
+    if (response.status === 200) {
+      const accessToken = body.accessToken;
+
+      JwtHandler.setJwt(accessToken);
+    }
   };
 
   return (
@@ -73,13 +83,13 @@ export default function Cadastro() {
               <span><RiLockPasswordLine /></span>
             </div>
             <div className="form__card--input-register">
-              <span><RiLockPasswordLine /></span>
+              {/* <span><HiOutlineBriefcase /></span>
               <input
                   id="role"
                   type="text"
-                  placeholder="Coloque sua Senha:"
+                  placeholder="Coloque o seu cargo:"
                   name="role"
-              />
+              /> */}
             </div>
             <div>
               <LinkButton type="submit" className="button button--primary">

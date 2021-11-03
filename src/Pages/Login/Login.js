@@ -7,7 +7,7 @@ import { JwtHandler } from "../../jwt-handler/JwtHandler";
 import LinkButton from "../../components/LinkButton/LinkButton";
 import "./Login.css";
 
-export default function Login() {
+export default function Login(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -26,12 +26,13 @@ export default function Login() {
       const accessToken = body.token;
 
       JwtHandler.setJwt(accessToken);
+      props.history.push(`/objectives`);
     }
   };
   return (
     <div className="form">
       <div>
-        <IconContext.Provider value={{ color: "#fefefe", className: "icons" }}>
+        <IconContext.Provider value={{ className: "icons__login" }}>
           <h1>User Login</h1>
           <form className="form__card" onSubmit={handleSubmit}>
             <div className="form__card--input">

@@ -47,14 +47,8 @@
   color: #fefefe;
 }
 
-.form__card--span {
-  background-color: #fefefe;
-  padding: 10px;
-  border-radius: 50%;
-  margin: 0 -2px;
-}
 .icons__login {
-  color: black;
+  color: #fefefe;
   font-size: 1.5rem;
   float: left;
 }

@@ -36,9 +36,7 @@ export default function Login(props) {
           <h1>User Login</h1>
           <form className="form__card" onSubmit={handleSubmit}>
             <div className="form__card--input">
-              <span className="form__card--span">
-                <FaUserAlt />
-              </span>
+              <FaUserAlt />
 
               <input
                 type="text"
@@ -54,9 +52,8 @@ export default function Login(props) {
                 id="password"
                 placeholder="Senha:"
               />
-              <span className="form__card--span">
-                <FaLock />
-              </span>
+
+              <FaLock />
             </div>
 
             <div>

@@ -37,7 +37,7 @@ export default function Login(props) {
           <h1>User Login</h1>
           <form className="form__card" onSubmit={handleSubmit}>
             <div className="form__card--input">
-              <span className="form__card--icon left">
+              <span className="form__card--icon">
                 <BiUser />
               </span>
 

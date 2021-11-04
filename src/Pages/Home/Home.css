@@ -1,0 +1,33 @@
+.home_container-banner {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .home_container {
+    display: flex;
+    justify-content: center;
+    margin: 4rem auto 0 auto;
+  }
+  .home_container h2 {
+    color: #fff;
+  }
+
+  .home_container p {
+    color: #fff;
+  }
+
+  .home_container-headding {
+    margin-top: 4rem;
+  }
+
+  .home_container-banner {
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+    width: 320px;
+    height: 338px;
+    background: #4767ff;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+  }
+}

@@ -2,7 +2,6 @@ import React from "react";
 import { BiUser } from "react-icons/bi";
 import { MdOutlineLockOpen } from "react-icons/md";
 import { IconContext } from "react-icons";
-import { Link } from "react-router-dom";
 import { Api } from "../../Api/Api";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
 import LinkButton from "../../components/LinkButton/LinkButton";
@@ -65,9 +64,6 @@ export default function Login(props) {
                 Login
               </LinkButton>
             </div>
-            <p>
-              Não tem uma conta? <Link to="/register">Crie uma aqui!</Link>
-            </p>
           </form>
         </IconContext.Provider>
       </div>

@@ -5,10 +5,11 @@ import { FaUserAlt } from 'react-icons/fa';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import LinkButton from "../../components/LinkButton/LinkButton";
 import { IconContext } from "react-icons";
-import './Cadastro.css';
+import './Register.css';
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
+import { HiOutlineBriefcase } from 'react-icons/hi';
 
-export default function Cadastro() {
+export default function Register() {
   const handleSubmit =  async event => {
     event.preventDefault();
 
@@ -16,31 +17,37 @@ export default function Cadastro() {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
-    // const role = event.target.role.value;
+    const role = event.target.role.value;
 
     const payload = {
       username,
       email,
       password,
       confirmPassword,
-      // role
+      role
     };
 
     const response = await Api.buildApiPostRequest(
       Api.createUserUrl(),
-      payload
+      payload,
+      true
     );
 
     const body = await response.json();
 
     console.log(response)
 
+    // if (response.status === 201) {
+    //   const accessToken = body.token;
+
+    //   JwtHandler.setJwt(accessToken);
+    // }
   };
 
   return (
     <div className='form-register'>
       <IconContext.Provider value={{ color: "#fefefe", className: "icons" }}>
-        <h1>User Register</h1>
+        <h1>Registrar Usuário</h1>
         <form className="form__card-register" onSubmit={handleSubmit}>
             <div className="form__card--input-register">
               <span><FaUserAlt /></span>
@@ -78,13 +85,13 @@ export default function Cadastro() {
               <span><RiLockPasswordLine /></span>
             </div>
             <div className="form__card--input-register">
-              {/* <span><HiOutlineBriefcase /></span>
+              <span><HiOutlineBriefcase /></span>
               <input
                   id="role"
                   type="text"
                   placeholder="Coloque o seu cargo:"
                   name="role"
-              /> */}
+              />
             </div>
             <div>
               <LinkButton type="submit" className="button button--primary">

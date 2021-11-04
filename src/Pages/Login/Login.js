@@ -1,5 +1,6 @@
 import React from "react";
-import { FaUserAlt, FaLock } from "react-icons/fa";
+import { BiUser } from "react-icons/bi";
+import { MdOutlineLockOpen } from "react-icons/md";
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
 import { Api } from "../../Api/Api";
@@ -36,8 +37,8 @@ export default function Login(props) {
           <h1>User Login</h1>
           <form className="form__card" onSubmit={handleSubmit}>
             <div className="form__card--input">
-              <span className="form__card--span">
-                <FaUserAlt />
+              <span className="form__card--icon left">
+                <BiUser />
               </span>
 
               <input
@@ -54,8 +55,8 @@ export default function Login(props) {
                 id="password"
                 placeholder="Senha:"
               />
-              <span className="form__card--span">
-                <FaLock />
+              <span className="form__card--icon-left">
+                <MdOutlineLockOpen />
               </span>
             </div>
 

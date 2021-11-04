@@ -4,12 +4,10 @@ import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Navbar />
-      <div>
-        <Routes />
-      </div>
-    </div>
+      <Routes />
+    </>
   );
 }
 

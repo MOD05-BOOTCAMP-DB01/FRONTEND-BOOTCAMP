@@ -17,20 +17,17 @@ export default function Register() {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
-    const role = event.target.role.value;
 
     const payload = {
       username,
       email,
       password,
-      confirmPassword,
-      role
+      confirmPassword
     };
 
     const response = await Api.buildApiPostRequest(
       Api.createUserUrl(),
-      payload,
-      true
+      payload
     );
 
     const body = await response.json();
@@ -90,7 +87,7 @@ export default function Register() {
                 <RiLockPasswordLine />
               </span>
             </div>
-            <div className="form__card--input-register">
+            {/* <div className="form__card--input-register">
               <span className="form__card--icon-register">
                 <HiOutlineBriefcase />
               </span>
@@ -100,7 +97,7 @@ export default function Register() {
                   placeholder="Coloque o seu cargo:"
                   name="role"
               />
-            </div>
+            </div> */}
             <div>
               <LinkButton type="submit" className="button button--primary">
                 Cadastrar

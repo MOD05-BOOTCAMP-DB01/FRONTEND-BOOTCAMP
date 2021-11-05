@@ -6,8 +6,6 @@ import { RiLockPasswordLine } from 'react-icons/ri';
 import LinkButton from "../../components/LinkButton/LinkButton";
 import { IconContext } from "react-icons";
 import './Register.css';
-import { JwtHandler } from "../../jwt-handler/JwtHandler";
-import { HiOutlineBriefcase } from 'react-icons/hi';
 
 export default function Register() {
   const handleSubmit =  async event => {
@@ -16,23 +14,26 @@ export default function Register() {
     const username = event.target.username.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const confirmPassword = event.target.confirmPassword.value;
+    const passwordConfirmation = event.target.passwordConfirmation.value;
 
     const payload = {
       username,
       email,
       password,
-      confirmPassword
+      passwordConfirmation
     };
 
     const response = await Api.buildApiPostRequest(
-      Api.createUserUrl(),
-      payload
+      Api.createUser(),
+      payload,
+      true
     );
 
     const body = await response.json();
 
-    console.log(response)
+    console.log(response);
+
+    console.log(body);
 
     // if (response.status === 201) {
     //   const accessToken = body.token;
@@ -78,10 +79,10 @@ export default function Register() {
             </div>
             <div className="form__card--input-register">
               <input
-                  id="confirmPassword"
+                  id="passwordConfirmation"
                   type="password"
                   placeholder="Confirme Senha:"
-                  name="confirmPassword"
+                  name="passwordConfirmation"
               />
               <span className="form__card--icon-left-register">
                 <RiLockPasswordLine />
@@ -99,7 +100,7 @@ export default function Register() {
               />
             </div> */}
             <div>
-              <LinkButton type="submit" className="button button--primary">
+              <LinkButton type="submit" value="Add" className="button button--primary">
                 Cadastrar
               </LinkButton>
             </div>

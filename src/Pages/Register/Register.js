@@ -6,8 +6,6 @@ import { RiLockPasswordLine } from 'react-icons/ri';
 import LinkButton from "../../components/LinkButton/LinkButton";
 import { IconContext } from "react-icons";
 import './Register.css';
-import { JwtHandler } from "../../jwt-handler/JwtHandler";
-import { HiOutlineBriefcase } from 'react-icons/hi';
 
 export default function Register() {
   const handleSubmit =  async event => {
@@ -16,25 +14,26 @@ export default function Register() {
     const username = event.target.username.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const passwordConfirmation = event.target.confirmPassword.value;
-    // const role = event.target.role.value;
+    const passwordConfirmation = event.target.passwordConfirmation.value;
 
     const payload = {
       username,
       email,
       password,
-      passwordConfirmation,
+      passwordConfirmation
     };
 
     const response = await Api.buildApiPostRequest(
-      Api.createUserUrl(),
+      Api.createUser(),
       payload,
       true
     );
 
     const body = await response.json();
 
-    console.log(response)
+    console.log(response);
+
+    console.log(body);
 
     // if (response.status === 201) {
     //   const accessToken = body.token;
@@ -80,16 +79,16 @@ export default function Register() {
             </div>
             <div className="form__card--input-register">
               <input
-                  id="confirmPassword"
+                  id="passwordConfirmation"
                   type="password"
                   placeholder="Confirme Senha:"
-                  name="confirmPassword"
+                  name="passwordConfirmation"
               />
               <span className="form__card--icon-left-register">
                 <RiLockPasswordLine />
               </span>
             </div>
-            <div className="form__card--input-register">
+            {/* <div className="form__card--input-register">
               <span className="form__card--icon-register">
                 <HiOutlineBriefcase />
               </span>
@@ -99,9 +98,9 @@ export default function Register() {
                   placeholder="Coloque o seu cargo:"
                   name="role"
               />
-            </div>
+            </div> */}
             <div>
-              <LinkButton type="submit" className="button button--primary">
+              <LinkButton type="submit" value="Add" className="button button--primary">
                 Cadastrar
               </LinkButton>
             </div>

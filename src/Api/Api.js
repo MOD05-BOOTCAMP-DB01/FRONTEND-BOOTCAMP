@@ -3,6 +3,7 @@ export const Api = {
   baseUrl: "http://localhost:3000",
 
   loginUrl: () => `${Api.baseUrl}/auth/signin`,
+  createUser: () => `${Api.baseUrl}/auth/signup`,
 
   // OBJECTIVES
   readAllObjectives: () => `${Api.baseUrl}/objectives`,

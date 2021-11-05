@@ -22,7 +22,7 @@
 }
 
 .form__card--input-register input {
-  background-color: rgba(254, 254, 254, 0.2);
+  background: rgb(223, 233, 236);
   width: 100%;
   border: none;
   border-radius: 25px;

@@ -12,7 +12,6 @@ function Routes() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/objective/:id" component={CardObjective} />
-        <Route path="/register" component={Register} />
         <Route path="/objectives" component={Objective} />
       </Switch>
     </div>

@@ -9,16 +9,7 @@ import { Api } from '../../Api/Api'
 import CardKr from '../CardKeyResult/CardKr'
 import CardCk from '../CardCheckin/CardCk'
 
-export default function CardObjective() {
-  // const objective = {
-  //   objective: "Objetivo 1",
-  //   Type: "Anual",
-  //   initialDate: "29/10/2021",
-  //   endDate: "29/10/2022",
-  //   area: "DP",
-  //   unity: "DB1 Global Software",
-  //   responsible: "Fulano de Tal",
-  // };
+export default function CardObjective(props) {
 
   const [objective, setObjective] = useState(undefined)
   const [krs, setKrs] = useState(undefined)
@@ -26,7 +17,7 @@ export default function CardObjective() {
 
   const [changeView, setChangeView] = useState(true)
 
-  const id = '67615f4b-734e-4fce-8bf2-33d44160b864'
+  const id = props.match.params.id
 
   useEffect(() => {
     const loadObjective = async () => {

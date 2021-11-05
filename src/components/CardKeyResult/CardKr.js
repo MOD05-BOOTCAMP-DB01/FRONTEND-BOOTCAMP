@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { BiCommentDots } from 'react-icons/bi'
 import { MdOutlineLibraryAdd } from 'react-icons/md'
 
+
 export default function CardKr({krs}) {
+
 
   console.log("cardKr",krs)
   return (
@@ -50,8 +52,10 @@ export default function CardKr({krs}) {
       {/*Body KR  */}
       {krs.map((kr, i) => (
         <div className="kr-items" key={`kr-${i}`}>
+          
           <div className="kr-title-items">
             <h4>{kr.key_result}</h4>
+            
           </div>
 
           <div className="kr-owner-items">

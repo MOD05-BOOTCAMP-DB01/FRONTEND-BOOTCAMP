@@ -1,7 +1,7 @@
 import React from "react";
-import { FaUserAlt, FaLock } from "react-icons/fa";
+import { BiUser } from "react-icons/bi";
+import { MdOutlineLockOpen } from "react-icons/md";
 import { IconContext } from "react-icons";
-import { Link } from "react-router-dom";
 import { Api } from "../../Api/Api";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
 import LinkButton from "../../components/LinkButton/LinkButton";
@@ -36,8 +36,8 @@ export default function Login(props) {
           <h1>User Login</h1>
           <form className="form__card" onSubmit={handleSubmit}>
             <div className="form__card--input">
-              <span className="form__card--span">
-                <FaUserAlt />
+              <span className="form__card--icon">
+                <BiUser />
               </span>
 
               <input
@@ -54,8 +54,8 @@ export default function Login(props) {
                 id="password"
                 placeholder="Senha:"
               />
-              <span className="form__card--span">
-                <FaLock />
+              <span className="form__card--icon-left">
+                <MdOutlineLockOpen />
               </span>
             </div>
 
@@ -64,9 +64,6 @@ export default function Login(props) {
                 Login
               </LinkButton>
             </div>
-            <p>
-              Não tem uma conta? <Link to="/register">Crie uma aqui!</Link>
-            </p>
           </form>
         </IconContext.Provider>
       </div>

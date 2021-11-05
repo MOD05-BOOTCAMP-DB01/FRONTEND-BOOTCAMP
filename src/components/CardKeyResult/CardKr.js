@@ -6,8 +6,6 @@ import { MdOutlineLibraryAdd } from 'react-icons/md'
 
 export default function CardKr({krs}) {
 
-
-  console.log("cardKr",krs)
   return (
     <div className="area-kr">
       <div className="kr-header">

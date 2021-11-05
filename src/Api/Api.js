@@ -22,9 +22,12 @@ export const Api = {
   createUserUrl: () => `${Api.baseUrl}/users`,
   readAllUsers: () => `${Api.baseUrl}/users`,
   readAllUsersbyId: (id) => `${Api.baseUrl}/users/${id}`,
+  readAllUsersbyId: (id) => `${Api.baseUrl}/users/${id}`,
 
   // checkin
   readAllCheckinsUrl: () => `${Api.baseUrl}/checkin`,
+
+  
   authHeader: () => ({
     Authorization: "Bearer " + JwtHandler.getJwt(),
   }),

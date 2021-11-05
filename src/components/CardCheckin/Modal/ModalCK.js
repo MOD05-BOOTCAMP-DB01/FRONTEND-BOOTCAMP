@@ -6,7 +6,7 @@ import { BiEdit } from 'react-icons/bi'
 // CSS
 import './modalCk.css'
 
-export default function ModalCK({kr}) {
+export default function ModalCK({kr,cks}) {
   console.log("props kr",kr)
   return (
     <div className="modalCk">
@@ -27,7 +27,7 @@ export default function ModalCK({kr}) {
       </div>
 
       <div className="modal-areaCardCk">
-        {kr.cks.map( ck => (
+        {cks.map( ck => (
           <div className="cardCk">
             <div className="cardCk-date">
               <h3>{ck.date}</h3>

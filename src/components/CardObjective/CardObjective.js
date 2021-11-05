@@ -12,7 +12,7 @@ export default function CardObjective(props) {
 
   const [objective, setObjective] = useState(undefined);
   const [krs, setKrs] = useState([]);
-  const [cks, setCks] = useState([]);
+  
 
   const [changeView, setChangeView] = useState(true);
 
@@ -26,34 +26,23 @@ export default function CardObjective(props) {
       );
       const results = await response.json();
       setObjective(results.objective);
-      setKrs(results.objective.key_results);
-
-      // setCks(results.objective.key_results.cks)
-    };
-
-    const loadCheckin = async () => {
-      const response = await Api.buildApiGetRequest(
-        Api.readAllCheckinsUrl(),
-        true
-      );
-      const result = await response.json();
-      setCks(result);
+      // setKrs(results.objective.key_results);
+      console.log("results ==",results)  
     };
 
     loadObjective();
-    loadCheckin();
   }, []);
-  // console.log("objective.key_results.cks",objective.key_results.cks)
 
-  // useEffect(() => {
-  //   const loadKr = async () => {
-  //     const response = await Api.buildApiGetRequest(Api.readKrsbyIdUrl("4626aa14-8a6d-4ea2-9375-65cc06b162f1"),true)
-  //     const results = await response.json()
-  //       setKr(results)
-  //       setCks(results.keyResult.cks)
-  //   }
-  //   loadKr()
-  // }, []);
+
+  useEffect(() => {
+    const loadKr = async () => {
+      const response = await Api.buildApiGetRequest(Api.readAllKrsUrl(),true)
+      const results = await response.json()
+        setKrs(results)
+        console.log("results =-",results)
+    }
+    loadKr()
+  }, []);
 
   if (!objective) {
     return <h3>Loading..</h3>;
@@ -89,7 +78,7 @@ export default function CardObjective(props) {
         </div>
       </div>
       {/* Conditional render */}
-      {!changeView ? <CardKr krs={krs} /> : <CardCk krs={krs} cks={cks} />}
+      {!changeView ? <CardKr krs={krs} /> : <CardCk krs={krs} />}
     </div>
   );
 }

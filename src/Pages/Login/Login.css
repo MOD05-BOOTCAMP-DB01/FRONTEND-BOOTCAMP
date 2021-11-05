@@ -30,13 +30,17 @@
 }
 
 .form__card--input input {
-  background-color: rgba(254, 254, 254, 0.2);
   width: 100%;
   border: none;
   border-radius: 25px;
   padding-left: 60px;
   height: 45px;
   margin: 2px 0;
+  background: rgb(223, 233, 236);
+}
+.form__card--input input:focus {
+  outline: none;
+  box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
 }
 
 .form__card--input input::-webkit-input-placeholder {

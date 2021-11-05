@@ -16,15 +16,14 @@ export default function Register() {
     const username = event.target.username.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const confirmPassword = event.target.confirmPassword.value;
-    const role = event.target.role.value;
+    const passwordConfirmation = event.target.confirmPassword.value;
+    // const role = event.target.role.value;
 
     const payload = {
       username,
       email,
       password,
-      confirmPassword,
-      role
+      passwordConfirmation,
     };
 
     const response = await Api.buildApiPostRequest(

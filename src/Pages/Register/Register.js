@@ -18,8 +18,7 @@ export default function Register() {
     const username = event.target.username.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
-    const confirmPassword = event.target.confirmPassword.value;
-    const role = event.target.role.value;
+    const passwordConfirmation = event.target.passwordConfirmation.value;
 
     const payload = {
       username,
@@ -30,7 +29,7 @@ export default function Register() {
     };
 
     const response = await Api.buildApiPostRequest(
-      Api.createUserUrl(),
+      Api.createUser(),
       payload,
       true
     );

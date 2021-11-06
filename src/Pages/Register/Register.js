@@ -19,12 +19,13 @@ export default function Register() {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const passwordConfirmation = event.target.passwordConfirmation.value;
+    const role = event.target.role.value;
 
     const payload = {
       username,
       email,
       password,
-      passwordConfirmation: confirmPassword,
+      passwordConfirmation,
       role,
     };
 

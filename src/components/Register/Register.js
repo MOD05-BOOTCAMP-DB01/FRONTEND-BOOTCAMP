@@ -3,7 +3,7 @@ import { Api } from "../../Api/Api";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaUserAlt } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";
-import LinkButton from "../../components/LinkButton/LinkButton";
+import LinkButton from "../LinkButton/LinkButton";
 import { IconContext } from "react-icons";
 import "./Register.css";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";

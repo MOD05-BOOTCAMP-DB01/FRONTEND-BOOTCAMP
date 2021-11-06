@@ -4,7 +4,7 @@ import { MdOutlineLockOpen } from "react-icons/md";
 import { IconContext } from "react-icons";
 import { Api } from "../../Api/Api";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
-import LinkButton from "../../components/LinkButton/LinkButton";
+import LinkButton from "../LinkButton/LinkButton";
 import { useHistory } from "react-router";
 import "./Login.css";
 

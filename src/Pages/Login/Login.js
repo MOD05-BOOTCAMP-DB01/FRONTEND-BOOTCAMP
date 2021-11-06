@@ -5,9 +5,11 @@ import { IconContext } from "react-icons";
 import { Api } from "../../Api/Api";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
 import LinkButton from "../../components/LinkButton/LinkButton";
+import { useHistory } from "react-router";
 import "./Login.css";
 
-export default function Login(props) {
+export default function Login() {
+  const history = useHistory();
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -24,9 +26,10 @@ export default function Login(props) {
 
     if (response.status === 201) {
       const accessToken = body.token;
-
+      //  const userID = body.userID;  buscar no retorno da api uma chave userID no localstorage
       JwtHandler.setJwt(accessToken);
-      props.history.push(`/objectives`);
+      //  localStorage.setItem("USER_ID", userID); setar userId no localstorage
+      history.push(`/objectives`);
     }
   };
   return (

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import "./Objective.css";
 
 const Objective = () => {
+  // const id = localStorage.getItem("USER_ID");buscando o id do usuario
   const [objectives, setObjectives] = useState([]);
   useEffect(() => {
     const getAllObjectives = async () => {

@@ -20,7 +20,7 @@ export const Api = {
   updateKrsUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
 
   // USERS
-  createUserUrl: () => `${Api.baseUrl}/users`,
+  createUserAdminUrl: () => `${Api.baseUrl}/users`,
   readAllUsers: () => `${Api.baseUrl}/users`,
   readAllUsersbyId: (id) => `${Api.baseUrl}/users/${id}`,
 

@@ -1,12 +1,18 @@
 .home_container-banner {
   display: none;
 }
+.home_container {
+  display: flex;
+  justify-content: center;
+}
 
 @media (min-width: 768px) {
   .home_container {
     display: flex;
+    width: 77%;
     justify-content: center;
     margin: 4rem auto 0 auto;
+    max-width: 800px;
   }
   .home_container h2 {
     color: #fff;
@@ -25,7 +31,6 @@
     padding: 1rem;
     justify-content: center;
     width: 320px;
-    height: 338px;
     background: #4767ff;
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;

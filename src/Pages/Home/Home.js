@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Button from "./../../components/LinkButton/LinkButton";
 import Login from "./../Login/Login";
 
-const Home = () => {
+const Home = (props) => {
   const [register, setRegister] = useState(false);
 
   return (
@@ -15,12 +15,16 @@ const Home = () => {
           <h2>Não tem conta?</h2>
           <p>Cadastre-se e fique sempre conectado</p>
 
-          <Button type="text" className="button button--outline" onClick={() => setRegister(!register)}>
-            Cadastre-se
+          <Button
+            type="text"
+            className="button button--outline"
+            onClick={() => setRegister(!register)}
+          >
+            {!register ? "Cadastre-se" : "Entrar"}
           </Button>
         </div>
       </div>
-      {register ? <Register /> : <Login />}
+      {register ? <Register {...props} /> : <Login {...props} />}
     </div>
   );
 };

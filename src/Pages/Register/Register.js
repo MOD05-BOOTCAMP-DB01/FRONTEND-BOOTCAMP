@@ -7,8 +7,8 @@ import LinkButton from "../../components/LinkButton/LinkButton";
 import { IconContext } from "react-icons";
 import './Register.css';
 
-export default function Register() {
-  const handleSubmit =  async event => {
+export default function Register(props) {
+  const handleSubmit =  async (event) => {
     event.preventDefault();
 
     const username = event.target.username.value;
@@ -23,13 +23,18 @@ export default function Register() {
       passwordConfirmation
     };
 
+    
     const response = await Api.buildApiPostRequest(
       Api.createUser(),
       payload,
       true
     );
-
+    
     const body = await response.json();
+    
+    if (response.status === 201) {
+      props.history.push(`/`);
+    };
 
     console.log(response);
 

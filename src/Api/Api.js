@@ -3,6 +3,7 @@ export const Api = {
   baseUrl: "http://localhost:3000",
 
   loginUrl: () => `${Api.baseUrl}/auth/signin`,
+  createUser: () => `${Api.baseUrl}/auth/signup`,
 
   // OBJECTIVES
   readAllObjectives: () => `${Api.baseUrl}/objectives`,
@@ -19,7 +20,7 @@ export const Api = {
   updateKrsUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
 
   // USERS
-  createUserUrl: () => `${Api.baseUrl}/auth/signup`,
+  createUserUrl: () => `${Api.baseUrl}/users`,
   readAllUsers: () => `${Api.baseUrl}/users`,
   readAllUsersbyId: (id) => `${Api.baseUrl}/users/${id}`,
 

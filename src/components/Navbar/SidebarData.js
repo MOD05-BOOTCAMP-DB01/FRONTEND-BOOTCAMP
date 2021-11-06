@@ -1,7 +1,7 @@
 import React from "react";
 import { AiFillHome } from "react-icons/ai";
 import { BiTask } from "react-icons/bi";
-import { GiArchiveRegister } from "react-icons/gi";
+import { FiSettings } from "react-icons/fi";
 
 export const SidebarData = [
   {
@@ -11,15 +11,15 @@ export const SidebarData = [
     cName: "nav-text",
   },
   {
-    title: "Cadastro",
-    path: "/register",
-    icon: <GiArchiveRegister />,
-    cName: "nav-text",
-  },
-  {
     title: "Meus objetivos",
     path: "/objectives",
     icon: <BiTask />,
+    cName: "nav-text",
+  },
+  {
+    title: "Configurações",
+    path: "/",
+    icon: <FiSettings />,
     cName: "nav-text",
   },
 ];

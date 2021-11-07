@@ -19,7 +19,7 @@ export default function ModalCK({kr,cks}) {
             switch (kr.rating) {
               case "Alta":   return <h3 className="rating-high">{kr.rating}</h3>;
               case "Média": return <h3 className="rating-medium">{kr.rating}</h3>;
-              case "Baixo":  return <h3 className="rating-low">{kr.rating}</h3>;
+              case "Baixa":  return <h3 className="rating-low">{kr.rating}</h3>;
               default:      return <h3>{kr.rating}</h3>;
             }
           })()}
@@ -33,7 +33,7 @@ export default function ModalCK({kr,cks}) {
               <h3>{ck.date}</h3>
             </div>
             <div className="cardCk-status">
-              <h3>{ck.status}</h3>
+              <h3>{ck.current_value}</h3>
             </div>
             <div className="cardCk-iconEdit">
               <h3>

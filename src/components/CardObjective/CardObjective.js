@@ -11,7 +11,7 @@ import CardCk from "../CardCheckin/CardCk";
 export default function CardObjective(props) {
 
   const [objective, setObjective] = useState(undefined);
-  const [krs, setKrs] = useState([]);
+  const [krs, setKrs] = useState(undefined);
   
 
   const [changeView, setChangeView] = useState(true);
@@ -47,9 +47,9 @@ export default function CardObjective(props) {
   if (!objective) {
     return <h3>Loading..</h3>;
   }
-  // if (!krs) {
-  //   return <h3>Loading..</h3>;
-  // }
+  if (!krs) {
+    return <h3>Loading.. carregando kr</h3>;
+  }
 
   const alterChangeView = () => {
     setChangeView(!changeView);

@@ -42,7 +42,7 @@ export default function Register() {
     if (response.status === 201) {
       const accessToken = body.token;
       JwtHandler.setJwt(accessToken);
-      history.push(`/login`);
+      history.push(`/`);
     }
   };
 
@@ -81,10 +81,10 @@ export default function Register() {
           </div>
           <div className="form__card--input-register">
             <input
-              id="confirmPassword"
+              id="passwordConfirmation"
               type="password"
               placeholder="Confirme Senha:"
-              name="confirmPassword"
+              name="passwordConfirmation"
             />
             <span className="form__card--icon-left-register">
               <RiLockPasswordLine />

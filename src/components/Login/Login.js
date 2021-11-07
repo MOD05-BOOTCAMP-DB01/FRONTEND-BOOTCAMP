@@ -26,9 +26,9 @@ export default function Login() {
 
     if (response.status === 201) {
       const accessToken = body.token;
-      //  const userID = body.userID;  buscar no retorno da api uma chave userID no localstorage
+      const userID = body.userId;
       JwtHandler.setJwt(accessToken);
-      //  localStorage.setItem("USER_ID", userID); setar userId no localstorage
+      localStorage.setItem("USER_ID", userID);
       history.push(`/objectives`);
     }
   };

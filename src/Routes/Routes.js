@@ -3,8 +3,6 @@ import { Switch, Route } from "react-router-dom";
 import CardObjective from "../components/CardObjective/CardObjective";
 import Objective from "../components/Objective/Objective";
 import Home from "../Pages/Home/Home";
-import Login from "../Pages/Login/Login";
-import Register from "../Pages/Register/Register";
 
 function Routes() {
   return (

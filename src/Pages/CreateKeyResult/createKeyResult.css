@@ -1,0 +1,64 @@
+.CreateKeyResult{
+  width: 45%;
+  height: 42em;
+  position: absolute;
+  z-index: 99;
+  background-color: #282B2C;
+  left: 37em;
+  border-radius: .5em;
+}
+
+
+
+/* FORM */
+.formKr-title{
+  width: 100%;
+  color: #006D99;
+  text-align: center;
+}
+
+.formKr{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 1.45rem;
+
+  /* background-color: aqua; */
+}
+.formKr-Items{
+  width: 90%;
+  color: aliceblue;
+  display:flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.formKr-Items-select{
+  color: #006D99;
+}
+
+.field{
+  border-radius: 1em;
+  outline: none;
+  border: none;
+  padding-left: .5em;
+}
+.fieldTextArea{
+  border-radius: .5em;
+  padding-left: .5em;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+}
+
+.fieldError{
+  color: rgba(255, 72, 72, 0.986);
+}
+
+.formKr-button{
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}

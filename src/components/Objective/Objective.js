@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "./Objective.css";
 
 const Objective = () => {
-  // const id = localStorage.getItem("USER_ID");buscando o id do usuario
+  const id = localStorage.getItem("USER_ID");
   const [objectives, setObjectives] = useState([]);
   useEffect(() => {
     const getAllObjectives = async () => {
@@ -16,19 +16,16 @@ const Objective = () => {
       );
       const data = await response.json();
       setObjectives(data);
+      console.log("data",data)
     };
     getAllObjectives();
   }, []);
+  console.log("objetivos",objectives);
 
   return (
     <div className="objective-container">
-      {objectives.map((objective, index) => {
-        const {
-          objective: name,
-          initial_date,
-          owner: { username },
-          id,
-        } = objective;
+      {objectives.map((objective) => {
+        const { objective: name, initial_date, id, type } = objective;
         return (
           <Link to={`/objective/${id}`}>
             <div className="objective-card" key={id}>
@@ -42,8 +39,9 @@ const Objective = () => {
               </h4>
               <h4>
                 <span className="objective-info">dono:</span>
-                {username}
+                {/* {username} */}
               </h4>
+
               <ProgressBar size="medium" value={50} />
             </div>
           </Link>

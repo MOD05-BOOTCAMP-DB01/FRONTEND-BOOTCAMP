@@ -3,7 +3,7 @@ import { Api } from "../../Api/Api";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaUserAlt } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";
-import LinkButton from "../../components/LinkButton/LinkButton";
+import LinkButton from "../LinkButton/LinkButton";
 import { IconContext } from "react-icons";
 import "./Register.css";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
@@ -18,12 +18,13 @@ export default function Register(props) {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const passwordConfirmation = event.target.passwordConfirmation.value;
+    const role = event.target.role.value;
 
     const payload = {
       username,
       email,
       password,
-      passwordConfirmation: confirmPassword,
+      passwordConfirmation,
       role,
     };
 
@@ -45,7 +46,7 @@ export default function Register(props) {
     if (response.status === 201) {
       const accessToken = body.token;
       JwtHandler.setJwt(accessToken);
-      history.push(`/login`);
+      history.push(`/`);
     }
   };
 
@@ -84,10 +85,10 @@ export default function Register(props) {
           </div>
           <div className="form__card--input-register">
             <input
-              id="confirmPassword"
+              id="passwordConfirmation"
               type="password"
               placeholder="Confirme Senha:"
-              name="confirmPassword"
+              name="passwordConfirmation"
             />
             <span className="form__card--icon-left-register">
               <RiLockPasswordLine />

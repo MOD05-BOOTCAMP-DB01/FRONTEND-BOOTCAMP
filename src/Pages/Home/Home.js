@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Home.css";
-import Register from "../Register/Register";
+import Register from "../../components/Register/Register";
 import { Link } from "react-router-dom";
 import Button from "./../../components/LinkButton/LinkButton";
-import Login from "./../Login/Login";
+import Login from "../../components/Login/Login";
 
 const Home = (props) => {
   const [register, setRegister] = useState(false);
@@ -12,8 +12,12 @@ const Home = (props) => {
     <div className="home_container">
       <div className="home_container-banner">
         <div className="home_container-headding">
-          <h2>Não tem conta?</h2>
-          <p>Cadastre-se e fique sempre conectado</p>
+          <h2>{!register ? "Não tem conta?" : "Já tem conta?"}</h2>
+          <p>
+            {!register
+              ? "Cadastre-se e fique sempre conectado"
+              : "Entre e acesse a nossa plataforma"}
+          </p>
 
           <Button
             type="text"

@@ -1,25 +1,29 @@
 .home_container-banner {
-  display: none;
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  width: 90%;
+  max-width: 400px;
+  background: #4767ff;
+  margin: 0 auto;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
 }
 .home_container {
   display: flex;
+  flex-direction: column-reverse;
   justify-content: center;
+  color: #fff;
 }
 
 @media (min-width: 768px) {
   .home_container {
     display: flex;
+    flex-direction: row;
     width: 77%;
     justify-content: center;
     margin: 4rem auto 0 auto;
     max-width: 800px;
-  }
-  .home_container h2 {
-    color: #fff;
-  }
-
-  .home_container p {
-    color: #fff;
   }
 
   .home_container-headding {
@@ -30,9 +34,9 @@
     display: flex;
     padding: 1rem;
     justify-content: center;
-    width: 320px;
     background: #4767ff;
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 0;
   }
 }

@@ -4,7 +4,7 @@ import { MdOutlineLockOpen } from "react-icons/md";
 import { IconContext } from "react-icons";
 import { Api } from "../../Api/Api";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
-import LinkButton from "../../components/LinkButton/LinkButton";
+import LinkButton from "../LinkButton/LinkButton";
 import { useHistory } from "react-router";
 import "./Login.css";
 
@@ -26,9 +26,9 @@ export default function Login() {
 
     if (response.status === 201) {
       const accessToken = body.token;
-      //  const userID = body.userID;  buscar no retorno da api uma chave userID no localstorage
+      const userID = body.userId;
       JwtHandler.setJwt(accessToken);
-      //  localStorage.setItem("USER_ID", userID); setar userId no localstorage
+      localStorage.setItem("USER_ID", userID);
       history.push(`/objectives`);
     }
   };

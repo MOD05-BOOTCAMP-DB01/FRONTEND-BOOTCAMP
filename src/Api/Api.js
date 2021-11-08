@@ -8,6 +8,7 @@ export const Api = {
   // OBJECTIVES
   readAllObjectives: () => `${Api.baseUrl}/objectives`,
   readObjectivesById: (id) => `${Api.baseUrl}/objectives/${id}`,
+  readObjectivesByUserId: (id) => `${Api.baseUrl}/users/objectives/${id}`,
   createObjectiveUrl: () => Api.baseUrl + "/objectives",
   updateObjectiveUrl: (id) => `${Api.baseUrl}/objectives/${id}`,
   deleteObjectiveUrl: (id) => `${Api.baseUrl}/objectives/${id}`,
@@ -15,7 +16,7 @@ export const Api = {
   // KRS
   readAllKrsUrl: () => `${Api.baseUrl}/key-results`,
   readKrsbyIdUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
-  createKrsUrl: () => `${Api.baseUrl}/key-results`,
+  createKrUrl: () => `${Api.baseUrl}/key-results`,
   deleteKrsUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
   updateKrsUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
 
@@ -23,9 +24,13 @@ export const Api = {
   createUserAdminUrl: () => `${Api.baseUrl}/users`,
   readAllUsers: () => `${Api.baseUrl}/users`,
   readAllUsersbyId: (id) => `${Api.baseUrl}/users/${id}`,
+  readAllUsersbyId: (id) => `${Api.baseUrl}/users/${id}`,
 
   // checkin
   readAllCheckinsUrl: () => `${Api.baseUrl}/checkin`,
+  readCheckinsByKeyResultId: (id) => `${Api.baseUrl}/checkin/key_result/${id}`,
+
+  
   authHeader: () => ({
     Authorization: "Bearer " + JwtHandler.getJwt(),
   }),

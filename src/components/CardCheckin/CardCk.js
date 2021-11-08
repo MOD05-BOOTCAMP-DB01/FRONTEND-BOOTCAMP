@@ -10,25 +10,11 @@ import './cardCk.css'
 import { Api } from '../../Api/Api'
 
 export default function CardCk({ krs }) {
-  const [cks, setCks] = useState([]);
 
   const [showModalCk, setShowModalCk] = useState(false)
   const [kr, setKr] = useState({})
 
-  useEffect(() => {
 
-    const loadCheckin = async () => {
-      const response = await Api.buildApiGetRequest(
-        Api.readAllCheckinsUrl(),
-        true
-      );
-      const result = await response.json();
-      setCks(result);
-      console.log("checkin", cks)
-    };
-
-    loadCheckin();
-  }, []);
 
   const handleShowCk = kr => {
     setKr(kr)
@@ -40,7 +26,7 @@ export default function CardCk({ krs }) {
       <div className="ck-header">
         <div className="ck-header-title">
           <h3>Titulo KR</h3>
-          <MdOutlineLibraryAdd />
+          {/* <MdOutlineLibraryAdd /> */}
         </div>
         
         <div className="ck-header-status">
@@ -75,7 +61,7 @@ export default function CardCk({ krs }) {
           </div>
         ))}
 
-        <div>{showModalCk ? <ModalCK kr={kr} cks={cks} /> : ''}</div>
+        <div>{showModalCk ? <ModalCK kr={kr} /> : ''}</div>
       
     </div>
   )

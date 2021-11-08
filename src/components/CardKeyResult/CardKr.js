@@ -2,16 +2,25 @@ import React, { useState } from 'react'
 
 import { BiCommentDots } from 'react-icons/bi'
 import { MdOutlineLibraryAdd } from 'react-icons/md'
+import CreateKeyResult from '../../Pages/CreateKeyResult/CreateKeyResult';
 
 
-export default function CardKr({krs}) {
+export default function CardKr({krs,objectiveId}) {
+  console.log("krs do card kr=", krs)
+  console.log("objectiveId cardKr=", objectiveId)
+  const [showAddKr, setShowAddKr] = useState(false);
+
+  const handleShowAddKr = () => {
+    setShowAddKr(!showAddKr);
+    
+  }
 
   return (
     <div className="area-kr">
       <div className="kr-header">
         <div className="kr-title-header">
           <h3>Titulo KR</h3>
-          <MdOutlineLibraryAdd className="icon-add" />
+          <MdOutlineLibraryAdd className="icon-add" onClick={handleShowAddKr}/>
         </div>
 
         <div className="kr-owner-header">
@@ -90,6 +99,11 @@ export default function CardKr({krs}) {
 
         </div>
       ))}
+
+      {showAddKr 
+        ? <CreateKeyResult objectiveId={objectiveId}/>
+        : ""
+      }
     </div>
   )
 }

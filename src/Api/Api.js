@@ -16,7 +16,7 @@ export const Api = {
   // KRS
   readAllKrsUrl: () => `${Api.baseUrl}/key-results`,
   readKrsbyIdUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
-  createKrsUrl: () => `${Api.baseUrl}/key-results`,
+  createKrUrl: () => `${Api.baseUrl}/key-results`,
   deleteKrsUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
   updateKrsUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
 
@@ -28,6 +28,7 @@ export const Api = {
 
   // checkin
   readAllCheckinsUrl: () => `${Api.baseUrl}/checkin`,
+  readCheckinsByKeyResultId: (id) => `${Api.baseUrl}/checkin/key_result/${id}`,
 
   
   authHeader: () => ({

@@ -34,6 +34,7 @@ export default function CardObjective(props) {
   }, []);
 
 
+
   useEffect(() => {
     const loadKr = async () => {
       const response = await Api.buildApiGetRequest(Api.readAllKrsUrl(),true)
@@ -78,7 +79,7 @@ export default function CardObjective(props) {
         </div>
       </div>
       {/* Conditional render */}
-      {!changeView ? <CardKr krs={krs} /> : <CardCk krs={krs} />}
+      {!changeView ? <CardKr krs={krs} objectiveId={id}/> : <CardCk krs={krs} />}
     </div>
   );
 }

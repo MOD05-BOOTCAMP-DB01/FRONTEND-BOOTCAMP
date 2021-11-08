@@ -11,15 +11,16 @@ const Objective = () => {
   useEffect(() => {
     const getAllObjectives = async () => {
       const response = await Api.buildApiGetRequest(
-        Api.readObjectivesByUserId(id),
+        Api.readAllObjectives(),
         true
       );
       const data = await response.json();
-      setObjectives(data.objectives);
+      setObjectives(data);
+      console.log("data",data)
     };
     getAllObjectives();
   }, []);
-  console.log(objectives);
+  console.log("objetivos",objectives);
 
   return (
     <div className="objective-container">

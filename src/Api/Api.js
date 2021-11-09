@@ -34,7 +34,7 @@ export const Api = {
   buildApiGetRequest: (url, auth) =>
     fetch(url, {
       method: "GET",
-      ...(auth ? Api.authHeader() : {}),
+      headers: new Headers({...(auth ? Api.authHeader() : {})}),
     }),
 
   buildApiPostRequest: (url, body, auth) =>

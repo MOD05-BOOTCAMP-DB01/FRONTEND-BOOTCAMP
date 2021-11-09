@@ -6,11 +6,12 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import LinkButton from "../LinkButton/LinkButton";
 import { IconContext } from "react-icons";
 import "./Register.css";
-import { JwtHandler } from "../../jwt-handler/JwtHandler";
 import { HiOutlineBriefcase } from "react-icons/hi";
-import { useHistory } from "react-router";
+import {toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-export default function Register(props) {
+export default function Register({setRegister,props}) {
+
   const handleSubmit =  async (event) => {
     event.preventDefault();
 
@@ -36,19 +37,15 @@ export default function Register(props) {
     );
     
     const body = await response.json();
-    
-    if (response.status === 201) {
-      props.history.push(`/`);
-    };
 
-    console.log(response);
-
-    if (response.status === 201) {
-      const accessToken = body.token;
-      JwtHandler.setJwt(accessToken);
-      history.push(`/`);
+      if (response.status === 201) {
+      setRegister(false)  
+      toast.success('Usuário cadastrado com sucesso!', {theme: "dark",position: toast.POSITION.TOP_CENTER,
+});
     }
-  };
+    }
+    
+  
 
   return (
     <div className="form-register">
@@ -93,17 +90,6 @@ export default function Register(props) {
             <span className="form__card--icon-left-register">
               <RiLockPasswordLine />
             </span>
-          </div>
-          <div className="form__card--input-register">
-            <span className="form__card--icon-register">
-              <HiOutlineBriefcase />
-            </span>
-            <input
-              id="role"
-              type="text"
-              placeholder="Coloque o seu cargo:"
-              name="role"
-            />
           </div>
           <div>
             <LinkButton type="submit" className="button button--primary">

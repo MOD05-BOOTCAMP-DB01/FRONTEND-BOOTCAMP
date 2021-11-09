@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { BiUser } from "react-icons/bi";
 import { MdOutlineLockOpen } from "react-icons/md";
 import { IconContext } from "react-icons";
@@ -6,12 +6,16 @@ import { Api } from "../../Api/Api";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
 import LinkButton from "../LinkButton/LinkButton";
 import { useHistory } from "react-router";
+import {useGlobalContext} from './../../context/context'
 import "./Login.css";
 
 export default function Login() {
+  const {setLogin} = useGlobalContext()
   const history = useHistory();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLogin(true);
 
     const email = event.target.email.value;
     const password = event.target.password.value;
@@ -29,14 +33,16 @@ export default function Login() {
       const userID = body.userId;
       JwtHandler.setJwt(accessToken);
       localStorage.setItem("USER_ID", userID);
+      setLogin(false);
       history.push(`/objectives`);
-    }
   };
+  }
+
   return (
     <div className="form">
       <div>
         <IconContext.Provider value={{ className: "icons__login" }}>
-          <h1>User Login</h1>
+          <h1 className="form__h1">Faça seu login</h1>
           <form className="form__card" onSubmit={handleSubmit}>
             <div className="form__card--input">
               <span className="form__card--icon">
@@ -63,8 +69,8 @@ export default function Login() {
             </div>
 
             <div>
-              <LinkButton type="submit" className="button button--success">
-                Login
+              <LinkButton type="submit" className="button button--purple">
+                Entrar
               </LinkButton>
             </div>
           </form>

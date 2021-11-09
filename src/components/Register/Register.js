@@ -10,9 +10,8 @@ import { JwtHandler } from "../../jwt-handler/JwtHandler";
 import { HiOutlineBriefcase } from "react-icons/hi";
 import { useHistory } from "react-router";
 
-export default function Register() {
-  const history = useHistory();
-  const handleSubmit = async (event) => {
+export default function Register(props) {
+  const handleSubmit =  async (event) => {
     event.preventDefault();
 
     const username = event.target.username.value;
@@ -29,21 +28,26 @@ export default function Register() {
       role,
     };
 
+    
     const response = await Api.buildApiPostRequest(
       Api.createUser(),
       payload,
       true
     );
-
+    
     const body = await response.json();
+    
+    // if (response.status === 201) {
+    //   props.history.push(`/`);
+    // };
 
-    console.log(response);
+    // console.log(response);
 
-    if (response.status === 201) {
-      const accessToken = body.token;
-      JwtHandler.setJwt(accessToken);
-      history.push(`/`);
-    }
+    // if (response.status === 201) {
+    //   const accessToken = body.token;
+    //   JwtHandler.setJwt(accessToken);
+    //   history.push(`/`);
+    // }
   };
 
   return (

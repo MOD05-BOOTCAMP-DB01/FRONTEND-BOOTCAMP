@@ -9,6 +9,7 @@ export const Api = {
   readAllObjectives: () => `${Api.baseUrl}/objectives`,
   readObjectivesById: (id) => `${Api.baseUrl}/objectives/${id}`,
   readObjectivesByUserId: (id) => `${Api.baseUrl}/users/objectives/${id}`,
+  readKeyResultsByObjectivesId: (id) => `${Api.baseUrl}/objectives/${id}/key_results`,
   createObjectiveUrl: () => Api.baseUrl + "/objectives",
   updateObjectiveUrl: (id) => `${Api.baseUrl}/objectives/${id}`,
   deleteObjectiveUrl: (id) => `${Api.baseUrl}/objectives/${id}`,

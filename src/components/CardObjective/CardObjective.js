@@ -11,7 +11,7 @@ import CardCk from "../CardCheckin/CardCk";
 export default function CardObjective(props) {
 
   const [objective, setObjective] = useState(undefined);
-  const [krs, setKrs] = useState(undefined);
+  const [krs, setKrs] = useState([]);
   
 
   const [changeView, setChangeView] = useState(true);
@@ -25,7 +25,10 @@ export default function CardObjective(props) {
         true
       );
       const results = await response.json();
-      setObjective(results.objective);
+      if (response.status === 200) {
+        setObjective(results.objective);
+      
+      }
       // setKrs(results.objective.key_results);
       console.log("results ==",results)  
     };
@@ -37,16 +40,19 @@ export default function CardObjective(props) {
 
   useEffect(() => {
     const loadKr = async () => {
-      const response = await Api.buildApiGetRequest(Api.readAllKrsUrl(),true)
+      const response = await Api.buildApiGetRequest(Api.readKeyResultsByObjectivesId(id),true)
       const results = await response.json()
-        setKrs(results)
+
+      if (response.status === 200) {
+        setKrs(results.key_results) 
+      }
         console.log("results =-",results)
     }
     loadKr()
   }, []);
 
   if (!objective) {
-    return <h3>Loading..</h3>;
+    return <h3>Loading.. carregando obj</h3>;
   }
   if (!krs) {
     return <h3>Loading.. carregando kr</h3>;

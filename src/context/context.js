@@ -4,6 +4,13 @@ const AppProvider = ({ children }) => {
   //  funções e estados globais
   const [value, setValue] = useState(0);
 
+  const [showAddKr, setShowAddKr] = useState(false);
+
+  const handleShowAddKr = () => {
+    setShowAddKr(!showAddKr);
+    
+  }
+
   const completeTask = () => {
     increment();
     // escrever função para enviar um update por endpoint para o banco
@@ -11,7 +18,7 @@ const AppProvider = ({ children }) => {
   const increment = () =>
     setValue((prevState) => (prevState >= 100 ? 0 : prevState + 20));
   return (
-    <AppContext.Provider value={{ completeTask }}>
+    <AppContext.Provider value={{ completeTask, handleShowAddKr, showAddKr }}>
       {children}
     </AppContext.Provider>
   );

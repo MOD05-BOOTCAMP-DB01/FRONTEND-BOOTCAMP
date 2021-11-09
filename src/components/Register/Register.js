@@ -37,17 +37,17 @@ export default function Register(props) {
     
     const body = await response.json();
     
-    if (response.status === 201) {
-      props.history.push(`/`);
-    };
+    // if (response.status === 201) {
+    //   props.history.push(`/`);
+    // };
 
-    console.log(response);
+    // console.log(response);
 
-    if (response.status === 201) {
-      const accessToken = body.token;
-      JwtHandler.setJwt(accessToken);
-      history.push(`/`);
-    }
+    // if (response.status === 201) {
+    //   const accessToken = body.token;
+    //   JwtHandler.setJwt(accessToken);
+    //   history.push(`/`);
+    // }
   };
 
   return (

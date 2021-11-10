@@ -3,6 +3,7 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   //  funções e estados globais
   const [value, setValue] = useState(0);
+   const [login, setLogin] = useState(false);
 
   const [showAddKr, setShowAddKr] = useState(false);
 
@@ -18,7 +19,7 @@ const AppProvider = ({ children }) => {
   const increment = () =>
     setValue((prevState) => (prevState >= 100 ? 0 : prevState + 20));
   return (
-    <AppContext.Provider value={{ completeTask, handleShowAddKr, showAddKr }}>
+    <AppContext.Provider value={{ completeTask,setLogin,login,handleShowAddKr, showAddKr }}>
       {children}
     </AppContext.Provider>
   );

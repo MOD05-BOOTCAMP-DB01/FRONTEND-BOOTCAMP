@@ -71,7 +71,7 @@
 
 .form__card--icon {
   position: absolute;
-  background: #4767ff;
+  background: #0099B7;
   height: 50px;
   width: 50px;
   display: grid;
@@ -83,7 +83,7 @@
 }
 .form__card--icon-left {
   position: absolute;
-  background: #4767ff;
+  background: #0099B7;
   height: 50px;
   width: 50px;
   display: grid;
@@ -107,4 +107,8 @@
   left: 0;
   bottom: 0;
   border-radius: 0.5rem;
+}
+
+.form__h1{
+  color:#87008B;
 }

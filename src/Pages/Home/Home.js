@@ -4,10 +4,18 @@ import Register from "../../components/Register/Register";
 import { Link } from "react-router-dom";
 import Button from "./../../components/LinkButton/LinkButton";
 import Login from "../../components/Login/Login";
-
+import {useGlobalContext} from './../../context/context'
+import Spin from "react-cssfx-loading/lib/Spin";
 const Home = (props) => {
+const {login} = useGlobalContext()
   const [register, setRegister] = useState(false);
-
+if(login){
+  return (
+    <div className="center-loading">
+    <Spin color="#e11e42" width="100px" height="100px" duration="2s"/>
+    </div>
+  )
+}
   return (
     <div className="home_container">
       <div className="home_container-banner">
@@ -28,7 +36,7 @@ const Home = (props) => {
           </Button>
         </div>
       </div>
-      {register ? <Register {...props} /> : <Login {...props} />}
+      {register ? <Register setRegister={setRegister} {...props} /> : <Login {...props} />}
     </div>
   );
 };

@@ -9225,6 +9225,11 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
+react-cssfx-loading@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-cssfx-loading/-/react-cssfx-loading-1.0.2.tgz#bc2482c3c6f5eac0379171a24e45a71823f5e628"
+  integrity sha512-Dzpwc5XBWfDAWAm7XREVAX1kbs2ngwlf7h7qykVR1yOlZtYWRQFnmVjE9lxL2VILNw/sRkvflX+oA7WwgpCjew==
+
 react-datepicker@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-4.3.0.tgz#f2e2fc652b7ed3c231663d858da4a3c67f470784"

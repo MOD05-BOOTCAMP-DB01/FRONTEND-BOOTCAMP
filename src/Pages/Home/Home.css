@@ -4,7 +4,7 @@
   justify-content: center;
   width: 90%;
   max-width: 400px;
-  background: #4767ff;
+  background: #0099B7;
   margin: 0 auto;
   border-bottom-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
@@ -34,9 +34,16 @@
     display: flex;
     padding: 1rem;
     justify-content: center;
-    background: #4767ff;
+    background: #0099B7;
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 0;
   }
+}
+
+.center-loading{
+  width: 100vw;
+  height: 70vh;
+  display:grid;
+  place-items: center;
 }

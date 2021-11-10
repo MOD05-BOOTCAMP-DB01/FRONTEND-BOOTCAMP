@@ -1,8 +1,8 @@
 import React from "react";
 import { Api } from "../../Api/Api";
 import { AiOutlineMail } from "react-icons/ai";
-import { FaUserAlt } from "react-icons/fa";
-import { RiLockPasswordLine } from "react-icons/ri";
+import { BiUser } from "react-icons/bi";
+import { MdOutlineLockOpen } from "react-icons/md";
 import LinkButton from "../LinkButton/LinkButton";
 import { IconContext } from "react-icons";
 import "./Register.css";
@@ -57,7 +57,7 @@ export default function Register(props) {
         <form className="form__card-register" onSubmit={handleSubmit}>
           <div className="form__card--input-register">
             <span className="form__card--icon-register">
-              <FaUserAlt />
+              <BiUser />
             </span>
             <input
               id="username"
@@ -74,7 +74,7 @@ export default function Register(props) {
           </div>
           <div className="form__card--input-register">
             <span className="form__card--icon-register">
-              <RiLockPasswordLine />
+              <MdOutlineLockOpen />
             </span>
             <input
               id="password"
@@ -91,7 +91,7 @@ export default function Register(props) {
               name="passwordConfirmation"
             />
             <span className="form__card--icon-left-register">
-              <RiLockPasswordLine />
+              <MdOutlineLockOpen />
             </span>
           </div>
           <div className="form__card--input-register">

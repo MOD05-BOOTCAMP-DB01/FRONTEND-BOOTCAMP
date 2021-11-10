@@ -1,15 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { AiFillHome } from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
+import { JwtHandler } from "../jwt-handler/JwtHandler";
+
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
+
+  const [isLogged, setIsLogged] = useState(!JwtHandler.isJwtValid);
+
+  useEffect(() => {
+      const handleOnJwtChange = () => {
+          setIsLogged(JwtHandler.isJwtValid());
+      };
+
+      window.addEventListener("onJwtChange", handleOnJwtChange);
+
+      return () => {
+          window.removeEventListener("onJwtChange", handleOnJwtChange);
+      };
+  }, []);
 
   return (
     <>
@@ -26,7 +43,18 @@ function Navbar() {
                 <AiOutlineClose />
               </Link>
             </li>
-
+            {!isLogged ? (<li className="nav-text" onClick={() => setIsLogged(!isLogged)}>
+                  <Link to="/" >
+                    <AiFillHome />
+                    <span className="span-name">Login</span>
+                  </Link>
+                </li>) : 
+                (<li className="nav-text" onClick={() => setIsLogged(!isLogged)}>
+                  <Link to="/logout">
+                    <AiFillHome />
+                    <span className="span-name">Logout</span>
+                  </Link>
+                </li>)}
             {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>

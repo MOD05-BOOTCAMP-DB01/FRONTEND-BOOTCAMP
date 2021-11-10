@@ -5,12 +5,6 @@ import { FiSettings } from "react-icons/fi";
 
 export const SidebarData = [
   {
-    title: "Login",
-    path: "/",
-    icon: <AiFillHome />,
-    cName: "nav-text",
-  },
-  {
     title: "Meus objetivos",
     path: "/objectives",
     icon: <BiTask />,

@@ -72,7 +72,7 @@ export default function ModalCK({kr}) {
       </div>
 
       <div className="modalFooter">
-        <div className="modalFooter-dono">
+        <div className="modalFooter-owner">
           <h4 >
             Dono Kr:
             <spam>{kr.owner.username}</spam>

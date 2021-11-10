@@ -50,7 +50,7 @@
 
 .form__card--icon-register {
   position: absolute;
-  background: #4767ff;
+  background: #0099B7;
   height: 50px;
   width: 50px;
   display: grid;
@@ -63,7 +63,7 @@
 
 .form__card--icon-left-register {
   position: absolute;
-  background: #4767ff;
+  background: #0099B7;
   height: 50px;
   width: 50px;
   display: grid;
@@ -88,5 +88,7 @@
   border-radius: 0.5rem;
 }
 
-
+.form__h1-register{
+  color:#87008B;
+}
 

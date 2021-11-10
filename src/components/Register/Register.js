@@ -50,7 +50,7 @@ export default function Register({setRegister,props}) {
   return (
     <div className="form-register">
       <IconContext.Provider value={{ className: "icons__login-register" }}>
-        <h1>Registrar Usuário</h1>
+        <h1 className ="form__h1-register">Registrar Usuário</h1>
         <form className="form__card-register" onSubmit={handleSubmit}>
           <div className="form__card--input-register">
             <span className="form__card--icon-register">
@@ -92,7 +92,7 @@ export default function Register({setRegister,props}) {
             </span>
           </div>
           <div>
-            <LinkButton type="submit" className="button button--primary">
+            <LinkButton type="submit" className="button button--purple">
               Cadastrar
             </LinkButton>
           </div>

@@ -22,10 +22,11 @@ const Objective = () => {
   }, []);
   console.log("objetivos",objectives);
 
+  console.log(objectives)
   return (
     <div className="objective-container">
       {objectives.map((objective) => {
-        const { objective: name, initial_date, id, type } = objective;
+        const { objective: name, initial_date, id, type,owner } = objective;
         return (
           <Link to={`/objective/${id}`}>
             <div className="objective-card" key={id}>
@@ -39,7 +40,7 @@ const Objective = () => {
               </h4>
               <h4>
                 <span className="objective-info">dono:</span>
-                {/* {username} */}
+                {owner.username}
               </h4>
 
               <ProgressBar size="medium" value={50} />

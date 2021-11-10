@@ -107,7 +107,7 @@
 
 .fieldError{
   color: rgba(255, 72, 72, 0.986);
-  
+  text-decoration: none;
 }
 
 .formKr-button{

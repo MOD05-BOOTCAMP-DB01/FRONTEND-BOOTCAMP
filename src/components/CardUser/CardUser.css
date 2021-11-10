@@ -1,0 +1,15 @@
+.user-card{
+    background: #f8f8fa;
+    border-radius: 1rem;
+    width:400px;
+    display:flex;
+    justify-content:space-between;
+    padding:1rem;
+    margin-bottom: 0.5rem;
+    color: #006d99;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.user-card h3,h4{
+    margin:0;
+}

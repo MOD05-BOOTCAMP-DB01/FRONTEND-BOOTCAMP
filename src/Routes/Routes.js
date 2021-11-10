@@ -5,6 +5,7 @@ import Logout from "../components/Logout/Logout";
 import Objective from "../components/Objective/Objective";
 import Home from "../Pages/Home/Home";
 import CreateObjective from "../Pages/Objective/CreateObjective/CreateObjective";
+import UpdateUsers from "../Pages/Users/UpdateUsers/UpdateUsers";
 
 function Routes() {
   return (
@@ -15,6 +16,7 @@ function Routes() {
         <Route path="/objective/:id" component={CardObjective} />
         <Route path="/objective" component={CreateObjective} />
         <Route path="/objectives" component={Objective} />
+        <Route path="/atualizar/user" component={UpdateUsers} />
       </Switch>
     </div>
   );

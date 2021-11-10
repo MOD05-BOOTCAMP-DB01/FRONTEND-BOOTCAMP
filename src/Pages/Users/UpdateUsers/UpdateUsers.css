@@ -1,0 +1,13 @@
+.update-user-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.css-1hb7zxy-IndicatorsContainer{
+     display:none;
+ }
+
+ .css-2613qy-menu{
+     display:none;
+ }

@@ -5,21 +5,32 @@ import CardUser from "../../../components/CardUser/CardUser";
 import {Link} from 'react-router-dom';
 import Input from './../../../components/Input/Input'
 import './UpdateUsers.css'
+import {toast} from 'react-toastify'
 import  Button  from "./../../../components/Button/Button";
 
 export default function UpdateUsers() {
+  const id= localStorage.getItem("USER_ID");
   let [searchString,setSearchString] = useState('')
   let [users,setUsers] = useState([])
-
+  const [isAdmin,setIsAdmin] = useState(false);
+ const [loggedUser,setLoggedUser] = useState([])
   useEffect(()=>{
     const loadAllUsers = async () => {
       const response = await Api.buildApiGetRequest(Api.readAllUsers(),true);
       const data = await response.json();
-      const filteredData= data.filter((u)=>u.role != 'ADMIN')
-      setUsers(filteredData)
+      setUsers(data)
     }
-    loadAllUsers()
+
+    const loadUniqueUser = async()=>{
+      const response = await Api.buildApiGetRequest(Api.readUserbyId(id),true);
+      const data = await response.json();
+      setLoggedUser(data);
+    }
+    loadUniqueUser();
+    loadAllUsers();
   },[])
+
+  
 
   const roleOptions = [
   { value: 'ADMIN', label: 'Administrador' },
@@ -31,7 +42,23 @@ const statusOptions = [
   { value: false, label: 'desabilitado' },
 ]
 
-const handleSubmit = (e)=>{
+const handleSubmit = async(e)=>{
+  e.preventDefault();
+  const username= e.target.username.value;
+  const email = e.target.email.value;
+
+  
+  const payload = {
+    username,
+    email
+  }
+  
+  const response = await Api.buildApiPatchRequest(Api.updateUsers(id),payload,true)
+  
+  if(response.status=== 200){
+    toast.success('Dados alterados com sucesso', {theme: "dark",position: toast.POSITION.TOP_CENTER,
+});
+  }
 
 }
 
@@ -45,28 +72,33 @@ const handleSubmit = (e)=>{
       //We are searching, filter the results.
       users = users.filter(function(l) {
         return l.username.toLowerCase().match( searchString );
-      }).filter((l)=>l.role != 'ADMIN')
+      })
     }
-                                                                          
+    
+    console.log(loggedUser.user)
 
-  return <div className="update-user-container">
-    <form onSubmit={handleSubmit}>
+  return (<>
+  <div className="update-user-container">
+    <form  onSubmit={handleSubmit}>
     <div >
       <label htmlFor="">Nome de usuário</label>
       <Input id="username" name="username" type="text"/>
     </div>
     <div>
     <label htmlFor="">Email</label>
-    <Input id="email" name="email" type="text" />
+    <Input id="email" name="email"  type="text" />
     </div>
     <Button type="submit">Salvar</Button>
     </form>
 
+  </div>
+  
+
+
   <div>
   <h2>Buscar colaboradores</h2>
-  <Input type="text" value={searchString} onChange={handleChange} placeholder="Buscar usuário" />
-  </div>
-  <div className="">
+  <Input type="text" value={searchString} onChange={handleChange} placeholder="Nome do usuário" />
+  <div className="search-user">
   {searchString && (
         users.map((user) =>(
         <Link to={`atualizar/user/${user.id}`}>
@@ -74,7 +106,15 @@ const handleSubmit = (e)=>{
         </Link>
        )))}
   </div>
-  </div>;
+  </div>
+
+  
+  
+  
+  
+ 
+  
+  </>)
 }
 
 // Alterar um usuário (id) - username, e-mail, role ou status

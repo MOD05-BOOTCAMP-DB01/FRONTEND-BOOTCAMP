@@ -42,14 +42,14 @@ export default function Navbar() {
                 <AiOutlineClose />
               </Link>
             </li>
-            {isLogged ? (<li className="nav-text" onClick={() => setIsLogged(!isLogged)}>
-                  <Link to="/logout" >
+            {isLogged ? (<li className="nav-text" >
+                  <Link to="/logout" onClick={() => setIsLogged(!isLogged)}>
                     <AiFillHome />
                     <span className="span-name">Logout</span>
                   </Link>
                 </li>) : 
-                (<li className="nav-text" onClick={() => setIsLogged(isLogged)}>
-                  <Link to="/">
+                (<li className="nav-text" >
+                  <Link to="/" onClick={() => setIsLogged(!isLogged)}>
                     <AiFillHome />
                     <span className="span-name">Login</span>
                   </Link>

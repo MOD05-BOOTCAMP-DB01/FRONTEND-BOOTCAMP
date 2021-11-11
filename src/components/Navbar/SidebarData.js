@@ -17,3 +17,12 @@ export const SidebarData = [
     cName: "nav-text",
   }
 ];
+
+// export const SidebarLogged= [
+//   {
+//     title: "Meus objetivos",
+//     path: "/objectives",
+//     icon: <BiTask />,
+//     cName: "nav-text",
+//   },
+// ]

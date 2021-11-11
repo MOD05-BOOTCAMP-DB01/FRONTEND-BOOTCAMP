@@ -17,12 +17,16 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleOnJwtChange = () => {
-      setIsLogged(JwtHandler.isJwtValid());
+        setIsLogged(!JwtHandler.isJwtValid());
     };
 
     window.addEventListener("onJwtChange", handleOnJwtChange);
-  }, []);
 
+    return () => {
+        window.removeEventListener("onJwtChange", handleOnJwtChange);
+    };
+  }, []);
+ 
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>

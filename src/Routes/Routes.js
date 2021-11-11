@@ -7,7 +7,8 @@ import Home from "../Pages/Home/Home";
 import CreateObjective from "../Pages/Objective/CreateObjective/CreateObjective";
 import UpdateUsers from "../Pages/Users/UpdateUsers/UpdateUsers";
 import GuardedRoute from "../components/GuardedRoute/GuardedRoute";
-import Logout from './../components/Logout/Logout'
+
+
 
 function Routes() {
   return (

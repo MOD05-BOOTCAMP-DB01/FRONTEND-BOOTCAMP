@@ -42,7 +42,7 @@ export default function Navbar() {
                 <AiOutlineClose />
               </Link>
             </li>
-            {!isLogged ? (
+            {isLogged ? (
               <li className="nav-text">
                 <Link to="/">
                   <AiFillHome />

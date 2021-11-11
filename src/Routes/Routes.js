@@ -13,6 +13,7 @@ function Routes() {
     <div>
       <Switch>
         <Route path="/" exact component={Home} />
+        <GuardedRoute path="/logout" component={Logout} />
         <GuardedRoute path="/objective/:id" component={CardObjective} />
         <GuardedRoute path="/objective" component={CreateObjective} />
         <GuardedRoute path="/objectives" component={Objective} />

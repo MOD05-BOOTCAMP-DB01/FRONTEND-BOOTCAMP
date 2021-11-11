@@ -58,9 +58,7 @@ const CreateObjective = (props) => {
     }
 
     const response = await Api.buildApiPostRequest(Api.createObjectiveUrl(),payload,true);
-     const body = await response.json();
     if(response.status === 201){
-        console.log(body);
         props.history.push(`/objectives`)
     }else{
       console.log('error')

@@ -6,23 +6,27 @@ import { AiFillHome } from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
-import { JwtHandler } from "../jwt-handler/JwtHandler";
+import { JwtHandler } from "../../jwt-handler/JwtHandler";
 
 export default function Navbar() {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
 
-  const [isLogged, setIsLogged] = useState(!JwtHandler.isJwtValid);
+  const [isLogged, setIsLogged] = useState('');
 
   useEffect(() => {
     const handleOnJwtChange = () => {
-      setIsLogged(JwtHandler.isJwtValid());
+        setIsLogged(!JwtHandler.isJwtValid());
     };
 
     window.addEventListener("onJwtChange", handleOnJwtChange);
-  }, []);
 
+    return () => {
+        window.removeEventListener("onJwtChange", handleOnJwtChange);
+    };
+  }, []);
+ 
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
@@ -39,14 +43,14 @@ export default function Navbar() {
               </Link>
             </li>
             {!isLogged ? (
-              <li className="nav-text" onClick={() => setIsLogged(!isLogged)}>
+              <li className="nav-text">
                 <Link to="/">
                   <AiFillHome />
                   <span className="span-name">Login</span>
                 </Link>
               </li>
             ) : (
-              <li className="nav-text" onClick={() => setIsLogged(!isLogged)}>
+              <li className="nav-text">
                 <Link to="/logout">
                   <AiFillHome />
                   <span className="span-name">Logout</span>

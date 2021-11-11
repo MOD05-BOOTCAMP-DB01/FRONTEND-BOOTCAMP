@@ -1,27 +1,63 @@
-.cardObjective{
+.area-cardObjective{
   width: 99%;
-  height: 30em;
-  display: grid;
-  grid-template-columns: 15% 85%;
-  /* background-color: rgba(0, 0, 0, 0.15); */
-  margin: .5em auto;
-  border-radius: 1em;
+  height: 100%;
+  margin: 0 auto;
+}
+.cardObjective{
+  /* position: absolute; */
+  width: 100%;
+  height: 8em;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(253, 253, 253);
+  margin: .5em 0 auto;
+  border-radius: 1em 1em 0 0;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   
 }
-.area-objective{
+
+.objective-header{
   width: 100%;
-  height: 30em;
-  /* background-color: aliceblue; */
+  height: 5em;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: #006D99;
-  color: white;
-  padding: .5em 0;
-  border-radius: 1em 0 0 1em;
+}
+.objective-title{
+  width: 50%;
+  margin-left: 1em;
+  /* background-color: #0099B7; */
+  
+}
+.objective-title h2{
+  font-size: 2rem;
+}
 
+.objective-date{
+  margin-right: 1em;
+}
+
+
+.objective-body{
+  width: 100%;
+  height: 6em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
+}
+
+.objective-area{
+  display: flex;
+  width: 20%;
+  height: 100%;
+  margin-left: 1em;
+  align-items: center;
+  
+}
+
+.objective-area h3{
+  font-size: 1.5rem;
 }
 
 .changeView{
@@ -36,171 +72,12 @@
 
 }
 
-.objective{
-  /* background-color: antiquewhite; */
-  width: 85%;
-  height: 20em;
-  border: .1em solid white;
-  border-radius: 10%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-}
-.objective h3{
-  text-align: center;
-}
 
-.area-kr{
+
+
+.objective-cardKr{
   width: 100%;
-  height: 30em;
+  height: auto;
   display: flex;
   flex-direction: column;
 }
-
-
-.kr-header{
-  background-color: #006D99;
-  width: 100%;
-  height: 3em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: .2em solid black;
-  color: white;
-  border-radius: 0 1em 0 0;
-
-}
-.kr-header h3{
-  height: 3em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-}
-
-.icon-add{
-  cursor: pointer;
-  font-size: 1.5em;
-}
-
-.kr-items{
-  width: 100%;
-  height: 2.5em;
-
-  border-bottom: .1em solid white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* background-color: aqua; */
-}
-
-.kr-owner-header, .kr-comment-header, .kr-type-header, .kr-frequency-header, .kr-classification-header, .kr-vlInitial-header, .kr-vlGoal-header, .kr-done-header{
-  height: 3em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-}
-
-.kr-title-header{
-  border-radius: 0 1em 0 0;
-  width: 23%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  
-}
-.kr-title-items{
-  width: 23%;
-  padding-left: .5em;
-  display: flex;
-  justify-content: space-around;
-  /* background-color: aqua; */
-}
-.icon-magnifyingGlass{
-  cursor: pointer;
-}
-
-.kr-owner-items, .kr-owner-header{
-  /* background-color: rgb(16, 136, 136); */
-  width: 10%;
-  text-align: center;
-}
-
-.kr-comment-header, .kr-comment-items{
-  width: 10%;
-  text-align: center;
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-.kr-comment-items{
-}
-.kr-comment-items p{
-  display: none;
-  width: 5%;
-}
-.kr-comment-items:hover p{
-  font-size: .8rem;
-  display: block;
-  position: absolute;
-  margin-left: 9em;
- 
-  z-index: 9;
-  width: 10em;
-  height: 7em;
-  background-color: #0099B7;
-  color: white;
-  border-radius: .2em;
-  align-items: center;
-  text-decoration-skip: center;
-  text-align: center;
-}
-.icon-comment{
-  width: 100%;
-  font-size: 1.5em;
-  cursor: zoom-in;
-}
-
-.kr-type-items, .kr-type-header{
-  width: 10%;
-  /* background-color: rgba(0, 0, 0, 0.); */
-  text-align: center;
-}
-
-.kr-frequency-items, .kr-frequency-header{
-  width: 14%;
-  /* background-color: cadetblue; */
-  text-align: center;
-}
-
-.kr-classification-items, .kr-classification-header{
-  width: 10%;
-  text-align: center;
-  /* background-color: blueviolet; */
-}
-
-.kr-vlInitial-items, .kr-vlInitial-header{
-  width: 7%;
-  /* background-color: darkolivegreen; */
-  text-align: center;
-}
-
-.kr-vlGoal-items, .kr-vlGoal-header{
-  width: 7%;
-  /* background-color: coral; */
-  text-align: center;
-}
-
-.kr-done-items, .kr-done-header{
-  width: 8%;
-  /* background-color: coral; */
-  text-align: center;
-}
-
-.kr-icon-arrow{
-  font-size: 2em;
-}
-
-

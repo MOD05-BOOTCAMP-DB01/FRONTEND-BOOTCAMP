@@ -5,16 +5,17 @@ import Objective from "../components/Objective/Objective";
 import Home from "../Pages/Home/Home";
 import CreateObjective from "../Pages/Objective/CreateObjective/CreateObjective";
 import UpdateUsers from "../Pages/Users/UpdateUsers/UpdateUsers";
+import GuardedRoute from "../components/GuardedRoute/GuardedRoute";
 
 function Routes() {
   return (
     <div>
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/objective/:id" component={CardObjective} />
-        <Route path="/objective" component={CreateObjective} />
-        <Route path="/objectives" component={Objective} />
-        <Route path="/atualizar/user" component={UpdateUsers} />
+        <GuardedRoute path="/objective/:id" component={CardObjective} />
+        <GuardedRoute path="/objective" component={CreateObjective} />
+        <GuardedRoute path="/objectives" component={Objective} />
+        <GuardedRoute path="/atualizar/user" component={UpdateUsers} />
       </Switch>
     </div>
   );

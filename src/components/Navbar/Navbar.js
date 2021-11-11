@@ -8,7 +8,6 @@ import "./Navbar.css";
 import { IconContext } from "react-icons";
 import { JwtHandler } from "../jwt-handler/JwtHandler";
 
-
 export default function Navbar() {
   const [sidebar, setSidebar] = useState(false);
 
@@ -17,11 +16,12 @@ export default function Navbar() {
   const [isLogged, setIsLogged] = useState(!JwtHandler.isJwtValid);
 
   useEffect(() => {
-      const handleOnJwtChange = () => {
-          setIsLogged(JwtHandler.isJwtValid());
-      };
+    const handleOnJwtChange = () => {
+      setIsLogged(JwtHandler.isJwtValid());
+    };
 
-      window.addEventListener("onJwtChange", handleOnJwtChange);
+    window.addEventListener("onJwtChange", handleOnJwtChange);
+  }, []);
 
   return (
     <>
@@ -38,18 +38,21 @@ export default function Navbar() {
                 <AiOutlineClose />
               </Link>
             </li>
-            {!isLogged ? (<li className="nav-text" onClick={() => setIsLogged(!isLogged)}>
-                  <Link to="/" >
-                    <AiFillHome />
-                    <span className="span-name">Login</span>
-                  </Link>
-                </li>) : 
-                (<li className="nav-text" onClick={() => setIsLogged(!isLogged)}>
-                  <Link to="/logout">
-                    <AiFillHome />
-                    <span className="span-name">Logout</span>
-                  </Link>
-                </li>)}
+            {!isLogged ? (
+              <li className="nav-text" onClick={() => setIsLogged(!isLogged)}>
+                <Link to="/">
+                  <AiFillHome />
+                  <span className="span-name">Login</span>
+                </Link>
+              </li>
+            ) : (
+              <li className="nav-text" onClick={() => setIsLogged(!isLogged)}>
+                <Link to="/logout">
+                  <AiFillHome />
+                  <span className="span-name">Logout</span>
+                </Link>
+              </li>
+            )}
 
             {SidebarData.map((item, index) => {
               return (
@@ -65,5 +68,5 @@ export default function Navbar() {
         </nav>
       </IconContext.Provider>
     </>
-  )
-};
+  );
+}

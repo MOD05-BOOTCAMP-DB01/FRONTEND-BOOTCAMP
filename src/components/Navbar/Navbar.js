@@ -8,7 +8,6 @@ import "./Navbar.css";
 import { IconContext } from "react-icons";
 import { JwtHandler } from "../jwt-handler/JwtHandler";
 
-
 export default function Navbar() {
   const [sidebar, setSidebar] = useState(false);
 
@@ -70,5 +69,5 @@ export default function Navbar() {
         </nav>
       </IconContext.Provider>
     </>
-  )
-};
+  );
+}

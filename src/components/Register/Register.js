@@ -1,8 +1,8 @@
 import React from "react";
 import { Api } from "../../Api/Api";
 import { AiOutlineMail } from "react-icons/ai";
-import { FaUserAlt } from "react-icons/fa";
-import { RiLockPasswordLine } from "react-icons/ri";
+import { BiUser } from "react-icons/bi";
+import { MdOutlineLockOpen } from "react-icons/md";
 import LinkButton from "../LinkButton/LinkButton";
 import { IconContext } from "react-icons";
 import "./Register.css";
@@ -19,14 +19,13 @@ export default function Register({setRegister,props}) {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const passwordConfirmation = event.target.passwordConfirmation.value;
-    const role = event.target.role.value;
+
 
     const payload = {
       username,
       email,
       password,
       passwordConfirmation,
-      role,
     };
 
     
@@ -50,11 +49,11 @@ export default function Register({setRegister,props}) {
   return (
     <div className="form-register">
       <IconContext.Provider value={{ className: "icons__login-register" }}>
-        <h1>Registrar Usuário</h1>
+        <h1 className ="form__h1-register">Registrar Usuário</h1>
         <form className="form__card-register" onSubmit={handleSubmit}>
           <div className="form__card--input-register">
             <span className="form__card--icon-register">
-              <FaUserAlt />
+              <BiUser />
             </span>
             <input
               id="username"
@@ -71,7 +70,7 @@ export default function Register({setRegister,props}) {
           </div>
           <div className="form__card--input-register">
             <span className="form__card--icon-register">
-              <RiLockPasswordLine />
+              <MdOutlineLockOpen />
             </span>
             <input
               id="password"
@@ -88,11 +87,11 @@ export default function Register({setRegister,props}) {
               name="passwordConfirmation"
             />
             <span className="form__card--icon-left-register">
-              <RiLockPasswordLine />
+              <MdOutlineLockOpen />
             </span>
           </div>
           <div>
-            <LinkButton type="submit" className="button button--primary">
+            <LinkButton type="submit" className="button button--purple">
               Cadastrar
             </LinkButton>
           </div>

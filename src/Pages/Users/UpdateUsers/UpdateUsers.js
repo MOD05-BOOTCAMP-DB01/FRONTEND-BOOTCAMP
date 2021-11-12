@@ -24,7 +24,7 @@ export default function UpdateUsers() {
     const loadUniqueUser = async()=>{
       const response = await Api.buildApiGetRequest(Api.readUserbyId(id),true);
       const data = await response.json();
-      setLoggedUser(data);
+      setLoggedUser(data.user);
     }
     loadUniqueUser();
     loadAllUsers();
@@ -94,8 +94,7 @@ const handleSubmit = async(e)=>{
   </div>
   
 
-
-  <div>
+    {loggedUser.role === "ADMIN" ? (  <div>
   <h2>Buscar colaboradores</h2>
   <Input type="text" value={searchString} onChange={handleChange} placeholder="Nome do usuário" />
   <div className="search-user">
@@ -106,7 +105,8 @@ const handleSubmit = async(e)=>{
         </Link>
        )))}
   </div>
-  </div>
+  </div>):''}
+
 
   
   

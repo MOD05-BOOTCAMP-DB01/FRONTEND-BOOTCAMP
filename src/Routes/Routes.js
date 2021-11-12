@@ -8,8 +8,6 @@ import CreateObjective from "../Pages/Objective/CreateObjective/CreateObjective"
 import UpdateUsers from "../Pages/Users/UpdateUsers/UpdateUsers";
 import GuardedRoute from "../components/GuardedRoute/GuardedRoute";
 
-
-
 function Routes() {
   return (
     <div>
@@ -20,7 +18,6 @@ function Routes() {
         <GuardedRoute path="/objective" component={CreateObjective} />
         <GuardedRoute path="/objectives" component={Objective} />
         <GuardedRoute path="/atualizar/user" component={UpdateUsers} />
-        <GuardedRoute path="/logout" component={Logout} />
       </Switch>
     </div>
   );

@@ -3,7 +3,7 @@ import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
-import { SidebarData,SidebarLogged, SidebarNotLogged } from "./SidebarData";
+import { SidebarData } from "./SidebarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
@@ -13,7 +13,7 @@ export default function Navbar() {
 
   const showSidebar = () => setSidebar(!sidebar);
 
-  const [isLogged, setIsLogged] = useState('');
+  const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
     const handleOnJwtChange = () => {
@@ -42,8 +42,20 @@ export default function Navbar() {
                 <AiOutlineClose />
               </Link>
             </li>
-            {!isLogged ? (
-              SidebarLogged.map((item, index) => {
+            {!isLogged ? (<li className="nav-text" >
+                  <Link to="/logout" >
+                    <AiFillHome />
+                    <span className="span-name">Logout</span>
+                  </Link>
+                </li>) : 
+                (<li className="nav-text" >
+                  <Link to="/" onClick={() => setIsLogged(!isLogged)}>
+                    <AiFillHome />
+                    <span className="span-name">Login</span>
+                  </Link>
+                </li>)}
+
+            {SidebarData.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
@@ -52,18 +64,7 @@ export default function Navbar() {
                   </Link>
                 </li>
               );
-            })
-            ) : (
-              SidebarNotLogged.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span className="span-name">{item.title}</span>
-                  </Link>
-                </li>)})
-            )}
-
+            })}
           </ul>
         </nav>
       </IconContext.Provider>

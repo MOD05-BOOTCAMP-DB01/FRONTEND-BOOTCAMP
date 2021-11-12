@@ -108,7 +108,6 @@
 .fieldError{
   color: rgba(255, 72, 72, 0.986);
   text-decoration: none;
-  font-size: 1rem;
 }
 
 .formKr-button{
@@ -117,40 +116,4 @@
   display:flex;
   justify-content: center;
   align-items: center;
-}
-
-/* Comment */
-
-.viewMoreKr-comment{
-  width: 10%;
-  text-align: center;
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-.viewMoreKr-comment{
-}
-.viewMoreKr-comment p{
-  display: none;
-  width: 5%;
-}
-.viewMoreKr-comment:hover p{
-  font-size: 1rem;
-  display: block;
-  position: absolute;
-  margin-left: 7em;
- 
-  z-index: 9;
-  width: 15em;
-  height: 7em;
-  background-color: #0099B7;
-  color: white;
-  border-radius: .2em;
-  align-items: center;
-  text-decoration-skip: center;
-  text-align: center;
-}
-.icon-comment{
-  width: 100%;
-  font-size: 1.5em;
-  cursor: zoom-in;
 }

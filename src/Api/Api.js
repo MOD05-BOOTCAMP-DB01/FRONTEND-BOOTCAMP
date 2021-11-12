@@ -24,8 +24,8 @@ export const Api = {
   // USERS
   createUserAdminUrl: () => `${Api.baseUrl}/users`,
   readAllUsers: () => `${Api.baseUrl}/users`,
-  readUserbyId: (id) => `${Api.baseUrl}/users/${id}`,
-  updateUsers:(id)=>`${Api.baseUrl}/users/${id}`,
+  readAllUsersbyId: (id) => `${Api.baseUrl}/users/${id}`,
+  readAllUsersbyId: (id) => `${Api.baseUrl}/users/${id}`,
 
   // checkin
   readAllCheckinsUrl: () => `${Api.baseUrl}/checkin`,

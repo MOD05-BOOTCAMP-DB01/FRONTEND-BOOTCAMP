@@ -20,7 +20,7 @@ export default function CreateKeyResult({objectiveId}) {
   const [username, setUsername] = useState([]);
   const [ownerId, setOwnerId] = useState("");
 
-  const {handleShowAddKr} = useGlobalContext()
+  const {handleShowAddKr, loadKr, showAddKr} = useGlobalContext()
 
   const history = useHistory()
 
@@ -68,7 +68,8 @@ export default function CreateKeyResult({objectiveId}) {
 
     if (response.status === 201) {
       resetForm()
-      history.push(`/objective/${objectiveId}`)
+      handleShowAddKr()
+      loadKr(objectiveId)
       // toast.success('Resultado chave criado com sucesso!',{
       //   zIndex: 9999,
       //   hideProgressBar: true,
@@ -91,7 +92,7 @@ export default function CreateKeyResult({objectiveId}) {
     }
 
     if (!values.frequency) {
-      errors.prazo = 'Escolha uma frequencia para resultado chave.'
+      errors.frequency = 'Escolha uma frequencia para resultado chave.'
     }
 
 

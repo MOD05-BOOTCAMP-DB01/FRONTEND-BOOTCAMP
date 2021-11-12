@@ -1,0 +1,31 @@
+.area-viewMoreKr{
+  position: relative;
+  border: none;
+  width: 107.6em;
+  height: 7em;
+  background-color: rgb(243, 243, 243);
+
+}
+
+.viewMoreKr{
+  position: relative;
+  left: 1.3em;
+  /* top: 8em; */
+  width: 107.4em;
+  height: 7em;
+  background-color: #006D99;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 99;
+
+}
+
+.viewMoreKr-comment{
+  
+}
+
+.viewMoreKr-frequency{
+  
+
+}

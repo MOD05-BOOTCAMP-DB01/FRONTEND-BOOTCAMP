@@ -6,14 +6,14 @@ import { AiFillHome } from "react-icons/ai";
 import { SidebarData } from "./SidebarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
-import { JwtHandler } from "../../jwt-handler/JwtHandler";
+import { JwtHandler } from "../jwt-handler/JwtHandler";
 
 export default function Navbar() {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
 
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(JwtHandler.isJwtValid);
 
   useEffect(() => {
     const handleOnJwtChange = () => {
@@ -42,8 +42,8 @@ export default function Navbar() {
                 <AiOutlineClose />
               </Link>
             </li>
-            {!isLogged ? (<li className="nav-text" >
-                  <Link to="/logout" >
+            {isLogged ? (<li className="nav-text" >
+                  <Link to="/logout" onClick={() => setIsLogged(!isLogged)}>
                     <AiFillHome />
                     <span className="span-name">Logout</span>
                   </Link>

@@ -40,7 +40,7 @@ export default function Register({setRegister,props}) {
       if (response.status === 201) {
       setRegister(false)  
       toast.success('Usuário cadastrado com sucesso!', {theme: "dark",position: toast.POSITION.TOP_CENTER,
-});
+      });
     }
     }
     

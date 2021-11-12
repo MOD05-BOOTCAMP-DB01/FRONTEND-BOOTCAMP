@@ -7,6 +7,7 @@ import { AiOutlineCloseSquare } from 'react-icons/ai'
 import Select from "react-select";
 
 import { toast, useToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 import { useGlobalContext } from "../../context/context";
 
@@ -70,12 +71,12 @@ export default function CreateKeyResult({objectiveId}) {
       resetForm()
       handleShowAddKr()
       loadKr(objectiveId)
-      // toast.success('Resultado chave criado com sucesso!',{
-      //   zIndex: 9999,
-      //   hideProgressBar: true,
-      //   autoClose: 2000,
-      //   position: toast.POSITION.TOP_CENTER,
-      // })
+      toast.success('Resultado chave criado com sucesso!',{
+        zIndex: 9999,
+        hideProgressBar: true,
+        autoClose: 2000,
+        position: toast.POSITION.TOP_CENTER,
+      })
       
     }
    

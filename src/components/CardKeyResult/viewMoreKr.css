@@ -1,31 +1,98 @@
 .area-viewMoreKr{
+  margin-top: .5em;
   position: relative;
   border: none;
-  width: 107.6em;
-  height: 7em;
+  width: 107.2em;
+  height: 7.1em;
   background-color: rgb(243, 243, 243);
-
+  border-radius: .8em 0 0 .8em;
+  
 }
 
 .viewMoreKr{
+  /* margin-top: .3em; */
   position: relative;
   left: 1.3em;
   /* top: 8em; */
-  width: 107.4em;
-  height: 7em;
+  width: 91.2em;
+  height: 7.1em;
   background-color: #006D99;
   display: flex;
   justify-content: space-around;
   align-items: center;
   z-index: 99;
+  border-radius: 0 .8em .8em 0;
 
 }
+
+/* Comment */
 
 .viewMoreKr-comment{
-  
+  width: 10%;
+  text-align: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.viewMoreKr-comment{
+}
+.viewMoreKr-comment p{
+  display: none;
+  width: 5%;
+}
+.viewMoreKr-comment:hover p{
+  font-size: 1rem;
+  display: block;
+  position: absolute;
+  margin-left: 7em;
+  margin-top: -2.5em;
+ 
+  z-index: 9;
+  width: 15em;
+  height: 7em;
+  background-color: #0099B7;
+  color: white;
+  border-radius: .2em;
+  align-items: center;
+  text-decoration-skip: center;
+  text-align: center;
+}
+.icon-comment{
+  width: 100%;
+  font-size: 1.5em;
+  cursor: zoom-in;
 }
 
-.viewMoreKr-frequency{
-  
 
+.viewMoreKr-initialValue, .viewMoreKr-goalValue{
+  height: 7em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.viewMoreKr-goalValue label, .viewMoreKr-initialValue label{
+  /* padding-top: 2em; */
+  width: 100%;
+  height: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: .6em;
+  font-size: 1.25rem;
+  font-weight: bold;
+
+}
+.viewMoreKr-initialValue h3, .viewMoreKr-goalValue h3{
+  width: 100%;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+
+.viewMoreKr-done input{
+  width: 1.5em;
+  height: 1.5em;
 }

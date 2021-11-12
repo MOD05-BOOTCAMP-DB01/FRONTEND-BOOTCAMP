@@ -7,5 +7,5 @@ export default function Logout() {
         JwtHandler.clearJwt();
     });
 
-    return <Redirect to="/" />;
+    return <Redirect to="/"/>;
 }

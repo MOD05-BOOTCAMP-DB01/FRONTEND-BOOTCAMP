@@ -20,10 +20,12 @@ export default function ViewMoreKr({kr}) {
         </div>
 
         <div className="viewMoreKr-initialValue">
+          <label>Valor Inicial</label>
           <h3>{kr.initial_value}</h3>
         </div>
 
         <div className="viewMoreKr-goalValue">
+          <label>Meta</label>
           <h3>{kr.goal_value}</h3>
         </div>
 
@@ -31,7 +33,7 @@ export default function ViewMoreKr({kr}) {
           <h3>Check-in</h3>
         </div>
 
-        <div className="viewMoreKr-checkin">
+        <div className="viewMoreKr-done">
           <input type="checkbox"></input>
         </div>
 

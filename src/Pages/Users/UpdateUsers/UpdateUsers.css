@@ -3,10 +3,11 @@
     flex-direction: column;
     align-items: center;
     background:rgba(255, 255, 255,0.5);
-    width:75%;
+    max-width: 450px;
     border-radius: 2rem;
     box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
-    margin:0 auto;
+    margin:56px auto 0 auto;
+    padding: 1.5rem 0;
 }
 
 .css-1hb7zxy-IndicatorsContainer{
@@ -16,3 +17,18 @@
  .css-2613qy-menu{
      display:none;
  }
+
+.search-container{
+    max-width: 450px;
+    margin:1rem auto;
+}
+
+.search-container h2{
+margin-left: 1rem;
+color:#69006e;
+}
+
+.search-container .user-card{
+    width: 450px;
+    margin: 1rem 0 1rem 0;
+}

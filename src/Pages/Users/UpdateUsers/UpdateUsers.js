@@ -70,8 +70,8 @@ const handleSubmit = async(e)=>{
     
     if(searchString.length > 0) {
       //We are searching, filter the results.
-      users = users.filter(function(l) {
-        return l.username.toLowerCase().match( searchString );
+      users = users.filter(function(u) {
+        return u.username.toLowerCase().match( searchString ) && u.id !== loggedUser.id;
       })
     }
     
@@ -94,7 +94,8 @@ const handleSubmit = async(e)=>{
   </div>
   
 
-    {loggedUser.role === "ADMIN" ? (  <div>
+    {loggedUser.role === "ADMIN" ? (  
+  <div className="search-container">
   <h2>Buscar colaboradores</h2>
   <Input type="text" value={searchString} onChange={handleChange} placeholder="Nome do usuário" />
   <div className="search-user">
@@ -107,13 +108,6 @@ const handleSubmit = async(e)=>{
   </div>
   </div>):''}
 
-
-  
-  
-  
-  
- 
-  
   </>)
 }
 

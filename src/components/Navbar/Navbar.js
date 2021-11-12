@@ -6,7 +6,7 @@ import { AiFillHome } from "react-icons/ai";
 import { SidebarData,SidebarLogged, SidebarNotLogged } from "./SidebarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
-import { JwtHandler } from "../jwt-handler/JwtHandler";
+import { JwtHandler } from "../../jwt-handler/JwtHandler";
 
 export default function Navbar() {
   const [sidebar, setSidebar] = useState(false);

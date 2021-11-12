@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { Api } from "../Api/Api";
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   //  funções e estados globais
@@ -6,10 +7,23 @@ const AppProvider = ({ children }) => {
    const [login, setLogin] = useState(false);
 
   const [showAddKr, setShowAddKr] = useState(false);
+  const [krs, setKrs] = useState([]);
+  
 
   const handleShowAddKr = () => {
     setShowAddKr(!showAddKr);
     
+  }
+
+ 
+  const loadKr = async (id) => {
+    const response = await Api.buildApiGetRequest(Api.readKeyResultsByObjectivesId(id),true)
+    const results = await response.json()
+
+    if (response.status === 200) {
+      setKrs(results.key_results) 
+    }
+      console.log("results =-",results)
   }
 
   const completeTask = () => {

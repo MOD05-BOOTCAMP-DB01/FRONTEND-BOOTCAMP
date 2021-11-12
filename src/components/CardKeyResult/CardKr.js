@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 
-import { BiCommentDots } from 'react-icons/bi'
-
 import { BiEdit } from 'react-icons/bi'
 import { RiDeleteBin2Line } from 'react-icons/ri'
 
@@ -29,11 +27,11 @@ export default function CardKr({kr,objectiveId}) {
         <div className="kr-statusBar">
           {(() => {
             if (kr.rating === "Baixa") {
-              return <div className="statusBar-gree"></div>;
+              return <div className="statusBar-low"></div>;
             }else if(kr.rating === 'Média'){
-                return <div className="statusBar-yellow"></div>;
+                return <div className="statusBar-medium"></div>;
             }else if(kr.rating === "Alta"){
-              return <div className="statusBar-red"></div>;
+              return <div className="statusBar-high"></div>;
             }else{
               return <div></div>;
             }

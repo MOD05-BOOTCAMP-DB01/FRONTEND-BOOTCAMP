@@ -7,6 +7,7 @@ import Home from "../Pages/Home/Home";
 import CreateObjective from "../Pages/Objective/CreateObjective/CreateObjective";
 import UpdateUsers from "../Pages/Users/UpdateUsers/UpdateUsers";
 import GuardedRoute from "../components/GuardedRoute/GuardedRoute";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 
 
@@ -15,7 +16,7 @@ function Routes() {
     <div>
       <Switch>
         <Route path="/" exact component={Home} />
-        <GuardedRoute path="/logout" component={Logout} />
+        <Route path="/sobre" component={AboutUs} />
         <GuardedRoute path="/objective/:id" component={CardObjective} />
         <GuardedRoute path="/objective" component={CreateObjective} />
         <GuardedRoute path="/objectives" component={Objective} />

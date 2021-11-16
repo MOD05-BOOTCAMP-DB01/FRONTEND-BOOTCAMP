@@ -7,4 +7,8 @@ const Button = (props) => {
     )
 }
 
+export const ViewMoreButton = (props)=>{
+ return <a class="effect effect-5" href="#" title="Learn More">Learn More</a>
+}
+
 export default Button

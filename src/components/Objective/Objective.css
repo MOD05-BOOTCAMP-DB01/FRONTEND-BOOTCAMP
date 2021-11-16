@@ -9,7 +9,6 @@
   
 }
 .objective-card:hover {
-  background-color: #ececec59;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -19,9 +18,10 @@
 
 
 
+
 .objective-info {
   display: block;
-  max-width: 50px;
+  max-width: 70%;
   height: 20px;
   margin: 0;
   background: #006e996c;
@@ -36,16 +36,22 @@
   color: #69006e;
 }
 
+.objective-button-container{
+  display:flex;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+}
 @media (min-width: 768px) {
   .objective-card {
-    grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr;
+    /* grid-template-columns: 1fr 0.5fr 0.5fr;
+    row-gap: 1rem; */
     width: 65rem;
     align-items: center;
   }
   .objective-card h4,
   .objective-card h3 {
     margin: 0;
-    padding-left: 10px;
+    padding-right: 10px;
     text-transform: capitalize;
   }
 
@@ -63,13 +69,43 @@
   margin-bottom: 1.5rem;
   
 }
+
+.objective-container-title{
+display:flex;
+justify-content:space-between;
+}
+
+.objective-container-title h3{
+  padding:0.5rem 0 0.5rem 0;
+}
+
+.objective-container-body{
+  width: 100%;
+  display:flex;
+}
+
+.status-bar{
+  display:flex;
+  flex-direction: column;
+  padding: 15px 0;
+  width: 15rem
+}
+
+.status-bar .objective-info{
+  margin: 0.5rem 0.5rem 0;
+}
+}
+.objective-container-body h4{
+  min-width:10rem;
 }
 
 @media (min-width: 769px) and (max-width: 945px) {
   .objective-card {
     max-width: 50rem;
   }
-
+  .objective-info{
+     max-width: 10rem;
+  }
    .objective-container-heading{
    max-width: 50rem;
   }

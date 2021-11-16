@@ -3,6 +3,7 @@ import { Api } from "../Api/Api";
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   //  funções e estados globais
+  const [loggedUser,setLoggedUser] = useState([])
   const [value, setValue] = useState(0);
    const [login, setLogin] = useState(false);
 
@@ -26,6 +27,12 @@ const AppProvider = ({ children }) => {
       console.log("results =-",results)
   }
 
+  const loadUniqueUser = async(id)=>{
+      const response = await Api.buildApiGetRequest(Api.readUserbyId(id),true);
+      const data = await response.json();
+      setLoggedUser(data.user);
+    }
+
   const completeTask = () => {
     increment();
     // escrever função para enviar um update por endpoint para o banco
@@ -33,7 +40,7 @@ const AppProvider = ({ children }) => {
   const increment = () =>
     setValue((prevState) => (prevState >= 100 ? 0 : prevState + 20));
   return (
-    <AppContext.Provider value={{ completeTask,setLogin,login,handleShowAddKr, showAddKr }}>
+    <AppContext.Provider value={{ completeTask,setLogin,login,handleShowAddKr, showAddKr,loadUniqueUser,loggedUser }}>
       {children}
     </AppContext.Provider>
   );

@@ -32,10 +32,10 @@ export default function CardObjective(props) {
         true
       );
       const results = await response.json();
-      if (response.status === 200) {
+     
         setObjective(results.objective);
       
-      }
+
       // setKrs(results.objective.key_results);
       console.log("results ==",results)  
     };

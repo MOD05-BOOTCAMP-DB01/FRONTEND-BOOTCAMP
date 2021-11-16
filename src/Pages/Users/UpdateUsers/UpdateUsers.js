@@ -7,30 +7,26 @@ import Input from './../../../components/Input/Input'
 import './UpdateUsers.css'
 import {toast} from 'react-toastify'
 import  Button  from "./../../../components/Button/Button";
+import { useGlobalContext } from "../../../context/context";
 
 export default function UpdateUsers() {
   const id= localStorage.getItem("USER_ID");
+  const {loadUniqueUser,loggedUser} = useGlobalContext();
   let [searchString,setSearchString] = useState('')
   let [users,setUsers] = useState([])
-  const [isAdmin,setIsAdmin] = useState(false);
- const [loggedUser,setLoggedUser] = useState([])
+ 
+
   useEffect(()=>{
     const loadAllUsers = async () => {
       const response = await Api.buildApiGetRequest(Api.readAllUsers(),true);
       const data = await response.json();
       setUsers(data)
     }
-
-    const loadUniqueUser = async()=>{
-      const response = await Api.buildApiGetRequest(Api.readUserbyId(id),true);
-      const data = await response.json();
-      setLoggedUser(data.user);
-    }
-    loadUniqueUser();
     loadAllUsers();
+    loadUniqueUser(id);
   },[])
 
-  
+    
 
   const roleOptions = [
   { value: 'ADMIN', label: 'Administrador' },
@@ -70,12 +66,11 @@ const handleSubmit = async(e)=>{
     
     if(searchString.length > 0) {
       //We are searching, filter the results.
-      users = users.filter(function(l) {
-        return l.username.toLowerCase().match( searchString );
+      users = users.filter(function(u) {
+        return u.username.toLowerCase().match( searchString ) && u.id !== loggedUser.id;
       })
     }
     
-    console.log(loggedUser.user)
 
   return (<>
   <div className="update-user-container">
@@ -94,7 +89,8 @@ const handleSubmit = async(e)=>{
   </div>
   
 
-    {loggedUser.role === "ADMIN" ? (  <div>
+    {loggedUser.role === "ADMIN" ? (  
+  <div className="search-container">
   <h2>Buscar colaboradores</h2>
   <Input type="text" value={searchString} onChange={handleChange} placeholder="Nome do usuário" />
   <div className="search-user">
@@ -107,13 +103,6 @@ const handleSubmit = async(e)=>{
   </div>
   </div>):''}
 
-
-  
-  
-  
-  
- 
-  
   </>)
 }
 

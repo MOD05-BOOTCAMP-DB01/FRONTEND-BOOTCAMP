@@ -31,7 +31,7 @@ export const SidebarLogged= [
   },
   {
     title: "Atualizar dados",
-    path: "/atualizar/user",
+    path: "/editar/usuario",
     icon: <BiTask />,
     cName: "nav-text",
   }, 
@@ -57,10 +57,21 @@ export const SidebarAdmin = [
     icon: <BiTask />,
     cName: "nav-text",
   },
+  
+]
+
+const SidebarManager = [
   {
-    title: "Atualizar dados",
-    path: "/atualizar/user",
+    title: "Objetivos",
+    path: "/objectives",
     icon: <BiTask />,
     cName: "nav-text",
   },
+  {
+    title: "Adicionar objetivos",
+    path: "/objective",
+    icon: <BiTask />,
+    cName: "nav-text",
+  },
+  
 ]

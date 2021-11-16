@@ -32,10 +32,10 @@ export default function CardObjective(props) {
         true
       );
       const results = await response.json();
-      if (response.status === 200) {
+     
         setObjective(results.objective);
       
-      }
+
       // setKrs(results.objective.key_results);
       console.log("results ==",results)  
     };
@@ -102,10 +102,7 @@ export default function CardObjective(props) {
         {krs.map( kr =>  
             <CardKr key={kr.id} kr={kr} objectiveId={objective.id} className="objective-cardKr"/> 
         )}
-      {showAddKr 
-        ? <CreateKeyResult objectiveId={objective.id}/>
-        : ""
-      }
+      {showAddKr && <CreateKeyResult objectiveId={objective.id}/>}
     </div>
   );
 }

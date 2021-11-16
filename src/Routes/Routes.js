@@ -6,6 +6,7 @@ import Objective from "../components/Objective/Objective";
 import Home from "../Pages/Home/Home";
 import CreateObjective from "../Pages/Objective/CreateObjective/CreateObjective";
 import UpdateObjective from "../Pages/Objective/UpdateObjective/UpdateObjective";
+import Page404 from "../Pages/Page404/Page404";
 import UpdateUsers from "../Pages/Users/UpdateUsers/UpdateUsers";
 import GuardedRoute from "../components/GuardedRoute/GuardedRoute";
 import AboutUs from "../Pages/AboutUs/AboutUs";
@@ -24,6 +25,7 @@ function Routes() {
         <GuardedRoute path="/editar/usuario" component={UpdateUsers} />
         <GuardedRoute path="/editar/objetivo/:id" component={UpdateObjective} />
         <GuardedRoute path="/logout" component={Logout} />
+        <Route path="*" component={Page404} />
       </Switch>
     </div>
   );

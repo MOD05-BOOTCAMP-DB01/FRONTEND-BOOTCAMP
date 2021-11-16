@@ -40,7 +40,7 @@ const AppProvider = ({ children }) => {
   const increment = () =>
     setValue((prevState) => (prevState >= 100 ? 0 : prevState + 20));
   return (
-    <AppContext.Provider value={{ completeTask,setLogin,login,handleShowAddKr, showAddKr,loadUniqueUser,loggedUser }}>
+    <AppContext.Provider value={{ completeTask,setLogin,login,handleShowAddKr, showAddKr,loadUniqueUser,loggedUser,setLoggedUser }}>
       {children}
     </AppContext.Provider>
   );

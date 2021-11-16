@@ -3,12 +3,14 @@ import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
-import { SidebarData,SidebarLogged, SidebarNotLogged } from "./SidebarData";
+import { SidebarData,SidebarLogged, SidebarNotLogged,SidebarManager, SidebarAdmin } from "./SidebarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
+import { useGlobalContext } from "../../context/context";
 
 export default function Navbar() {
+  const {loggedUser} = useGlobalContext();
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -26,7 +28,7 @@ export default function Navbar() {
         window.removeEventListener("onJwtChange", handleOnJwtChange);
     };
   }, []);
- 
+ console.log(loggedUser);
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
@@ -42,8 +44,8 @@ export default function Navbar() {
                 <AiOutlineClose />
               </Link>
             </li>
-            {!isLogged ? (
-              SidebarLogged.map((item, index) => {
+            {loggedUser.role ==="USER" && 
+              (SidebarLogged.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
@@ -53,7 +55,10 @@ export default function Navbar() {
                 </li>
               );
             })
-            ) : (
+            ) }
+            
+            {!loggedUser.role &&
+            (
               SidebarNotLogged.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
@@ -63,6 +68,33 @@ export default function Navbar() {
                   </Link>
                 </li>)})
             )}
+
+            {loggedUser.role ==="MANAGER" &&
+            (
+              SidebarManager.map((item, index) => {
+              return (
+                <li key={index} className={item.cName}>
+                  <Link to={item.path}>
+                    {item.icon}
+                    <span className="span-name">{item.title}</span>
+                  </Link>
+                </li>)})
+            )}
+
+            {loggedUser.role ==="ADMIN" &&
+            (
+              SidebarAdmin.map((item, index) => {
+              return (
+                <li key={index} className={item.cName}>
+                  <Link to={item.path}>
+                    {item.icon}
+                    <span className="span-name">{item.title}</span>
+                  </Link>
+                </li>)})
+            )}
+
+
+
           </ul>
         </nav>
       </IconContext.Provider>

@@ -7,7 +7,7 @@ import Login from "../../components/Login/Login";
 import {useGlobalContext} from './../../context/context'
 import Spin from "react-cssfx-loading/lib/Spin";
 const Home = (props) => {
-const {login} = useGlobalContext()
+const {login,loggedUser} = useGlobalContext()
   const [register, setRegister] = useState(false);
 if(login){
   return (
@@ -16,6 +16,7 @@ if(login){
     </div>
   )
 }
+console.log(loggedUser.role)
   return (
     <div className="home_container">
       <div className="home_container-banner">

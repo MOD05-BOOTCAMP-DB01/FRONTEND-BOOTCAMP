@@ -1,8 +1,10 @@
 import React from "react";
 import { AiFillHome } from "react-icons/ai";
-import { BiTask } from "react-icons/bi";
+import { BiTask,BiTargetLock } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
 import {FiInfo } from "react-icons/fi";
+import {FaRegUserCircle } from "react-icons/fa";
+
 
 export const SidebarNotLogged = [
   {
@@ -30,7 +32,7 @@ export const SidebarLogged= [
     cName: "nav-text",
   },
   {
-    title: "Atualizar dados",
+    title: "Redefinir usuário",
     path: "/editar/usuario",
     icon: <BiTask />,
     cName: "nav-text",
@@ -51,27 +53,43 @@ export const SidebarAdmin = [
     icon: <BiTask />,
     cName: "nav-text",
   },
-  {
-    title: "Adicionar objetivos",
-    path: "/objectives",
+   {
+    title: "Redefinir usuário",
+    path: "/editar/usuario",
     icon: <BiTask />,
     cName: "nav-text",
+  }, 
+  {
+    title: "Logout",
+    path: "/logout",
+    icon: <AiFillHome />,
+    cName: "nav-text",
   },
-  
 ]
 
-const SidebarManager = [
+export const SidebarManager = [
   {
     title: "Objetivos",
     path: "/objectives",
-    icon: <BiTask />,
+    icon: <BiTargetLock />,
     cName: "nav-text",
   },
   {
     title: "Adicionar objetivos",
     path: "/objective",
-    icon: <BiTask />,
+    icon: <BiTargetLock />,
     cName: "nav-text",
   },
-  
+   {
+    title: "Redefinir usuário",
+    path: "/editar/usuario",
+    icon: <FaRegUserCircle />,
+    cName: "nav-text",
+  }, 
+  {
+    title: "Logout",
+    path: "/logout",
+    icon: <AiFillHome />,
+    cName: "nav-text",
+  },
 ]

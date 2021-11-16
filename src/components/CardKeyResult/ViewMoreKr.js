@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { BiCommentDots } from "react-icons/bi";
 import { MdSubdirectoryArrowRight } from "react-icons/md";
 
-import ModalCK from "../CardCheckin/Modal/ModalCk";
+import ModalCk from "../CardCheckin/Modal/ModalCK";
 
 import "./viewMoreKr.css";
 
@@ -51,7 +51,7 @@ export default function ViewMoreKr({ kr }) {
       </div>
 
       <div className="viewMoreKr-modalCk">
-        {showModalCk ? <ModalCK kr={kr} /> : ""}
+        {showModalCk ? <ModalCk kr={kr} /> : ""}
       </div>
     </div>
   );

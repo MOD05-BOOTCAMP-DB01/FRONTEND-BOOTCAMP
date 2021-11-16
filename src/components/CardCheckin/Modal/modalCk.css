@@ -1,14 +1,14 @@
 .modalCk {
   position: absolute;
-  top: 87px;
   z-index: 99;
-  width: 84.2%;
+  width: 86.2%;
   height: 30em;
   background-color: #94A0A0;
-  border-radius: 0 .8em 1em 0;
+  border-radius: .8em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* margin-left: 1em; */
 }
 
 .modal-title {
@@ -19,11 +19,11 @@
   align-items: center;
   color: white;
   background-color: #00335E;
-  border-radius: 0 .8em 0 0;
+  border-radius: .8em .8em 0 0;
   
 }
 .modal-title h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
 
 }
 
@@ -59,13 +59,13 @@
 }
 
 .modal-rating .rating-high{
-  background-color: rgba(251, 8, 8, 0.87);
+  background-color: #006D99;
 }
 .modal-rating .rating-medium{
-  background-color: rgba(251, 247, 8, 0.87);
+  background-color:  #0099B7;
 }
 .modal-rating .rating-low{
-  background-color: rgba(8, 251, 89, 0.87);
+  background-color:  #009FE3;
 }
 
 .modal-areaCardCk {
@@ -145,7 +145,6 @@
   justify-content: center;
   align-items: center;
 }
-
 
 .modalFooter-owner{
   width: 15em;

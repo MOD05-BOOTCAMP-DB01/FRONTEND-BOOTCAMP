@@ -11,7 +11,7 @@ import CreateKeyResult from '../../../Pages/CreateKeyResult/CreateKeyResult';
 // CSS
 import './modalCk.css'
 
-export default function ModalCK({kr}) {
+export default function ModalCk({kr}) {
   console.log("props kr",kr)
   const [cks, setCks] = useState([]);
 
@@ -43,9 +43,9 @@ export default function ModalCK({kr}) {
           <div className="modal-rating">
             {(() => {
               switch (kr.rating) {
-                case "Alta":   return <h3 className="rating-high">{kr.rating}</h3>;
-                case "Média": return <h3 className="rating-medium">{kr.rating}</h3>;
-                case "Baixa":  return <h3 className="rating-low">{kr.rating}</h3>;
+                case "Alto":   return <h3 className="rating-high">{kr.rating}</h3>;
+                case "Médio": return <h3 className="rating-medium">{kr.rating}</h3>;
+                case "Baixo":  return <h3 className="rating-low">{kr.rating}</h3>;
                 default:      return <h3>{kr.rating}</h3>;
               }
             })()}

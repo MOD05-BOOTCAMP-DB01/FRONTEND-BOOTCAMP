@@ -57,7 +57,7 @@ export default function Navbar() {
             })
             ) }
             
-            {isLogged &&
+            {!loggedUser.role &&
             (
               SidebarNotLogged.map((item, index) => {
               return (

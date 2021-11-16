@@ -26,11 +26,11 @@ export default function CardKr({kr,objectiveId}) {
       <div className="kr">
         <div className="kr-statusBar">
           {(() => {
-            if (kr.rating === "Baixa") {
+            if (kr.rating === "Baixo") {
               return <div className="statusBar-low"></div>;
-            }else if(kr.rating === 'Média'){
+            }else if(kr.rating === 'Médio'){
                 return <div className="statusBar-medium"></div>;
-            }else if(kr.rating === "Alta"){
+            }else if(kr.rating === "Alto"){
               return <div className="statusBar-high"></div>;
             }else{
               return <div></div>;
@@ -80,13 +80,16 @@ export default function CardKr({kr,objectiveId}) {
             })()}
           </div>
 
-          <div className="kr-body-learnMore">
-            <spam onClick={() => handleShowViewMore()}>{!showViewMore ? "Ver mais": "Ver menos"}</spam>
+          <div className="kr-body-learnMore" onClick={() => handleShowViewMore()}>
+            <spam >{!showViewMore ? "Ver mais": "Ver menos"}</spam>
           </div> 
             
         </div>
-        {showViewMore ? <ViewMoreKr className="kr-viewMore" kr={kr}/> : ""}
+
+        <div className="kr-viewMore">
+          {showViewMore ? <ViewMoreKr kr={kr}/> : ""}
           
+        </div>  
       </div>
   )
 }

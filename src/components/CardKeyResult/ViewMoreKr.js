@@ -1,11 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { BiCommentDots } from 'react-icons/bi'
+import ModalCk from '../CardCheckin/Modal/ModalCk'
 
 import './viewMoreKr.css'
 
 export default function ViewMoreKr({kr}) {
   console.log("kr viewMoreKr", kr)
+  const [showModalCk, setShowModalCk] = useState(false)
+
+  const handleShowCk = () => {
+    setShowModalCk(!showModalCk)
+  }
+
   return (
     <div className="area-viewMoreKr">
       <div className="viewMoreKr">
@@ -29,14 +36,18 @@ export default function ViewMoreKr({kr}) {
           <h3>{kr.goal_value}</h3>
         </div>
 
-        <div className="viewMoreKr-checkin">
-          <h3>Check-in</h3>
+        <div className="viewMoreKr-checkin" onClick={() => handleShowCk()}>
+          <h3> {showModalCk ? "Check-out" : "Check-in"}</h3>
         </div>
 
         <div className="viewMoreKr-done">
           <input type="checkbox"></input>
         </div>
 
+      </div>
+
+      <div className="viewMoreKr-modalCk">
+        {showModalCk ? <ModalCk kr={kr} /> : ''}
       </div>
     </div>
   )

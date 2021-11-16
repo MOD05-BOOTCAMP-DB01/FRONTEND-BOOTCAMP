@@ -102,12 +102,12 @@ export default function CardObjective(props) {
 
       <div className="objective-cardKr">
         {krs.map( kr =>
-            <CardKr key={kr.id} kr={kr} objectiveId={objective.id} />
+            <CardKr key={kr.id} kr={kr} objectiveId={objective.id} className="objective-cardKr"/>
         )}
-              {showAddKr
-        ? <CreateKeyResult objectiveId={objective.id}/>
-        : ""
-              }
+        {showAddKr
+          ? <CreateKeyResult objectiveId={objective.id}/>
+          : ""
+        }
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { MdOutlineLibraryAdd } from 'react-icons/md'
 import { GiMagnifyingGlass } from 'react-icons/gi'
 
-import ModalCK from './Modal/ModalCK'
+import ModalCk from './Modal/ModalCk'
 
 // CSS
 import './cardCk.css'
@@ -61,7 +61,7 @@ export default function CardCk({ krs }) {
           </div>
         ))}
 
-        <div>{showModalCk ? <ModalCK kr={kr} /> : ''}</div>
+        <div>{showModalCk ? <ModalCk kr={kr} /> : ''}</div>
       
     </div>
   )

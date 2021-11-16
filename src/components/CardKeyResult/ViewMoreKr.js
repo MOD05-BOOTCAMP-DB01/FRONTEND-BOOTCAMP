@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 
 import { BiCommentDots } from 'react-icons/bi'
+import { MdSubdirectoryArrowRight } from 'react-icons/md'
+
 import ModalCk from '../CardCheckin/Modal/ModalCk'
 
 import './viewMoreKr.css'
@@ -15,7 +17,11 @@ export default function ViewMoreKr({kr}) {
 
   return (
     <div className="area-viewMoreKr">
+
       <div className="viewMoreKr">
+        <div className="viewMore-icon-subRigth">
+          <MdSubdirectoryArrowRight/>
+        </div>
 
         <div className="viewMoreKr-comment">
             <p>{kr.comment}</p>

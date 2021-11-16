@@ -9,6 +9,11 @@
   
 }
 
+.viewMore-icon-subRigth{
+  font-size: 2.5em;
+  margin-left: -2.5em;
+}
+
 .viewMoreKr{
   /* margin-top: .3em; */
   position: relative;
@@ -21,7 +26,7 @@
   justify-content: space-around;
   align-items: center;
   z-index: 99;
-  border-radius: 0 .8em .8em 0;
+  border-radius: .8em .8em 0 0;
 
 }
 
@@ -32,9 +37,9 @@
   text-align: center;
   overflow-x: hidden;
   overflow-y: hidden;
+  font-size: 1.2em;
 }
-.viewMoreKr-comment{
-}
+
 .viewMoreKr-comment p{
   display: none;
   width: 5%;
@@ -123,6 +128,6 @@
 
 /* */
 .viewMoreKr-modalCk{
-  width: 100%;
+  /* width: 100%; */
   height: 100vh;
 }

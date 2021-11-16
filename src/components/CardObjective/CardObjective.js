@@ -85,7 +85,7 @@ export default function CardObjective(props) {
           </div>
           <div className="objective-date">
             <h3>
-              {objective.initial_date} {"-"} {objective.end_date}
+            {new Date(objective.initial_date).toLocaleDateString('pt-BR')} {"-"}  {new Date(objective.end_date).toLocaleDateString('pt-BR')}
             </h3>
           </div>
         </div>

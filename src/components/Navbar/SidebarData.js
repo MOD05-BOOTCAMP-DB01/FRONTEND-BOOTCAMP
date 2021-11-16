@@ -14,7 +14,7 @@ export const SidebarNotLogged = [
   
   {
     title: "Sobre nós",
-    path: "/#",
+    path: "/sobre",
     icon: <FiInfo />,
     cName: "nav-text",
   },

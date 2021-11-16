@@ -32,12 +32,18 @@
   text-align: center;
   overflow-x: hidden;
   overflow-y: hidden;
+  transform-origin: left center;
+  transition: all 0.2s linear 0s;
 }
 .viewMoreKr-comment{
 }
 .viewMoreKr-comment p{
   display: none;
   width: 5%;
+
+  transform: scale(0,1);
+  transform-origin: left center;
+  transition: all 0.2s linear 0s;
 }
 .viewMoreKr-comment:hover p{
   font-size: 1rem;
@@ -45,7 +51,6 @@
   position: absolute;
   margin-left: 7em;
   margin-top: -2.5em;
- 
   z-index: 9;
   width: 15em;
   height: 7em;
@@ -55,6 +60,10 @@
   align-items: center;
   text-decoration-skip: center;
   text-align: center;
+
+  transform: scale(1,1);
+  transform-origin: left center;
+  transition: all 0.2s linear 0s;
 }
 .icon-comment{
   width: 100%;

@@ -47,7 +47,7 @@
   
 }
 .objective-title h2{
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 .objective-date{
@@ -89,12 +89,9 @@
 
 }
 
-
-
-
 .objective-cardKr{
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }

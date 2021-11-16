@@ -7,30 +7,26 @@ import Input from './../../../components/Input/Input'
 import './UpdateUsers.css'
 import {toast} from 'react-toastify'
 import  Button  from "./../../../components/Button/Button";
+import { useGlobalContext } from "../../../context/context";
 
 export default function UpdateUsers() {
   const id= localStorage.getItem("USER_ID");
+  const {loadUniqueUser,loggedUser} = useGlobalContext();
   let [searchString,setSearchString] = useState('')
   let [users,setUsers] = useState([])
-  const [isAdmin,setIsAdmin] = useState(false);
- const [loggedUser,setLoggedUser] = useState([])
+ 
+
   useEffect(()=>{
     const loadAllUsers = async () => {
       const response = await Api.buildApiGetRequest(Api.readAllUsers(),true);
       const data = await response.json();
       setUsers(data)
     }
-
-    const loadUniqueUser = async()=>{
-      const response = await Api.buildApiGetRequest(Api.readUserbyId(id),true);
-      const data = await response.json();
-      setLoggedUser(data.user);
-    }
-    loadUniqueUser();
     loadAllUsers();
+    loadUniqueUser(id);
   },[])
 
-  
+    
 
   const roleOptions = [
   { value: 'ADMIN', label: 'Administrador' },
@@ -75,7 +71,6 @@ const handleSubmit = async(e)=>{
       })
     }
     
-    console.log(loggedUser.user)
 
   return (<>
   <div className="update-user-container">

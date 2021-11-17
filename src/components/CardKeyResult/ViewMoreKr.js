@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { BiCommentDots } from "react-icons/bi";
-import { MdSubdirectoryArrowRight } from "react-icons/md";
+import { GoCommentDiscussion } from 'react-icons/go'
+import { MdSubdirectoryArrowRight } from 'react-icons/md'
 
 import ModalCk from "../CardCheckin/Modal/ModalCK";
 
@@ -23,8 +23,8 @@ export default function ViewMoreKr({ kr }) {
         </div>
 
         <div className="viewMoreKr-comment">
-          <p>{kr.comment}</p>
-          <BiCommentDots className="icon-comment" />
+            <p>{kr.comment}</p>
+            <GoCommentDiscussion className="icon-comment" />
         </div>
 
         <div className="viewMoreKr-frequency">

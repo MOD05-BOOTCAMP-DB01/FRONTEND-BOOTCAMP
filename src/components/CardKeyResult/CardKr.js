@@ -4,6 +4,7 @@ import { BiEdit } from 'react-icons/bi'
 import { RiDeleteBin2Line } from 'react-icons/ri'
 
 import ViewMoreKr from './ViewMoreKr'
+import UpdateKeyResult from "../../Pages/KeyResult/UpdateKeyResult/UpdateKeyResult"
 
 
 import { useGlobalContext } from "../../context/context";
@@ -13,13 +14,20 @@ import './cardKr.css'
 
 
 export default function CardKr({kr,objectiveId}) {
-  console.log("krs do card kr=", kr)
-  console.log("objectiveId cardKr=", objectiveId)
-  const {handleShowAddKr, showAddKr} = useGlobalContext()
+  
+  const { showUpdateKr, openShowUpdateKr} = useGlobalContext()
   const [showViewMore, setShowViewMore] = useState(false)
+  const [showTeste, setShowTeste] = useState(false)
+  
   
   const handleShowViewMore = () => {
     setShowViewMore(!showViewMore)
+  }
+
+  const handleShowTeste = () => {
+    setShowTeste(true)
+    openShowUpdateKr()
+    
   }
 
   return (
@@ -45,7 +53,7 @@ export default function CardKr({kr,objectiveId}) {
           <div className="kr-header-buttons">
             
 
-            <BiEdit className="kr-header-icons"/>
+            <BiEdit className="kr-header-icons" onClick={() => handleShowTeste()}/>
 
             <RiDeleteBin2Line className="kr-header-icons"/>
 
@@ -86,10 +94,14 @@ export default function CardKr({kr,objectiveId}) {
             
         </div>
 
+
         <div className="kr-viewMore">
           {showViewMore ? <ViewMoreKr kr={kr}/> : ""}
           
         </div>  
+        <div>
+          {showTeste && !showUpdateKr ? <UpdateKeyResult kr={kr}/> : ""}
+        </div>
       </div>
   )
 }

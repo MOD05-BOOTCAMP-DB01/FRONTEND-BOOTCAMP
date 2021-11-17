@@ -11,14 +11,15 @@
 .modalCk {
   position: absolute;
   z-index: 99;
-  width: 98.6%;
+  width: 98.1%;
   height: 30em;
-  background-color: #94A0A0;
+  background-color: rgb(223, 233, 236);
   border-radius: 0  0 .8em .8em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-top: 1px solid rgb(243, 243, 243);
+  margin-right: .2em;
 }
 
 .modal-title {
@@ -46,7 +47,7 @@
   font-size: 2.5em;
   margin-left: 1em;
   cursor: pointer;
-  
+  color: #87008B;
 }
 
 .modal-rating{
@@ -79,27 +80,30 @@
 }
 
 .modal-areaCardCk {
-  width: 90%;
-  height: 15em;
+  width: 50%;
+  height: 18em;
   display: flex;
   justify-content: center;
   margin: 0 auto;
   align-items: center;
   /* background-color: white; */
+  flex-wrap: wrap;
 }
 
 .cardCk {
-  width: 10em;
-  height: 12em;
+  width: 7em;
+  height: 6em;
   background-color: #006d99;
   border-radius: 1em;
   margin-left: 1.5em;
   color: rgba(255, 255, 255, 1);
+  margin-bottom: 1em;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  
 
   -webkit-box-shadow: 2px 2px 2px 0px rgb(0, 0, 0);
   -moz-box-shadow: 2px 2px 2px 0px rgb(7, 7, 7);
@@ -113,20 +117,21 @@
   align-items: center;
 }
 .cardCk-date {
-  background-color: #0099b7;
+  background-color: #0099B7;
   border-radius: 1em 1em 0 0;
   height: 3em;
 }
 .cardCk-status {
-  height: 6em;
+  margin-top: .5em;
+  height: 1.5em;
 }
 .cardCk-iconEdit {
-  height: 3em;
-  width: 100%;
+  height: 1.5em;
+  width: 90%;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  margin-right: 1em;
+  /* color: black; */
 }
 .icon-edit {
   cursor: pointer;

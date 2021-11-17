@@ -1,26 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 import { GoCommentDiscussion } from 'react-icons/go'
 import { MdSubdirectoryArrowRight } from 'react-icons/md'
 
-import ModalCk from '../CardCheckin/Modal/ModalCk'
+import ModalCk from "../CardCheckin/Modal/ModalCK";
 
-import './viewMoreKr.css'
+import "./viewMoreKr.css";
 
-export default function ViewMoreKr({kr}) {
-  console.log("kr viewMoreKr", kr)
-  const [showModalCk, setShowModalCk] = useState(false)
+export default function ViewMoreKr({ kr }) {
+  console.log("kr viewMoreKr", kr);
+  const [showModalCk, setShowModalCk] = useState(false);
 
   const handleShowCk = () => {
-    setShowModalCk(!showModalCk)
-  }
+    setShowModalCk(!showModalCk);
+  };
 
   return (
     <div className="area-viewMoreKr">
-
       <div className="viewMoreKr">
         <div className="viewMore-icon-subRigth">
-          <MdSubdirectoryArrowRight/>
+          <MdSubdirectoryArrowRight />
         </div>
 
         <div className="viewMoreKr-comment">
@@ -49,12 +48,11 @@ export default function ViewMoreKr({kr}) {
         <div className="viewMoreKr-done">
           <input type="checkbox"></input>
         </div>
-
       </div>
 
       <div className="viewMoreKr-modalCk">
-        {showModalCk ? <ModalCk kr={kr} /> : ''}
+        {showModalCk ? <ModalCk kr={kr} /> : ""}
       </div>
     </div>
-  )
+  );
 }

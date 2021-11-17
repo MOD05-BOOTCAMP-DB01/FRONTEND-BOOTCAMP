@@ -3,7 +3,6 @@ import { IconContext } from "react-icons";
 import { BsGithub } from "react-icons/bs";
 import { AiFillLinkedin } from "react-icons/ai";
 import "./AboutUs.css";
-import "../../Assets/janice.png";
 
 function AboutUs() {
     return (

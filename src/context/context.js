@@ -8,6 +8,7 @@ const AppProvider = ({ children }) => {
    const [login, setLogin] = useState(false);
 
   const [showAddKr, setShowAddKr] = useState(false);
+  const [showUpdateKr, setShowUpdateKr] = useState(false);
   const [krs, setKrs] = useState([]);
   
 
@@ -15,7 +16,14 @@ const AppProvider = ({ children }) => {
     setShowAddKr(!showAddKr);
     
   }
-
+  const closeShowUpdateKr = () => {
+    setShowUpdateKr(true);
+    
+  }
+  const openShowUpdateKr = () => {
+    setShowUpdateKr(false);
+    
+  }
  
   const loadKr = async (id) => {
     const response = await Api.buildApiGetRequest(Api.readKeyResultsByObjectivesId(id),true)
@@ -40,7 +48,7 @@ const AppProvider = ({ children }) => {
   const increment = () =>
     setValue((prevState) => (prevState >= 100 ? 0 : prevState + 20));
   return (
-    <AppContext.Provider value={{ completeTask,setLogin,login,handleShowAddKr, showAddKr,loadUniqueUser,loggedUser,setLoggedUser }}>
+    <AppContext.Provider value={{ completeTask,setLogin,login,handleShowAddKr, showAddKr,loadUniqueUser,loggedUser,setLoggedUser, closeShowUpdateKr,  showUpdateKr, openShowUpdateKr }}>
       {children}
     </AppContext.Provider>
   );

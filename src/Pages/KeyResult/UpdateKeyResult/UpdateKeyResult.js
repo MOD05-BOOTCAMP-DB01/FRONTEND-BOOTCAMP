@@ -14,7 +14,7 @@ import { useGlobalContext } from "../../../context/context";
 import './updateKeyResult.css'
 
 import { Api } from '../../../Api/Api';
-import schema from '../../CreateKeyResult/schema';
+import schema from '../CreateKeyResult/schema';
 import { useHistory } from 'react-router';
 
 export default function UpdateKeyResult({objectiveId,kr}) {
@@ -22,6 +22,7 @@ export default function UpdateKeyResult({objectiveId,kr}) {
 
   const [username, setUsername] = useState([]);
   const [ownerId, setOwnerId] = useState("");
+  const [newKr, setNewKr] = useState(kr);
 
   const {closeShowUpdateKr, loadKr} = useGlobalContext()
 
@@ -53,18 +54,17 @@ export default function UpdateKeyResult({objectiveId,kr}) {
   const onSubmit = async (values, { resetForm }) => {
     console.log("values =", values)
 
-    const objective = objectiveId 
-    const owner = ownerId
+    const owner = ownerId || selectedOption.value
+    const rating = ownerId || selectedOption.value
 
     const payload = {
-      ...values,
-      objective,
+      ...newKr,
       owner,
     }
-    console.log("payload =", payload)
+    console.log("payload updateKr=", payload)
 
-    const response = await Api.buildApiPostRequest(
-      Api.createKrUrl(),
+    const response = await Api.buildApiPatchRequest(
+      Api.updateKrsUrl(kr.id),
       payload,
       true
     );
@@ -73,16 +73,11 @@ export default function UpdateKeyResult({objectiveId,kr}) {
 
     console.log(response);
 
-    if (response.status === 201) {
-      resetForm()
-      loadKr(objectiveId)
-      toast.success('Resultado chave criado com sucesso!',{
-        zIndex: 9999,
-        hideProgressBar: true,
-        autoClose: 2000,
-        position: toast.POSITION.TOP_CENTER,
-      })
-      
+    if (response.status === 200) {
+      toast.success('Resultado-chave editado com sucesso!',{theme: "dark"})
+
+      closeShowUpdateKr()
+
     }
    
   }
@@ -109,7 +104,19 @@ export default function UpdateKeyResult({objectiveId,kr}) {
     console.log("select = ", selectedOption);
     setOwnerId(selectedOption.value)
   }
+
+  const handleChange = (evento) => {
+    const auxKr = { ...kr };
+    auxKr[evento.target.name] = evento.target.value;
+    setNewKr(auxKr);
+  }
+
+  const selectedOption = {
+    value: kr.owner.id,
+    label: kr.owner.username,
+  }
   
+  console.log("newKr=", newKr);
 
   return (
     <div className="area-CreateKeyResult" >
@@ -121,16 +128,15 @@ export default function UpdateKeyResult({objectiveId,kr}) {
          validateOnMount
          onReset={onSubmit}
          initialValues={{
-          key_result: '',
-          comment: '',
-          rating: null,
-          status: null,
-          comment: '',
-          type: '',
-          frequency: '',
-          initial_value: null,
-          goal_value: null,
-          done: false,
+          key_result: kr.key_result,
+          comment: kr.comment,
+          rating: kr.rating,
+          status: kr.status,
+          type: kr.type,
+          frequency: kr.frequency,
+          initial_value: kr.initial_value,
+          goal_value: kr.goal_value,
+          done: kr.done,
         }}
       
           render={({ values, errors, isvalid }) => (
@@ -157,12 +163,16 @@ export default function UpdateKeyResult({objectiveId,kr}) {
                     <label>Prioridade
                       {errors.rating && <abbr className="fieldError" title={errors.rating}>*</abbr>}
                     </label>
-                    <Field as="select" name="rating" type="text" className="field">
+                    <select name="rating" 
+                    type="text" 
+                    className="field" 
+                    value={newKr.rating}
+                    onChange={handleChange}>
                       <option ></option>
-                      <option value='Baixa'>Baixa</option>
-                      <option value='Média'>Média</option>
-                      <option value='Alta'>Alta</option>
-                    </Field>
+                      <option value='Baixo'>Baixo</option>
+                      <option value='Médio'>Médio</option>
+                      <option value='Alto'>Alto</option>
+                    </select>
                     <ErrorMessage name="rating">
                       {msg => <span className="fieldError">{msg}</span>}
                     </ErrorMessage>
@@ -225,7 +235,10 @@ export default function UpdateKeyResult({objectiveId,kr}) {
 
                   <div className="formKr-Items">
                     <label htmlFor="">Dono</label>
-                    <Select options={username[0]} className="formKr-Items-select" onChange={handleOwnerChange}/>
+                    <Select 
+                    options={username[0]} className="formKr-Items-select" 
+                    onChange={handleOwnerChange}
+                    defaultValue={selectedOption}/>
                   </div>
                 </div>
 

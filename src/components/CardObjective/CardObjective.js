@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import CreateKeyResult from '../../Pages/CreateKeyResult/CreateKeyResult';
+import CreateKeyResult from '../../Pages/KeyResult/CreateKeyResult/CreateKeyResult';
 
 import { useGlobalContext } from "../../context/context";
 
@@ -12,13 +12,13 @@ import { cks } from "../../Api/mock/data";
 import data from "../../Api/mock/data";
 import { Api } from "../../Api/Api";
 import CardKr from "../CardKeyResult/CardKr";
-import CardCk from "../CardCheckin/CardCk";
+
 
 export default function CardObjective(props) {
 
   const [objective, setObjective] = useState(undefined);
   const [krs, setKrs] = useState([]);
-  const {handleShowAddKr, showAddKr} = useGlobalContext()
+  const {handleShowAddKr, showAddKr, closeShowUpdateKr} = useGlobalContext()
   
 
   const [changeView, setChangeView] = useState(true);
@@ -58,7 +58,7 @@ export default function CardObjective(props) {
       }
     }
     loadKr()
-  }, [showAddKr]);
+  }, [showAddKr, closeShowUpdateKr]);
 
   if (!objective) {
     return <h3>Loading.. carregando obj</h3>;
@@ -75,8 +75,7 @@ export default function CardObjective(props) {
     // Objective
     <div className="area-cardObjective">
       <div className="area-cardObjective-title">
-        <h1>Key Results</h1>
-        <h2>Resultados-chave</h2>
+        <h2>Resultados-Chave</h2>
       </div>
       <div className="cardObjective">
         <div className="objective-header">

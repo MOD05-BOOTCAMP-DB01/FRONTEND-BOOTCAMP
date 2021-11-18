@@ -9,10 +9,10 @@ import Select from "react-select";
 import { toast, useToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
-import { useGlobalContext } from "../../context/context";
+import { useGlobalContext } from "../../../context/context";
 
 import './createKeyResult.css'
-import { Api } from '../../Api/Api';
+import { Api } from '../../../Api/Api';
 import schema from './schema';
 import { useHistory } from 'react-router';
 
@@ -49,9 +49,11 @@ export default function CreateKeyResult({objectiveId}) {
 
     const objective = objectiveId 
     const owner = ownerId
+    const status = 0
 
     const payload = {
       ...values,
+      status,
       objective,
       owner,
     }
@@ -68,15 +70,9 @@ export default function CreateKeyResult({objectiveId}) {
     console.log(response);
 
     if (response.status === 201) {
-      resetForm()
+      toast.success('Resultado-chave criado com sucesso!',{theme: "dark"})
+      
       handleShowAddKr()
-      loadKr(objectiveId)
-      toast.success('Resultado chave criado com sucesso!',{
-        zIndex: 9999,
-        hideProgressBar: true,
-        autoClose: 2000,
-        position: toast.POSITION.TOP_CENTER,
-      })
       
     }
    
@@ -154,9 +150,9 @@ export default function CreateKeyResult({objectiveId}) {
                     </label>
                     <Field as="select" name="rating" type="text" className="field">
                       <option ></option>
-                      <option value='Baixa'>Baixa</option>
-                      <option value='Média'>Média</option>
-                      <option value='Alta'>Alta</option>
+                      <option value='Baixo'>Baixo</option>
+                      <option value='Médio'>Médio</option>
+                      <option value='Alto'>Alto</option>
                     </Field>
                     <ErrorMessage name="rating">
                       {msg => <span className="fieldError">{msg}</span>}

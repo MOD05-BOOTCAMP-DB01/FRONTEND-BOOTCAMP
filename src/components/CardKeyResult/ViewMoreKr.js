@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { GoCommentDiscussion } from 'react-icons/go'
 import { MdSubdirectoryArrowRight } from 'react-icons/md'
 
-import ModalCk from "../CardCheckin/Modal/ModalCK";
+import ModalCk from "../CardCheckin/Modal/ModalCk";
 
 import "./viewMoreKr.css";
 

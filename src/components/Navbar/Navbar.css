@@ -65,13 +65,15 @@
 
 .navbar-toggle {
   background-color: #006D99;
-  width: 100%;
-  height: 80px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
 }
 
 .span-name span {
   margin-left: 16px;
 }
+

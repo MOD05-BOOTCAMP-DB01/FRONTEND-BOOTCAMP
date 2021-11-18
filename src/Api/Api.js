@@ -64,6 +64,6 @@ export const Api = {
   buildApiDeleteRequest: (url, auth) =>
     fetch(url, {
       method: "DELETE",
-      headers: auth ? Api.authHeader() : {},
+      headers: new Headers(auth ? Api.authHeader() : {}),
     }),
 };

@@ -7,8 +7,19 @@ const Button = (props) => {
     )
 }
 
-export const ViewMoreButton = (props)=>{
- return <a class="effect effect-5" href="#" title="Learn More">Learn More</a>
+export const ViewMoreButton = ({children})=>{
+ return <a class="effect effect-5" href="#" title="Learn More">{children}</a>
+}
+
+
+export const DefaultButton = ({children}) =>{
+    return <button class="btn-default">
+        <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+        </svg>
+        <span>{children}</span>
+      </button>
 }
 
 export default Button

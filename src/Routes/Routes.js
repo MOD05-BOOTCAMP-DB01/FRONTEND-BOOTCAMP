@@ -8,10 +8,9 @@ import CreateObjective from "../Pages/Objective/CreateObjective/CreateObjective"
 import UpdateObjective from "../Pages/Objective/UpdateObjective/UpdateObjective";
 import Page404 from "../Pages/Page404/Page404";
 import UpdateUsers from "../Pages/Users/UpdateUsers/UpdateUsers";
+import UpdateUsersAdm from "../Pages/Users/Adm/UpdateUsersAdm";
 import GuardedRoute from "../components/GuardedRoute/GuardedRoute";
 import AboutUs from "../Pages/AboutUs/AboutUs";
-
-
 
 function Routes() {
   return (
@@ -23,6 +22,10 @@ function Routes() {
         <GuardedRoute path="/objective" component={CreateObjective} />
         <GuardedRoute path="/objectives" component={Objective} />
         <GuardedRoute path="/editar/usuario" component={UpdateUsers} />
+        <GuardedRoute
+          path="/editar/atualizar/user/:id"
+          component={UpdateUsersAdm}
+        />
         <GuardedRoute path="/editar/objetivo/:id" component={UpdateObjective} />
         <GuardedRoute path="/logout" component={Logout} />
         <Route path="*" component={Page404} />

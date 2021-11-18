@@ -58,12 +58,12 @@ export default function Register({setRegister,props}) {
             <input
               id="username"
               type="text"
-              placeholder="Username:"
+              placeholder="Nome"
               name="username"
             />
           </div>
           <div className="form__card--input-register">
-            <input id="email" type="text" placeholder="E-mail:" name="email" />
+            <input id="email" type="text" placeholder="E-mail" name="email" />
             <span className="form__card--icon-left-register">
               <AiOutlineMail />
             </span>
@@ -75,7 +75,7 @@ export default function Register({setRegister,props}) {
             <input
               id="password"
               type="password"
-              placeholder="Senha:"
+              placeholder="Senha"
               name="senha"
             />
           </div>
@@ -83,7 +83,7 @@ export default function Register({setRegister,props}) {
             <input
               id="passwordConfirmation"
               type="password"
-              placeholder="Confirme Senha:"
+              placeholder="Confirmar Senha"
               name="passwordConfirmation"
             />
             <span className="form__card--icon-left-register">

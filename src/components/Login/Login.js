@@ -53,7 +53,7 @@ export default function Login() {
                 type="text"
                 name="email"
                 id="email"
-                placeholder="E-mail:"
+                placeholder="E-mail"
               />
             </div>
             <div className="form__card--input">
@@ -61,7 +61,7 @@ export default function Login() {
                 type="password"
                 name="password"
                 id="password"
-                placeholder="Senha:"
+                placeholder="Senha"
               />
               <span className="form__card--icon-left">
                 <MdOutlineLockOpen />

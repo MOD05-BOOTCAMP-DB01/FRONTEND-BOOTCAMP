@@ -8,16 +8,22 @@
     border-color: rgb(243, 243, 243) rgb(243, 243, 243) rgb(36, 36, 153);
 }
 
-.about_team {
+.about_team_front-end {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    min-height: 100vh;
+    z-index: initial;
+}
+
+.about_team_back-end {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     z-index: initial;
 }
 
 .about_team_card {
-    padding: 3vh;
+    padding: 2vh;
     align-items: center;
 }
 

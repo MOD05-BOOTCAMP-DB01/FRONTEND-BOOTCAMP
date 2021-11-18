@@ -5,6 +5,7 @@ import { Api } from "./../../Api/Api";
 import { Link } from "react-router-dom";
 import "./Objective.css";
 import { useGlobalContext } from "../../context/context";
+import { SiTarget } from "react-icons/si";
 import Button,{ViewMoreButton} from './../Button/Button'
 
 const Objective = () => {
@@ -30,6 +31,7 @@ const Objective = () => {
   return (
     <div className="objective-container">
     <div className="objective-container-heading">
+    {/* <SiTarget /> */}
     <h1>Objetivos</h1>
     </div>
       {objectives.map((objective) => {

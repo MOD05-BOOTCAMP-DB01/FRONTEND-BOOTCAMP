@@ -65,7 +65,7 @@ export default function ModalCk({kr}) {
                 <h3>27</h3>
                 <h4>Jan</h4>
               </div>
-              <div className="">
+              <div className="cardCK-value">
                 <h3>{ck.current_value}</h3>
               </div>
               <div className="">

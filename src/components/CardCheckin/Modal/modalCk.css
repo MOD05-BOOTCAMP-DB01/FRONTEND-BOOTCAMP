@@ -84,7 +84,7 @@
 
 .cardCk {
   width: 10em;
-  height: 6em;
+  height: 9em;
   background-color: #fff;
   border-radius: 1em;
   margin-left: 1.5em;
@@ -105,11 +105,7 @@
   justify-content: center;
   align-items: center;
 }
-.cardCk-date {
-  background-color: #0099B7;
-  border-radius: 1em 1em 0 0;
-  height: 3em;
-}
+
 .cardCk-status {
   margin-top: .5em;
   height: 1.5em;
@@ -170,10 +166,18 @@ color:rgb(52, 192, 94);
   align-items: flex-start;
   width:100%;
   padding-left: 1rem;
+  
 
 }
 
 .cardCK-date h3{
   margin:0;
   
+}
+
+.cardCK-value{
+      position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
 }

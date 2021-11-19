@@ -50,6 +50,7 @@
     margin: 0;
     padding-right: 70px;
     text-transform: capitalize;
+    min-width: 150px;
   }
 
  

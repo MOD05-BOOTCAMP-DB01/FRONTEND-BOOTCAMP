@@ -75,12 +75,12 @@ export default function CardObjective(props) {
     // Objective
     <div className="area-cardObjective">
       <div className="area-cardObjective-title">
-        <h2>Resultados-Chave</h2>
+        <h2>Resultados-chave</h2>
       </div>
       <div className="cardObjective">
         <div className="objective-header">
           <div className="objective-title">
-            <h2>{objective.objective}</h2>
+            <h2><span className="objective-info">Titulo:</span>{objective.objective}</h2>
           </div>
           <div className="objective-date">
             <h3>

@@ -36,6 +36,7 @@ export default function CardKr({kr,objectiveId}) {
   }
 
   return (
+    <>
       <div className="kr">
         <div className="kr-statusBar">
           {(() => {
@@ -100,10 +101,7 @@ export default function CardKr({kr,objectiveId}) {
         </div>
 
 
-        <div className="kr-viewMore">
-          {showViewMore ? <ViewMoreKr kr={kr}/> : ""}
-          
-        </div>  
+        
         <div>
           {showOpenUpdatekr && !showUpdateKr ? <UpdateKeyResult kr={kr}/> : ""}
 
@@ -111,5 +109,10 @@ export default function CardKr({kr,objectiveId}) {
 
         </div>
       </div>
+       
+          {showViewMore ? <ViewMoreKr kr={kr}/> : ""}
+          
+       
+        </>
   )
 }

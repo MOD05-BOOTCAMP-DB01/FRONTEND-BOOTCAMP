@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-import { BiEdit } from 'react-icons/bi'
-import { AiOutlineAppstoreAdd } from 'react-icons/ai'
+
+// import { BsFillCircleFill } from 'react-icons/bs'
+import { AiOutlineAppstoreAdd,AiFillPushpin } from 'react-icons/ai'
 
 
 import { Api } from '../../../Api/Api';
@@ -57,15 +58,19 @@ export default function ModalCk({kr}) {
         <div className="modal-areaCardCk">
           {cks.map( ck => (
             <div className="cardCk">
-              <div className="cardCk-date">
-                <h3>{ck.date}</h3>
+              <div className="checkin-status">
+              <AiFillPushpin/>
               </div>
-              <div className="cardCk-status">
+              <div className="cardCK-date">
+                <h3>27</h3>
+                <h4>Jan</h4>
+              </div>
+              <div className="">
                 <h3>{ck.current_value}</h3>
               </div>
-              <div className="cardCk-iconEdit">
+              <div className="">
                 <h3>
-                  <BiEdit className="icon-edit"/>
+                  {/* <BiEdit className="icon-edit"/> */}
                 </h3>
               </div>
             </div>

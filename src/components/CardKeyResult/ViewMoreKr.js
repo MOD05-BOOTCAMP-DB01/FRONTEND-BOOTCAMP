@@ -15,9 +15,11 @@ export default function ViewMoreKr({ kr }) {
     setShowModalCk(!showModalCk);
   };
 
+  
   return (
     <div className="area-viewMoreKr">
       <div className="viewMoreKr">
+      <div className="viewMore-header">
         <div className="viewMore-icon-subRigth">
           <MdSubdirectoryArrowRight />
         </div>
@@ -48,10 +50,10 @@ export default function ViewMoreKr({ kr }) {
         <div className="viewMoreKr-done">
           <input type="checkbox"></input>
         </div>
-      </div>
-
-      <div className="viewMoreKr-modalCk">
-        {showModalCk ? <ModalCk kr={kr} /> : ""}
+        </div>
+        <div className={showModalCk? 'mostra':'esconde'}> 
+           <ModalCk kr={kr} />
+        </div>
       </div>
     </div>
   );

@@ -1,17 +1,11 @@
-.area-modalCk{
-  position: absolute;
-  z-index: 99;
-  width: 86.2%;
-  height: 30em;
-  background-color: rgb(243, 243, 243);
-  display: flex;
-  justify-content: flex-end;
-}
 
+
+.viewMore-header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 .modalCk {
-  position: absolute;
-  z-index: 99;
-  width: 98.1%;
   height: 30em;
   background-color: rgb(223, 233, 236);
   border-radius: 0  0 .8em .8em;
@@ -19,7 +13,7 @@
   flex-direction: column;
   justify-content: space-between;
   border-top: 1px solid rgb(243, 243, 243);
-  margin-right: .2em;
+ 
 }
 
 .modal-title {
@@ -80,7 +74,6 @@
 }
 
 .modal-areaCardCk {
-  width: 50%;
   height: 18em;
   display: flex;
   justify-content: center;
@@ -91,23 +84,20 @@
 }
 
 .cardCk {
-  width: 7em;
+  width: 10em;
   height: 6em;
-  background-color: #006d99;
+  background-color: #fff;
   border-radius: 1em;
   margin-left: 1.5em;
-  color: rgba(255, 255, 255, 1);
+  color: #035869;
   margin-bottom: 1em;
-
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  
-
-  -webkit-box-shadow: 2px 2px 2px 0px rgb(0, 0, 0);
-  -moz-box-shadow: 2px 2px 2px 0px rgb(7, 7, 7);
-  box-shadow: 2px 2px 2px 0px rgb(7, 7, 7);
+  box-shadow: 2px 2px 2px 0px rgba(7, 7, 7,0.3);
+  position:relative;
 }
 .cardCk-date,
 .cardCk-status {
@@ -124,6 +114,13 @@
 .cardCk-status {
   margin-top: .5em;
   height: 1.5em;
+}
+.checkin-status{
+position: absolute;
+right:10px;
+font-size:2rem;
+color:rgb(52, 192, 94);
+  
 }
 .cardCk-iconEdit {
   height: 1.5em;
@@ -164,4 +161,20 @@
 .modalFooter-owner{
   width: 15em;
 
+}
+
+
+
+.cardCK-date{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width:100%;
+  padding-left: 1rem;
+
+}
+
+.cardCK-date h3{
+  margin:0;
+  
 }

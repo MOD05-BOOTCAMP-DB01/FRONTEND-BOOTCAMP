@@ -1,7 +1,7 @@
 import React from "react";
-import { AiFillHome } from "react-icons/ai";
 import { BiTask,BiTargetLock } from "react-icons/bi";
-import { FiSettings } from "react-icons/fi";
+import { BsHouseDoor } from "react-icons/bs";
+import { AiOutlineUser } from "react-icons/ai";
 import {FiInfo } from "react-icons/fi";
 import {FaRegUserCircle } from "react-icons/fa";
 
@@ -10,7 +10,7 @@ export const SidebarNotLogged = [
   {
     title: "Login",
     path: "/",
-    icon: <AiFillHome />,
+    icon: <BsHouseDoor />,
     cName: "nav-text",
   },
   
@@ -40,7 +40,7 @@ export const SidebarLogged= [
   {
     title: "Logout",
     path: "/logout",
-    icon: <AiFillHome />,
+    icon: <BsHouseDoor />,
     cName: "nav-text",
   },
 ]
@@ -62,7 +62,7 @@ export const SidebarAdmin = [
   {
     title: "Logout",
     path: "/logout",
-    icon: <AiFillHome />,
+    icon: <BsHouseDoor />,
     cName: "nav-text",
   },
 ]
@@ -89,7 +89,7 @@ export const SidebarManager = [
   {
     title: "Logout",
     path: "/logout",
-    icon: <AiFillHome />,
+    icon: <BsHouseDoor />,
     cName: "nav-text",
   },
 ]

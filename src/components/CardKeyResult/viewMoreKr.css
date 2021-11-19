@@ -2,8 +2,7 @@
     margin: 0 0 0.5em 0;
     position: relative;
     border: none;
-  width: 100%;
-    height: 7.1em;
+    width: 100%;
     background-color: rgb(243, 243, 243);
     border-radius: 0.8em 0 0 0.8em;}
 
@@ -19,12 +18,12 @@
     position: relative;
     left: 1.3em;
     width: 84.5%;
-    height: 7.1em;
     background-color: rgb(0 51 94);
     z-index: 99;
     color:#fff;
     border-radius: 0.8em 0.8em 0 0;
     margin-left: 4em;
+    border-radius: 1.3rem;
 
 }
 

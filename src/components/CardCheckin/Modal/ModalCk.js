@@ -33,7 +33,7 @@ export default function ModalCk({kr}) {
 
 
   return (
-    <div className="area-modalCk">
+  
       <div className="modalCk">
         <div className="modal-header">
           {/* <div className="modal-title">
@@ -103,6 +103,6 @@ export default function ModalCk({kr}) {
 
       </div>
 
-    </div>
+
   )
 }

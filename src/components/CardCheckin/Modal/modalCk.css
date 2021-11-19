@@ -6,7 +6,6 @@
     align-items: center;
 }
 .modalCk {
-  height: 30em;
   background-color: rgb(223, 233, 236);
   border-radius: 0  0 .8em .8em;
   display: flex;
@@ -74,13 +73,13 @@
 }
 
 .modal-areaCardCk {
-  height: 18em;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  align-items: center;
-  /* background-color: white; */
-  flex-wrap: wrap;
+     display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 70%;
+    margin-top: 1.8rem;
 }
 
 .cardCk {

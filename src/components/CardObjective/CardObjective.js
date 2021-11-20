@@ -18,7 +18,7 @@ export default function CardObjective(props) {
 
   const [objective, setObjective] = useState(undefined);
   const [krs, setKrs] = useState([]);
-  const {handleShowAddKr, showAddKr, closeShowUpdateKr} = useGlobalContext()
+  const {handleShowAddKr, showAddKr, closeShowUpdateKr, render} = useGlobalContext()
   
 
   const [changeView, setChangeView] = useState(true);
@@ -58,7 +58,7 @@ export default function CardObjective(props) {
       }
     }
     loadKr()
-  }, [showAddKr, closeShowUpdateKr]);
+  }, [showAddKr, closeShowUpdateKr, render]);
 
   if (!objective) {
     return <h3>Loading.. carregando obj</h3>;

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import {Api} from "../../Api/Api";
+
 import { GoCommentDiscussion } from 'react-icons/go'
 import { MdSubdirectoryArrowRight } from 'react-icons/md'
 
@@ -7,14 +9,36 @@ import ModalCk from "../CardCheckin/Modal/ModalCk";
 
 import "./viewMoreKr.css";
 
+
 export default function ViewMoreKr({ kr }) {
+
   console.log("kr viewMoreKr", kr);
   const [showModalCk, setShowModalCk] = useState(false);
-
+  const [newDone, setNewDone] = useState(kr.done);
+  console.log("newDone", newDone);
   const handleShowCk = () => {
     setShowModalCk(!showModalCk);
   };
 
+  const handleDone = async (ev) => {
+    let confirmed = document.getElementById('done')
+
+    
+    if(confirmed.checked) {
+      const payload = {
+        done: true,
+      }
+      console.log("entrou no checked")
+      const response = await Api.buildApiPatchRequest(
+        Api.updateKrsUrl(kr.id),
+        payload,
+        true
+      );
+      setNewDone(true)
+
+    }
+    
+  }
   
   return (
     <div className="area-viewMoreKr">
@@ -48,7 +72,12 @@ export default function ViewMoreKr({ kr }) {
         </div>
 
         <div className="viewMoreKr-done">
-          <input type="checkbox"></input>
+        {newDone ? 
+          <input type="checkbox" id="done" name="done" onClick={handleDone} checked ></input>
+          :
+          <input type="checkbox" id="done" name="done" onClick={handleDone} ></input>
+        }
+          
         </div>
         </div>
         <div className={showModalCk? 'mostra':'esconde'}> 

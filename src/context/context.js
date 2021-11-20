@@ -6,12 +6,18 @@ const AppProvider = ({ children }) => {
   const [loggedUser,setLoggedUser] = useState([])
   const [value, setValue] = useState(0);
   const [login, setLogin] = useState(false);
+  const [render, setRender] = useState(false);
+
 
   const [showAddKr, setShowAddKr] = useState(false);
   const [showUpdateKr, setShowUpdateKr] = useState(false);
   const [krs, setKrs] = useState([]);
   const [showDeletekr, setShowDeleteKr] = useState(false)
   
+  const handleRender = () => {
+    setRender(!render);
+    
+  }
 
   const handleShowAddKr = () => {
     setShowAddKr(!showAddKr);
@@ -49,7 +55,7 @@ const AppProvider = ({ children }) => {
   const increment = () =>
     setValue((prevState) => (prevState >= 100 ? 0 : prevState + 20));
   return (
-    <AppContext.Provider value={{ completeTask,setLogin,login,handleShowAddKr, showAddKr,loadUniqueUser,loggedUser,setLoggedUser, closeShowUpdateKr,  showUpdateKr, openShowUpdateKr, showDeletekr, setShowDeleteKr }}>
+    <AppContext.Provider value={{ completeTask,setLogin,login,handleShowAddKr, showAddKr,loadUniqueUser,loggedUser,setLoggedUser, closeShowUpdateKr,  showUpdateKr, openShowUpdateKr, showDeletekr, setShowDeleteKr, handleRender, render }}>
       {children}
     </AppContext.Provider>
   );

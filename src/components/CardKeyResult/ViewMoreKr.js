@@ -4,6 +4,8 @@ import {Api} from "../../Api/Api";
 
 import { GoCommentDiscussion } from 'react-icons/go'
 import { MdSubdirectoryArrowRight } from 'react-icons/md'
+import { FaRegCalendarPlus } from 'react-icons/fa'
+import { FaRegCalendarTimes } from 'react-icons/fa'
 
 import ModalCk from "../CardCheckin/Modal/ModalCk";
 
@@ -68,7 +70,7 @@ export default function ViewMoreKr({ kr }) {
         </div>
 
         <div className="viewMoreKr-checkin" onClick={() => handleShowCk()}>
-          <h3> {showModalCk ? "Check-out" : "Check-in"}</h3>
+          <h3> {showModalCk ? <FaRegCalendarTimes className="FaRegCalendarTimes"/> : <FaRegCalendarPlus className="FaRegCalendarPlus"/> }</h3>
         </div>
 
         <div className="viewMoreKr-done">

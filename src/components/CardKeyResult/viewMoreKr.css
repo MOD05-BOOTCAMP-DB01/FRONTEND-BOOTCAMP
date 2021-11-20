@@ -14,6 +14,7 @@
 .viewMore-icon-subRigth{
   font-size: 2.4em;
   margin-left: -2.6em;
+  color: black;
 }
 
 .viewMoreKr{
@@ -98,29 +99,12 @@
   margin: 0;
 }
 
-.viewMoreKr-checkin{
-  display: flex;
-  justify-content: center;
-  width: 8em;
-  height: 2.3em;
-  align-items: center;
-  transition: all 0.2s linear 0s;
-  margin-right: 1em;
-  border-radius: .5em;
+.FaRegCalendarTimes, .FaRegCalendarPlus{
   cursor: pointer;
-
-  background-color: #cb9acfd2;
-  color: black;
-  border: 4px solid #87008B;
+  font-size: 1.5em;
 
 }
-.viewMoreKr-checkin:hover{
-  transform-origin: left center;
-  transition: all 0.6s linear .2s;
 
-  background-color: #87008B;
-  color: white;
-}
 
 .viewMoreKr-done input{
   width: 1.5em;

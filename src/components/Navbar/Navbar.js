@@ -8,7 +8,8 @@ import "./Navbar.css";
 import { IconContext } from "react-icons";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
 import { useGlobalContext } from "../../context/context";
-import  logo from './../../Assets/logo2.png'
+import  logo from './../../Assets/logo-side.png'
+import  navLogo from './../../Assets/logo-nav.png'
 export default function Navbar() {
   const {loggedUser} = useGlobalContext();
   const [sidebar, setSidebar] = useState(false);
@@ -36,7 +37,7 @@ export default function Navbar() {
           <Link to="#" className="menu-bars">
             <FaBars onClick={showSidebar} />
           </Link>
-          
+          <img  className="navbar-logo" src={navLogo}/>
         </div>
         
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
@@ -44,7 +45,7 @@ export default function Navbar() {
           <ul className="nav-menu-items" onClick={showSidebar}>
           
             <li className="navbar-toggle">
-            <img src={logo} alt="" width="90px"/>
+            <img src={logo} alt="" width="100px"/>
               <Link to="#" className="menu-bars">
                 <AiOutlineClose />
               </Link>

@@ -10,27 +10,31 @@ import { useGlobalContext } from "../../context/context";
 
 
 import './CardObjective2.css'
+import ModalDelete from '../ModalDelete/ModalDelete';
 const CardObjective2 = ({objective}) => {
     const {  objective:name, initial_date, id, type,owner,end_date,status } = objective;
-    const {loggedUser,loadUniqueUser} = useGlobalContext();
-    const [value,setValue] = useState(0)
+    const {loggedUser} = useGlobalContext();
+    const [isModalOpen,setIsModalOpen]= useState(false);
+    const [value,setValue] = useState(0);
     useEffect(()=>{
         const loadKrsbyObjective= async ()=>{
             const response = await Api.buildApiGetRequest(Api.readKeyResultsByObjectivesId(id),true);
             const data = await response.json();
             
-            let krLength = data.key_results.length;
-            const quantity = data.key_results.map((number)=>{
+            let krLength = data.key_results?.length;
+            const quantity = data.key_results?.map((number)=>{
                 return number.done;
             })
             
-            const teste= quantity.reduce((total, numero) => total + numero, 0);
+            const teste= quantity?.reduce((total, numero) => total + numero, 0);
             const calc = Math.round(teste/krLength * 100);
             setValue(calc);
         }
         loadKrsbyObjective();
         
     },[])
+
+    
 
 
     return (
@@ -72,9 +76,9 @@ const CardObjective2 = ({objective}) => {
                 <BiEdit className="objective-icon" />
               </Link>
               
-              <Link to={`/objective/delete/${id}`}>
-              <RiDeleteBin2Line className="objective-icon" />
-              </Link>
+              
+              <RiDeleteBin2Line className="objective-icon" onClick={()=>setIsModalOpen(!isModalOpen)}/>
+               {isModalOpen && <ModalDelete setIsOpen={setIsModalOpen} objective={objective} />}
               </div>)}
                <Link to={`/objective/${id}`}><ViewMoreButton>Detalhes</ViewMoreButton></Link>
               </div>

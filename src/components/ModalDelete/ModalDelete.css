@@ -14,7 +14,7 @@
 .modal__card {
   background-color: #fefefe;
   color: black;
-  width: 60%;
+  width:40%;
   height: auto;
   border-radius: 20px;
 }
@@ -55,4 +55,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.delete__form-heading{
+  background-color:#00335E;
+  color:#fff;
+  padding: 0.4rem 0 0.4rem 1rem;
+  
+}
+.delete__form-heading h2{
+  font-size: 1.5rem;
+}
+
+
+.delete__form-btns{
+  display:flex;
+}
+
+.delete__form-body{
+  padding: 1rem;
 }

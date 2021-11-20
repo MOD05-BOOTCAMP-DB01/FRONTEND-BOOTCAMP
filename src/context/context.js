@@ -18,6 +18,16 @@ const AppProvider = ({ children }) => {
     setRender(!render);
     
   }
+  const [objective,setObjectives] = useState([])
+
+const getAllObjectives = async () => {
+      const response = await Api.buildApiGetRequest(
+        Api.readAllObjectives(),
+        true
+      );
+      const data = await response.json();
+      setObjectives(data);
+    };
 
   const handleShowAddKr = () => {
     setShowAddKr(!showAddKr);
@@ -32,6 +42,7 @@ const AppProvider = ({ children }) => {
     
   }
  
+  
   const loadKr = async (id) => {
     const response = await Api.buildApiGetRequest(Api.readKeyResultsByObjectivesId(id),true)
     const results = await response.json()
@@ -55,7 +66,23 @@ const AppProvider = ({ children }) => {
   const increment = () =>
     setValue((prevState) => (prevState >= 100 ? 0 : prevState + 20));
   return (
-    <AppContext.Provider value={{ completeTask,setLogin,login,handleShowAddKr, showAddKr,loadUniqueUser,loggedUser,setLoggedUser, closeShowUpdateKr,  showUpdateKr, openShowUpdateKr, showDeletekr, setShowDeleteKr, handleRender, render }}>
+    <AppContext.Provider value={
+        { completeTask
+        ,setLogin,
+        login,
+        handleShowAddKr
+        , showAddKr,
+        loadUniqueUser
+        ,loggedUser,
+        setLoggedUser,
+        closeShowUpdateKr,
+        showUpdateKr,
+        openShowUpdateKr,
+        showDeletekr,
+        setShowDeleteKr,
+        getAllObjectives,
+        handleRender,
+        render  }}>
       {children}
     </AppContext.Provider>
   );

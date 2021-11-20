@@ -13,6 +13,7 @@ const Objective = () => {
   const id = localStorage.getItem("USER_ID");
   const {loggedUser,loadUniqueUser} = useGlobalContext();
   const [objectives, setObjectives] = useState([]);
+
   useEffect(() => {
     const getAllObjectives = async () => {
       const response = await Api.buildApiGetRequest(
@@ -21,11 +22,12 @@ const Objective = () => {
       );
       const data = await response.json();
       setObjectives(data);
-      console.log("data",data)
     };
     loadUniqueUser(id);
     getAllObjectives();
   }, []);
+ 
+
   
 
   console.log(loggedUser)

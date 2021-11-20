@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Api } from "../../../Api/Api";
 import Select from "react-select";
-import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Input from "./../../../components/Input/Input";
 import Button from "./../../../components/Button/Button";
 
@@ -60,6 +61,7 @@ function UpdateUsersAdm(props) {
     );
 
     if (response.status === 200) {
+      toast.success("Usuario alterado com sucesso!", { theme: "dark" });
       props.history.push("/objectives");
     } else {
     }

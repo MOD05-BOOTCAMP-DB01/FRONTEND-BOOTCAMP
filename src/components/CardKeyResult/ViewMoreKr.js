@@ -24,7 +24,6 @@ export default function ViewMoreKr({ kr }) {
 
   const handleDone = async (ev) => {
     let confirmed = document.getElementById('done')
-
     
     if(confirmed.checked) {
       const payload = {
@@ -37,7 +36,6 @@ export default function ViewMoreKr({ kr }) {
         true
       );
       setNewDone(true)
-
     }
     
   }

@@ -75,7 +75,7 @@ export default function CardObjective(props) {
     // Objective
     <div className="area-cardObjective">
       <div className="area-cardObjective-title">
-        <h2>Resultados-chave</h2>
+        <h1>Resultados-chave</h1>
       </div>
       <div className="cardObjective">
         <div className="objective-header">
@@ -83,7 +83,7 @@ export default function CardObjective(props) {
           <span className="objective-label">Titulo:</span>
             <h2>{objective.objective}</h2>
           </div>
-          
+
           <div className="objective-date">
           <span className="objective-label">Prazo:</span>
             <h3>

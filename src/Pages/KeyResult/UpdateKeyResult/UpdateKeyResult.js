@@ -15,18 +15,15 @@ import './updateKeyResult.css'
 
 import { Api } from '../../../Api/Api';
 import schema from '../CreateKeyResult/schema';
-import { useHistory } from 'react-router';
 
-export default function UpdateKeyResult({objectiveId,kr}) {
+export default function UpdateKeyResult({objectiveId,kr, closeUpdateKr = () =>{}}) {
   console.log("Kr no updatekr", kr)
+
+  const { handleRender} = useGlobalContext()
 
   const [username, setUsername] = useState([]);
   const [ownerId, setOwnerId] = useState("");
   const [newKr, setNewKr] = useState(kr);
-
-  const {closeShowUpdateKr, loadKr} = useGlobalContext()
-
-  const history = useHistory()
 
   useEffect(() => {
     const loadOwners = async () => {
@@ -55,11 +52,12 @@ export default function UpdateKeyResult({objectiveId,kr}) {
     console.log("values =", values)
 
     const owner = ownerId || selectedOption.value
-    const rating = ownerId || selectedOption.value
+    const done = newKr.done == "true" ? true : false
 
     const payload = {
       ...newKr,
       owner,
+      done,
     }
     console.log("payload updateKr=", payload)
 
@@ -75,9 +73,8 @@ export default function UpdateKeyResult({objectiveId,kr}) {
 
     if (response.status === 200) {
       toast.success('Resultado-chave editado com sucesso!',{theme: "dark"})
-
-      closeShowUpdateKr()
-
+      handleRender()
+      closeUpdateKr()
     }
    
   }
@@ -141,7 +138,7 @@ export default function UpdateKeyResult({objectiveId,kr}) {
       
           render={({ values, errors, isvalid }) => (
             <Form className="formKr">
-              <AiOutlineCloseSquare onClick={() => closeShowUpdateKr()} className="formKr-close"/>
+              <AiOutlineCloseSquare onClick={closeUpdateKr} className="formKr-close"/>
               <div className="formKr-title">
                 <h2>Editar Resultado Chave</h2>
               </div>
@@ -200,6 +197,14 @@ export default function UpdateKeyResult({objectiveId,kr}) {
                     </ErrorMessage>
                   </div>
 
+                  <div className="formKr-Items">
+                    <label htmlFor="">Dono</label>
+                    <Select 
+                    options={username[0]} className="formKr-Items-select" 
+                    onChange={handleOwnerChange}
+                    defaultValue={selectedOption}/>
+                  </div>
+
                 </div>
 
                 <div className="formKr-areaRight">
@@ -234,12 +239,23 @@ export default function UpdateKeyResult({objectiveId,kr}) {
                   </div>
 
                   <div className="formKr-Items">
-                    <label htmlFor="">Dono</label>
-                    <Select 
-                    options={username[0]} className="formKr-Items-select" 
-                    onChange={handleOwnerChange}
-                    defaultValue={selectedOption}/>
+                    <label>Concluído?
+                      {errors.done && <abbr className="fieldError" title={errors.done}>*</abbr>}
+                    </label>
+                    <select name="done" 
+                    type="Boolean" 
+                    className="field" 
+                    value={newKr.done}
+                    onChange={handleChange}>
+                      <option value='false'>Não</option>
+                      <option value='true'>Sim</option>
+                      
+                    </select>
+                    <ErrorMessage name="done">
+                      {msg => <span className="fieldError">{msg}</span>}
+                    </ErrorMessage>
                   </div>
+
                 </div>
 
               </div>

@@ -10,9 +10,8 @@ const AppProvider = ({ children }) => {
 
 
   const [showAddKr, setShowAddKr] = useState(false);
-  const [showUpdateKr, setShowUpdateKr] = useState(false);
+  
   const [krs, setKrs] = useState([]);
-  const [showDeletekr, setShowDeleteKr] = useState(false)
   
   const handleRender = () => {
     setRender(!render);
@@ -31,14 +30,6 @@ const getAllObjectives = async () => {
 
   const handleShowAddKr = () => {
     setShowAddKr(!showAddKr);
-    
-  }
-  const closeShowUpdateKr = () => {
-    setShowUpdateKr(true);
-    
-  }
-  const openShowUpdateKr = () => {
-    setShowUpdateKr(false);
     
   }
  
@@ -75,11 +66,6 @@ const getAllObjectives = async () => {
         loadUniqueUser
         ,loggedUser,
         setLoggedUser,
-        closeShowUpdateKr,
-        showUpdateKr,
-        openShowUpdateKr,
-        showDeletekr,
-        setShowDeleteKr,
         getAllObjectives,
         handleRender,
         render  }}>

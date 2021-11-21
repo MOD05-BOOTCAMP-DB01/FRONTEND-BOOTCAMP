@@ -31,7 +31,7 @@ const UpdateObjective = (props) => {
         }),
       ];
       setUsername(options);
-      console.log(options)
+
     };
 
     const loadObjective = async()=>{
@@ -39,13 +39,15 @@ const UpdateObjective = (props) => {
       const data = await response.json();
       setObjective(data.objective);
       setSelectedUser({value:data.objective.owner,label:data.objective.owner.username})
+      console.log(data.objective.initial_date);
       setStartDate(new Date(data.objective.initial_date))
-      setStartDate(new Date(data.objective.end_date))
+      setEndDate(new Date(data.objective.end_date))
       
     }
     loadOwners();
     loadObjective();
   }, []);
+
 
   const handleChange = (selectedOption)=>{
     setSelectedUser({value:selectedOption.value,label:selectedOption.label});
@@ -100,9 +102,7 @@ const UpdateObjective = (props) => {
           <DatePicker
             dateFormat="dd/MM/yyyy"
             selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            minDate={new Date()}
-            
+            onChange={(date) => setStartDate(date)}            
           />
         </div>
         <div className="form_container_objective-card--input date">
@@ -114,7 +114,7 @@ const UpdateObjective = (props) => {
             dateFormat="dd/MM/yyyy"
             selected={endDate}
             onChange={(date) => setEndDate(date)}
-           minDate={new Date()}
+          
           ></DatePicker>
         </div>
         <div className="form_container_objective-card--input">

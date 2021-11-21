@@ -3,14 +3,14 @@ import React from 'react'
 import { Api } from '../../../Api/Api'
 
 import { toast } from 'react-toastify'
-import { useHistory } from 'react-router'
 
 import { useGlobalContext } from "../../../context/context";
 
 import './deleteKeyResult.css'
 
-export default function DeleteKeyResult({krId, objectiveId}) {
-  const { setShowDeleteKr } = useGlobalContext()
+export default function DeleteKeyResult({krId, objectiveId,titleKr, closeDeleteKr}) {
+
+  const { handleRender} = useGlobalContext()
 
   const handleDelete = async event => {
     const response = await Api.buildApiDeleteRequest(
@@ -22,22 +22,24 @@ export default function DeleteKeyResult({krId, objectiveId}) {
       // Delete product successfully
       toast.success('Resultado-chave deletado com sucesso!',{theme: "dark"})
       // Navigate to home page
-      setShowDeleteKr(false)
+      handleRender()
+      closeDeleteKr()
     } else {
       toast.error('Não foi possível excluir o resultado-chave.',{theme: "colored"})
-      setShowDeleteKr(false)
+      closeDeleteKr()
     }
   }
 
   const backButton = () => {
     toast.info('Nenhuma alteração realizada.')
-    setShowDeleteKr(false)
+    closeDeleteKr()
   }
 
   return (
     <div className="area-DeleteKeyResult">
       <div className="DeleteKeyResult">
         <h2>Deseja realmente excluir esse resultado-chave?</h2>
+        <h3>{titleKr}</h3>
         <div className="deleteKr-blocoBtn">
           <div className="btn-delete" onClick={handleDelete}>
               <span >Excluir</span>

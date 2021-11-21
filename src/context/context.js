@@ -5,12 +5,18 @@ const AppProvider = ({ children }) => {
   //  funções e estados globais
   const [loggedUser,setLoggedUser] = useState([])
   const [login, setLogin] = useState(false);
+  const [render, setRender] = useState(false);
+
 
   const [showAddKr, setShowAddKr] = useState(false);
-  const [showUpdateKr, setShowUpdateKr] = useState(false);
+  
   const [krs, setKrs] = useState([]);
-  const [showDeletekr, setShowDeleteKr] = useState(false)
-  const [objectives,setObjectives] = useState([])
+  
+  const handleRender = () => {
+    setRender(!render);
+    
+  }
+  const [objective,setObjectives] = useState([])
 
 const getAllObjectives = async () => {
       const response = await Api.buildApiGetRequest(
@@ -23,14 +29,6 @@ const getAllObjectives = async () => {
 
   const handleShowAddKr = () => {
     setShowAddKr(!showAddKr);
-    
-  }
-  const closeShowUpdateKr = () => {
-    setShowUpdateKr(true);
-    
-  }
-  const openShowUpdateKr = () => {
-    setShowUpdateKr(false);
     
   }
  
@@ -60,13 +58,9 @@ const getAllObjectives = async () => {
         loadUniqueUser
         ,loggedUser,
         setLoggedUser,
-        closeShowUpdateKr,
-        showUpdateKr,
-        openShowUpdateKr,
-        showDeletekr,
-        setShowDeleteKr,
         getAllObjectives,
-        objectives }}>
+        handleRender,
+        render  }}>
       {children}
     </AppContext.Provider>
   );

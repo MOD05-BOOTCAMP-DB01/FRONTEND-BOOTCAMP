@@ -1,5 +1,5 @@
 .area-cardObjective{
-  width: 85%;
+  width: 75%;
   height: 100vh;
   margin: 1em auto;
   color:#00335E;
@@ -7,23 +7,21 @@
 
 .area-cardObjective-title{
   width: 100%;
-  margin: 56px auto 0 auto;
+  margin: 56px auto 1em 1em;
   color: #69006e;
-  margin-bottom: 1.5rem;
-  
+
 }
+
+
+
 .area-cardObjective-title h1{
-  font-size: 3rem;
-}
-.area-cardObjective-title h2{
-  font-size: 1.8rem;
-  margin-top: -.5em;
+  margin-top: .5em;
 }
 
 .cardObjective{
   /* position: absolute; */
   width: 100%;
-  height: 8em;
+  height: 9em;
   display: flex;
   flex-direction: column;
   background-color: rgb(253, 253, 253);
@@ -39,19 +37,46 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: .5em;
 }
 .objective-title{
-  width: 50%;
+  width: 80%;
+  height: 100%;
   margin-left: 1em;
   /* background-color: #0099B7; */
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 .objective-title h2{
   font-size: 1.6rem;
+  margin: 0;
+  padding-top: .2em;
+}
+
+.objective-label{
+  margin-top: .5em;
+  color: #00335E;
+  font-size: 1rem;
+  font-weight:bold;
+  text-align: left;
+  border-bottom: 2px solid #89898934;
+  
 }
 
 .objective-date{
-  margin-right: 1em;
+  /* margin-right: 1em; */
+  width: 18%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.objective-date h3{
+  margin: 0;
+  padding-top: .2em;
 }
 
 

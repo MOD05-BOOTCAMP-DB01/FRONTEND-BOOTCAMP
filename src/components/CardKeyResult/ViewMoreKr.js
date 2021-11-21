@@ -1,19 +1,53 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+
+import {Api} from "../../Api/Api";
 
 import { GoCommentDiscussion } from 'react-icons/go'
 import { MdSubdirectoryArrowRight } from 'react-icons/md'
+import { FaRegCalendarPlus } from 'react-icons/fa'
+import { FaRegCalendarTimes } from 'react-icons/fa'
 
 import ModalCk from "../CardCheckin/Modal/ModalCk";
 
 import "./viewMoreKr.css";
 
+
 export default function ViewMoreKr({ kr }) {
   const [showModalCk, setShowModalCk] = useState(false);
+  const [newDone, setNewDone] = useState(kr.done);
+  console.log("newDone", newDone);
 
+  useEffect(() => {},[])
   const handleShowCk = () => {
     setShowModalCk(!showModalCk);
   };
 
+  const handleDone = async (ev) => {
+    setNewDone(!newDone)
+    if(!newDone) {
+      const payload = {
+        done: 'yes',
+      }
+      const response = await Api.buildApiPatchRequest(
+        Api.updateKrsUrl(kr.id),
+        payload,
+        true
+      );
+      console.log(payload)
+      
+    }else{
+      const payload = {
+        done: 'no',
+      }
+      const response = await Api.buildApiPatchRequest(
+        Api.updateKrsUrl(kr.id),
+        payload,
+       true
+      );
+      console.log('entrei no else')
+    }
+    
+  }
   
   return (
     <div className="area-viewMoreKr">
@@ -43,11 +77,13 @@ export default function ViewMoreKr({ kr }) {
         </div>
 
         <div className="viewMoreKr-checkin" onClick={() => handleShowCk()}>
-          <h3> {showModalCk ? "Check-out" : "Check-in"}</h3>
+          <h3> {showModalCk ? <FaRegCalendarTimes className="FaRegCalendarTimes"/> : <FaRegCalendarPlus className="FaRegCalendarPlus"/> }</h3>
         </div>
 
         <div className="viewMoreKr-done">
-          <input type="checkbox"></input>
+         
+          <input type="checkbox" id="done" name="done" onClick={handleDone} checked={newDone} ></input>
+          
         </div>
         </div>
         <div className={showModalCk? 'mostra':'esconde'}> 

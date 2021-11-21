@@ -18,7 +18,7 @@ export default function CardObjective(props) {
 
   const [objective, setObjective] = useState(undefined);
   const [krs, setKrs] = useState([]);
-  const {handleShowAddKr, showAddKr, closeShowUpdateKr} = useGlobalContext()
+  const {handleShowAddKr, showAddKr, render} = useGlobalContext()
   
 
   const [changeView, setChangeView] = useState(true);
@@ -55,7 +55,7 @@ export default function CardObjective(props) {
       }
     }
     loadKr()
-  }, [showAddKr, closeShowUpdateKr]);
+  }, [showAddKr, render]);
 
   if (!objective) {
     return <h3>Loading.. carregando obj</h3>;
@@ -72,14 +72,17 @@ export default function CardObjective(props) {
     // Objective
     <div className="area-cardObjective">
       <div className="area-cardObjective-title">
-        <h2>Resultados-chave</h2>
+        <h1>Resultados-chave</h1>
       </div>
       <div className="cardObjective">
         <div className="objective-header">
           <div className="objective-title">
-            <h2><span className="objective-info">Titulo:</span>{objective.objective}</h2>
+          <span className="objective-label">Titulo:</span>
+            <h2>{objective.objective}</h2>
           </div>
+
           <div className="objective-date">
+          <span className="objective-label">Prazo:</span>
             <h3>
             {new Date(objective.initial_date).toLocaleDateString('pt-BR')} {"-"}  {new Date(objective.end_date).toLocaleDateString('pt-BR')}
             </h3>

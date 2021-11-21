@@ -16,19 +16,20 @@ import DeleteKeyResult from '../../Pages/KeyResult/DeleteReyResult/DeleteKeyResu
 
 export default function CardKr({kr,objectiveId}) {
   
-  const { showUpdateKr, openShowUpdateKr, showDeletekr, setShowDeleteKr} = useGlobalContext()
+  
   const [showViewMore, setShowViewMore] = useState(false)
-  const [showOpenUpdatekr, setShowOpenUpdateKr] = useState(false)
-  
-  
+
+  const [showUpdateKr, setShowUpdateKr] = useState(false)
+
+  const [showDeletekr, setShowDeleteKr] = useState(false)
   
   const handleShowViewMore = () => {
     setShowViewMore(!showViewMore)
   }
 
   const handleShowOpenUpdateKr = () => {
-    setShowOpenUpdateKr(true)
-    openShowUpdateKr() 
+    setShowUpdateKr(true)
+    console.log("handleShowOpenUpdate", showUpdateKr)
   }
 
   const handleShowDeletekr = () => {
@@ -103,9 +104,10 @@ export default function CardKr({kr,objectiveId}) {
 
         
         <div>
-          {showOpenUpdatekr && !showUpdateKr ? <UpdateKeyResult kr={kr}/> : ""}
+          {showUpdateKr ? <UpdateKeyResult kr={kr} closeUpdateKr={()=>setShowUpdateKr(false)}/> : ""}
 
-          {showDeletekr ? <DeleteKeyResult krId={kr.id} objectiveId={objectiveId}/> : ""}  
+          {showDeletekr ? <DeleteKeyResult krId={kr.id} titleKr={kr.key_result} objectiveId={objectiveId}
+          closeDeleteKr= {() => setShowDeleteKr(false)}/> : ""}  
 
         </div>
       </div>

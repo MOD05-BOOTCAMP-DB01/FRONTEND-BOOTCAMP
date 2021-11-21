@@ -52,7 +52,7 @@ function UpdateUsersAdm(props) {
       status: userStatus[0],
     };
 
-    console.log(payload);
+
 
     const response = await Api.buildApiPatchRequest(
       Api.updateUsers(id),

@@ -24,7 +24,7 @@
   align-items: center;
   background: #cfd5f5;
   position: absolute;
-  height: 38.38px;
+  height: 50%;
   width: 34px;
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
@@ -47,6 +47,7 @@
   border-radius: 1rem;
   padding: 0.8rem 0 0.8rem 1rem;
   outline: none;
+  border:1px solid hsl(0, 0%, 80%);
 }
 
 .form_container_objective-card--input input[type="date"] {
@@ -104,4 +105,31 @@
   display: flex;
   align-self: flex-start;
   margin-left: 1rem;
+}
+
+/* overwriting react-select library */
+
+.css-1s2u09g-control{
+  border-radius: 1rem!important;
+  
+}
+.css-1pahdxg-control{
+  border-radius: 1rem!important;
+  box-shadow:none!important;
+  border: 1px solid hsl(0, 0%, 80%)!important;
+}
+
+.css-1pahdxg-control:hover:focus{
+border: none!important;
+}
+
+.css-tlfecz-indicatorContainer{
+  color: #4767ff !important;
+}
+.css-tlfecz-indicatorContainer:hover{
+  color: #4767ff !important;
+}
+
+#react-select-7-listbox,#react-select-3-listbox{
+  z-index: 100;
 }

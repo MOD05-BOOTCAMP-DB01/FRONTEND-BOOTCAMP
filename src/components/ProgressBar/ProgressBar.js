@@ -13,7 +13,7 @@ const ProgressBar = (props) => {
         progress
         indicating
         size={props.size}
-        style={{ "z-index": "0" }}
+        style={{ "zIndex": "0" }}
       />
     </div>
   );

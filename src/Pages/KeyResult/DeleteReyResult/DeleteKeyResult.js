@@ -10,8 +10,6 @@ import { useGlobalContext } from "../../../context/context";
 import './deleteKeyResult.css'
 
 export default function DeleteKeyResult({krId, objectiveId}) {
-  const history = useHistory()
-
   const { setShowDeleteKr } = useGlobalContext()
 
   const handleDelete = async event => {

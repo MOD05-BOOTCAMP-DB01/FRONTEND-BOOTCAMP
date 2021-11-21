@@ -8,7 +8,6 @@ import ModalCk from "../CardCheckin/Modal/ModalCk";
 import "./viewMoreKr.css";
 
 export default function ViewMoreKr({ kr }) {
-  console.log("kr viewMoreKr", kr);
   const [showModalCk, setShowModalCk] = useState(false);
 
   const handleShowCk = () => {

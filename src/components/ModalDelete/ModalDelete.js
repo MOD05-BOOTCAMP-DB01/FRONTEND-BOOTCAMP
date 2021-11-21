@@ -1,11 +1,14 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import './ModalDelete.css'
 import {Api} from './../../Api/Api'
 import  Button  from '../Button/Button'
 import { useGlobalContext } from '../../context/context'
 
 const ModalDelete = ({ id = "modal", setIsOpen,objective }) => {
-  const {getAllObjectives} = useGlobalContext()
+  const {getAllObjectives,objectives} = useGlobalContext()
+  useEffect(() => {
+    getAllObjectives()
+  },[objectives])
   const onClose = ()=>{
     setIsOpen(false)
   }
@@ -16,9 +19,9 @@ const ModalDelete = ({ id = "modal", setIsOpen,objective }) => {
     e.preventDefault();
     const response = await Api.buildApiDeleteRequest(Api.deleteObjectiveUrl(objective.id),true);
     const data = await response.json();
-    onClose();
-    getAllObjectives();
-    console.log(data.status);
+    getAllObjectives()
+    onClose()
+
     
   }
   return (
@@ -30,7 +33,7 @@ const ModalDelete = ({ id = "modal", setIsOpen,objective }) => {
       <h2>Deletar objetivo</h2>
       </div>
         <div className="delete__form-body">
-          <h3>Tem certeza que quer deletar <span>{objective.objective}</span></h3>
+          <p>Tem certeza que quer deletar <strong>{objective.objective}</strong></p>
            <div class="delete__form-btns">
         <Button type="submit">confirmar</Button>
         <Button onClick={onClose} >cancelar</Button>

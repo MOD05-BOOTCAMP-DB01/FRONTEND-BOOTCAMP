@@ -12,15 +12,30 @@ import "react-datepicker/dist/react-datepicker.css";
 const CreateObjective = (props) => {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [user,setUser] = useState("")
   const [usernames, setUsername] = useState([]);
+  const [user,setUser] = useState("");
+  const [teams,setTeams] = useState([]);
+  const [teamName,setTeamName] = useState('');
+  const [type,setType]= useState('')
+
+  
+  const typeOptions = [
+    { value: 'Pessoas',
+      label: 'Pessoas',
+    },{
+      value: 'Processos',
+      label: 'Processos',
+    },
+    { value: 'Cliente',
+      label: 'Cliente',
+    }
+  ]
+  
   useEffect(() => {
     const loadOwners = async () => {
       const response = await Api.buildApiGetRequest(Api.readAllUsers(), true);
-      console.log(response)
       const data = await response.json();
-      console.log(data);
-      const options = [
+      const owners = [
         data.map((data) => {
           return {
             value: data.id,
@@ -28,34 +43,76 @@ const CreateObjective = (props) => {
           };
         }),
       ];
-      setUsername(options);
-    
-    
+      setUsername(owners);
     };
+
+      const loadTeams = async ()=>{
+        const response = await Api.buildApiGetRequest(Api.readAllTeams(),true);
+        const data = await response.json();
+        const teamsOptions =[
+         data.map((data) => {
+          return {
+            value: data.id,
+            label: data.team,
+          };
+        }),
+        ]
+        
+        setTeams(teamsOptions);
+      }
     loadOwners();
+    loadTeams();
   }, []);
+
+  const getQuarter = ()=>{
+  const month = startDate.getMonth()+1;
+  console.log(month)
+    if(month>=0 && month<=2){
+      return 'Q1';
+    }
+    if(month>=3 && month<=5){
+      return 'Q2';
+    }
+    if(month>=6 && month<=9){
+      return 'Q3';
+    }
+    if(month>=10 && month<=12){
+      console.log('entrou')
+      return 'Q4';
+    }
+  }
+  
 
   const handleChange = (selectedOption)=>{
     setUser(selectedOption.value);
   }
-
+  const handleChangeTeams = (selectedOption)=>{
+    setTeamName(selectedOption.value);
+  }
+  const handleChangeType= (selectedOption)=>{
+    setType(selectedOption.value)
+  }
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const quarter = getQuarter();
     const objective = e.target.objective.value;
-    const type = e.target.type.value;
     const unity = e.target.unity.value;
-    const area = e.target.area.value;
+    const team = teamName;
     const initial_date = startDate;
     const end_date = endDate;
-
+    const owner = user;
+    const year = startDate.getFullYear().toString();
     const payload = {
       objective,
       type,
       unity,
       initial_date,
       end_date,
-      area,
-      owner:user,
+      team,
+      owner,
+      quarter,
+      year,
     }
 
     const response = await Api.buildApiPostRequest(Api.createObjectiveUrl(),payload,true);
@@ -66,6 +123,7 @@ const CreateObjective = (props) => {
     }
 
   };
+
   return (
     <form className="form_container-objective" onSubmit={handleSubmit}>
       <h1>Adicionar um Objetivo</h1>
@@ -74,9 +132,9 @@ const CreateObjective = (props) => {
           <label htmlFor="objective">Objetivo</label>
           <input name="objective" id="objective" type="text" />
         </div>
-        <div className="form_container_objective-card--input">
+         <div className="form_container_objective-card--input">
           <label htmlFor="">Tipo</label>
-          <input name="type" id="type" type="text" />
+          <Select options={typeOptions} onChange={handleChangeType} id="select"/>
         </div>
         <div className="form_container_objective-card--input date">
           <label htmlFor="">Data Inicial</label>
@@ -87,7 +145,7 @@ const CreateObjective = (props) => {
             dateFormat="dd/MM/yyyy"
             selected={startDate}
             onChange={(date) => setStartDate(date)}
-            minDate={new Date()}
+            
           />
         </div>
         <div className="form_container_objective-card--input date">
@@ -99,12 +157,22 @@ const CreateObjective = (props) => {
             dateFormat="dd/MM/yyyy"
             selected={endDate}
             onChange={(date) => setEndDate(date)}
-            
+            minDate={startDate}
           ></DatePicker>
         </div>
+<div className="form_container_objective-card--input">
+ <label htmlFor="">Quarter</label>
+         <DatePicker
+      selected={startDate}
+      onChange={(date) => setStartDate(date)}
+      dateFormat="yyyy, QQQ"
+      showQuarterYearPicker
+      
+    />
+    </div>
         <div className="form_container_objective-card--input">
-          <label htmlFor="">Area</label>
-          <input name="area" id="area" type="text" />
+          <label htmlFor="">Time</label>
+          <Select options={teams[0]} onChange={handleChangeTeams} id="select"/>
         </div>
         <div className="form_container_objective-card--input">
           <label htmlFor="">Unidade</label>
@@ -112,8 +180,9 @@ const CreateObjective = (props) => {
         </div>
         <div className="form_container_objective-card--input">
           <label htmlFor="">Dono</label>
-          <Select options={usernames[0]} onChange={handleChange} />
+          <Select options={usernames[0]} onChange={handleChange} id="select"/>
         </div>
+        
       </div>
       <div className="form_button-container">
         <Button type="submit" >
@@ -127,6 +196,6 @@ const CreateObjective = (props) => {
       </div>
     </form>
   );
-};
 
+  }
 export default CreateObjective;

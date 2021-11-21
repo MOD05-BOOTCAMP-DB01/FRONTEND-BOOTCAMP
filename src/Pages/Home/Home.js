@@ -5,19 +5,9 @@ import ModalAcess from "./../../components/ModalAcess/ModalAcess";
 import { Link } from "react-router-dom";
 import Button from "./../../components/LinkButton/LinkButton";
 import Login from "../../components/Login/Login";
-import { useGlobalContext } from "./../../context/context";
-import Spin from "react-cssfx-loading/lib/Spin";
 const Home = (props) => {
-  const { login, loggedUser } = useGlobalContext();
   const [register, setRegister] = useState(false);
-  if (login) {
-    return (
-      <div className="center-loading">
-        <Spin color="#e11e42" width="100px" height="100px" duration="2s" />
-      </div>
-    );
-  }
-  console.log(loggedUser.role);
+
   return (
     <div className="home_container">
       <div className="home_container-banner">

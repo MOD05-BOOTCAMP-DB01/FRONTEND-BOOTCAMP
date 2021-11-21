@@ -32,6 +32,9 @@ export const Api = {
   readCheckinsByKeyResultId: (id) => `${Api.baseUrl}/checkin/key_result/${id}`,
 
   
+// teams
+readAllTeams:()=>`${Api.baseUrl}/teams`,
+
   authHeader: () => ({
     Authorization: "Bearer " + JwtHandler.getJwt(),
   }),

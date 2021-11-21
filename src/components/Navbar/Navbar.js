@@ -29,7 +29,7 @@ export default function Navbar() {
         window.removeEventListener("onJwtChange", handleOnJwtChange);
     };
   }, []);
- console.log(loggedUser);
+
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>

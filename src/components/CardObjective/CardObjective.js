@@ -37,13 +37,11 @@ export default function CardObjective(props) {
       
 
       // setKrs(results.objective.key_results);
-      console.log("results ==",results)  
     };
 
     loadObjective();
   }, [id]);
 
-  console.log("total krs ==",krs.length)  
 
  
 
@@ -54,7 +52,6 @@ export default function CardObjective(props) {
 
       if (response.status === 200) {
         setKrs(results.key_results) 
-        console.log("results =-",results)
       }
     }
     loadKr()

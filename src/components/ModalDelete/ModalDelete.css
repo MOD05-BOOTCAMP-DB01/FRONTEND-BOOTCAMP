@@ -9,6 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .modal__card {
@@ -17,6 +18,7 @@
   width:40%;
   height: auto;
   border-radius: 20px;
+  max-width: 500px;
 }
 
 .modal__card__close {
@@ -60,11 +62,13 @@
 .delete__form-heading{
   background-color:#00335E;
   color:#fff;
-  padding: 0.4rem 0 0.4rem 1rem;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  padding: 1rem 0.8rem 0.8rem 1rem;
   
 }
 .delete__form-heading h2{
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 

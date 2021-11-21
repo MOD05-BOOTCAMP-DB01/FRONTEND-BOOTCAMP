@@ -1,17 +1,16 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Api } from "../Api/Api";
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   //  funções e estados globais
   const [loggedUser,setLoggedUser] = useState([])
-  const [value, setValue] = useState(0);
   const [login, setLogin] = useState(false);
 
   const [showAddKr, setShowAddKr] = useState(false);
   const [showUpdateKr, setShowUpdateKr] = useState(false);
   const [krs, setKrs] = useState([]);
   const [showDeletekr, setShowDeleteKr] = useState(false)
-  const [objective,setObjectives] = useState([])
+  const [objectives,setObjectives] = useState([])
 
 const getAllObjectives = async () => {
       const response = await Api.buildApiGetRequest(
@@ -43,7 +42,7 @@ const getAllObjectives = async () => {
     if (response.status === 200) {
       setKrs(results.key_results) 
     }
-      console.log("results =-",results)
+
   }
 
   const loadUniqueUser = async(id)=>{
@@ -52,16 +51,9 @@ const getAllObjectives = async () => {
       setLoggedUser(data.user);
     }
 
-  const completeTask = () => {
-    increment();
-    // escrever função para enviar um update por endpoint para o banco
-  };
-  const increment = () =>
-    setValue((prevState) => (prevState >= 100 ? 0 : prevState + 20));
   return (
     <AppContext.Provider value={
-        { completeTask
-        ,setLogin,
+        { setLogin,
         login,
         handleShowAddKr
         , showAddKr,
@@ -73,7 +65,8 @@ const getAllObjectives = async () => {
         openShowUpdateKr,
         showDeletekr,
         setShowDeleteKr,
-        getAllObjectives }}>
+        getAllObjectives,
+        objectives }}>
       {children}
     </AppContext.Provider>
   );

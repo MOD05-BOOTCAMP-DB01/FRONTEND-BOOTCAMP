@@ -18,7 +18,6 @@ import schema from '../CreateKeyResult/schema';
 import { useHistory } from 'react-router';
 
 export default function UpdateKeyResult({objectiveId,kr}) {
-  console.log("Kr no updatekr", kr)
 
   const [username, setUsername] = useState([]);
   const [ownerId, setOwnerId] = useState("");
@@ -101,7 +100,6 @@ export default function UpdateKeyResult({objectiveId,kr}) {
   }
 
   const handleOwnerChange = selectedOption => {
-    console.log("select = ", selectedOption);
     setOwnerId(selectedOption.value)
   }
 

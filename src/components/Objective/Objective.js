@@ -5,13 +5,15 @@ import { Api } from "./../../Api/Api";
 import { Link } from "react-router-dom";
 import "./Objective.css";
 import { useGlobalContext } from "../../context/context";
+import Spin from "react-cssfx-loading/lib/Spin";
 import { SiTarget } from "react-icons/si";
 import Button,{ViewMoreButton} from './../Button/Button'
 import CardObjective2 from "../CardObjective2/CardObjective2";
 
 const Objective = () => {
   const id = localStorage.getItem("USER_ID");
-  const {loggedUser,loadUniqueUser} = useGlobalContext();
+  const { login } = useGlobalContext();
+  const {loadUniqueUser} = useGlobalContext();
   const [objectives, setObjectives] = useState([]);
 
   useEffect(() => {
@@ -27,10 +29,13 @@ const Objective = () => {
     getAllObjectives();
   }, []);
  
-
-  
-
-  console.log(loggedUser)
+  if (login) {
+    return (
+      <div className="center-loading">
+        <Spin color="#e11e42" width="100px" height="100px" duration="2s" />
+      </div>
+    );
+  }
   return (
     <div className="objective-container">
     <div className="objective-container-heading">
@@ -39,7 +44,7 @@ const Objective = () => {
     </div>
       {objectives.map((objective) => {
         return (
-          <CardObjective2 objective={objective}/>
+          <CardObjective2 key={objective.objective} objective={objective}/>
         );
       })}
     </div>

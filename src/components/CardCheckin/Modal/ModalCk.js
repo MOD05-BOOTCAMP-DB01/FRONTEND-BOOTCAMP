@@ -13,7 +13,6 @@ import { Api } from '../../../Api/Api';
 import './modalCk.css'
 
 export default function ModalCk({kr}) {
-  console.log("props kr",kr)
   const [cks, setCks] = useState([]);
 
   useEffect(() => {
@@ -25,7 +24,6 @@ export default function ModalCk({kr}) {
       );
       const result = await response.json();
       setCks(result);
-      console.log("checkin", cks)
     };
 
     loadCheckin();

@@ -45,7 +45,7 @@ const CardObjective2 = ({objective}) => {
                 {name}
               </h3>
               <div className="status-bar">
-              <ProgressBar size="medium" value={value} />
+              <ProgressBar size="medium" value={value}  />
               </div>
               </div>
               <div className="objective-container-body">

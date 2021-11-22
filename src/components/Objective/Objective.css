@@ -13,9 +13,63 @@
   width: 65rem;
   padding-left: 1rem;
   margin-bottom: 1.5rem;
+  display: flex;
+  justify-content:space-between;
+}
+}
+
+.objective-container_filter{
+  display:flex;
+  align-items:center;
   
 }
+
+.radio-group input[type=radio] {
+  position: absolute;
+  visibility: hidden;
+  display: none;
 }
+
+.radio-group label {
+  color: lighten(#cecece,40%);
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0.6rem 1rem;
+  background:#fff;
+  border: 1px solid hsl(0, 0%, 80%);
+  
+}
+
+div.radio-group:nth-child(even) + label{
+ background:red;
+}
+
+.radio-group input[type=radio]:checked + label{
+  color: #f8f8fa;
+  background: #69006e;
+  padding:1rem;
+  border-radius: 10px;
+}
+
+
+.radio-group label + input[type=radio] + label {
+  border-left: solid 1px #cecece;
+  
+}
+.radio-group {
+  
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left:1rem;
+  
+}
+
+.css-tlfecz-indicatorContainer{
+  color:#69006e!important;
+}
+
 
 
 @media (min-width: 769px) and (max-width: 945px) {

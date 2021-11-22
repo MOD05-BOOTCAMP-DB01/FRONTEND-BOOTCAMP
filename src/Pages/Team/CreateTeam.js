@@ -17,23 +17,23 @@ function CreateTeam() {
             Api.readAllTeams,
             payload,
             true,
-            console.log(payload),
-            console.log(e.target.team.value),
-            console.log(response),
         );
-
+            
         const body = await response.json();
-
+            
         if (response.status === 201) {
             toast.success('Time cadastrado com sucesso!', {theme: "dark",position: toast.POSITION.TOP_CENTER,
-            });
+        });
         }
-
+        
+        console.log(payload)
+        console.log(team)
+        console.log(response)
     }
 
     return (
         <div>
-            <form className="team_form">
+            <form className="team_form" >
                 <div className="team_form_input">
                     <input id="team" type="text" placeholder="Nome do time" name="team" />
                 </div>

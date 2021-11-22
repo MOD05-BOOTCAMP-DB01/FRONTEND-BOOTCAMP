@@ -3,8 +3,7 @@ export const Api = {
   baseUrl: "http://localhost:3000",
 
   loginUrl: () => `${Api.baseUrl}/auth/signin`,
-  createUser: () => `${Api.baseUrl}/auth/signup`,
-
+  
   // OBJECTIVES
   readAllObjectives: () => `${Api.baseUrl}/objectives`,
   readObjectivesById: (id) => `${Api.baseUrl}/objectives/${id}`,
@@ -13,7 +12,7 @@ export const Api = {
   createObjectiveUrl: () => Api.baseUrl + "/objectives",
   updateObjectiveUrl: (id) => `${Api.baseUrl}/objectives/${id}`,
   deleteObjectiveUrl: (id) => `${Api.baseUrl}/objectives/${id}`,
-
+  
   // KRS
   readAllKrsUrl: () => `${Api.baseUrl}/key-results`,
   readKrsbyIdUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
@@ -23,6 +22,7 @@ export const Api = {
 
   // USERS
   createUserAdminUrl: () => `${Api.baseUrl}/users`,
+  createUser: () => `${Api.baseUrl}/auth/signup`,
   readAllUsers: () => `${Api.baseUrl}/users`,
   readUserbyId: (id) => `${Api.baseUrl}/users/${id}`,
   updateUsers:(id)=>`${Api.baseUrl}/users/${id}`,
@@ -32,8 +32,8 @@ export const Api = {
   readCheckinsByKeyResultId: (id) => `${Api.baseUrl}/checkin/key_result/${id}`,
 
   
-// teams
-readAllTeams:()=>`${Api.baseUrl}/teams`,
+  // teams
+  readAllTeams:()=>`${Api.baseUrl}/teams`,
 
   authHeader: () => ({
     Authorization: "Bearer " + JwtHandler.getJwt(),

@@ -9,7 +9,7 @@ export const Api = {
   readAllObjectives: () => `${Api.baseUrl}/objectives`,
   readObjectivesById: (id) => `${Api.baseUrl}/objectives/${id}`,
   readObjectivesByUserId: (id) => `${Api.baseUrl}/users/objectives/${id}`,
-  readKeyResultsByObjectivesId: (id) => `${Api.baseUrl}/objectives/${id}/key_results`,
+  readObjectiveByTeam:(id) =>`${Api.baseUrl}/teams/${id}/objectives`,
   createObjectiveUrl: () => Api.baseUrl + "/objectives",
   updateObjectiveUrl: (id) => `${Api.baseUrl}/objectives/${id}`,
   deleteObjectiveUrl: (id) => `${Api.baseUrl}/objectives/${id}`,
@@ -17,6 +17,7 @@ export const Api = {
   // KRS
   readAllKrsUrl: () => `${Api.baseUrl}/key-results`,
   readKrsbyIdUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
+  readKeyResultsByObjectivesId: (id) => `${Api.baseUrl}/objectives/${id}/key_results`,
   createKrUrl: () => `${Api.baseUrl}/key-results`,
   deleteKrsUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
   updateKrsUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
@@ -34,6 +35,7 @@ export const Api = {
   
 // teams
 readAllTeams:()=>`${Api.baseUrl}/teams`,
+
 
   authHeader: () => ({
     Authorization: "Bearer " + JwtHandler.getJwt(),

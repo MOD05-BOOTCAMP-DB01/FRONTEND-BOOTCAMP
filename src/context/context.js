@@ -6,12 +6,24 @@ const AppProvider = ({ children }) => {
   const [loggedUser,setLoggedUser] = useState([])
   const [login, setLogin] = useState(false);
   const [render, setRender] = useState(false);
+  const [teams,setTeams] = useState([]);
 
 
   const [showAddKr, setShowAddKr] = useState(false);
   
   const [krs, setKrs] = useState([]);
   
+    const typeOptions = [
+    { value: 'Pessoas',
+      label: 'Pessoas',
+    },{
+      value: 'Processos',
+      label: 'Processos',
+    },
+    { value: 'Cliente',
+      label: 'Cliente',
+    }
+  ]
   const handleRender = () => {
     setRender(!render);
     
@@ -49,6 +61,21 @@ const getAllObjectives = async () => {
       setLoggedUser(data.user);
     }
 
+    const loadTeams = async ()=>{
+        const response = await Api.buildApiGetRequest(Api.readAllTeams(),true);
+        const data = await response.json();
+        const teamsOptions =[
+         data.map((data) => {
+          return {
+            value: data.id,
+            label: data.team,
+          };
+        }),
+        ]
+        
+        setTeams(teamsOptions);
+      }
+
   return (
     <AppContext.Provider value={
         { setLogin,
@@ -60,7 +87,11 @@ const getAllObjectives = async () => {
         setLoggedUser,
         getAllObjectives,
         handleRender,
-        render  }}>
+        render,
+        teams,
+        loadTeams,
+        typeOptions
+          }}>
       {children}
     </AppContext.Provider>
   );

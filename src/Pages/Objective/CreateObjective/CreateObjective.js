@@ -8,13 +8,14 @@ import { Link } from "react-router-dom";
 import Select from "react-select";
 import "./CreateObjective.css";
 import "react-datepicker/dist/react-datepicker.css";
+import { useGlobalContext } from "../../../context/context";
 
 const CreateObjective = (props) => {
+  const {teams,loadTeams,loggedUser} = useGlobalContext();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [usernames, setUsername] = useState([]);
   const [user,setUser] = useState("");
-  const [teams,setTeams] = useState([]);
   const [teamName,setTeamName] = useState('');
   const [type,setType]= useState('')
 
@@ -46,20 +47,6 @@ const CreateObjective = (props) => {
       setUsername(owners);
     };
 
-      const loadTeams = async ()=>{
-        const response = await Api.buildApiGetRequest(Api.readAllTeams(),true);
-        const data = await response.json();
-        const teamsOptions =[
-         data.map((data) => {
-          return {
-            value: data.id,
-            label: data.team,
-          };
-        }),
-        ]
-        
-        setTeams(teamsOptions);
-      }
     loadOwners();
     loadTeams();
   }, []);

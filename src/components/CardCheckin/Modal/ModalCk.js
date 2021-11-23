@@ -4,6 +4,11 @@ import React, { useEffect, useState } from 'react'
 // import { BsFillCircleFill } from 'react-icons/bs'
 import { AiOutlineAppstoreAdd,AiFillPushpin } from 'react-icons/ai'
 import { BiEdit } from 'react-icons/bi'
+import { RiDeleteBin2Line } from 'react-icons/ri'
+
+
+import { GoCommentDiscussion } from 'react-icons/go'
+
 
 
 import { format, addDays} from 'date-fns'
@@ -19,12 +24,15 @@ import CreateCheckin from '../../../Pages/Checkin/CreateCheckin/CreateCheckin';
 // CSS
 import './modalCk.css'
 import UpdateCheckin from '../../../Pages/Checkin/UpdateCheckin/UpdateCheckin';
+import DeleteCheckin from '../../../Pages/Checkin/DeleteCheckin/DeleteCheckin'
 
 export default function ModalCk({kr}) {
   const [cks, setCks] = useState([]);
   const [ckEdit, setCkEdit] = useState({});
+  const [ckDelete, setCkDelete] = useState({});
   const [showAddCk, setShowAddCk] = useState(false)
   const [showUpdateCk, setShowUpdateCk] = useState(false)
+  const [showDeleteCk, setShowDeleteCk] = useState(false)
 
   const {render} = useGlobalContext()
   
@@ -81,6 +89,11 @@ export default function ModalCk({kr}) {
     setShowUpdateCk(true)
     setCkEdit(ck)
   }
+  const handleShowDeleteCk = (ck) =>{
+    setShowDeleteCk(true)
+    setCkDelete(ck)
+  }
+  
 
   return (
   
@@ -114,11 +127,18 @@ export default function ModalCk({kr}) {
               <div className="cardCK-value">
                 <h3>{ck.current_value}</h3>
               </div>
-              <div className="">
-                <h3>
-                  <BiEdit className="icon-edit"
+              <div className="cardCk-icons">
+                <BiEdit className="icon-edit"
                   onClick={() => handleShowUpdateCk(ck)}/>
-                </h3>
+
+              <div className="modalCk-comment">
+                <p>{ck.comment}</p>
+                <GoCommentDiscussion className="modalck-icon-comment" />
+              </div>
+                
+
+                <RiDeleteBin2Line className="icon-delete"
+                onClick={() => handleShowDeleteCk(ck)}/>
               </div>
             </div>
           ))}
@@ -130,6 +150,8 @@ export default function ModalCk({kr}) {
           {showAddCk ? <CreateCheckin krId={kr.id}  closeCreateCheckin={()=>setShowAddCk(false)}/> : ""}
 
           {showUpdateCk ? <UpdateCheckin ck={ckEdit}  closeUpdateCheckin={()=>setShowUpdateCk(false)}/> : ""}
+
+          {showDeleteCk ? <DeleteCheckin ckId={ckDelete.id}  closeDeleteCk={()=>setShowDeleteCk(false)}/> : ""}
         </div>
 
       </div>

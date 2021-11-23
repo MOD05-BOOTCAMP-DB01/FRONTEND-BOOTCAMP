@@ -8,14 +8,19 @@ import { Link } from "react-router-dom";
 import Select from "react-select";
 import "./UpdateObjective.css";
 import "react-datepicker/dist/react-datepicker.css";
+import { useGlobalContext } from "../../../context/context";
 
 const UpdateObjective = (props) => {
   const {id} = props.match.params;
+  const {years,quarter,loadQuarter,loadYears,teams,loadTeams} = useGlobalContext();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [objective,setObjective] = useState([])
   const [user,setUser] = useState("")
-  const [selectedUser,setSelectedUser] = useState({})
+  const [selectedUser,setSelectedUser] = useState({});
+  const [selectedQuarter,setSelectedQuarter] = useState('');
+  const [selectedTeam,setSelectedTeam] = useState('');
+  const [selectedYear,setSelectedYear] = useState('');
   const [usernames, setUsername] = useState([]);
 
   useEffect(() => {
@@ -31,17 +36,22 @@ const UpdateObjective = (props) => {
         }),
       ];
       setUsername(options);
-
+      loadQuarter();
+      loadTeams();
+      loadYears();
     };
 
     const loadObjective = async()=>{
       const response = await Api.buildApiGetRequest(Api.readObjectivesById(id), true);
       const data = await response.json();
-      setObjective(data.objective);
-      setSelectedUser({value:data.objective.owner,label:data.objective.owner.username})
-      console.log(data.objective.initial_date);
-      setStartDate(new Date(data.objective.initial_date))
-      setEndDate(new Date(data.objective.end_date))
+      const obj = data.objective;
+      setObjective(obj);
+      setSelectedUser({value:obj.owner.id,label:obj.owner.username})
+      setSelectedYear({value:obj.year.id,label:obj.year.year})
+      setSelectedQuarter({value:obj.quarter.id,label:obj.quarter.quarter})
+      setSelectedTeam({value:obj.team.id,label:obj.team.team})
+      setStartDate(new Date(obj.initial_date))
+      setEndDate(new Date(obj.end_date))
       
     }
     loadOwners();
@@ -81,10 +91,24 @@ const UpdateObjective = (props) => {
       console.log('error')
     }
   };
+   const handleChangeQuarter= (selectedOption)=>{
+    setSelectedQuarter(selectedOption.value);
+  }
+  const handleChangeYears= (selectedOption)=>{
+    setSelectedYear(selectedOption.value);
+    const yearAdd = (parseInt(selectedOption.label)+1).toString();
+    console.log(yearAdd)
+    setStartDate(new Date(yearAdd));
+  }
+    const handleChangeTeams = (selectedOption)=>{
+    setSelectedTeam(selectedOption.value);
+  }
 
   return (
+    <div className="create-objective_container">
+      <h1>Editar Objetivo</h1>
+   
     <form className="form_container-objective" onSubmit={handleSubmit}>
-      <h1>Editar um Objetivo</h1>
       <div className="form_container">
         <div className="form_container_objective-card--input">
           <label htmlFor="objective">Objetivo</label>
@@ -94,6 +118,22 @@ const UpdateObjective = (props) => {
           <label htmlFor="">Tipo</label>
           <input name="type" id="type" type="text" defaultValue={objective.type}/>
         </div>
+        <div className="form_container_objective-card--input">
+ <label htmlFor="">Ano</label>
+         <Select options={years[0]}
+         value={selectedYear}
+         onChange={handleChangeYears}
+         id="select"
+    />
+    </div>
+    <div className="form_container_objective-card--input">
+    <label htmlFor="">Quarter</label>
+         <Select options={quarter}
+         value={selectedQuarter}
+         onChange={handleChangeQuarter}
+         id="select"
+    />
+    </div>
         <div className="form_container_objective-card--input date">
           <label htmlFor="">Data Inicial</label>
           <span className="teste">
@@ -117,9 +157,9 @@ const UpdateObjective = (props) => {
           
           ></DatePicker>
         </div>
-        <div className="form_container_objective-card--input">
-          <label htmlFor="">Area</label>
-          <input name="area" id="area" type="text" defaultValue={objective.area}/>
+       <div className="form_container_objective-card--input">
+          <label htmlFor="">Time</label>
+          <Select value={selectedTeam} options={teams[0]} onChange={handleChangeTeams} id="select"/>
         </div>
         <div className="form_container_objective-card--input">
           <label htmlFor="">Unidade</label>
@@ -141,6 +181,7 @@ const UpdateObjective = (props) => {
         </Link>
       </div>
     </form>
+     </div>
   );
 };
 

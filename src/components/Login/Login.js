@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { BiUser } from "react-icons/bi";
 import { MdOutlineLockOpen } from "react-icons/md";
 import { IconContext } from "react-icons";
@@ -6,11 +6,12 @@ import { Api } from "../../Api/Api";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
 import LinkButton from "../LinkButton/LinkButton";
 import { useHistory } from "react-router";
-import {useGlobalContext} from './../../context/context'
+import { useGlobalContext } from "./../../context/context";
+import { toast } from "react-toastify";
 import "./Login.css";
 
 export default function Login() {
-  const {setLogin} = useGlobalContext()
+  const { setLogin, setError, error } = useGlobalContext();
   const history = useHistory();
 
   const handleSubmit = async (event) => {
@@ -34,9 +35,18 @@ export default function Login() {
       JwtHandler.setJwt(accessToken);
       localStorage.setItem("USER_ID", userID);
       setLogin(false);
+      toast.success("Bem-vindo", {
+        theme: "colored",
+        position: toast.POSITION.TOP_CENTER,
+      });
       history.push(`/objectives`);
+    } else {
+      toast.error("Usuario ou senha incorreto", {
+        theme: "colored",
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
   };
-  }
 
   return (
     <div className="form">
@@ -49,12 +59,7 @@ export default function Login() {
                 <BiUser />
               </span>
 
-              <input
-                type="text"
-                name="email"
-                id="email"
-                placeholder="E-mail"
-              />
+              <input type="text" name="email" id="email" placeholder="E-mail" />
             </div>
             <div className="form__card--input">
               <input

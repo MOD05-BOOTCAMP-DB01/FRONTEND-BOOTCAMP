@@ -1,13 +1,18 @@
 import React, { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { Api } from "../Api/Api";
 const AppContext = React.createContext();
-const AppProvider = ({ children }) => {
+const AppProvider = ({ children,props }) => {
+  let history = useHistory();
   //  funções e estados globais
   const [loggedUser,setLoggedUser] = useState([])
   const [login, setLogin] = useState(false);
   const [render, setRender] = useState(false);
   const [teams,setTeams] = useState([]);
-
+  const [error,setError] = useState(false)
+  const [years,setYears] = useState([])
+  const [objectives,setObjectives] = useState([])
+  const [quarter,setQuarter] = useState([])
 
   const [showAddKr, setShowAddKr] = useState(false);
   
@@ -28,15 +33,21 @@ const AppProvider = ({ children }) => {
     setRender(!render);
     
   }
-  const [objective,setObjectives] = useState([])
+ 
 
 const getAllObjectives = async () => {
+
+      try{
       const response = await Api.buildApiGetRequest(
         Api.readAllObjectives(),
         true
       );
       const data = await response.json();
       setObjectives(data);
+      }catch(error){
+        setError(true);
+        console.log(error.status);
+      }
     };
 
   const handleShowAddKr = () => {
@@ -44,7 +55,19 @@ const getAllObjectives = async () => {
     
   }
  
-  
+  const loadYears = async()=>{
+    const response = await Api.buildApiGetRequest(Api.realAllYears(),true);
+    const data = await response.json();
+    const yearsList = [
+      data.map((year)=>{
+        return {
+          value:year.id,
+          label:year.year,
+        }
+      })
+    ]
+    setYears(yearsList);
+  }
   const loadKr = async (id) => {
     const response = await Api.buildApiGetRequest(Api.readKeyResultsByObjectivesId(id),true)
     const results = await response.json()
@@ -56,12 +79,33 @@ const getAllObjectives = async () => {
   }
 
   const loadUniqueUser = async(id)=>{
+    try{
       const response = await Api.buildApiGetRequest(Api.readUserbyId(id),true);
       const data = await response.json();
       setLoggedUser(data.user);
+    }catch(error){
+      setError(true);
+      console.log(error);
+    }
     }
 
+    
+  const loadQuarter = async ()=>{
+   const response = await Api.buildApiGetRequest(Api.readAllQuaters(),true);
+   const data = await response.json();
+   const quarterList = data.map((quarter)=>{
+     return {
+       value:quarter.id,
+       label:quarter.quarter
+     }
+   })
+   setQuarter(quarterList);
+  }
+
+ 
+  
     const loadTeams = async ()=>{
+      try{
         const response = await Api.buildApiGetRequest(Api.readAllTeams(),true);
         const data = await response.json();
         const teamsOptions =[
@@ -74,6 +118,12 @@ const getAllObjectives = async () => {
         ]
         
         setTeams(teamsOptions);
+      }catch(error){
+        if(!error.status){
+          setError(true)
+        }
+        console.log(error.status)
+      }
       }
 
   return (
@@ -90,7 +140,17 @@ const getAllObjectives = async () => {
         render,
         teams,
         loadTeams,
-        typeOptions
+        typeOptions,
+        setError,
+        error,
+        years,
+        loadYears,
+        setYears,
+        loadQuarter,
+        quarter,
+        setQuarter,
+        setObjectives,
+        objectives
           }}>
       {children}
     </AppContext.Provider>

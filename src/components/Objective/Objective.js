@@ -6,43 +6,44 @@ import { useGlobalContext } from "../../context/context";
 import Spin from "react-cssfx-loading/lib/Spin";
 import CardObjective2 from "../CardObjective2/CardObjective2";
 
-const Objective = () => {
+const Objective = (props) => {
   const id = localStorage.getItem("USER_ID");
-  const { login,loadTeams,teams,loadUniqueUser } = useGlobalContext();
+  const { loadTeams,teams,loadUniqueUser,getAllObjectives,error,years,loadYears,objectives,setObjectives } = useGlobalContext();
   const [team,setTeam] = useState('')
-  const [objectives, setObjectives] = useState([]);
-
+ 
   useEffect(() => {
-    const getAllObjectives = async () => {
-      const response = await Api.buildApiGetRequest(
-        Api.readAllObjectives(),
-        true
-      );
-      const data = await response.json();
-      setObjectives(data);
-    };
+
     loadUniqueUser(id);
     loadTeams();
     setTeam(teams[0]);
+    loadYears()
     getAllObjectives();
   }, []);
- 
-  
 
-  if (login) {
-    return (
-      <div className="center-loading">
-        <Spin color="#e11e42" width="100px" height="100px" duration="2s" />
-      </div>
-    );
+
+  console.log(years);
+  if(error){
+    props.history.go("/ERROR500")
   }
+const handleChange = async (selectedOption)=>{
+    const year=selectedOption?.label;
+    if(year){
+      const response = await Api.buildApiGetRequest(Api.readObjectiveByYear(year),true)
+    const results = await response?.json()
+    setObjectives(results[0].objectives)
+    }else{
+      getAllObjectives();
+    }
+    
+  }
+
   return (
     <div className="objective-container">
     <div className="objective-container-heading">
     {/* <SiTarget /> */}
     <h1>Objetivos</h1>
     <div className="objective-container_filter">
-    <Select placeholder="Ano"></Select>
+    <Select placeholder="Ano" options={years[0]} onChange={handleChange} isClearable></Select>
     <div className="quarter-container">
      <div class="radio-group">
 <input type="radio" id="Q1" name="quarter" ></input><label for="Q1">Q1</label>

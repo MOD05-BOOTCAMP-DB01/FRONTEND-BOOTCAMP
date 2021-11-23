@@ -35,10 +35,16 @@ export default function Login() {
       JwtHandler.setJwt(accessToken);
       localStorage.setItem("USER_ID", userID);
       setLogin(false);
-      toast.success("Bem-vindo", { theme: "colored" });
+      toast.success("Bem-vindo", {
+        theme: "colored",
+        position: toast.POSITION.TOP_CENTER,
+      });
       history.push(`/objectives`);
     } else {
-      toast.error("Usuario ou senha incorreto", { theme: "colored" });
+      toast.error("Usuario ou senha incorreto", {
+        theme: "colored",
+        position: toast.POSITION.TOP_CENTER,
+      });
     }
   };
 

@@ -72,7 +72,7 @@ export default function UpdateKeyResult({objectiveId,kr, closeUpdateKr = () =>{}
     console.log(response);
 
     if (response.status === 200) {
-      toast.success('Resultado-chave editado com sucesso!',{theme: "dark"})
+      toast.success('Resultado-chave editado com sucesso!',{theme: "dark",position: toast.POSITION.TOP_CENTER})
       handleRender()
       closeUpdateKr()
     }

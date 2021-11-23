@@ -20,12 +20,12 @@ export default function DeleteKeyResult({krId, objectiveId,titleKr, closeDeleteK
 
     if (response.status === 204) {
       // Delete product successfully
-      toast.success('Resultado-chave deletado com sucesso!',{theme: "dark"})
+      toast.success('Resultado-chave deletado com sucesso!',{theme: "dark",position: toast.POSITION.TOP_CENTER})
       // Navigate to home page
       handleRender()
       closeDeleteKr()
     } else {
-      toast.error('Não foi possível excluir o resultado-chave.',{theme: "colored"})
+      toast.error('Não foi possível excluir o resultado-chave.',{theme: "colored",position: toast.POSITION.TOP_CENTER})
       closeDeleteKr()
     }
   }

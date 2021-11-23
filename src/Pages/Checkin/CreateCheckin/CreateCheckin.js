@@ -41,7 +41,7 @@ export default function CreateCheckin({closeCreateCheckin, krId}) {
     console.log(response);
 
     if (response.status === 201) {
-      toast.success('Checkin criado com sucesso!',{theme: "dark"})
+      toast.success('Checkin criado com sucesso!',{theme: "dark",position: toast.POSITION.TOP_CENTER})
       handleRender()
       closeCreateCheckin()
       
@@ -85,13 +85,13 @@ export default function CreateCheckin({closeCreateCheckin, krId}) {
             <Form className="formKr">
               <AiOutlineCloseSquare onClick={closeCreateCheckin} className="formKr-close"/>
               <div className="formKr-title">
-                <h2>Adicionar Checkin</h2>
+                <h2>Adicionar Check-in</h2>
               </div>
 
               <div className="formKr-area-Items">
                   <div className="formKr-Items">
                     <label>
-                      Date
+                      Data
                       {errors.date && <abbr className="fieldError" title={errors.date}>*</abbr>}
                     </label>
                     <Field name="date" type="date"

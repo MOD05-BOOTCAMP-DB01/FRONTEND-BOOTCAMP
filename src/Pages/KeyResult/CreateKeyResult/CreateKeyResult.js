@@ -69,7 +69,7 @@ export default function CreateKeyResult({objectiveId}) {
     console.log(response);
 
     if (response.status === 201) {
-      toast.success('Resultado-chave criado com sucesso!',{theme: "dark"})
+      toast.success('Resultado-chave criado com sucesso!',{theme: "dark",position: toast.POSITION.TOP_CENTER})
       
       handleShowAddKr()
       

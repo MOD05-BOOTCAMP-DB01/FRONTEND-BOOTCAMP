@@ -6,7 +6,7 @@ import { AiOutlineAppstoreAdd,AiFillPushpin } from 'react-icons/ai'
 import { BiEdit } from 'react-icons/bi'
 
 
-import { format} from 'date-fns'
+import { format, addDays} from 'date-fns'
 
 
 
@@ -18,10 +18,13 @@ import CreateCheckin from '../../../Pages/Checkin/CreateCheckin/CreateCheckin';
 
 // CSS
 import './modalCk.css'
+import UpdateCheckin from '../../../Pages/Checkin/UpdateCheckin/UpdateCheckin';
 
 export default function ModalCk({kr}) {
   const [cks, setCks] = useState([]);
+  const [ckEdit, setCkEdit] = useState({});
   const [showAddCk, setShowAddCk] = useState(false)
+  const [showUpdateCk, setShowUpdateCk] = useState(false)
 
   const {render} = useGlobalContext()
   
@@ -74,6 +77,11 @@ export default function ModalCk({kr}) {
     }
   }
 
+  const handleShowUpdateCk = (ck) =>{
+    setShowUpdateCk(true)
+    setCkEdit(ck)
+  }
+
   return (
   
       <div className="modalCk">
@@ -100,7 +108,7 @@ export default function ModalCk({kr}) {
               <AiFillPushpin/>
               </div>
               <div className="cardCK-date">
-                <h3>{format((new Date(ck.date)), 'dd')}</h3>
+                <h3>{format(addDays(new Date(ck.date),1), 'dd')}</h3>
                 <h4>{getMonth(format((new Date(ck.date)), 'MM'))}</h4>
               </div>
               <div className="cardCK-value">
@@ -108,7 +116,8 @@ export default function ModalCk({kr}) {
               </div>
               <div className="">
                 <h3>
-                  <BiEdit className="icon-edit"/>
+                  <BiEdit className="icon-edit"
+                  onClick={() => handleShowUpdateCk(ck)}/>
                 </h3>
               </div>
             </div>
@@ -119,6 +128,8 @@ export default function ModalCk({kr}) {
         </div>
         <div>
           {showAddCk ? <CreateCheckin krId={kr.id}  closeCreateCheckin={()=>setShowAddCk(false)}/> : ""}
+
+          {showUpdateCk ? <UpdateCheckin ck={ckEdit}  closeUpdateCheckin={()=>setShowUpdateCk(false)}/> : ""}
         </div>
 
       </div>

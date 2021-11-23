@@ -199,6 +199,7 @@ export default function UpdateKeyResult({
                       type="text"
                       value={newKr.moonshot}
                       className="field"
+                      onChange={handleChange}
                     >
                       <option value=""></option>
                       <option value="yes">Sim</option>

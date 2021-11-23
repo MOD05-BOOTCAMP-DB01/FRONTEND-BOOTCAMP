@@ -12,8 +12,6 @@
 }
 .CreateKeyResult {
   width: 65%;
-  height: 100vh;
-  
   background: rgb(243, 243, 243);
   border-radius: 0.5em;
 }
@@ -53,7 +51,6 @@
   width: 100%;
   height: 100%;
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
 }

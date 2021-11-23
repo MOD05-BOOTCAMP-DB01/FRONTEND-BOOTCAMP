@@ -11,7 +11,7 @@ const AppProvider = ({ children,props }) => {
   const [teams,setTeams] = useState([]);
   const [error,setError] = useState(false)
   const [years,setYears] = useState([])
-  const [objective,setObjectives] = useState([])
+  const [objectives,setObjectives] = useState([])
   const [quarter,setQuarter] = useState([])
 
   const [showAddKr, setShowAddKr] = useState(false);
@@ -36,12 +36,18 @@ const AppProvider = ({ children,props }) => {
  
 
 const getAllObjectives = async () => {
+
+      try{
       const response = await Api.buildApiGetRequest(
         Api.readAllObjectives(),
         true
       );
       const data = await response.json();
       setObjectives(data);
+      }catch(error){
+        setError(true);
+        console.log(error.status);
+      }
     };
 
   const handleShowAddKr = () => {
@@ -142,7 +148,9 @@ const getAllObjectives = async () => {
         setYears,
         loadQuarter,
         quarter,
-        setQuarter
+        setQuarter,
+        setObjectives,
+        objectives
           }}>
       {children}
     </AppContext.Provider>

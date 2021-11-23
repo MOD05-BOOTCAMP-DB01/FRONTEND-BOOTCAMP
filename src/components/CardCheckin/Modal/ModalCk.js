@@ -3,17 +3,31 @@ import React, { useEffect, useState } from 'react'
 
 // import { BsFillCircleFill } from 'react-icons/bs'
 import { AiOutlineAppstoreAdd,AiFillPushpin } from 'react-icons/ai'
+import { BiEdit } from 'react-icons/bi'
+
+
+import { format, addDays} from 'date-fns'
+
 
 
 import { Api } from '../../../Api/Api';
+import { useGlobalContext } from '../../../context/context';
+import CreateCheckin from '../../../Pages/Checkin/CreateCheckin/CreateCheckin';
 // import CreateKeyResult from '../../../Pages/CreateKeyResult/CreateKeyResult';
 
 
 // CSS
 import './modalCk.css'
+import UpdateCheckin from '../../../Pages/Checkin/UpdateCheckin/UpdateCheckin';
 
 export default function ModalCk({kr}) {
   const [cks, setCks] = useState([]);
+  const [ckEdit, setCkEdit] = useState({});
+  const [showAddCk, setShowAddCk] = useState(false)
+  const [showUpdateCk, setShowUpdateCk] = useState(false)
+
+  const {render} = useGlobalContext()
+  
 
   useEffect(() => {
 
@@ -27,19 +41,53 @@ export default function ModalCk({kr}) {
     };
 
     loadCheckin();
-  }, []);
+  }, [render]);
 
+  const handleShowAddCk = () => {
+    setShowAddCk(true);
+  }
+
+  const getMonth = (month) => {
+    if(month == 12){
+      return 'Dez'
+    } else if(month == 11){
+      return 'Nov'
+    }else if(month == 10){
+      return 'Out'
+    }else if(month == 9){
+      return 'Set'
+    }else if(month == 8){
+      return 'Ago'
+    }else if(month == 7){
+      return 'Jul'
+    }else if(month == 6){
+      return 'Jun'
+    }else if(month == 5){
+      return 'Mai'
+    }else if(month == 4){
+      return 'Abr'
+    }else if(month == 3){
+      return 'Mar'
+    }else if(month == 2){
+      return 'Fev'
+    }else if(month == 1){
+      return 'Jan'
+    }else{
+      return ''
+    }
+  }
+
+  const handleShowUpdateCk = (ck) =>{
+    setShowUpdateCk(true)
+    setCkEdit(ck)
+  }
 
   return (
   
       <div className="modalCk">
         <div className="modal-header">
-          {/* <div className="modal-title">
-            <h2>{kr.key_result}</h2>
-          </div> */}
-
           <div className="modal-header-items">
-            <AiOutlineAppstoreAdd className="chapterAdd" />
+            <AiOutlineAppstoreAdd className="chapterAdd" onClick={handleShowAddCk}/>
             <div className="modal-rating">
               {(() => {
                 switch (kr.rating) {
@@ -60,15 +108,16 @@ export default function ModalCk({kr}) {
               <AiFillPushpin/>
               </div>
               <div className="cardCK-date">
-                <h3>27</h3>
-                <h4>Jan</h4>
+                <h3>{format(addDays(new Date(ck.date),1), 'dd')}</h3>
+                <h4>{getMonth(format((new Date(ck.date)), 'MM'))}</h4>
               </div>
               <div className="cardCK-value">
                 <h3>{ck.current_value}</h3>
               </div>
               <div className="">
                 <h3>
-                  {/* <BiEdit className="icon-edit"/> */}
+                  <BiEdit className="icon-edit"
+                  onClick={() => handleShowUpdateCk(ck)}/>
                 </h3>
               </div>
             </div>
@@ -76,28 +125,12 @@ export default function ModalCk({kr}) {
         </div>
 
         <div className="modalFooter">
-          {/* <div className="modalFooter-owner">
-            <h4 >
-              Dono Kr:
-              <spam>{kr.owner.username}</spam>
-            </h4>
-          </div>
-
-          <div className="modalFooter-vlInitial">
-            <h4>
-              Valor Inicial:
-              <spam>{kr.initial_value || 0}
-              </spam></h4>
-          </div>
-
-          <div className="modalFooter-vlGoal">
-            <h4>
-              Meta:
-              <spam>{kr.goal_value}</spam>
-              </h4>
-          </div> */}
         </div>
+        <div>
+          {showAddCk ? <CreateCheckin krId={kr.id}  closeCreateCheckin={()=>setShowAddCk(false)}/> : ""}
 
+          {showUpdateCk ? <UpdateCheckin ck={ckEdit}  closeUpdateCheckin={()=>setShowUpdateCk(false)}/> : ""}
+        </div>
 
       </div>
 

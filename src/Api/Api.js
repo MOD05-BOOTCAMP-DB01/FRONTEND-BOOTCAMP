@@ -3,8 +3,7 @@ export const Api = {
   baseUrl: "http://localhost:3000",
 
   loginUrl: () => `${Api.baseUrl}/auth/signin`,
-  createUser: () => `${Api.baseUrl}/auth/signup`,
-
+  
   // OBJECTIVES
   readAllObjectives: () => `${Api.baseUrl}/objectives`,
   readObjectivesById: (id) => `${Api.baseUrl}/objectives/${id}`,
@@ -24,6 +23,7 @@ export const Api = {
 
   // USERS
   createUserAdminUrl: () => `${Api.baseUrl}/users`,
+  createUser: () => `${Api.baseUrl}/auth/signup`,
   readAllUsers: () => `${Api.baseUrl}/users`,
   readUserbyId: (id) => `${Api.baseUrl}/users/${id}`,
   updateUsers:(id)=>`${Api.baseUrl}/users/${id}`,
@@ -31,10 +31,12 @@ export const Api = {
   // checkin
   readAllCheckinsUrl: () => `${Api.baseUrl}/checkin`,
   readCheckinsByKeyResultId: (id) => `${Api.baseUrl}/checkin/key_result/${id}`,
+  createCkUrl: () => `${Api.baseUrl}/checkin`,
+  updateCkUrl: (id) => `${Api.baseUrl}/checkin/${id}`,
 
   
-// teams
-readAllTeams:()=>`${Api.baseUrl}/teams`,
+  // teams
+  readAllTeams:()=>`${Api.baseUrl}/teams`,
 
 // years
 realAllYears:()=>`${Api.baseUrl}/years`,

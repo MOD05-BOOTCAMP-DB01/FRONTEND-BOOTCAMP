@@ -108,8 +108,9 @@ const CreateObjective = (props) => {
   console.log(years[0],quarter);
 
   return (
+    <div className="create-objective_container">
+     <h1>Adicionar objetivo</h1>
     <form className="form_container-objective" onSubmit={handleSubmit}>
-      <h1>Adicionar um Objetivo</h1>
       <div className="form_container">
         <div className="form_container_objective-card--input">
           <label htmlFor="objective">Objetivo</label>
@@ -119,6 +120,20 @@ const CreateObjective = (props) => {
           <label htmlFor="">Tipo</label>
           <Select options={typeOptions} onChange={handleChangeType} id="select"/>
         </div>
+        <div className="form_container_objective-card--input">
+ <label htmlFor="">Ano</label>
+         <Select options={years[0]}
+         onChange={handleChangeYears}
+         id="select"
+    />
+    </div>
+    <div className="form_container_objective-card--input">
+ <label htmlFor="">Quarter</label>
+         <Select options={quarter}
+         onChange={handleChangeQuarter}
+         id="select"
+    />
+    </div>
         <div className="form_container_objective-card--input date">
           <label htmlFor="">Data Inicial</label>
           <span className="teste">
@@ -143,20 +158,8 @@ const CreateObjective = (props) => {
             minDate={startDate}
           ></DatePicker>
         </div>
-<div className="form_container_objective-card--input">
- <label htmlFor="">Quarter</label>
-         <Select options={quarter}
-         onChange={handleChangeQuarter}
-         id="select"
-    />
-    </div>
-<div className="form_container_objective-card--input">
- <label htmlFor="">Ano</label>
-         <Select options={years[0]}
-         onChange={handleChangeYears}
-         id="select"
-    />
-    </div>
+
+
         <div className="form_container_objective-card--input">
           <label htmlFor="">Time</label>
           <Select options={teams[0]} onChange={handleChangeTeams} id="select"/>
@@ -182,6 +185,7 @@ const CreateObjective = (props) => {
         </Link>
       </div>
     </form>
+    </div>
   );
 
   }

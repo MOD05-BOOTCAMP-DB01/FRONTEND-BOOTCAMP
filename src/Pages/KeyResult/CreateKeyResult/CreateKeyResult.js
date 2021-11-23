@@ -13,6 +13,7 @@ import { useGlobalContext } from "../../../context/context";
 import "./createKeyResult.css";
 import { Api } from "../../../Api/Api";
 import schema from "./schema";
+import  Button  from "../../../components/Button/Button";
 
 export default function CreateKeyResult({ objectiveId }) {
   const [username, setUsername] = useState([]);
@@ -286,9 +287,9 @@ export default function CreateKeyResult({ objectiveId }) {
               </div>
 
               <div className="formKr-button">
-                <button type="submit" disabled={Object.keys(errors).length}>
+                <Button type="submit" disabled={Object.keys(errors).length}>
                   Enviar
-                </button>
+                </Button>
               </div>
             </Form>
           )}

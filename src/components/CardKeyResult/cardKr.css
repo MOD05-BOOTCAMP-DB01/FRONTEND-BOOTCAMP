@@ -160,7 +160,6 @@
 
 .kr-body-learnMore:hover {
   text-indent: 5px;
-  color: black;
 }
 .kr-body-learnMore:hover:before {
   transform: scale(1, 1);

@@ -6,7 +6,7 @@ import { AiOutlineCloseSquare } from 'react-icons/ai'
 
 import Select from "react-select";
 
-import { toast, useToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 import { useGlobalContext } from "../../../context/context";
@@ -14,16 +14,15 @@ import { useGlobalContext } from "../../../context/context";
 import './createKeyResult.css'
 import { Api } from '../../../Api/Api';
 import schema from './schema';
-import { useHistory } from 'react-router';
+
 
 export default function CreateKeyResult({objectiveId}) {
 
   const [username, setUsername] = useState([]);
   const [ownerId, setOwnerId] = useState("");
 
-  const {handleShowAddKr, loadKr, showAddKr} = useGlobalContext()
+  const {handleShowAddKr} = useGlobalContext()
 
-  const history = useHistory()
 
   useEffect(() => {
     const loadOwners = async () => {
@@ -113,7 +112,6 @@ export default function CreateKeyResult({objectiveId}) {
          onReset={onSubmit}
          initialValues={{
           key_result: '',
-          comment: '',
           rating: null,
           status: null,
           comment: '',

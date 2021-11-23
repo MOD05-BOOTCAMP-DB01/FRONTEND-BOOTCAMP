@@ -30,6 +30,7 @@ export const Api = {
   // checkin
   readAllCheckinsUrl: () => `${Api.baseUrl}/checkin`,
   readCheckinsByKeyResultId: (id) => `${Api.baseUrl}/checkin/key_result/${id}`,
+  createCkUrl: () => `${Api.baseUrl}/checkin`,
 
   
 // teams

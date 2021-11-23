@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { BiUser } from "react-icons/bi";
 import { MdOutlineLockOpen } from "react-icons/md";
 import { IconContext } from "react-icons";
@@ -6,11 +6,12 @@ import { Api } from "../../Api/Api";
 import { JwtHandler } from "../../jwt-handler/JwtHandler";
 import LinkButton from "../LinkButton/LinkButton";
 import { useHistory } from "react-router";
-import {useGlobalContext} from './../../context/context'
+import { useGlobalContext } from "./../../context/context";
+import { toast } from "react-toastify";
 import "./Login.css";
 
 export default function Login() {
-  const {setLogin,setError,error} = useGlobalContext()
+  const { setLogin, setError, error } = useGlobalContext();
   const history = useHistory();
 
   const handleSubmit = async (event) => {
@@ -24,30 +25,23 @@ export default function Login() {
       email,
       password,
     };
-    try{
+
     const response = await Api.buildApiPostRequest(Api.loginUrl(), payload);
     const body = await response.json();
-    
+
     if (response.status === 201) {
       const accessToken = body.token;
       const userID = body.userId;
       JwtHandler.setJwt(accessToken);
       localStorage.setItem("USER_ID", userID);
       setLogin(false);
+      toast.success("Bem-vindo", { theme: "colored" });
       history.push(`/objectives`);
-  }
-  if(response.status===401){
-    console.log('vixe')
-  }
-}catch(error){
-  setError(true);
-  console.log('oi');
-}
-  }
+    } else {
+      toast.error("Usuario ou senha incorreto", { theme: "colored" });
+    }
+  };
 
-if(error){
-  history.push(`/ERROR500`);
-}
   return (
     <div className="form">
       <div>
@@ -59,12 +53,7 @@ if(error){
                 <BiUser />
               </span>
 
-              <input
-                type="text"
-                name="email"
-                id="email"
-                placeholder="E-mail"
-              />
+              <input type="text" name="email" id="email" placeholder="E-mail" />
             </div>
             <div className="form__card--input">
               <input

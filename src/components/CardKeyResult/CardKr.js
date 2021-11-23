@@ -1,40 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-import { BiEdit } from 'react-icons/bi'
-import { RiDeleteBin2Line } from 'react-icons/ri'
+import coelho from "../../Assets/coelho.png";
+import tartaruga from "../../Assets/tartaruga.png";
 
-import ViewMoreKr from './ViewMoreKr'
-import UpdateKeyResult from "../../Pages/KeyResult/UpdateKeyResult/UpdateKeyResult"
+import { BiEdit } from "react-icons/bi";
+import { RiDeleteBin2Line } from "react-icons/ri";
 
+import ViewMoreKr from "./ViewMoreKr";
+import UpdateKeyResult from "../../Pages/KeyResult/UpdateKeyResult/UpdateKeyResult";
 
 import { useGlobalContext } from "../../context/context";
 
-import './cardKr.css'
-import DeleteKeyResult from '../../Pages/KeyResult/DeleteReyResult/DeleteKeyResult'
+import "./cardKr.css";
+import DeleteKeyResult from "../../Pages/KeyResult/DeleteReyResult/DeleteKeyResult";
 
+export default function CardKr({ kr, objectiveId }) {
+  const [showViewMore, setShowViewMore] = useState(false);
 
+  const [showUpdateKr, setShowUpdateKr] = useState(false);
 
-export default function CardKr({kr,objectiveId}) {
-  
-  
-  const [showViewMore, setShowViewMore] = useState(false)
+  const [showDeletekr, setShowDeleteKr] = useState(false);
 
-  const [showUpdateKr, setShowUpdateKr] = useState(false)
-
-  const [showDeletekr, setShowDeleteKr] = useState(false)
-  
   const handleShowViewMore = () => {
-    setShowViewMore(!showViewMore)
-  }
+    setShowViewMore(!showViewMore);
+  };
 
   const handleShowOpenUpdateKr = () => {
-    setShowUpdateKr(true)
-    console.log("handleShowOpenUpdate", showUpdateKr)
-  }
+    setShowUpdateKr(true);
+    console.log("handleShowOpenUpdate", showUpdateKr);
+  };
 
   const handleShowDeletekr = () => {
-    setShowDeleteKr(true)
-  }
+    setShowDeleteKr(true);
+  };
 
   return (
     <>
@@ -43,11 +41,11 @@ export default function CardKr({kr,objectiveId}) {
           {(() => {
             if (kr.rating === "Baixo") {
               return <div className="statusBar-low"></div>;
-            }else if(kr.rating === 'Médio'){
-                return <div className="statusBar-medium"></div>;
-            }else if(kr.rating === "Alto"){
+            } else if (kr.rating === "Médio") {
+              return <div className="statusBar-medium"></div>;
+            } else if (kr.rating === "Alto") {
               return <div className="statusBar-high"></div>;
-            }else{
+            } else {
               return <div></div>;
             }
           })()}
@@ -58,18 +56,31 @@ export default function CardKr({kr,objectiveId}) {
           </div>
 
           <div className="kr-header-buttons">
-            
+            <BiEdit
+              className="kr-header-icons"
+              onClick={() => handleShowOpenUpdateKr()}
+            />
 
-            <BiEdit className="kr-header-icons" onClick={() => handleShowOpenUpdateKr()}/>
-
-            <RiDeleteBin2Line className="kr-header-icons" onClick={() => handleShowDeletekr()}/>
-
+            <RiDeleteBin2Line
+              className="kr-header-icons"
+              onClick={() => handleShowDeletekr()}
+            />
           </div>
 
           <div className="kr-header-rating">
-          <h4>{kr.rating}</h4>
+            <span className="kr__moonshot">
+              {(() => {
+                if (kr.moonshot === "yes") {
+                  return <img src={coelho} alt="Coelho" />;
+                } else if (kr.moonshot === "no") {
+                  return <img src={tartaruga} alt="Tartaruga" />;
+                } else {
+                  return <></>;
+                }
+              })()}
+            </span>
+            <h4>{kr.rating}</h4>
           </div>
-
         </div>
 
         <div className="kr-body">
@@ -85,36 +96,48 @@ export default function CardKr({kr,objectiveId}) {
             {(() => {
               if (kr.status == 100) {
                 return <h4 className="status-gree">{kr.status}</h4>;
-              }else if(kr.status >= 80){
-                  return <h4 className="status-yellow">{kr.status}</h4>;
-              }else if(kr.status < 80){
+              } else if (kr.status >= 80) {
+                return <h4 className="status-yellow">{kr.status}</h4>;
+              } else if (kr.status < 80) {
                 return <h4 className="status-red">{kr.status}</h4>;
-              }else{
+              } else {
                 return <h4>{kr.status}</h4>;
               }
             })()}
           </div>
 
-          <div className="kr-body-learnMore" onClick={() => handleShowViewMore()}>
-            <spam >{!showViewMore ? "Ver mais": "Ver menos"}</spam>
-          </div> 
-            
+          <div
+            className="kr-body-learnMore"
+            onClick={() => handleShowViewMore()}
+          >
+            <span>{!showViewMore ? "Ver mais" : "Ver menos"}</span>
+          </div>
         </div>
 
-
-        
         <div>
-          {showUpdateKr ? <UpdateKeyResult kr={kr} closeUpdateKr={()=>setShowUpdateKr(false)}/> : ""}
+          {showUpdateKr ? (
+            <UpdateKeyResult
+              kr={kr}
+              closeUpdateKr={() => setShowUpdateKr(false)}
+            />
+          ) : (
+            ""
+          )}
 
-          {showDeletekr ? <DeleteKeyResult krId={kr.id} titleKr={kr.key_result} objectiveId={objectiveId}
-          closeDeleteKr= {() => setShowDeleteKr(false)}/> : ""}  
-
+          {showDeletekr ? (
+            <DeleteKeyResult
+              krId={kr.id}
+              titleKr={kr.key_result}
+              objectiveId={objectiveId}
+              closeDeleteKr={() => setShowDeleteKr(false)}
+            />
+          ) : (
+            ""
+          )}
         </div>
       </div>
-       
-          {showViewMore ? <ViewMoreKr kr={kr}/> : ""}
-          
-       
-        </>
-  )
+
+      {showViewMore ? <ViewMoreKr kr={kr} /> : ""}
+    </>
+  );
 }

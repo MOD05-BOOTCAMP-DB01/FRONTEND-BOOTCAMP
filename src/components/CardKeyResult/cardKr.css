@@ -1,47 +1,44 @@
-.kr{
+.kr {
   width: 100%;
   height: 7em;
   display: grid;
   grid-template-columns: 1% 99%;
   grid-template-rows: 3.5em 3.5em;
-  grid-template-areas: 
-    "statusBar header" 
-    "statusBar body" ;
+  grid-template-areas:
+    "statusBar header"
+    "statusBar body";
   background-color: rgb(253, 253, 253);
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 
   border-radius: 1em;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
-.kr-statusBar{
+.kr-statusBar {
   grid-area: statusBar;
   width: 100%;
   height: 7em;
-  
 }
-.statusBar-low{
+.statusBar-low {
   width: 100%;
   height: 100%;
-  background-color:  #009FE3;
+  background-color: #009fe3;
   border-radius: 1em 0 0 1em;
 }
-.statusBar-medium{
+.statusBar-medium {
   width: 100%;
   height: 100%;
-  background-color: #0099B7;
+  background-color: #0099b7;
   border-radius: 1em 0 0 1em;
 }
-.statusBar-high{
+.statusBar-high {
   width: 100%;
   height: 100%;
-  background-color: #006D99;
+  background-color: #006d99;
   border-radius: 1em 0 0 1em;
-
 }
 
-
-.kr-header{
+.kr-header {
   width: 100%;
   height: 4em;
   padding-top: 1em;
@@ -49,38 +46,37 @@
   display: flex;
 }
 
-.kr-header-title{
+.kr-header-title {
   width: 45%;
   padding-left: 1em;
 }
-.kr-header-title h3{
+.kr-header-title h3 {
   font-size: 1.3rem;
 }
 
-.kr-header-buttons{
+.kr-header-buttons {
   width: 15%;
   display: flex;
   justify-content: space-evenly;
 }
 
-.kr-header-icons{
+.kr-header-icons {
   cursor: pointer;
   font-size: 1.5em;
 }
 
-.kr-header-rating{
+.kr-header-rating {
   width: 40%;
   display: flex;
   justify-content: flex-end;
   padding-right: 2em;
 }
-.kr-header-rating h4{
+.kr-header-rating h4 {
   width: 5em;
   text-align: center;
 }
 
-
-.kr-body{
+.kr-body {
   width: 100%;
   height: 3em;
   grid-area: body;
@@ -88,96 +84,90 @@
   justify-content: space-between;
 }
 
-.kr-body-owner{
+.kr-body-owner {
   width: 15em;
   height: 100%;
   padding-left: 1em;
   display: flex;
   align-items: flex-end;
-  
 }
 
-.kr-body-type{
+.kr-body-type {
   width: 10em;
   height: 100%;
   display: flex;
   align-items: flex-end;
-
 }
 
-.kr-body-status{
+.kr-body-status {
   width: 4em;
   height: 100%;
   justify-content: center;
   align-items: center;
-  border-radius: .8em;
+  border-radius: 0.8em;
 }
-.kr-body-status h4{
-  border-radius: .8em;
-  padding: .3em;
+.kr-body-status h4 {
+  border-radius: 0.8em;
+  padding: 0.3em;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.status-yellow{
+.status-yellow {
   font-size: 1rem;
   background-color: rgba(255, 255, 0, 0.842);
 }
-.status-gree{
+.status-gree {
   font-size: 1rem;
   background-color: rgba(32, 231, 32, 0.712);
 }
-.status-red{ 
+.status-red {
   font-size: 1rem;
   background-color: rgba(255, 0, 0, 0.678);
 }
 
-
-
 /* Button learn more  aqui*/
 
-.kr-body-learnMore{
+.kr-body-learnMore {
   display: flex;
   justify-content: center;
   width: 8em;
   height: 2.3em;
   align-items: flex-end;
   transition: all 0.2s linear 0s;
-  background-color: #87008B;
+  background-color: #87008b;
   margin-right: 1em;
-  border-radius: .5em;
+  border-radius: 0.5em;
   color: white;
 }
 
-.kr-body-learnMore:before{
-  content:"\f103";
-  font-family: 'Font Awesome 5 free';
+.kr-body-learnMore:before {
+  content: "\f103";
+  font-family: "Font Awesome 5 free";
   font-weight: 900;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   width: 40px;
-  transform: scale(0,1);
+  transform: scale(0, 1);
   transform-origin: left center;
   transition: all 0.2s linear 0s;
-  border-radius: .5em 50% 50% .5em;
+  border-radius: 0.5em 50% 50% 0.5em;
   background-color: #e5dae6a9;
   cursor: pointer;
-
 }
 
-.kr-body-learnMore:hover{
+.kr-body-learnMore:hover {
   text-indent: 5px;
   color: black;
 }
-.kr-body-learnMore:hover:before{
-
-  transform: scale(1,1);
+.kr-body-learnMore:hover:before {
+  transform: scale(1, 1);
   text-indent: 0;
 }
 
-.kr-body-learnMore spam{
+.kr-body-learnMore span {
   width: 100%;
   height: 100%;
   display: flex;
@@ -187,6 +177,10 @@
   cursor: pointer;
 }
 
-.kr-viewMore{
+.kr-viewMore {
   width: 100%;
+}
+
+.kr__moonshot img {
+  width: 15%;
 }

@@ -11,6 +11,7 @@ import UpdateUsers from "../Pages/Users/UpdateUsers/UpdateUsers";
 import UpdateUsersAdm from "../Pages/Users/Adm/UpdateUsersAdm";
 import GuardedRoute from "../components/GuardedRoute/GuardedRoute";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import CreateTeam from "../Pages/Team/CreateTeam";
 
 function Routes() {
   return (
@@ -18,6 +19,7 @@ function Routes() {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/sobre" component={AboutUs} />
+        <Route path="/team" component={CreateTeam} />
         <GuardedRoute path="/objective/:id" component={CardObjective} />
         <GuardedRoute path="/objective" component={CreateObjective} />
         <GuardedRoute path="/objectives" component={Objective} />

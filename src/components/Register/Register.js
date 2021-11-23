@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Api } from "../../Api/Api";
 import { AiOutlineMail } from "react-icons/ai";
 import { BiUser } from "react-icons/bi";
@@ -6,12 +6,12 @@ import { MdOutlineLockOpen } from "react-icons/md";
 import LinkButton from "../LinkButton/LinkButton";
 import { IconContext } from "react-icons";
 import "./Register.css";
-import { HiOutlineBriefcase } from "react-icons/hi";
+import Button from "../Button/Button"
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function Register({setRegister,props}) {
-
+  const [TeamModalVisible, setTeamModalVisible] = useState(false);
   const handleSubmit =  async (event) => {
     event.preventDefault();
 
@@ -19,6 +19,7 @@ export default function Register({setRegister,props}) {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const passwordConfirmation = event.target.passwordConfirmation.value;
+    const team = event.target.team.value;
 
 
     const payload = {
@@ -26,6 +27,7 @@ export default function Register({setRegister,props}) {
       email,
       password,
       passwordConfirmation,
+      team,
     };
 
     
@@ -90,11 +92,15 @@ export default function Register({setRegister,props}) {
               <MdOutlineLockOpen />
             </span>
           </div>
+          {/* <div>
+            <button onClick="">Team</button>
+          </div> */}
           <div>
-            <LinkButton type="submit" className="button button--purple">
+            <LinkButton onClick={ setTeamModalVisible(true) } className="button button--purple">
               Cadastrar
             </LinkButton>
           </div>
+          {TeamModalVisible ? <div>Modal Massa</div> : null}
         </form>
       </IconContext.Provider>
     </div>

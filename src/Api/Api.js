@@ -3,26 +3,27 @@ export const Api = {
   baseUrl: "http://localhost:3000",
 
   loginUrl: () => `${Api.baseUrl}/auth/signin`,
-  createUser: () => `${Api.baseUrl}/auth/signup`,
-
+  
   // OBJECTIVES
   readAllObjectives: () => `${Api.baseUrl}/objectives`,
   readObjectivesById: (id) => `${Api.baseUrl}/objectives/${id}`,
   readObjectivesByUserId: (id) => `${Api.baseUrl}/users/objectives/${id}`,
-  readKeyResultsByObjectivesId: (id) => `${Api.baseUrl}/objectives/${id}/key_results`,
+  readObjectiveByTeam:(id) =>`${Api.baseUrl}/teams/${id}/objectives`,
   createObjectiveUrl: () => Api.baseUrl + "/objectives",
   updateObjectiveUrl: (id) => `${Api.baseUrl}/objectives/${id}`,
   deleteObjectiveUrl: (id) => `${Api.baseUrl}/objectives/${id}`,
-
+  
   // KRS
   readAllKrsUrl: () => `${Api.baseUrl}/key-results`,
   readKrsbyIdUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
+  readKeyResultsByObjectivesId: (id) => `${Api.baseUrl}/objectives/${id}/key_results`,
   createKrUrl: () => `${Api.baseUrl}/key-results`,
   deleteKrsUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
   updateKrsUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
 
   // USERS
   createUserAdminUrl: () => `${Api.baseUrl}/users`,
+  createUser: () => `${Api.baseUrl}/auth/signup`,
   readAllUsers: () => `${Api.baseUrl}/users`,
   readUserbyId: (id) => `${Api.baseUrl}/users/${id}`,
   updateUsers:(id)=>`${Api.baseUrl}/users/${id}`,
@@ -33,8 +34,9 @@ export const Api = {
   createCkUrl: () => `${Api.baseUrl}/checkin`,
 
   
-// teams
-readAllTeams:()=>`${Api.baseUrl}/teams`,
+  // teams
+  readAllTeams:()=>`${Api.baseUrl}/teams`,
+
 
   authHeader: () => ({
     Authorization: "Bearer " + JwtHandler.getJwt(),

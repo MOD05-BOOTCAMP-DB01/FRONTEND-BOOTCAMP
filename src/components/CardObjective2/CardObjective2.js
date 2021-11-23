@@ -12,16 +12,17 @@ import { useGlobalContext } from "../../context/context";
 import './CardObjective2.css'
 import ModalDelete from '../ModalDelete/ModalDelete';
 const CardObjective2 = ({objective}) => {
-    const {  objective:name, initial_date, id, type,owner,end_date,status } = objective;
+    const {  objective:name, initial_date, id, type,owner,end_date,team } = objective;
     const {loggedUser} = useGlobalContext();
     const [isModalOpen,setIsModalOpen]= useState(false);
     const [value,setValue] = useState(0);
+    const [error,setError] = useState(false);
     useEffect(()=>{
         const loadKrsbyObjective= async ()=>{
-            const response = await Api.buildApiGetRequest(Api.readKeyResultsByObjectivesId(id),true);
+          try {
+             const response = await Api.buildApiGetRequest(Api.readKeyResultsByObjectivesId(id),true);
             const data = await response.json();
-            
-            let krLength = data.key_results?.length;
+             let krLength = data.key_results?.length;
             const quantity = data.key_results?.map((number)=>{
                 return number.done;
             })
@@ -29,12 +30,19 @@ const CardObjective2 = ({objective}) => {
             const teste= quantity?.reduce((total, numero) => total + numero, 0);
             const calc = Math.round(teste/krLength * 100);
             setValue(calc);
+          } catch (error) {
+            setError(true);
+            console.log(error);
+          } 
+           
         }
         loadKrsbyObjective();
-        
+        console.log(team);
     },[])
 
-    
+    if(error){
+      return <h1>Erro de servidor</h1>
+    }
 
 
     return (

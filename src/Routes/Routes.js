@@ -11,6 +11,7 @@ import UpdateUsers from "../Pages/Users/UpdateUsers/UpdateUsers";
 import UpdateUsersAdm from "../Pages/Users/Adm/UpdateUsersAdm";
 import GuardedRoute from "../components/GuardedRoute/GuardedRoute";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import Page500 from "../Pages/Page500/Page500";
 
 function Routes() {
   return (
@@ -28,6 +29,7 @@ function Routes() {
         />
         <GuardedRoute path="/editar/objetivo/:id" component={UpdateObjective} />
         <GuardedRoute path="/logout" component={Logout} />
+        <Route path="/ERROR500" component={Page500} />
         <Route path="*" component={Page404} />
       </Switch>
     </div>

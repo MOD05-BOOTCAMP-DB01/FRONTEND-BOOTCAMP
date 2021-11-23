@@ -10,7 +10,7 @@ import {useGlobalContext} from './../../context/context'
 import "./Login.css";
 
 export default function Login() {
-  const {setLogin} = useGlobalContext()
+  const {setLogin,setError,error} = useGlobalContext()
   const history = useHistory();
 
   const handleSubmit = async (event) => {
@@ -24,10 +24,10 @@ export default function Login() {
       email,
       password,
     };
-
+    try{
     const response = await Api.buildApiPostRequest(Api.loginUrl(), payload);
     const body = await response.json();
-
+    
     if (response.status === 201) {
       const accessToken = body.token;
       const userID = body.userId;
@@ -35,9 +35,19 @@ export default function Login() {
       localStorage.setItem("USER_ID", userID);
       setLogin(false);
       history.push(`/objectives`);
-  };
+  }
+  if(response.status===401){
+    console.log('vixe')
+  }
+}catch(error){
+  setError(true);
+  console.log('oi');
+}
   }
 
+if(error){
+  history.push(`/ERROR500`);
+}
   return (
     <div className="form">
       <div>

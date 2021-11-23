@@ -13,7 +13,7 @@ export const Api = {
   createObjectiveUrl: () => Api.baseUrl + "/objectives",
   updateObjectiveUrl: (id) => `${Api.baseUrl}/objectives/${id}`,
   deleteObjectiveUrl: (id) => `${Api.baseUrl}/objectives/${id}`,
-
+  readObjectiveByYear: (year)=>`${Api.baseUrl}/years/${year}/objectives`,
   // KRS
   readAllKrsUrl: () => `${Api.baseUrl}/key-results`,
   readKrsbyIdUrl: (id) => `${Api.baseUrl}/key-results/${id}`,
@@ -36,13 +36,17 @@ export const Api = {
 // teams
 readAllTeams:()=>`${Api.baseUrl}/teams`,
 
+// years
+realAllYears:()=>`${Api.baseUrl}/years`,
 
+// quarters
+readAllQuaters:()=>`${Api.baseUrl}/quarters`,
   authHeader: () => ({
     Authorization: "Bearer " + JwtHandler.getJwt(),
   }),
 
   buildApiGetRequest: (url, auth) =>
-    fetch(url, {
+      fetch(url, {
       method: "GET",
       headers: new Headers({...(auth ? Api.authHeader() : {})}),
     }),

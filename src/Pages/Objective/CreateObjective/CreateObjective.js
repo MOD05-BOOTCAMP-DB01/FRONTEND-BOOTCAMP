@@ -11,13 +11,15 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useGlobalContext } from "../../../context/context";
 
 const CreateObjective = (props) => {
-  const {teams,loadTeams,loggedUser} = useGlobalContext();
+  const {teams,loadTeams,loggedUser,loadQuarter,quarter,loadYears,years,setQuarter,setYears} = useGlobalContext();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [usernames, setUsername] = useState([]);
   const [user,setUser] = useState("");
-  const [teamName,setTeamName] = useState('');
-  const [type,setType]= useState('')
+  const [teamSelected,setTeamSelected] = useState('');
+  const [quarterSelected,setQuarterSelected] = useState('');
+  const [yearSelected,setYearSelected] = useState('');
+  const [type,setType]= useState('');
 
   
   const typeOptions = [
@@ -49,47 +51,40 @@ const CreateObjective = (props) => {
 
     loadOwners();
     loadTeams();
+    loadYears();
+    loadQuarter();
   }, []);
 
-  const getQuarter = ()=>{
-  const month = startDate.getMonth()+1;
-  console.log(month)
-    if(month>=0 && month<=2){
-      return 'Q1';
-    }
-    if(month>=3 && month<=5){
-      return 'Q2';
-    }
-    if(month>=6 && month<=9){
-      return 'Q3';
-    }
-    if(month>=10 && month<=12){
-      console.log('entrou')
-      return 'Q4';
-    }
-  }
-  
 
   const handleChange = (selectedOption)=>{
     setUser(selectedOption.value);
   }
   const handleChangeTeams = (selectedOption)=>{
-    setTeamName(selectedOption.value);
+    setTeamSelected(selectedOption.value);
   }
   const handleChangeType= (selectedOption)=>{
     setType(selectedOption.value)
   }
+  const handleChangeQuarter= (selectedOption)=>{
+    setQuarterSelected(selectedOption.value);
+  }
+  const handleChangeYears= (selectedOption)=>{
+    setYearSelected(selectedOption.value);
+    const yearAdd = (parseInt(selectedOption.label)+1).toString();
+    console.log(yearAdd)
+    setStartDate(new Date(yearAdd));
+  }
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const quarter = getQuarter();
     const objective = e.target.objective.value;
     const unity = e.target.unity.value;
-    const team = teamName;
+    const team = teamSelected;
     const initial_date = startDate;
     const end_date = endDate;
     const owner = user;
-    const year = startDate.getFullYear().toString();
+    const yearId = yearSelected;
+    const quarterId= quarterSelected;
     const payload = {
       objective,
       type,
@@ -98,10 +93,10 @@ const CreateObjective = (props) => {
       end_date,
       team,
       owner,
-      quarter,
-      year,
+      quarter:quarterId,
+      year:yearId,
     }
-
+    console.log(payload)
     const response = await Api.buildApiPostRequest(Api.createObjectiveUrl(),payload,true);
     if(response.status === 201){
         props.history.push(`/objectives`)
@@ -110,6 +105,7 @@ const CreateObjective = (props) => {
     }
 
   };
+  console.log(years[0],quarter);
 
   return (
     <form className="form_container-objective" onSubmit={handleSubmit}>
@@ -149,12 +145,16 @@ const CreateObjective = (props) => {
         </div>
 <div className="form_container_objective-card--input">
  <label htmlFor="">Quarter</label>
-         <DatePicker
-      selected={startDate}
-      onChange={(date) => setStartDate(date)}
-      dateFormat="yyyy, QQQ"
-      showQuarterYearPicker
-      
+         <Select options={quarter}
+         onChange={handleChangeQuarter}
+         id="select"
+    />
+    </div>
+<div className="form_container_objective-card--input">
+ <label htmlFor="">Ano</label>
+         <Select options={years[0]}
+         onChange={handleChangeYears}
+         id="select"
     />
     </div>
         <div className="form_container_objective-card--input">

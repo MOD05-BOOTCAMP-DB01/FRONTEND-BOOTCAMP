@@ -15,6 +15,8 @@
   margin-bottom: 1.5rem;
   display: flex;
   justify-content:space-between;
+  cursor: pointer;
+  transition: all 0.2s linear 0s;
 }
 }
 
@@ -24,6 +26,9 @@
   
 }
 
+.objective-container-heading h2:first-child{
+  margin:calc(2rem - 0.14285714em) 0 1rem;
+}
 .radio-group input[type=radio] {
   position: absolute;
   visibility: hidden;
@@ -39,6 +44,9 @@
   background:#fff;
   border: 1px solid hsl(0, 0%, 80%);
   
+}
+.checked{
+  border-bottom: 2px solid #89898934;
 }
 
 div.radio-group:nth-child(even) + label{

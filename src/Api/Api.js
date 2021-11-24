@@ -7,8 +7,16 @@ export const Api = {
   // OBJECTIVES
   readAllObjectives: () => `${Api.baseUrl}/objectives`,
   readObjectivesById: (id) => `${Api.baseUrl}/objectives/${id}`,
+  // by user
   readObjectivesByUserId: (id) => `${Api.baseUrl}/users/objectives/${id}`,
+  // by team
   readObjectiveByTeam:(id) =>`${Api.baseUrl}/teams/${id}/objectives`,
+  // by quarter
+  readObjectiveByQuarter:(quarter)=>`${Api.baseUrl}/quarters/${quarter}/objectives`,
+  // by user team and quarter
+  readObjectivesByTeamQuarter: (quarter,id) => `${Api.baseUrl}/quarters/${quarter}/${id}/objectives`,
+  readObjectivesByTeamYear: (year,id) => `${Api.baseUrl}/years/:year/:id/objectives`,
+
   createObjectiveUrl: () => Api.baseUrl + "/objectives",
   updateObjectiveUrl: (id) => `${Api.baseUrl}/objectives/${id}`,
   deleteObjectiveUrl: (id) => `${Api.baseUrl}/objectives/${id}`,
@@ -46,6 +54,7 @@ readAllQuaters:()=>`${Api.baseUrl}/quarters`,
   authHeader: () => ({
     Authorization: "Bearer " + JwtHandler.getJwt(),
   }),
+
 
   buildApiGetRequest: (url, auth) =>
       fetch(url, {

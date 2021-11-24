@@ -37,7 +37,6 @@ const CardObjective2 = ({objective}) => {
            
         }
         loadKrsbyObjective();
-        console.log(team);
     },[])
 
     if(error){

@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Api } from "../../Api/Api";
 import { toast } from "react-toastify";
+import { AiOutlineTeam } from "react-icons/ai";
+import { IconContext } from "react-icons";
 import Button from "../../components/Button/Button";
+import "./CreateTeam.css";
+
 
 function CreateTeam() {
   const handleSubmit = async (e) => {
@@ -16,7 +20,7 @@ function CreateTeam() {
     console.log(team);
 
     const response = await Api.buildApiPostRequest(
-      Api.readAllTeams,
+      Api.readAllTeams(),
       payload,
       true
     );
@@ -32,16 +36,22 @@ function CreateTeam() {
   };
 
   return (
-    <div>
-      <form className="team_form" onSubmit={handleSubmit}>
-        <div className="team_form_input">
-          <input id="team" type="text" placeholder="Nome do time" name="team" />
-        </div>
+    <div className="team">
+      <IconContext.Provider value={{ className: "icons_team" }}>
+        <h1 className="team_h1">Crie um time</h1>
+        <form className="team_form" onSubmit={handleSubmit}>
+          <div className="team_form_create">
+            <span className="team_form_icon"><AiOutlineTeam /></span>
+            <div className="team_form_input">
+              <input id="team" type="text" placeholder="Nome do time" name="team" />
+            </div>
+          </div>
 
-        <div className="team_button">
-          <Button type="submit">Criar</Button>
-        </div>
-      </form>
+          <div className="team_button">
+            <button type="submit">Criar</button>
+          </div>
+        </form>
+      </IconContext.Provider> 
     </div>
   );
 }

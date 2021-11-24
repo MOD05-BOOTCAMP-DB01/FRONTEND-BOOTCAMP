@@ -16,7 +16,7 @@ import schemaLogin from "./schemaLogin";
 
 
 export default function Login() {
-  const { setLogin} = useGlobalContext();
+  const { setLogin,loggedUser} = useGlobalContext();
   
   const [buttonVisbility, setButtonVisbility] = useState(false)
 

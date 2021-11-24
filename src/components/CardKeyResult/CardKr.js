@@ -27,13 +27,11 @@ export default function CardKr({ kr, objectiveId }) {
 
   const handleShowOpenUpdateKr = () => {
     setShowUpdateKr(true);
-    console.log("handleShowOpenUpdate", showUpdateKr);
   };
 
   const handleShowDeletekr = () => {
     setShowDeleteKr(true);
   };
-
 
   return (
     <>
@@ -68,7 +66,18 @@ export default function CardKr({ kr, objectiveId }) {
             />
           </div>
 
-          <div className="kr-header-rating">  
+          <div className="kr-header-rating">
+            <span className="kr__moonshot">
+              {(() => {
+                if (kr.moonshot === "yes") {
+                  return <img src={coelho} alt="Coelho" />;
+                } else if (kr.moonshot === "no") {
+                  return <img src={tartaruga} alt="Tartaruga" />;
+                } else {
+                  return <></>;
+                }
+              })()}
+            </span>
             <h4>{kr.rating}</h4>
           </div>
         </div>
@@ -82,7 +91,7 @@ export default function CardKr({ kr, objectiveId }) {
             <h4>{kr.type}</h4>
           </div>
 
-          <div className="kr__moonshot">
+ <div className="kr__moonshot">
             <span >
               {(() => {
                 if (kr.moonshot === "yes") {

@@ -25,12 +25,6 @@ export default function CreateCheckin({closeCreateCheckin, krId, kr}) {
   
 
   const onSubmit = async (values) => {
-<<<<<<< HEAD
-=======
-    console.log("current value", values.current_value)
-    // setKrStatus()
-    console.log("kr status=", krStatus)
->>>>>>> 81003e1d8538c49bac9996e314a7b9ca6562020a
     const payload = {
       ...values,
       

@@ -21,8 +21,6 @@ const Objective = (props) => {
     getAllObjectives();
   }, []);
 
-
-  console.log(years);
   if(error){
     props.history.go("/ERROR500")
   }

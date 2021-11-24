@@ -19,9 +19,8 @@ const ModalDelete = ({ id = "modal", setIsOpen,objective }) => {
     e.preventDefault();
     const response = await Api.buildApiDeleteRequest(Api.deleteObjectiveUrl(objective.id),true);
     const data = await response.json();
-    getAllObjectives()
     onClose()
-
+    // getAllObjectives()
     
   }
   return (

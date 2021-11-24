@@ -12,7 +12,7 @@ import { useGlobalContext } from "../../../context/context";
 
 const UpdateObjective = (props) => {
   const {id} = props.match.params;
-  const {years,quarter,loadQuarter,loadYears,teams,loadTeams} = useGlobalContext();
+  const {years,quarter,loadQuarter,loadYears,teams,loadTeams,setQuarter,setYears,setTeams} = useGlobalContext();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [objective,setObjective] = useState([])
@@ -70,7 +70,7 @@ const UpdateObjective = (props) => {
     const objective = e.target.objective.value;
     const type = e.target.type.value;
     const unity = e.target.unity.value;
-    const area = e.target.area.value;
+    const team = selectedTeam;
     const initial_date = startDate;
     const end_date = endDate;
     const owner = selectedUser.value;
@@ -80,8 +80,9 @@ const UpdateObjective = (props) => {
       unity,
       initial_date,
       end_date,
-      area,
+      team,
       owner,
+      quarter,
     }
 
     const response = await Api.buildApiPatchRequest(Api.updateObjectiveUrl(id),payload,true);
@@ -92,16 +93,18 @@ const UpdateObjective = (props) => {
     }
   };
    const handleChangeQuarter= (selectedOption)=>{
-    setSelectedQuarter(selectedOption.value);
+    setSelectedQuarter({value:selectedOption.value,label:selectedOption.label});
+    setQuarter(selectedOption.value)
   }
   const handleChangeYears= (selectedOption)=>{
-    setSelectedYear(selectedOption.value);
+    setSelectedYear({value:selectedOption.value,label:selectedOption.label});
+    setYears(selectedOption.value);
     const yearAdd = (parseInt(selectedOption.label)+1).toString();
-    console.log(yearAdd)
     setStartDate(new Date(yearAdd));
   }
     const handleChangeTeams = (selectedOption)=>{
-    setSelectedTeam(selectedOption.value);
+    setSelectedTeam({value:selectedOption.value,label:selectedOption.label});
+    setTeams(selectedOption.value);
   }
 
   return (

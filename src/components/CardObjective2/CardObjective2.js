@@ -17,6 +17,9 @@ const CardObjective2 = ({objective}) => {
     const [isModalOpen,setIsModalOpen]= useState(false);
     const [value,setValue] = useState(0);
     const [error,setError] = useState(false);
+
+
+
     useEffect(()=>{
         const loadKrsbyObjective= async ()=>{
           try {
@@ -75,20 +78,20 @@ const CardObjective2 = ({objective}) => {
               </h4>
               </div>
               <div className="objective-button-container">
-              
-             
+
               {loggedUser.role === 'MANAGER' && (<div>
               
               <Link to={`/editar/objetivo/${id}`}>
                 <BiEdit className="objective-icon" />
               </Link>
               
-              
               <RiDeleteBin2Line className="objective-icon" onClick={()=>setIsModalOpen(!isModalOpen)}/>
-               {isModalOpen && <ModalDelete setIsOpen={setIsModalOpen} objective={objective} />}
+               
               </div>)}
+             
                <Link to={`/objective/${id}`}><ViewMoreButton>Detalhes</ViewMoreButton></Link>
               </div>
+               {isModalOpen && <ModalDelete setIsOpen={setIsModalOpen} objective={objective} />}
             </div>
     )
 }

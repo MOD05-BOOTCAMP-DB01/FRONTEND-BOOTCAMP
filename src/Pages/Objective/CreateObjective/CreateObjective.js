@@ -71,7 +71,6 @@ const CreateObjective = (props) => {
   const handleChangeYears= (selectedOption)=>{
     setYearSelected(selectedOption.value);
     const yearAdd = (parseInt(selectedOption.label)+1).toString();
-    console.log(yearAdd)
     setStartDate(new Date(yearAdd));
   }
   
@@ -96,7 +95,6 @@ const CreateObjective = (props) => {
       quarter:quarterId,
       year:yearId,
     }
-    console.log(payload)
     const response = await Api.buildApiPostRequest(Api.createObjectiveUrl(),payload,true);
     if(response.status === 201){
         props.history.push(`/objectives`)
@@ -105,7 +103,7 @@ const CreateObjective = (props) => {
     }
 
   };
-  console.log(years[0],quarter);
+
 
   return (
     <div className="create-objective_container">

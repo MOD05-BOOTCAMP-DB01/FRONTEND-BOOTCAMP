@@ -46,7 +46,7 @@ const getAllObjectives = async () => {
       setObjectives(data);
       }catch(error){
         setError(true);
-        console.log(error.status);
+        console.log(error);
       }
     };
 
@@ -150,7 +150,8 @@ const getAllObjectives = async () => {
         quarter,
         setQuarter,
         setObjectives,
-        objectives
+        objectives,
+        setTeams,
           }}>
       {children}
     </AppContext.Provider>

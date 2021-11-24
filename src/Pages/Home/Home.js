@@ -33,9 +33,6 @@ const Home = (props) => {
       ) : (
         <Login {...props} />
       )}
-      <ModalAcess>
-        <p>teste</p>
-      </ModalAcess>
     </div>
   );
 };

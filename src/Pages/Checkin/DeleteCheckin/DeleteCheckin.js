@@ -6,15 +6,14 @@ import { toast } from 'react-toastify'
 
 import { useGlobalContext } from "../../../context/context";
 
-import './deleteKeyResult.css'
+import './deleteCheckin.css'
 
-export default function DeleteKeyResult({krId, objectiveId,titleKr, closeDeleteKr}) {
-
+export default function DeleteCheckin({ckId, closeDeleteCk}) {
   const { handleRender} = useGlobalContext()
 
   const handleDelete = async event => {
     const response = await Api.buildApiDeleteRequest(
-      Api.deleteKrsUrl(krId),
+      Api.deleteCkUrl(ckId),
       true,
     )
 
@@ -23,29 +22,28 @@ export default function DeleteKeyResult({krId, objectiveId,titleKr, closeDeleteK
       toast.success('Resultado-chave deletado com sucesso!',{theme: "dark",position: toast.POSITION.TOP_CENTER})
       // Navigate to home page
       handleRender()
-      closeDeleteKr()
+      closeDeleteCk()
     } else {
-      toast.error('Não foi possível excluir o resultado-chave.',{theme: "colored",position: toast.POSITION.TOP_CENTER})
-      closeDeleteKr()
+      toast.error('Não foi possível excluir esse check-in.',{theme: "colored",position: toast.POSITION.TOP_CENTER})
+      closeDeleteCk()
     }
   }
 
   const backButton = () => {
-    toast.info('Nenhuma alteração realizada.')
-    closeDeleteKr()
+    toast.info('Nenhuma alteração realizada.',{position: toast.POSITION.TOP_CENTER})
+    closeDeleteCk()
   }
 
   return (
-    <div className="area-DeleteKeyResult">
-      <div className="DeleteKeyResult">
-        <h2>Deseja realmente excluir esse resultado-chave?</h2>
-        <h3>{titleKr}</h3>
-        <div className="deleteKr-blocoBtn">
-          <div className="btn-delete" onClick={handleDelete}>
+    <div className="area-DeleteCheckin">
+      <div className="deleteCheckin">
+        <h2>Deseja realmente excluir esse check-in?</h2>
+        <div className="deleteCk-blocoBtn">
+          <div className="btnCk-delete" onClick={handleDelete}>
               <span >Excluir</span>
           </div>
 
-          <div className="btn-cancel" onClick={backButton}>
+          <div className="btnCk-cancel" onClick={backButton}>
               <span >Cancelar</span>
           </div>
 

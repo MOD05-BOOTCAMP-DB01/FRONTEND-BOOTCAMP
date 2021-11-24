@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 
 import { AiOutlineCloseSquare } from 'react-icons/ai'
@@ -16,13 +16,21 @@ import { format} from 'date-fns'
 
 import './createCheckin.css'
 
-export default function CreateCheckin({closeCreateCheckin, krId}) {
-
+export default function CreateCheckin({closeCreateCheckin, krId, kr}) {
+  const [krStatus, setKrStatus] = useState(null)
   const { handleRender} = useGlobalContext()
 
   let initialDate = format((new Date()), 'yyyy-MM-dd');
 
+  
+
   const onSubmit = async (values) => {
+<<<<<<< HEAD
+=======
+    console.log("current value", values.current_value)
+    // setKrStatus()
+    console.log("kr status=", krStatus)
+>>>>>>> 81003e1d8538c49bac9996e314a7b9ca6562020a
     const payload = {
       ...values,
       
@@ -37,11 +45,21 @@ export default function CreateCheckin({closeCreateCheckin, krId}) {
     const body = await response.json();
 
     if (response.status === 201) {
-      toast.success('Checkin criado com sucesso!',{theme: "dark"})
+      toast.success('Checkin criado com sucesso!',{theme: "dark",position: toast.POSITION.TOP_CENTER})
       handleRender()
       closeCreateCheckin()
       
     }
+
+    // Update Status kr
+    const payloadStatus = {
+      status: Math.round((values.current_value*100)/kr.goal_value)
+    }
+    const responseStatus = await Api.buildApiPatchRequest(
+      Api.updateKrsUrl(krId),
+      payloadStatus,
+      true
+    );
  
   }
 
@@ -76,23 +94,25 @@ export default function CreateCheckin({closeCreateCheckin, krId}) {
         }}
       
           render={({ values, errors, isvalid }) => (
-            <Form className="formKr">
+            <Form className="formCk">
               <AiOutlineCloseSquare onClick={closeCreateCheckin} className="formKr-close"/>
               <div className="formKr-title">
-                <h2>Adicionar Checkin</h2>
+                <h2>Adicionar Check-in</h2>
               </div>
 
-              <div className="formKr-area-Items">
-                  <div className="formKr-Items">
+              <div className="formCk-area-Items">
+                  <div className="formCk-Items">
                     <label>
-                      Date
+                      Data
                       {errors.date && <abbr className="fieldError" title={errors.date}>*</abbr>}
                     </label>
                     <Field name="date" type="date"
                     min={initialDate} className="field"/>
-                    <ErrorMessage name="date" className="field">
-                      {msg => <span className="fieldError">{msg}</span>}
-                    </ErrorMessage>
+                    <div className="formError">
+                      <ErrorMessage name="date" >
+                        {msg => <span className="fieldError">{msg}</span>}
+                      </ErrorMessage>
+                    </div>
                   </div>
 
                   <div className="formKr-Items">
@@ -100,18 +120,26 @@ export default function CreateCheckin({closeCreateCheckin, krId}) {
                       Valor Atual
                       {errors.current_value && <abbr className="fieldError" title={errors.current_value}>*</abbr>}
                     </label>
-                    <Field name="current_value" type="number" className="field"/>
-                    <ErrorMessage name="current_value" className="field">
-                      {msg => <span className="fieldError">{msg}</span>}
-                    </ErrorMessage>
+                    <Field name="current_value" 
+                    type="number" 
+                    className="field"/>
+                    <div className="formError">
+                      <ErrorMessage 
+                      name="current_value" 
+                      >
+                        {msg => <span className="fieldError">{msg}</span>}
+                      </ErrorMessage>
+                    </div>
                   </div>
 
                   <div className="formKr-Items">
                     <label>Comentário</label>
                     <Field as="textarea" name="comment" type="text" className="fieldTextArea"/>
-                    <ErrorMessage name="comment">
-                      {msg => <span className="fieldError">{msg}</span>}
-                    </ErrorMessage>
+                    <div className="formError">
+                      <ErrorMessage name="comment">
+                        {msg => <span className="fieldError">{msg}</span>}
+                      </ErrorMessage>
+                    </div>
                   </div>                  
 
               </div>

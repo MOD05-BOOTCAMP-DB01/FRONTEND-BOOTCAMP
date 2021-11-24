@@ -36,7 +36,7 @@ export default function UpdateCheckin({closeUpdateCheckin, ck}) {
     console.log(response);
 
     if (response.status === 200) {
-      toast.success('Checkin editado com sucesso!',{theme: "dark"})
+      toast.success('Checkin editado com sucesso!',{theme: "dark",position: toast.POSITION.TOP_CENTER})
       handleRender()
       closeUpdateCheckin()
       
@@ -85,7 +85,7 @@ export default function UpdateCheckin({closeUpdateCheckin, ck}) {
               <div className="formKr-area-Items">
                   <div className="formKr-Items">
                     <label>
-                      Date
+                      Data
                       {errors.date && <abbr className="fieldError" title={errors.date}>*</abbr>}
                     </label>
                     <Field name="date" type="date"

@@ -34,6 +34,7 @@ export default function CardKr({ kr, objectiveId }) {
     setShowDeleteKr(true);
   };
 
+
   return (
     <>
       <div className="kr">
@@ -67,18 +68,7 @@ export default function CardKr({ kr, objectiveId }) {
             />
           </div>
 
-          <div className="kr-header-rating">
-            <span className="kr__moonshot">
-              {(() => {
-                if (kr.moonshot === "yes") {
-                  return <img src={coelho} alt="Coelho" />;
-                } else if (kr.moonshot === "no") {
-                  return <img src={tartaruga} alt="Tartaruga" />;
-                } else {
-                  return <></>;
-                }
-              })()}
-            </span>
+          <div className="kr-header-rating">  
             <h4>{kr.rating}</h4>
           </div>
         </div>
@@ -92,16 +82,30 @@ export default function CardKr({ kr, objectiveId }) {
             <h4>{kr.type}</h4>
           </div>
 
+          <div className="kr__moonshot">
+            <span >
+              {(() => {
+                if (kr.moonshot === "yes") {
+                  return <img src={coelho} alt="Coelho" />;
+                } else if (kr.moonshot === "no") {
+                  return <img src={tartaruga} alt="Tartaruga" />;
+                } else {
+                  return <></>;
+                }
+              })()}
+            </span>
+          </div>
+
           <div className="kr-body-status">
             {(() => {
-              if (kr.status == 100) {
-                return <h4 className="status-gree">{kr.status}</h4>;
+              if (kr.status >= 100) {
+                return <h4 className="status-gree">{kr.status}%</h4>;
               } else if (kr.status >= 80) {
-                return <h4 className="status-yellow">{kr.status}</h4>;
+                return <h4 className="status-yellow">{kr.status}%</h4>;
               } else if (kr.status < 80) {
-                return <h4 className="status-red">{kr.status}</h4>;
+                return <h4 className="status-red">{kr.status}%</h4>;
               } else {
-                return <h4>{kr.status}</h4>;
+                return <h4>{kr.status}%</h4>;
               }
             })()}
           </div>

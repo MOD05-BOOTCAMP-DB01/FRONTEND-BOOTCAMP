@@ -69,9 +69,9 @@ export default function UpdateKeyResult({
     console.log(response);
 
     if (response.status === 200) {
-      toast.success("Resultado-chave editado com sucesso!", { theme: "dark" });
-      handleRender();
-      closeUpdateKr();
+      toast.success('Resultado-chave editado com sucesso!',{theme: "dark",position: toast.POSITION.TOP_CENTER})
+      handleRender()
+      closeUpdateKr()
     }
   };
 
@@ -197,8 +197,9 @@ export default function UpdateKeyResult({
                       type="text"
                       value={newKr.moonshot}
                       className="field"
+                      onChange={handleChange}
                     >
-                      <option value=""></option>
+                      <option value="Neutro"></option>
                       <option value="yes">Sim</option>
                       <option value="no">Não</option>
                     </Field>
@@ -216,7 +217,18 @@ export default function UpdateKeyResult({
                         </abbr>
                       )}
                     </label>
-                    <Field name="type" type="text" className="field" />
+                    <Field
+                    as="select"
+                    name="type" 
+                    type="text" 
+                    className="field"
+                    value={newKr.type}
+                    onChange={handleChange}
+                    >
+                      <option value="Inteiro">Inteiro</option>
+                      <option value="Decimal">Decimal</option>
+                      <option value="Porcentagem">Porcentagem</option>
+                    </Field>
                     <ErrorMessage name="type" className="field">
                       {(msg) => <span className="fieldError">{msg}</span>}
                     </ErrorMessage>

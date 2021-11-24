@@ -41,6 +41,8 @@ export const Api = {
   readCheckinsByKeyResultId: (id) => `${Api.baseUrl}/checkin/key_result/${id}`,
   createCkUrl: () => `${Api.baseUrl}/checkin`,
   updateCkUrl: (id) => `${Api.baseUrl}/checkin/${id}`,
+  deleteCkUrl: (id) => `${Api.baseUrl}/checkin/${id}`,
+
 
   
   // teams

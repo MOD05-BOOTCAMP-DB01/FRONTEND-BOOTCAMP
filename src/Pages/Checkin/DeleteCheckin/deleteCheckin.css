@@ -1,0 +1,95 @@
+.area-DeleteCheckin{
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.507);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.deleteCheckin{
+  width: 40%;
+  height: 30%;
+  background-color: rgb(253, 253, 253);
+  border-radius: .5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.deleteCheckin h2{
+  width:100%;
+  height: 30%;
+  text-align: center;
+  padding-top: .5em;
+  color: black;
+}
+
+.deleteCk-blocoBtn{
+  width: 100%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 1em;
+}
+
+.btnCk-delete, .btnCk-cancel{
+  display: flex;
+  justify-content: center;
+  width: 8em;
+  height: 2.3em;
+  align-items: flex-end;
+  transition: all 0.2s linear 0s;
+  background-color: #87008B;
+  margin-right: 1em;
+  border-radius: .5em;
+  color: white;
+}
+.btnCk-delete:before{
+  content:"\f00c";
+}
+.btnCk-cancel:before{
+  content:"\f00d";
+}
+
+.btnCk-delete:before, .btnCk-cancel:before{
+  
+  font-family: 'Font Awesome 5 free';
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 40px;
+  transform: scale(0,1);
+  transform-origin: left center;
+  transition: all 0.2s linear 0s;
+  border-radius: .5em 50% 50% .5em;
+  background-color: #e5dae6a9;
+  cursor: pointer;
+}
+
+.btnCk-delete:hover, .btnCk-cancel:hover{
+  text-indent: 10px;
+  
+}
+
+.btnCk-delete:hover:before, .btnCk-cancel:hover:before{
+  transform: scale(1,1);
+  text-indent: 0;
+}
+
+.btnCk-delete span, .btnCk-cancel span{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+}

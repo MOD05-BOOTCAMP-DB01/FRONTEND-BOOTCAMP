@@ -6,52 +6,50 @@ import { MdOutlineLockOpen } from "react-icons/md";
 import LinkButton from "../LinkButton/LinkButton";
 import { IconContext } from "react-icons";
 import "./Register.css";
-import Button from "../Button/Button"
-import {toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Button from "../Button/Button";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function Register({setRegister,props}) {
+export default function Register({ setRegister, props }) {
   const [TeamModalVisible, setTeamModalVisible] = useState(false);
-  const handleSubmit =  async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const username = event.target.username.value;
     const email = event.target.email.value;
     const password = event.target.password.value;
     const passwordConfirmation = event.target.passwordConfirmation.value;
-    const team = event.target.team.value;
-
+    // const team = event.target.team.value;
 
     const payload = {
       username,
       email,
       password,
       passwordConfirmation,
-      team,
+      // team,
     };
 
-    
     const response = await Api.buildApiPostRequest(
       Api.createUser(),
       payload,
       true
     );
-    
+
     const body = await response.json();
 
-      if (response.status === 201) {
-      setRegister(false)  
-      toast.success('Usuário cadastrado com sucesso!', {theme: "dark",position: toast.POSITION.TOP_CENTER,
+    if (response.status === 201) {
+      setRegister(false);
+      toast.success("Usuário cadastrado com sucesso!", {
+        theme: "dark",
+        position: toast.POSITION.TOP_CENTER,
       });
     }
-    }
-    
-  
+  };
 
   return (
     <div className="form-register">
       <IconContext.Provider value={{ className: "icons__login-register" }}>
-        <h1 className ="form__h1-register">Cadastre-se</h1>
+        <h1 className="form__h1-register">Cadastre-se</h1>
         <form className="form__card-register" onSubmit={handleSubmit}>
           <div className="form__card--input-register">
             <span className="form__card--icon-register">
@@ -92,15 +90,18 @@ export default function Register({setRegister,props}) {
               <MdOutlineLockOpen />
             </span>
           </div>
-          {/* <div>
-            <button onClick="">Team</button>
-          </div> */}
           <div>
-            <LinkButton onClick={ setTeamModalVisible(true) } className="button button--purple">
+            <button onClick={() => setTeamModalVisible(true)}>Team</button>
+          </div>
+            {TeamModalVisible ? <div>Modal Massa</div> : null}
+          <div>
+            <LinkButton
+              type="submit" 
+              className="button button--purple"
+            >
               Cadastrar
             </LinkButton>
           </div>
-          {TeamModalVisible ? <div>Modal Massa</div> : null}
         </form>
       </IconContext.Provider>
     </div>

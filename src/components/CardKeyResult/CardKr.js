@@ -66,7 +66,7 @@ export default function CardKr({ kr, objectiveId }) {
             />
           </div>
 
-          <div className="kr-header-rating">
+          {/* <div className="kr-header-rating">
             <span className="kr__moonshot">
               {(() => {
                 if (kr.moonshot === "yes") {
@@ -79,7 +79,7 @@ export default function CardKr({ kr, objectiveId }) {
               })()}
             </span>
             <h4>{kr.rating}</h4>
-          </div>
+          </div> */}
         </div>
 
         <div className="kr-body">
@@ -91,8 +91,8 @@ export default function CardKr({ kr, objectiveId }) {
             <h4>{kr.type}</h4>
           </div>
 
- <div className="kr__moonshot">
-            <span >
+          <div className="kr__moonshot">
+            <span>
               {(() => {
                 if (kr.moonshot === "yes") {
                   return <img src={coelho} alt="Coelho" />;

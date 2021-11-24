@@ -35,7 +35,6 @@
 }
 
 .form__card--input {
-  display: flex;
   flex-wrap: nowrap;
   align-items: center;
   margin: 20px;
@@ -50,7 +49,7 @@
   color: #01101d;
 }
 
-.form__card--input input {
+.form__card--input .form__card--field {
   width: 100%;
   border: none;
   border-radius: 25px;
@@ -59,12 +58,12 @@
   margin: 2px 0;
   background: rgb(223, 233, 236);
 }
-.form__card--input input:focus {
+.form__card--input .form__card--field:focus {
   outline: none;
   box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
 }
 
-.form__card--input input::-webkit-input-placeholder {
+.form__card--input .form__card--field::-webkit-input-placeholder {
   font-size: 16px;
   color: #01101d;
 }
@@ -111,4 +110,11 @@
 
 .form__h1{
   color:#87008B;
+}
+
+#mostart{
+  
+}
+#esconder{
+  opacity: 0.2;
 }

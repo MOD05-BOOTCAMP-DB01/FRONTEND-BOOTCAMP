@@ -160,6 +160,7 @@
 
 .kr-body-learnMore:hover {
   text-indent: 5px;
+  color: black;
 }
 .kr-body-learnMore:hover:before {
   transform: scale(1, 1);
@@ -180,6 +181,14 @@
   width: 100%;
 }
 
+.kr__moonshot{
+  width: 8em;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .kr__moonshot img {
-  width: 15%;
+  width: 50%;
+   
 }

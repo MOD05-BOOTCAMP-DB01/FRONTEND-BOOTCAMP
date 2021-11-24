@@ -201,7 +201,7 @@ export default function UpdateKeyResult({
                       className="field"
                       onChange={handleChange}
                     >
-                      <option value=""></option>
+                      <option value="Neutro"></option>
                       <option value="yes">Sim</option>
                       <option value="no">Não</option>
                     </Field>
@@ -219,7 +219,18 @@ export default function UpdateKeyResult({
                         </abbr>
                       )}
                     </label>
-                    <Field name="type" type="text" className="field" />
+                    <Field
+                    as="select"
+                    name="type" 
+                    type="text" 
+                    className="field"
+                    value={newKr.type}
+                    onChange={handleChange}
+                    >
+                      <option value="Inteiro">Inteiro</option>
+                      <option value="Decimal">Decimal</option>
+                      <option value="Porcentagem">Porcentagem</option>
+                    </Field>
                     <ErrorMessage name="type" className="field">
                       {(msg) => <span className="fieldError">{msg}</span>}
                     </ErrorMessage>

@@ -136,9 +136,11 @@ export default function CreateKeyResult({ objectiveId }) {
                       )}
                     </label>
                     <Field name="key_result" type="text" className="field" />
-                    <ErrorMessage name="key_result" className="field">
-                      {(msg) => <span className="fieldError">{msg}</span>}
-                    </ErrorMessage>
+                    <div className="formError">
+                      <ErrorMessage name="key_result" className="field">
+                        {(msg) => <span className="fieldError">{msg}</span>}
+                      </ErrorMessage>
+                    </div>
                   </div>
 
                   <div className="formKr-Items">
@@ -161,9 +163,11 @@ export default function CreateKeyResult({ objectiveId }) {
                       <option value="Médio">Médio</option>
                       <option value="Alto">Alto</option>
                     </Field>
-                    <ErrorMessage name="rating">
-                      {(msg) => <span className="fieldError">{msg}</span>}
-                    </ErrorMessage>
+                    <div className="formError">
+                      <ErrorMessage name="rating">
+                        {(msg) => <span className="fieldError">{msg}</span>}
+                      </ErrorMessage>                      
+                    </div>
                   </div>
 
                   <div className="formKr-Items">
@@ -181,13 +185,15 @@ export default function CreateKeyResult({ objectiveId }) {
                       type="text"
                       className="field"
                     >
-                      <option value=""></option>
+                      <option value="Neutro"></option>
                       <option value="yes">Sim</option>
                       <option value="no">Não</option>
                     </Field>
-                    <ErrorMessage name="moonshot">
-                      {(msg) => <span className="fieldError">{msg}</span>}
-                    </ErrorMessage>
+                    <div className="formError">
+                      <ErrorMessage name="moonshot">
+                        {(msg) => <span className="fieldError">{msg}</span>}
+                      </ErrorMessage>
+                    </div>
                   </div>
 
                   <div className="formKr-Items">
@@ -199,10 +205,20 @@ export default function CreateKeyResult({ objectiveId }) {
                         </abbr>
                       )}
                     </label>
-                    <Field name="type" type="text" className="field" />
-                    <ErrorMessage name="type" className="field">
-                      {(msg) => <span className="fieldError">{msg}</span>}
-                    </ErrorMessage>
+                    <Field
+                    as="select"
+                    name="type" 
+                    type="text" 
+                    className="field">
+                      <option value="inteiro">Inteiro</option>
+                      <option value="decimal">Decimal</option>
+                      <option value="porcentagem">Porcentagem</option>
+                    </Field>
+                    <div className="formError">
+                      <ErrorMessage name="type" className="field">
+                        {(msg) => <span className="fieldError">{msg}</span>}
+                      </ErrorMessage>                      
+                    </div>
                   </div>
 
                   <div className="formKr-Items">
@@ -215,9 +231,11 @@ export default function CreateKeyResult({ objectiveId }) {
                       )}
                     </label>
                     <Field name="frequency" type="text" className="field" />
-                    <ErrorMessage name="frequency" className="field">
-                      {(msg) => <span className="fieldError">{msg}</span>}
-                    </ErrorMessage>
+                    <div className="formError">
+                      <ErrorMessage name="frequency" className="field">
+                        {(msg) => <span className="fieldError">{msg}</span>}
+                      </ErrorMessage>
+                    </div>
                   </div>
                 </div>
 
@@ -239,9 +257,11 @@ export default function CreateKeyResult({ objectiveId }) {
                       type="number"
                       className="field"
                     ></Field>
-                    <ErrorMessage name="initial_value">
-                      {(msg) => <span className="fieldError">{msg}</span>}
-                    </ErrorMessage>
+                    <div className="formError">
+                      <ErrorMessage name="initial_value">
+                        {(msg) => <span className="fieldError">{msg}</span>}
+                      </ErrorMessage>
+                    </div>
                   </div>
 
                   <div className="formKr-Items">
@@ -258,9 +278,11 @@ export default function CreateKeyResult({ objectiveId }) {
                       type="number"
                       className="field"
                     ></Field>
-                    <ErrorMessage name="goal_value">
-                      {(msg) => <span className="fieldError">{msg}</span>}
-                    </ErrorMessage>
+                    <div className="formError">
+                      <ErrorMessage name="goal_value">
+                        {(msg) => <span className="fieldError">{msg}</span>}
+                      </ErrorMessage>                      
+                    </div>
                   </div>
 
                   <div className="formKr-Items">
@@ -271,9 +293,11 @@ export default function CreateKeyResult({ objectiveId }) {
                       type="text"
                       className="fieldTextArea"
                     />
-                    <ErrorMessage name="comment">
-                      {(msg) => <span className="fieldError">{msg}</span>}
-                    </ErrorMessage>
+                    <div className="formError">
+                      <ErrorMessage name="comment">
+                        {(msg) => <span className="fieldError">{msg}</span>}
+                      </ErrorMessage>                      
+                    </div>
                   </div>
 
                   <div className="formKr-Items">

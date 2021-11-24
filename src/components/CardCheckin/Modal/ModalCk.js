@@ -94,6 +94,9 @@ export default function ModalCk({kr}) {
     setCkDelete(ck)
   }
   
+  const getDecimal = (text) => {
+      return text.replace(".", ",")
+  }
 
   return (
   
@@ -103,12 +106,16 @@ export default function ModalCk({kr}) {
             <AiOutlineAppstoreAdd className="chapterAdd" onClick={handleShowAddCk}/>
             <div className="modal-rating">
               {(() => {
-                switch (kr.rating) {
-                  case "Alto":   return <h3 className="rating-high">{kr.rating}</h3>;
-                  case "Médio": return <h3 className="rating-medium">{kr.rating}</h3>;
-                  case "Baixo":  return <h3 className="rating-low">{kr.rating}</h3>;
-                  default:      return <h3>{kr.rating}</h3>;
+                if (kr.rating == "Alto") {
+                  return <h3 className="rating-high">{kr.rating}</h3>;
+                } else if (kr.rating == "Médio") {
+                  return <h3 className="rating-medium">{kr.rating}</h3>;
+                } else if (kr.rating == "Baixo") {
+                  return <h3 className="rating-low">{kr.rating}</h3>
+                } else {
+                  return <h3>{kr.rating}</h3>;
                 }
+              
               })()}
             </div>
           </div>
@@ -125,7 +132,17 @@ export default function ModalCk({kr}) {
                 <h4>{getMonth(format((new Date(ck.date)), 'MM'))}</h4>
               </div>
               <div className="cardCK-value">
-                <h3>{ck.current_value}</h3>
+              {(() => {
+                if (kr.type == "Porcentagem") {
+                  return <h3>{ck.current_value}%</h3>
+                } else if (kr.type == "Decimal") {
+                  return <h3>{getDecimal(ck.current_value.toString())}</h3>
+                } else {
+                  return <h3>{ck.current_value}</h3>;
+                }
+              
+              })()}
+                
               </div>
               <div className="cardCk-icons">
                 <BiEdit className="icon-edit"
@@ -147,7 +164,7 @@ export default function ModalCk({kr}) {
         <div className="modalFooter">
         </div>
         <div>
-          {showAddCk ? <CreateCheckin krId={kr.id}  closeCreateCheckin={()=>setShowAddCk(false)}/> : ""}
+          {showAddCk ? <CreateCheckin krId={kr.id} kr={kr} closeCreateCheckin={()=>setShowAddCk(false)}/> : ""}
 
           {showUpdateCk ? <UpdateCheckin ck={ckEdit}  closeUpdateCheckin={()=>setShowUpdateCk(false)}/> : ""}
 

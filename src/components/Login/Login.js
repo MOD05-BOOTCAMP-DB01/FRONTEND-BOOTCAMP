@@ -41,7 +41,7 @@ export default function Login() {
       });
       history.push(`/objectives`);
     } else {
-      toast.error("Usuario ou senha incorreto", {
+      toast.error("Usuário ou senha incorreto", {
         theme: "colored",
         position: toast.POSITION.TOP_CENTER,
       });

@@ -19,14 +19,14 @@ export default function Register({ setRegister, props }) {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const passwordConfirmation = event.target.passwordConfirmation.value;
-    const team = event.target.team.value;
+    // const team = event.target.team.value;
 
     const payload = {
       username,
       email,
       password,
       passwordConfirmation,
-      team,
+      // team,
     };
 
     const response = await Api.buildApiPostRequest(
@@ -90,18 +90,18 @@ export default function Register({ setRegister, props }) {
               <MdOutlineLockOpen />
             </span>
           </div>
-          {/* <div>
-            <button onClick="">Team</button>
-          </div> */}
+          <div>
+            <button onClick={() => setTeamModalVisible(true)}>Team</button>
+          </div>
+            {TeamModalVisible ? <div>Modal Massa</div> : null}
           <div>
             <LinkButton
-              onClick={() => setTeamModalVisible(true)}
+              type="submit" 
               className="button button--purple"
             >
               Cadastrar
             </LinkButton>
           </div>
-          {TeamModalVisible ? <div>Modal Massa</div> : null}
         </form>
       </IconContext.Provider>
     </div>

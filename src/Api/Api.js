@@ -1,6 +1,6 @@
 import { JwtHandler } from "../jwt-handler/JwtHandler";
 export const Api = {
-  baseUrl: "http://localhost:3000",
+  baseUrl: process.env.REACT_APP_SECRET_NAME,
 
   loginUrl: () => `${Api.baseUrl}/auth/signin`,
   

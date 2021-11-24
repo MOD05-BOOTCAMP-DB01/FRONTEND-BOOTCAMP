@@ -20,7 +20,6 @@ export default function UpdateKeyResult({
   kr,
   closeUpdateKr = () => {},
 }) {
-  console.log("Kr no updatekr", kr);
 
   const { handleRender } = useGlobalContext();
 
@@ -58,7 +57,6 @@ export default function UpdateKeyResult({
       owner,
       done,
     };
-    console.log("payload updateKr=", payload);
 
     const response = await Api.buildApiPatchRequest(
       Api.updateKrsUrl(kr.id),

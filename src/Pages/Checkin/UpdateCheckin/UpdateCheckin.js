@@ -24,7 +24,6 @@ export default function UpdateCheckin({closeUpdateCheckin, ck}) {
       ...values,
      
     }
-    console.log("payload =", payload)
 
     const response = await Api.buildApiPatchRequest(
       Api.updateCkUrl(ck.id),

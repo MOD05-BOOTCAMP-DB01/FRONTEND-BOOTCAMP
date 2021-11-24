@@ -15,7 +15,6 @@ import "./viewMoreKr.css";
 export default function ViewMoreKr({ kr }) {
   const [showModalCk, setShowModalCk] = useState(false);
   const [newDone, setNewDone] = useState(kr.done);
-  console.log("newDone", newDone);
 
   useEffect(() => {},[])
   const handleShowCk = () => {
@@ -33,7 +32,6 @@ export default function ViewMoreKr({ kr }) {
         payload,
         true
       );
-      console.log(payload)
       
     }else{
       const payload = {
@@ -44,7 +42,6 @@ export default function ViewMoreKr({ kr }) {
         payload,
        true
       );
-      console.log('entrei no else')
     }
     
   }

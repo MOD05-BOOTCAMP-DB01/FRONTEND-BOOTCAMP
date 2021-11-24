@@ -88,7 +88,6 @@ export default function CreateKeyResult({ objectiveId }) {
   }
 
   const handleOwnerChange = (selectedOption) => {
-    console.log("select = ", selectedOption);
     setOwnerId(selectedOption.value);
   };
 

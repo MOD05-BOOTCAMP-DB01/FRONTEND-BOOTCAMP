@@ -23,12 +23,10 @@ export default function CreateCheckin({closeCreateCheckin, krId}) {
   let initialDate = format((new Date()), 'yyyy-MM-dd');
 
   const onSubmit = async (values) => {
-    console.log("Entrou onSubmite create ck")
     const payload = {
       ...values,
       
     }
-    console.log("payload =", payload)
 
     const response = await Api.buildApiPostRequest(
       Api.createCkUrl(),
@@ -37,8 +35,6 @@ export default function CreateCheckin({closeCreateCheckin, krId}) {
     );
 
     const body = await response.json();
-
-    console.log(response);
 
     if (response.status === 201) {
       toast.success('Checkin criado com sucesso!',{theme: "dark"})
@@ -59,8 +55,6 @@ export default function CreateCheckin({closeCreateCheckin, krId}) {
     if (!values.date) {
       errors.date = 'Escolha uma data para o Checkin.'
     }
-
-    console.log("errors =", Object.keys(errors).length)
     return errors
   }
 

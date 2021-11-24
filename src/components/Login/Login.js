@@ -41,7 +41,7 @@ export default function Login() {
   }
 }catch(error){
   setError(true);
-  console.log('oi');
+  console.log(error);
 }
   }
 

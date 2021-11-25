@@ -20,8 +20,11 @@ export default function Navbar() {
   const [isLogged, setIsLogged] = useState('');
 
   useEffect(() => {
-    loadUniqueUser(id)
-  }, []);
+    if(isLogged){
+   loadUniqueUser(id)
+    }
+ 
+  });
 
   return (
     <>

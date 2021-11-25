@@ -33,6 +33,7 @@ export default function Login() {
     const response = await Api.buildApiPostRequest(Api.loginUrl(), payload);
     const body = await response.json();
 
+
     if (response.status === 201) {
       const accessToken = body.token;
       const userID = body.userId;

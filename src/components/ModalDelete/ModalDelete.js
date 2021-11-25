@@ -26,14 +26,14 @@ const ModalDelete = ({ id = "modal", setIsOpen,objective }) => {
   return (
     <div id={id} className="modal" onClick={handleOutsideClose}>
       <div className="modal__card">
-      <form class="delete__form" onSubmit={handleDelete}>
+      <form className="delete__form" onSubmit={handleDelete}>
       <div>
       <div className='delete__form-heading'>
       <h2>Deletar objetivo</h2>
       </div>
         <div className="delete__form-body">
           <p>Tem certeza que quer deletar <strong>{objective.objective}</strong></p>
-           <div class="delete__form-btns">
+           <div className="delete__form-btns">
         <Button type="submit">confirmar</Button>
         <Button onClick={onClose} >cancelar</Button>
         </div>

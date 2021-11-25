@@ -9,8 +9,6 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 import ViewMoreKr from "./ViewMoreKr";
 import UpdateKeyResult from "../../Pages/KeyResult/UpdateKeyResult/UpdateKeyResult";
 
-import { useGlobalContext } from "../../context/context";
-
 import "./cardKr.css";
 import DeleteKeyResult from "../../Pages/KeyResult/DeleteReyResult/DeleteKeyResult";
 
@@ -65,21 +63,6 @@ export default function CardKr({ kr, objectiveId }) {
               onClick={() => handleShowDeletekr()}
             />
           </div>
-
-          {/* <div className="kr-header-rating">
-            <span className="kr__moonshot">
-              {(() => {
-                if (kr.moonshot === "yes") {
-                  return <img src={coelho} alt="Coelho" />;
-                } else if (kr.moonshot === "no") {
-                  return <img src={tartaruga} alt="Tartaruga" />;
-                } else {
-                  return <></>;
-                }
-              })()}
-            </span>
-            <h4>{kr.rating}</h4>
-          </div> */}
         </div>
 
         <div className="kr-body">

@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-
 import { AiOutlineCloseSquare } from "react-icons/ai";
-
 import Select from "react-select";
-
-import { toast, useToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import { useGlobalContext } from "../../../context/context";
-
 import "./updateKeyResult.css";
-
 import { Api } from "../../../Api/Api";
 import schema from "../CreateKeyResult/schema";
 
@@ -20,7 +14,6 @@ export default function UpdateKeyResult({
   kr,
   closeUpdateKr = () => {},
 }) {
-
   const { handleRender } = useGlobalContext();
 
   const [username, setUsername] = useState([]);
@@ -44,18 +37,21 @@ export default function UpdateKeyResult({
     loadOwners();
   }, []);
 
-  useEffect(() => {}, []);
-
   const onSubmit = async (values, { resetForm }) => {
-    console.log("values =", values);
-
     const owner = ownerId || selectedOption.value;
-    const done = newKr.done == "true" ? true : false;
+
+    const goal_value = values.goal_value
+    const initial_value = values.initial_value
+    const key_result = values.key_result
+    const comment = values.comment
 
     const payload = {
       ...newKr,
+      key_result,
       owner,
-      done,
+      goal_value,
+      initial_value,
+      comment,
     };
 
     const response = await Api.buildApiPatchRequest(
@@ -64,14 +60,13 @@ export default function UpdateKeyResult({
       true
     );
 
-    const body = await response.json();
-
-    console.log(response);
-
     if (response.status === 200) {
-      toast.success('Resultado-chave editado com sucesso!',{theme: "dark",position: toast.POSITION.TOP_CENTER})
-      handleRender()
-      closeUpdateKr()
+      toast.success("Resultado-chave editado com sucesso!", {
+        theme: "dark",
+        position: toast.POSITION.TOP_CENTER,
+      });
+      handleRender();
+      closeUpdateKr();
     }
   };
 
@@ -106,8 +101,6 @@ export default function UpdateKeyResult({
     value: kr.owner.id,
     label: kr.owner.username,
   };
-
-  console.log("newKr=", newKr);
 
   return (
     <div className="area-CreateKeyResult">
@@ -218,12 +211,12 @@ export default function UpdateKeyResult({
                       )}
                     </label>
                     <Field
-                    as="select"
-                    name="type" 
-                    type="text" 
-                    className="field"
-                    value={newKr.type}
-                    onChange={handleChange}
+                      as="select"
+                      name="type"
+                      type="text"
+                      className="field"
+                      value={newKr.type}
+                      onChange={handleChange}
                     >
                       <option value="Inteiro">Inteiro</option>
                       <option value="Decimal">Decimal</option>
@@ -296,6 +289,8 @@ export default function UpdateKeyResult({
                       name="goal_value"
                       type="number"
                       className="field"
+                      value={newKr.goal_value}
+                      onChange={handleChange}
                     ></Field>
                     <ErrorMessage name="goal_value">
                       {(msg) => <span className="fieldError">{msg}</span>}

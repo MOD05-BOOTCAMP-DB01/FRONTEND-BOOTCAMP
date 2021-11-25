@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "./Home.css";
 import Register from "../../components/Register/Register";
-import ModalAcess from "./../../components/ModalAcess/ModalAcess";
-import { Link } from "react-router-dom";
-import Button from "./../../components/LinkButton/LinkButton";
+import Button from "./../../components/Button/Button";
 import Login from "../../components/Login/Login";
 const Home = (props) => {
   const [register, setRegister] = useState(false);

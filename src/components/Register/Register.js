@@ -3,10 +3,10 @@ import { Api } from "../../Api/Api";
 import { AiOutlineMail } from "react-icons/ai";
 import { BiUser } from "react-icons/bi";
 import { MdOutlineLockOpen } from "react-icons/md";
-import LinkButton from "../LinkButton/LinkButton";
+import Button from "../Button/Button";
 import { IconContext } from "react-icons";
 import "./Register.css";
-import Button from "../Button/Button";
+
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -90,17 +90,11 @@ export default function Register({ setRegister, props }) {
               <MdOutlineLockOpen />
             </span>
           </div>
+
           <div>
-            <button onClick={() => setTeamModalVisible(true)}>Team</button>
-          </div>
-            {TeamModalVisible ? <div>Modal Massa</div> : null}
-          <div>
-            <LinkButton
-              type="submit" 
-              className="button button--purple"
-            >
+            <Button type="submit" className="button button--purple">
               Cadastrar
-            </LinkButton>
+            </Button>
           </div>
         </form>
       </IconContext.Provider>

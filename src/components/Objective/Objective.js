@@ -12,7 +12,6 @@ const Objective = (props) => {
   const id = localStorage.getItem("USER_ID");
   const { loadTeams,teams,loadUniqueUser,getAllObjectives,error,years,loadYears,objectives,setObjectives,getObjectivesByTeam } = useGlobalContext();
   const [team,setTeam] = useState(false)
-  const [noContent,setNoContent] = useState('')
   const [isModalOpen,setIsModalOpen]= useState(false);
   const [ isGeneral,setIsGeneral] = useState(true);
   const [ isMine,setIsMine] = useState(false);
@@ -37,22 +36,23 @@ const handleChange = async (selectedOption)=>{
     }else{
       return;
     }
-    
-  }
+  };
 
-  const quarterFilter = async (e)=>{
-    
+  const quarterFilter = async (e) => {
     const quarter = e.target.id;
-    if(quarter ==='clear'){
+    if (quarter === "clear") {
       getAllObjectives();
       return;
     }
-    const response = await Api.buildApiGetRequest(Api.readObjectiveByQuarter(quarter),true);
+    const response = await Api.buildApiGetRequest(
+      Api.readObjectiveByQuarter(quarter),
+      true
+    );
     const data = await response.json();
     setObjectives(data[0].objectives);
-  }
+  };
 
-  const handleMyObjectives = (e)=>{
+  const handleMyObjectives = (e) => {
     const element = e.target.id;
     if(element==="my-objectives"){
       setIsGeneral(false);
@@ -69,8 +69,7 @@ const handleChange = async (selectedOption)=>{
       setIsGeneral(true);
       getAllObjectives();
     }
-  }
-
+  };
 
   return (
     <div className="objective-container">
@@ -95,7 +94,7 @@ const handleChange = async (selectedOption)=>{
       objectives && (isGeneral? objectives?.map((objective) => {
       
         return (
-          <CardObjective2 key={objective.objective} objective={objective}/>
+          <CardObjective2 key={objective.objective} objective={objective} />
         );
       }):
       objectives?.map((objective) => {

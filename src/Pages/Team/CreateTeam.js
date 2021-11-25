@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Api } from "../../Api/Api";
 import { toast } from "react-toastify";
 import { AiOutlineTeam } from "react-icons/ai";
 import { IconContext } from "react-icons";
-import Button from "../../components/Button/Button";
 import "./CreateTeam.css";
-
 
 function CreateTeam() {
   const handleSubmit = async (e) => {
@@ -17,15 +15,11 @@ function CreateTeam() {
       team,
     };
 
-    console.log(team);
-
     const response = await Api.buildApiPostRequest(
       Api.readAllTeams(),
       payload,
       true
     );
-
-    const body = await response.json();
 
     if (response.status === 201) {
       toast.success("Time cadastrado com sucesso!", {
@@ -41,9 +35,16 @@ function CreateTeam() {
         <h1 className="team_h1">Crie um time</h1>
         <form className="team_form" onSubmit={handleSubmit}>
           <div className="team_form_create">
-            <span className="team_form_icon"><AiOutlineTeam /></span>
+            <span className="team_form_icon">
+              <AiOutlineTeam />
+            </span>
             <div className="team_form_input">
-              <input id="team" type="text" placeholder="Nome do time" name="team" />
+              <input
+                id="team"
+                type="text"
+                placeholder="Nome do time"
+                name="team"
+              />
             </div>
           </div>
 
@@ -51,7 +52,7 @@ function CreateTeam() {
             <button type="submit">Criar</button>
           </div>
         </form>
-      </IconContext.Provider> 
+      </IconContext.Provider>
     </div>
   );
 }

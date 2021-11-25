@@ -13,7 +13,7 @@ import { useGlobalContext } from "../../../context/context";
 import "./createKeyResult.css";
 import { Api } from "../../../Api/Api";
 import schema from "./schema";
-import  Button  from "../../../components/Button/Button";
+import Button from "../../../components/Button/Button";
 
 export default function CreateKeyResult({ objectiveId }) {
   const [username, setUsername] = useState([]);
@@ -39,8 +39,6 @@ export default function CreateKeyResult({ objectiveId }) {
   }, []);
 
   const onSubmit = async (values, { resetForm }) => {
-    console.log("values =", values);
-
     const objective = objectiveId;
     const owner = ownerId;
     const status = 0;
@@ -51,7 +49,6 @@ export default function CreateKeyResult({ objectiveId }) {
       objective,
       owner,
     };
-    console.log("payload =", payload);
 
     const response = await Api.buildApiPostRequest(
       Api.createKrUrl(),
@@ -59,15 +56,13 @@ export default function CreateKeyResult({ objectiveId }) {
       true
     );
 
-    const body = await response.json();
-
-    console.log(response);
-
     if (response.status === 201) {
-      toast.success('Resultado-chave criado com sucesso!',{theme: "dark",position: toast.POSITION.TOP_CENTER})
-      
-      handleShowAddKr()
-      
+      toast.success("Resultado-chave criado com sucesso!", {
+        theme: "dark",
+        position: toast.POSITION.TOP_CENTER,
+      });
+
+      handleShowAddKr();
     }
   };
 
@@ -165,7 +160,7 @@ export default function CreateKeyResult({ objectiveId }) {
                     <div className="formError">
                       <ErrorMessage name="rating">
                         {(msg) => <span className="fieldError">{msg}</span>}
-                      </ErrorMessage>                      
+                      </ErrorMessage>
                     </div>
                   </div>
 
@@ -205,10 +200,11 @@ export default function CreateKeyResult({ objectiveId }) {
                       )}
                     </label>
                     <Field
-                    as="select"
-                    name="type" 
-                    type="text" 
-                    className="field">
+                      as="select"
+                      name="type"
+                      type="text"
+                      className="field"
+                    >
                       <option value="inteiro">Inteiro</option>
                       <option value="decimal">Decimal</option>
                       <option value="porcentagem">Porcentagem</option>
@@ -216,7 +212,7 @@ export default function CreateKeyResult({ objectiveId }) {
                     <div className="formError">
                       <ErrorMessage name="type" className="field">
                         {(msg) => <span className="fieldError">{msg}</span>}
-                      </ErrorMessage>                      
+                      </ErrorMessage>
                     </div>
                   </div>
 
@@ -280,7 +276,7 @@ export default function CreateKeyResult({ objectiveId }) {
                     <div className="formError">
                       <ErrorMessage name="goal_value">
                         {(msg) => <span className="fieldError">{msg}</span>}
-                      </ErrorMessage>                      
+                      </ErrorMessage>
                     </div>
                   </div>
 
@@ -295,7 +291,7 @@ export default function CreateKeyResult({ objectiveId }) {
                     <div className="formError">
                       <ErrorMessage name="comment">
                         {(msg) => <span className="fieldError">{msg}</span>}
-                      </ErrorMessage>                      
+                      </ErrorMessage>
                     </div>
                   </div>
 

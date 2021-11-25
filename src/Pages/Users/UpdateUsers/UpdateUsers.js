@@ -80,7 +80,7 @@ const handleSubmit = async(e)=>{
       <Input id="username" name="username" type="text"/>
     </div>
     <div>
-    <label htmlFor="">Email</label>
+    <label htmlFor="">E-mail</label>
     <Input id="email" name="email"  type="text" />
     </div>
     <Button type="submit">Salvar</Button>

@@ -71,13 +71,8 @@ const AppProvider = ({ children }) => {
  const getQuarterObjective = async (id)=>{
    try{
    const response = await Api.buildApiGetRequest(Api.readObjectivesById(id),true);
-    if(!response.ok){
-      const msg = `House um erro no banco ${response.status}`;
-      setError(true);
-      throw new Error(msg);
-    }
    const data = await response.json();
-   setOneObjective(data.objective);
+   setOneObjective(data?.objective);
    }catch(error){
      console.log(error);
    }

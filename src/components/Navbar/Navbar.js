@@ -49,7 +49,7 @@ export default function Navbar() {
                 <AiOutlineClose />
               </Link>
             </li>
-            {loggedUser.role === "USER" &&
+            {loggedUser?.role === "USER" &&
               SidebarLogged.map((item, index) => {
                 return (
                   <li key={index} className={item.cName}>
@@ -61,7 +61,7 @@ export default function Navbar() {
                 );
               })}
 
-            {!loggedUser.role &&
+            {!loggedUser?.role &&
               SidebarNotLogged.map((item, index) => {
                 return (
                   <li key={index} className={item.cName}>
@@ -73,7 +73,7 @@ export default function Navbar() {
                 );
               })}
 
-            {loggedUser.role === "MANAGER" &&
+            {loggedUser?.role === "MANAGER" &&
               SidebarManager.map((item, index) => {
                 return (
                   <li key={index} className={item.cName}>
@@ -85,7 +85,7 @@ export default function Navbar() {
                 );
               })}
 
-            {loggedUser.role === "ADMIN" &&
+            {loggedUser?.role === "ADMIN" &&
               SidebarAdmin.map((item, index) => {
                 return (
                   <li key={index} className={item.cName}>

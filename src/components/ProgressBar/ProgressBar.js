@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Button, Progress } from "semantic-ui-react";
+import React from "react";
+import { Progress } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-import { useGlobalContext } from "../../context/context";
 
 const ProgressBar = (props) => {
-  const { completeTask } = useGlobalContext();
-
   return (
     <div>
       <Progress

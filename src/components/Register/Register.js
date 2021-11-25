@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Api } from "../../Api/Api";
 import { AiOutlineMail } from "react-icons/ai";
 import { BiUser } from "react-icons/bi";
@@ -11,7 +11,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Register({ setRegister, props }) {
-  const [TeamModalVisible, setTeamModalVisible] = useState(false);
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -34,8 +33,6 @@ export default function Register({ setRegister, props }) {
       payload,
       true
     );
-
-    const body = await response.json();
 
     if (response.status === 201) {
       setRegister(false);

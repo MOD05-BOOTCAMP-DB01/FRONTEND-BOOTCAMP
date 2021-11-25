@@ -104,13 +104,14 @@ const handleChange = async (selectedOption)=>{
       }))}
 
       {!objectives && (
+
+        !localStorage.getItem('team')?
       <div className="no-team">
       <h2>Você não está vinculado a nenhum time</h2>
       <Button onClick={()=>setIsModalOpen(!isModalOpen)}>Selecionar Time</Button>
       {isModalOpen && <ModalTeam setIsOpen={setIsModalOpen} ></ModalTeam>}
-      </div>)}
- 
-        {!objectives.length && <div>Seu time não possui objetivos</div>}
+      </div>:!objectives?.length && <div>Seu time não possui objetivos</div>)}
+
     </div>
   );
 };

@@ -40,7 +40,7 @@ const AppProvider = ({ children,props }) => {
         true
       );
       const data = await response.json();
-      setObjectives(data)
+      setObjectives(data[0]?.objectives);
 
 
  }

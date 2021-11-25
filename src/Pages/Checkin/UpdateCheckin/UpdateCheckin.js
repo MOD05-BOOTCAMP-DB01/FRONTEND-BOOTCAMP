@@ -76,14 +76,14 @@ export default function UpdateCheckin({closeUpdateCheckin, ck}) {
         }}
       
           render={({ values, errors, isvalid }) => (
-            <Form className="formKr">
+            <Form className="formCk">
               <AiOutlineCloseSquare onClick={closeUpdateCheckin} className="formKr-close"/>
               <div className="formKr-title">
                 <h2>Editar Checkin</h2>
               </div>
 
-              <div className="formKr-area-Items">
-                  <div className="formKr-Items">
+              <div className="formCk-area-Items">
+                <div className="formCk-Items">
                     <label>
                       Data
                       {errors.date && <abbr className="fieldError" title={errors.date}>*</abbr>}
@@ -95,7 +95,7 @@ export default function UpdateCheckin({closeUpdateCheckin, ck}) {
                     </ErrorMessage>
                   </div>
 
-                  <div className="formKr-Items">
+                  <div className="formCk-Items">
                     <label>
                       Valor Atual
                       {errors.current_value && <abbr className="fieldError" title={errors.current_value}>*</abbr>}
@@ -106,7 +106,7 @@ export default function UpdateCheckin({closeUpdateCheckin, ck}) {
                     </ErrorMessage>
                   </div>
 
-                  <div className="formKr-Items">
+                  <div className="formCk-Items">
                     <label>Comentário</label>
                     <Field as="textarea" name="comment" type="text" className="fieldTextArea"/>
                     <ErrorMessage name="comment">

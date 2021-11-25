@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from "react";
-
-// import { BsFillCircleFill } from 'react-icons/bs'
 import { AiOutlineAppstoreAdd, AiFillPushpin } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
 import { RiDeleteBin2Line } from "react-icons/ri";
-
 import { GoCommentDiscussion } from "react-icons/go";
-
 import { format, addDays } from "date-fns";
-
 import { Api } from "../../../Api/Api";
 import { useGlobalContext } from "../../../context/context";
 import CreateCheckin from "../../../Pages/Checkin/CreateCheckin/CreateCheckin";
-// import CreateKeyResult from '../../../Pages/CreateKeyResult/CreateKeyResult';
-
-// CSS
 import "./modalCk.css";
 import UpdateCheckin from "../../../Pages/Checkin/UpdateCheckin/UpdateCheckin";
 import DeleteCheckin from "../../../Pages/Checkin/DeleteCheckin/DeleteCheckin";
@@ -47,29 +39,29 @@ export default function ModalCk({ kr }) {
   };
 
   const getMonth = (month) => {
-    if (month == 12) {
+    if (month === 12) {
       return "Dez";
-    } else if (month == 11) {
+    } else if (month === 11) {
       return "Nov";
-    } else if (month == 10) {
+    } else if (month === 10) {
       return "Out";
-    } else if (month == 9) {
+    } else if (month === 9) {
       return "Set";
-    } else if (month == 8) {
+    } else if (month === 8) {
       return "Ago";
-    } else if (month == 7) {
+    } else if (month === 7) {
       return "Jul";
-    } else if (month == 6) {
+    } else if (month === 6) {
       return "Jun";
-    } else if (month == 5) {
+    } else if (month === 5) {
       return "Mai";
-    } else if (month == 4) {
+    } else if (month === 4) {
       return "Abr";
-    } else if (month == 3) {
+    } else if (month === 3) {
       return "Mar";
-    } else if (month == 2) {
+    } else if (month === 2) {
       return "Fev";
-    } else if (month == 1) {
+    } else if (month === 1) {
       return "Jan";
     } else {
       return "";
@@ -99,11 +91,11 @@ export default function ModalCk({ kr }) {
           />
           <div className="modal-rating">
             {(() => {
-              if (kr.rating == "Alto") {
+              if (kr.rating === "Alto") {
                 return <h3 className="rating-high">{kr.rating}</h3>;
-              } else if (kr.rating == "Médio") {
+              } else if (kr.rating === "Médio") {
                 return <h3 className="rating-medium">{kr.rating}</h3>;
-              } else if (kr.rating == "Baixo") {
+              } else if (kr.rating === "Baixo") {
                 return <h3 className="rating-low">{kr.rating}</h3>;
               } else {
                 return <h3>{kr.rating}</h3>;
@@ -117,7 +109,7 @@ export default function ModalCk({ kr }) {
         {cks.map((ck) => (
           <div className="cardCk">
             {(() => {
-              if (ck.current_value >= 80 || ck.current_value == 100) {
+              if (ck.current_value >= 80 || ck.current_value === 100) {
                 return (
                   <div className="checkin__status--green">
                     <AiFillPushpin />
@@ -150,9 +142,9 @@ export default function ModalCk({ kr }) {
             </div>
             <div className="cardCK-value">
               {(() => {
-                if (kr.type == "Porcentagem") {
+                if (kr.type === "Porcentagem") {
                   return <h3>{ck.current_value}%</h3>;
-                } else if (kr.type == "Decimal") {
+                } else if (kr.type === "Decimal") {
                   return <h3>{getDecimal(ck.current_value.toString())}</h3>;
                 } else {
                   return <h3>{ck.current_value}</h3>;

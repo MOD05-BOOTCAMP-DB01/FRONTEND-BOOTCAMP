@@ -42,6 +42,8 @@ export default function UpdateKeyResult({
   }, []);
 
   const onSubmit = async (values, { resetForm }) => {
+    console.log("Values", values)
+    console.log("newKr",newKr)
     const owner = ownerId || selectedOption.value;
 
     const goal_value = values.goal_value
@@ -293,8 +295,6 @@ export default function UpdateKeyResult({
                       name="goal_value"
                       type="number"
                       className="field"
-                      value={newKr.goal_value}
-                      onChange={handleChange}
                     ></Field>
                     <ErrorMessage name="goal_value">
                       {(msg) => <span className="fieldError">{msg}</span>}

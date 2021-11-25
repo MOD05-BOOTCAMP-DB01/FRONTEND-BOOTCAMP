@@ -11,7 +11,8 @@ import { useGlobalContext } from "../../context/context";
 import  logo from './../../Assets/logo-side.png'
 import  navLogo from './../../Assets/logo-nav.png'
 export default function Navbar() {
-  const {loggedUser} = useGlobalContext();
+  const id = localStorage.getItem("USER_ID");
+  const {loggedUser,loadUniqueUser} = useGlobalContext();
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -19,15 +20,7 @@ export default function Navbar() {
   const [isLogged, setIsLogged] = useState('');
 
   useEffect(() => {
-    const handleOnJwtChange = () => {
-        setIsLogged(!JwtHandler.isJwtValid());
-    };
-
-    window.addEventListener("onJwtChange", handleOnJwtChange);
-
-    return () => {
-        window.removeEventListener("onJwtChange", handleOnJwtChange);
-    };
+    loadUniqueUser(id)
   }, []);
 
   return (
@@ -51,7 +44,6 @@ export default function Navbar() {
               </Link>
               
             </li>
-           
             {loggedUser.role ==="USER" && 
               (SidebarLogged.map((item, index) => {
               return (

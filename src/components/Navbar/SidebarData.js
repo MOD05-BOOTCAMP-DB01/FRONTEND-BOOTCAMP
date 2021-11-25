@@ -1,7 +1,6 @@
 import React from "react";
 import { BiTask,BiTargetLock } from "react-icons/bi";
 import { BsHouseDoor } from "react-icons/bs";
-import { AiOutlineUser } from "react-icons/ai";
 import {FiInfo } from "react-icons/fi";
 import {FaRegUserCircle } from "react-icons/fa";
 

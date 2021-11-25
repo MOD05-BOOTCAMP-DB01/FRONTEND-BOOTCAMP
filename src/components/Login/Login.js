@@ -14,7 +14,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import schemaLogin from "./schemaLogin";
 
 export default function Login() {
-  const { setLogin, loggedUser } = useGlobalContext();
+  const { setLogin } = useGlobalContext();
 
   const [buttonVisbility, setButtonVisbility] = useState(false);
 

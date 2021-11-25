@@ -1,0 +1,122 @@
+.area-CreateKeyResult {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.404);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.CreateKeyResult {
+  width: 50%;
+  height: 90%;
+  background: rgb(243, 243, 243);
+  border-radius: 0.5em;
+}
+
+/* FORM */
+
+.formKr {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 1.45rem;
+  color: #006d99;
+  padding: 1em 0;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.formKr-close {
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.formKr-title {
+  width: 100%;
+  height: 3em;
+  color: #006d99;
+  text-align: center;
+}
+.formKr-title h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.formKr-area-Items {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.formKr-areaLeft {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: 90%;
+  margin: 0 1em;
+}
+.formKr-areaRight {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: 100%;
+  margin: 0 1em;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.formKr-Items {
+  width: 100%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5em;
+  
+}
+.formKr-Items-select {
+  color: #006d99;
+  
+}
+
+.formKr-Items label {
+  margin-left: 0.5em;
+  margin-bottom: 0.2em;
+}
+
+.field {
+  width: 100%;
+  border-radius: 0.8em;
+  outline: none;
+  border: none;
+  padding-left: 0.5em;
+  height: 2em;
+}
+.fieldTextArea {
+  border-radius: 0.5em;
+  padding-left: 0.5em;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  height: 3em;
+}
+
+.formError{
+  width: 100%;
+  height: 1em;
+}
+
+.fieldError {
+  color: rgba(255, 72, 72, 0.986);
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+

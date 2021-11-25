@@ -1,0 +1,120 @@
+.form {
+  color: #01101d;
+  background: #fff;
+  position: relative;
+  padding: 30px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
+  width: 90%;
+  min-height: 338px;
+  max-width: 400px;
+  overflow: hidden;
+  text-align: center;
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
+  flex-grow: 2;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .form {
+    color: #01101d;
+    background: #fff;
+    position: relative;
+    padding: 30px;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
+    min-width: 320px;
+    min-height: 338px;
+    max-width: 480px;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 0;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    flex-grow: 2;
+  }
+}
+
+.form__card--input {
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 20px;
+  position: relative;
+}
+.form__card p {
+  font-size: 12px;
+}
+
+.form__card a {
+  text-decoration: none;
+  color: #01101d;
+}
+
+.form__card--input .form__card--field {
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  padding-left: 60px;
+  height: 45px;
+  margin: 2px 0;
+  background: rgb(223, 233, 236);
+}
+.form__card--input .form__card--field:focus {
+  outline: none;
+  box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+}
+
+.form__card--input .form__card--field::-webkit-input-placeholder {
+  font-size: 16px;
+  color: #01101d;
+}
+
+.form__card--icon {
+  position: absolute;
+  background: #0099B7;
+  height: 50px;
+  width: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #01101d;
+  font-size: 1.8rem;
+  left: 0;
+}
+.form__card--icon-left {
+  position: absolute;
+  background: #0099B7;
+  height: 50px;
+  width: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #01101d;
+  font-size: 1.8rem;
+  right: 0;
+}
+/* .form__card--span {
+  background-color: #fefefe;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  position: relative;
+} */
+
+.icons__login {
+  color: #fff;
+  font-size: 1.8rem;
+  left: 0;
+  bottom: 0;
+  border-radius: 0.5rem;
+}
+
+.form__h1{
+  color:#87008B;
+}
+
+#mostart{
+  
+}
+#esconder{
+  opacity: 0.2;
+}

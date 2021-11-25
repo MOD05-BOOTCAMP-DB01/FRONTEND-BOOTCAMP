@@ -1,0 +1,94 @@
+@media (min-width: 768px) {
+  
+
+  .objective-container {
+    margin: 56px auto 0 auto;
+    display: flex;
+    width: 85%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .objective-container-heading{
+  width: 65rem;
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content:space-between;
+  cursor: pointer;
+  transition: all 0.2s linear 0s;
+}
+}
+
+.objective-container_filter{
+  display:flex;
+  align-items:center;
+  
+}
+
+.objective-container-heading h2:first-child{
+  margin:calc(2rem - 0.14285714em) 0 1rem;
+}
+.radio-group input[type=radio] {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}
+
+.radio-group label {
+  color: lighten(#cecece,40%);
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0.6rem 1rem;
+  background:#fff;
+  border: 1px solid hsl(0, 0%, 80%);
+  
+}
+.checked{
+  border-bottom: 2px solid #89898934;
+}
+
+div.radio-group:nth-child(even) + label{
+ background:red;
+}
+
+.radio-group input[type=radio]:checked + label{
+  color: #f8f8fa;
+  background: #69006e;
+  padding:1rem;
+  border-radius: 10px;
+}
+
+
+.radio-group label + input[type=radio] + label {
+  border-left: solid 1px #cecece;
+  
+}
+.radio-group {
+  
+  display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left:1rem;
+  
+}
+
+.css-tlfecz-indicatorContainer{
+  color:#69006e!important;
+}
+
+.no-team{
+  padding:1rem;
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  min-height: 20rem;
+  color:#484848;
+}
+
+@media (min-width: 769px) and (max-width: 945px) {
+   .objective-container-heading{
+   max-width: 50rem;
+  }
+}

@@ -9,12 +9,12 @@ const ModalDelete = ({ name = "modal", setIsOpen }) => {
   const id = localStorage.getItem("USER_ID");
   const [teamSelected,setTeamSelected] = useState({})
   const [teamId,setTeamId] = useState({})
-  const {loadUniqueUser,loadTeams,teams,setTeams} = useGlobalContext()
+  const {loadUniqueUser,loadTeams,teams} = useGlobalContext()
 
   useEffect(() => {
    loadUniqueUser(id)
    loadTeams()
-  },[])
+  },[id])
 
     const onClose = ()=>{
     setIsOpen(false)

@@ -8,11 +8,10 @@ import {BiEdit} from 'react-icons/bi'
 import {ViewMoreButton} from './../Button/Button';
 import { useGlobalContext } from "../../context/context";
 
-
 import './CardObjective2.css'
 import ModalDelete from '../ModalDelete/ModalDelete';
 const CardObjective2 = ({objective,team}) => {
-    const {  objective:name, initial_date, id, type,owner,end_date,year,quarter,teamName } = objective;
+    const {  objective:name, id, type,owner,year,quarter } = objective;
     const {loggedUser,getQuarterObjective,oneObjective} = useGlobalContext();
     const [isModalOpen,setIsModalOpen]= useState(false);
     const [value,setValue] = useState(0);
@@ -38,7 +37,7 @@ const CardObjective2 = ({objective,team}) => {
         }
         getQuarterObjective(id);
         loadKrsbyObjective();
-    },[])
+    },[id])
  
     if(error){
       return <h1>Erro de servidor</h1>
@@ -67,21 +66,21 @@ const CardObjective2 = ({objective,team}) => {
               </h4>
               <h4>
                 <span className="objective-info">Ano:</span>
-                {year?.year || oneObjective.year.year}
+                {year?.year || oneObjective?.year.year}
               </h4>
               <h4>
                 <span className="objective-info">Quarter:</span>
-                {quarter?.quarter || oneObjective.quarter.quarter}
+                {quarter?.quarter || oneObjective?.quarter.quarter}
                 
               </h4>
               <h4>
                 <span className="objective-info">Time:</span>
-                {team?.team || oneObjective.team.team}
+                {team?.team || oneObjective?.team.team}
               </h4>
               </div>
               <div className="objective-button-container">
 
-              {loggedUser.role === 'MANAGER' && (<div>
+              {loggedUser?.role === 'MANAGER' && (<div>
               
               <Link to={`/editar/objetivo/${id}`}>
                 <BiEdit className="objective-icon" />

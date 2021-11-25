@@ -3,6 +3,7 @@ import Select from "react-select";
 import { Api } from "./../../Api/Api";
 import "./Objective.css";
 import { useGlobalContext } from "../../context/context";
+import  Page500 from "../../Pages/Page500/Page500";
 import Spin from "react-cssfx-loading/lib/Spin";
 import Button from './../Button/Button'
 import ModalTeam from './../ModalTeam/ModalTeam'
@@ -22,20 +23,21 @@ const Objective = (props) => {
     getObjectivesByQuarter,
     getObjectivesByQuarterTeam,
   } = useGlobalContext();
+
   const [isModalOpen,setIsModalOpen]= useState(false);
   const [ isGeneral,setIsGeneral] = useState(true);
   const [ isMine,setIsMine] = useState(false);
-  const [quarterName,setQuarterName] =useState('')
- 
+
   useEffect(() => {
     loadUniqueUser(id);
     loadYears()
     getAllObjectives();
-  }, []);
+  }, [id]);
+
+
   const teamId =localStorage.getItem('team');
-  // if(error){
-  //   props.history.go("/ERROR500")
-  // }
+
+ 
 const handleChange = async (selectedOption)=>{
     const year=selectedOption?.label;
     if(year){
@@ -85,6 +87,9 @@ const handleChange = async (selectedOption)=>{
     }
   };
   // 
+    if(error){
+    return <Page500/>
+  }
 
    if (!objectives) {
     return (
@@ -97,12 +102,13 @@ const handleChange = async (selectedOption)=>{
         size="1000px"
         primaryColor="#0099b7"
         secondaryColor="#69006e"
-        numberOfRotationsInAnimation={2}
+        numberofrotationsinanimation={2}
         />;
     </div>
     )
     
   }
+ 
  
   return (
     <div className="objective-container">
@@ -127,12 +133,12 @@ const handleChange = async (selectedOption)=>{
       objectives && (isGeneral? objectives?.map((objective) => {
       
         return (
-          <CardObjective2 key={objective.objective} objective={objective} team={objective.team} quarterName={quarterName}/>
+          <CardObjective2 key={objective.objective} objective={objective} team={objective.team}/>
         );
       }):
       objectives?.map((objective) => {
         return (
-          <CardObjective2 key={objective.objective} objective={objective} quarterName={quarterName}/>
+          <CardObjective2 key={objective.objective} objective={objective} />
         );
       }))}
 

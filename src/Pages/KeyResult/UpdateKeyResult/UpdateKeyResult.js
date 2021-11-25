@@ -9,6 +9,10 @@ import "./updateKeyResult.css";
 import { Api } from "../../../Api/Api";
 import schema from "../CreateKeyResult/schema";
 
+import './updateKeyResult.css'
+
+
+
 export default function UpdateKeyResult({
   objectiveId,
   kr,

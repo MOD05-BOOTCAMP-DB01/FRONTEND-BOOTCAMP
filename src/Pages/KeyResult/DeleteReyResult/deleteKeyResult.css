@@ -72,6 +72,8 @@
   border-radius: .5em 50% 50% .5em;
   background-color: #e5dae6a9;
   cursor: pointer;
+  color: #87008B;
+
 }
 
 .btn-delete:hover, .btn-cancel:hover{

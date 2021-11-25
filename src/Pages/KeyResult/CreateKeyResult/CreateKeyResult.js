@@ -307,9 +307,9 @@ export default function CreateKeyResult({ objectiveId }) {
               </div>
 
               <div className="formKr-button">
-                <Button type="submit" disabled={Object.keys(errors).length}>
+                <button type="submit" disabled={Object.keys(errors).length}>
                   Enviar
-                </Button>
+                </button>
               </div>
             </Form>
           )}

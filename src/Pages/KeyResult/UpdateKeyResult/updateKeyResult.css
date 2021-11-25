@@ -1,0 +1,61 @@
+.formKr-button{
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  height: 2em;
+  align-items: center;
+  transition: all 0.2s linear 0s;
+  background-color: #87008B;
+  
+  border-radius: .5em;
+  color: white;
+  margin: 0 auto;
+}
+
+
+.formKr-button:before {
+  content:"\f14d";
+  font-family: 'Font Awesome 5 free';
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 60px;
+  transform: scale(0,1);
+  transform-origin: left center;
+  transition: all 0.2s linear 0s;
+  border-radius: .5em 50% 50% .5em;
+  background-color: #e5dae6a9;
+  cursor: pointer;
+  color: #87008B;
+}
+
+.formKr-button:hover button{
+  text-indent: 10px;
+  transition: all 0.2s linear 0s;
+  
+}
+
+.formKr-button:hover:before {
+  transform: scale(1);
+  text-indent: 0;
+  transition: all 0.2s linear 0s;
+
+}
+
+.formKr-button button{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: white;
+  margin-right: 2em;
+  transition: all 0.2s linear 0s;
+
+}

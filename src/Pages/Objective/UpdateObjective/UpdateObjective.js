@@ -52,8 +52,10 @@ const UpdateObjective = (props) => {
       setSelectedTeam({value:obj.team.id,label:obj.team.team})
       setStartDate(new Date(obj.initial_date))
       setEndDate(new Date(obj.end_date))
+     
       
     }
+ 
     loadOwners();
     loadObjective();
   }, []);

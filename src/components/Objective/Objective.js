@@ -3,7 +3,7 @@ import Select from "react-select";
 import { Api } from "./../../Api/Api";
 import "./Objective.css";
 import { useGlobalContext } from "../../context/context";
-import Spin from "react-cssfx-loading/lib/Spin";
+
 import CardObjective2 from "../CardObjective2/CardObjective2";
 
 const Objective = (props) => {

@@ -107,21 +107,21 @@
   position: absolute;
   right: 10px;
   font-size: 2rem;
-  color: #67da81;
+  color: rgba(32, 231, 32, 0.712);
 }
 
 .checkin__status--red {
   position: absolute;
   right: 10px;
   font-size: 2rem;
-  color: #fe5151;
+  color: rgba(255, 0, 0, 0.678);
 }
 
 .checkin__status--yellow {
   position: absolute;
   right: 10px;
   font-size: 2rem;
-  color: rgb(251, 251, 150);
+  color: rgba(255, 255, 0, 0.842);
 }
 
 .cardCk-icons {

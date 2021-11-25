@@ -9,6 +9,9 @@ import { FaRegCalendarTimes } from 'react-icons/fa'
 
 import ModalCk from "../CardCheckin/Modal/ModalCk";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import "./viewMoreKr.css";
 
 
@@ -32,6 +35,14 @@ export default function ViewMoreKr({ kr }) {
         payload,
         true
       );
+
+      if (response.status === 200) {
+        toast.success("Resultado chave concluído", {
+          theme: "dark",
+          position: toast.POSITION.TOP_CENTER,
+        });
+        
+      }
       
     }else{
       const payload = {
@@ -42,6 +53,14 @@ export default function ViewMoreKr({ kr }) {
         payload,
        true
       );
+
+      if (response.status === 200) {
+        toast.success("Resultado chave não concluído", {
+          theme: "dark",
+          position: toast.POSITION.TOP_CENTER,
+        });
+        
+      }
     }
     
   }
@@ -60,6 +79,7 @@ export default function ViewMoreKr({ kr }) {
         </div>
 
         <div className="viewMoreKr-frequency">
+          <label>Frequência</label>
           <h3>{kr.frequency}</h3>
         </div>
 
@@ -78,7 +98,9 @@ export default function ViewMoreKr({ kr }) {
         </div>
 
         <div className="viewMoreKr-done">
-         
+          <label>Concluído?
+          </label>
+
           <input type="checkbox" id="done" name="done" onClick={handleDone} checked={newDone} ></input>
           
         </div>

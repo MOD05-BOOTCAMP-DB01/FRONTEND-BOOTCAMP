@@ -6,6 +6,8 @@ import { useGlobalContext } from "../../context/context";
 
 import { MdOutlineLibraryAdd } from 'react-icons/md'
 
+import Spin from "react-cssfx-loading/lib/Spin";
+
 //CSS
 import "./cardObjective.css";
 import { cks } from "../../Api/mock/data";
@@ -58,7 +60,21 @@ export default function CardObjective(props) {
   }, [showAddKr, render]);
 
   if (!objective) {
-    return <h3>Loading.. carregando obj</h3>;
+    return (
+    <div className="area-spin">
+      <Spin
+        duration="2s"
+        width="200px"
+        height= "200px"
+        direction="alternate"
+        size="1000px"
+        primaryColor="#0099b7"
+        secondaryColor="#69006e"
+        numberOfRotationsInAnimation={2}
+        />;
+    </div>
+    )
+    
   }
   if (!krs) {
     return <h3>Loading.. carregando kr</h3>;
@@ -77,7 +93,7 @@ export default function CardObjective(props) {
       <div className="cardObjective">
         <div className="objective-header">
           <div className="objective-title">
-          <span className="objective-label">Titulo:</span>
+          <span className="objective-label">Objetivo:</span>
             <h2>{objective.objective}</h2>
           </div>
 

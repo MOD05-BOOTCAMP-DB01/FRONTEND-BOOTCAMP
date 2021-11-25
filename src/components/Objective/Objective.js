@@ -10,20 +10,29 @@ import CardObjective2 from "../CardObjective2/CardObjective2";
 
 const Objective = (props) => {
   const id = localStorage.getItem("USER_ID");
-  const { loadTeams,teams,loadUniqueUser,getAllObjectives,error,years,loadYears,objectives,setObjectives,getObjectivesByTeam } = useGlobalContext();
-  const [team,setTeam] = useState(false)
+  const {
+    loadUniqueUser,
+    getAllObjectives,
+    error,
+    years,
+    loadYears,
+    objectives,
+    setObjectives,
+    getObjectivesByTeam,
+    getObjectivesByQuarter,
+    getObjectivesByQuarterTeam,
+  } = useGlobalContext();
   const [isModalOpen,setIsModalOpen]= useState(false);
   const [ isGeneral,setIsGeneral] = useState(true);
   const [ isMine,setIsMine] = useState(false);
+  const [quarterName,setQuarterName] =useState('')
  
   useEffect(() => {
     loadUniqueUser(id);
-    loadTeams();
-    setTeam(teams[0]);
     loadYears()
     getAllObjectives();
   }, []);
-
+  const teamId =localStorage.getItem('team');
   // if(error){
   //   props.history.go("/ERROR500")
   // }
@@ -41,15 +50,21 @@ const handleChange = async (selectedOption)=>{
   const quarterFilter = async (e) => {
     const quarter = e.target.id;
     if (quarter === "clear") {
-      getAllObjectives();
+      if(isGeneral){
+        getAllObjectives()
+        return
+      }
+      getObjectivesByTeam(teamId)
       return;
     }
-    const response = await Api.buildApiGetRequest(
-      Api.readObjectiveByQuarter(quarter),
-      true
-    );
-    const data = await response.json();
-    setObjectives(data[0].objectives);
+    if(isGeneral){
+    getObjectivesByQuarter(quarter);
+    }else{
+     getObjectivesByQuarterTeam(quarter,teamId);
+    }
+    
+    
+    
   };
 
   const handleMyObjectives = (e) => {
@@ -57,7 +72,6 @@ const handleChange = async (selectedOption)=>{
     if(element==="my-objectives"){
       setIsGeneral(false);
       setIsMine(true);
-      const teamId =localStorage.getItem('team');
       if(teamId){
          getObjectivesByTeam(localStorage.getItem('team'))
       }else{
@@ -70,7 +84,26 @@ const handleChange = async (selectedOption)=>{
       getAllObjectives();
     }
   };
+  // 
 
+   if (!objectives) {
+    return (
+    <div className="area-spin">
+      <Spin
+        duration="2s"
+        width="200px"
+        height= "200px"
+        direction="alternate"
+        size="1000px"
+        primaryColor="#0099b7"
+        secondaryColor="#69006e"
+        numberOfRotationsInAnimation={2}
+        />;
+    </div>
+    )
+    
+  }
+ 
   return (
     <div className="objective-container">
     <div className="objective-container-heading">
@@ -94,12 +127,12 @@ const handleChange = async (selectedOption)=>{
       objectives && (isGeneral? objectives?.map((objective) => {
       
         return (
-          <CardObjective2 key={objective.objective} objective={objective} />
+          <CardObjective2 key={objective.objective} objective={objective} team={objective.team} quarterName={quarterName}/>
         );
       }):
       objectives?.map((objective) => {
         return (
-          <CardObjective2 key={objective.objective} objective={objective}/>
+          <CardObjective2 key={objective.objective} objective={objective} quarterName={quarterName}/>
         );
       }))}
 

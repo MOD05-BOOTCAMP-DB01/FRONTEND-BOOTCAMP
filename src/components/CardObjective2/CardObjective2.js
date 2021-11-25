@@ -11,13 +11,12 @@ import { useGlobalContext } from "../../context/context";
 
 import './CardObjective2.css'
 import ModalDelete from '../ModalDelete/ModalDelete';
-const CardObjective2 = ({objective}) => {
-    const {  objective:name, initial_date, id, type,owner,end_date,team } = objective;
-    const {loggedUser} = useGlobalContext();
+const CardObjective2 = ({objective,team}) => {
+    const {  objective:name, initial_date, id, type,owner,end_date,year,quarter,teamName } = objective;
+    const {loggedUser,getQuarterObjective,oneObjective} = useGlobalContext();
     const [isModalOpen,setIsModalOpen]= useState(false);
     const [value,setValue] = useState(0);
     const [error,setError] = useState(false);
-
     useEffect(()=>{
         const loadKrsbyObjective= async ()=>{
           try {
@@ -28,8 +27,8 @@ const CardObjective2 = ({objective}) => {
                 return number.done;
             })
             
-            const teste= quantity?.reduce((total, numero) => total + numero, 0);
-            const calc = Math.round(teste/krLength * 100);
+            const total= quantity?.reduce((total, numero) => total + numero, 0);
+            const calc = Math.round(total/krLength * 100);
             setValue(calc);
           } catch (error) {
             setError(true);
@@ -37,9 +36,10 @@ const CardObjective2 = ({objective}) => {
           } 
            
         }
+        getQuarterObjective(id);
         loadKrsbyObjective();
     },[])
-
+ 
     if(error){
       return <h1>Erro de servidor</h1>
     }
@@ -66,13 +66,17 @@ const CardObjective2 = ({objective}) => {
                 {type}
               </h4>
               <h4>
-                <span className="objective-info">Começa em:</span>
-                {new Date(initial_date).toLocaleDateString('pt-BR')}
+                <span className="objective-info">Ano:</span>
+                {year?.year || oneObjective.year.year}
               </h4>
               <h4>
-                <span className="objective-info">Termina em:</span>
-                {new Date(end_date).toLocaleDateString('pt-BR')}
+                <span className="objective-info">Quarter:</span>
+                {quarter?.quarter || oneObjective.quarter.quarter}
                 
+              </h4>
+              <h4>
+                <span className="objective-info">Time:</span>
+                {team?.team || oneObjective.team.team}
               </h4>
               </div>
               <div className="objective-button-container">

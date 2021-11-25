@@ -37,15 +37,10 @@ export default function CardObjective(props) {
      
         setObjective(results.objective);
       
-
-      // setKrs(results.objective.key_results);
     };
 
     loadObjective();
   }, [id]);
-
-
- 
 
   useEffect(() => {
     const loadKr = async () => {

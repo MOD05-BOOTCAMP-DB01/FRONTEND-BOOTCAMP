@@ -49,6 +49,7 @@ export const Api = {
 
   // teams
   readAllTeams: () => `${Api.baseUrl}/teams`,
+  readTeamById:(id)=>`${Api.baseUrl}/teams/${id}`,
 
 
   // years

@@ -22,6 +22,7 @@ const Objective = (props) => {
     getObjectivesByTeam,
     getObjectivesByQuarter,
     getObjectivesByQuarterTeam,
+    setError,
   } = useGlobalContext();
 
   const [isModalOpen,setIsModalOpen]= useState(false);
@@ -41,9 +42,17 @@ const Objective = (props) => {
 const handleChange = async (selectedOption)=>{
     const year=selectedOption?.label;
     if(year){
+      try{
       const response = await Api.buildApiGetRequest(Api.readObjectiveByYear(year),true)
+       if(!response.ok){
+      const msg = `House um erro no banco ${response.status}`;
+      setError(true);
+      throw new Error(msg);
+    }
     const results = await response?.json()
-    setObjectives(results[0].objectives)
+    setObjectives(results[0].objectives)}catch(error){
+      console.log(error);
+    }
     }else{
       return;
     }

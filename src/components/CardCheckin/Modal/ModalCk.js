@@ -39,29 +39,29 @@ export default function ModalCk({ kr }) {
   };
 
   const getMonth = (month) => {
-    if (month === 12) {
+    if (+month === 12) {
       return "Dez";
-    } else if (month === 11) {
+    } else if (+month === 11) {
       return "Nov";
-    } else if (month === 10) {
+    } else if (+month === 10) {
       return "Out";
-    } else if (month === 9) {
+    } else if (+month === 9) {
       return "Set";
-    } else if (month === 8) {
+    } else if (+month === 8) {
       return "Ago";
-    } else if (month === 7) {
+    } else if (+month === 7) {
       return "Jul";
-    } else if (month === 6) {
+    } else if (+month === 6) {
       return "Jun";
-    } else if (month === 5) {
+    } else if (+month === 5) {
       return "Mai";
-    } else if (month === 4) {
+    } else if (+month === 4) {
       return "Abr";
-    } else if (month === 3) {
+    } else if (+month === 3) {
       return "Mar";
-    } else if (month === 2) {
+    } else if (+month === 2) {
       return "Fev";
-    } else if (month === 1) {
+    } else if (+month === 1) {
       return "Jan";
     } else {
       return "";

@@ -66,20 +66,6 @@ export default function CardKr({ kr, objectiveId }) {
             />
           </div>
 
-          {/* <div className="kr-header-rating">
-            <span className="kr__moonshot">
-              {(() => {
-                if (kr.moonshot === "yes") {
-                  return <img src={coelho} alt="Coelho" />;
-                } else if (kr.moonshot === "no") {
-                  return <img src={tartaruga} alt="Tartaruga" />;
-                } else {
-                  return <></>;
-                }
-              })()}
-            </span>
-            <h4>{kr.rating}</h4>
-          </div> */}
         </div>
 
         <div className="kr-body">
@@ -88,7 +74,7 @@ export default function CardKr({ kr, objectiveId }) {
           </div>
 
           <div className="kr-body-type">
-            <h4>{kr.type}</h4>
+            <h4></h4>
           </div>
 
           <div className="kr__moonshot">
@@ -106,6 +92,7 @@ export default function CardKr({ kr, objectiveId }) {
           </div>
 
           <div className="kr-body-status">
+            <span>Status:</span>
             {(() => {
               if (kr.status >= 100) {
                 return <h4 className="status-gree">{kr.status}%</h4>;
@@ -119,11 +106,13 @@ export default function CardKr({ kr, objectiveId }) {
             })()}
           </div>
 
-          <div
-            className="kr-body-learnMore"
-            onClick={() => handleShowViewMore()}
-          >
-            <span>{!showViewMore ? "Ver mais" : "Ver menos"}</span>
+          <div className="kr-body-areaLearnMore">
+            <div
+              className="kr-body-learnMore"
+              onClick={() => handleShowViewMore()}
+            >
+              <span>{!showViewMore ? "Ver mais" : "Ver menos"}</span>
+            </div>
           </div>
         </div>
 
@@ -149,8 +138,8 @@ export default function CardKr({ kr, objectiveId }) {
           )}
         </div>
       </div>
-
-      {showViewMore ? <ViewMoreKr kr={kr} /> : ""}
+        {showViewMore ? <ViewMoreKr kr={kr} /> : ""}
+      
     </>
   );
 }

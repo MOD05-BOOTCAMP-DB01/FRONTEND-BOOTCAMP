@@ -181,7 +181,7 @@
   width: 100%;
 }
 
-.kr__moonshot{
+.kr__moonshot {
   width: 8em;
   height: 100%;
   display: flex;
@@ -190,5 +190,4 @@
 }
 .kr__moonshot img {
   width: 50%;
-   
 }

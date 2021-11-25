@@ -80,7 +80,7 @@ export default function Login() {
             validateOnMount
             initialValues={{
               email: "",
-              password: null,
+              password: "",
             }}
             render={({ values, errors, isvalid }) => (
               <Form className="form__card">

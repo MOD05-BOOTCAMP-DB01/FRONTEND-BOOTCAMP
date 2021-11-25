@@ -145,8 +145,7 @@ const getAllObjectives = async () => {
     try{
       const response = await Api.buildApiGetRequest(Api.readUserbyId(id),true);
       if(!response.ok){
-      const msg = `House um erro no banco ${response.status}`;
-      setError(true);
+      const msg = `Houve um erro no banco ${response.status}`;
       throw new Error(msg);
     }
       const data = await response.json();

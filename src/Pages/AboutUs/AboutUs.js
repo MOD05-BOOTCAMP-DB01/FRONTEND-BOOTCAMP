@@ -138,7 +138,7 @@ function AboutUs() {
             <img
               className="about_team_card_img"
               alt="imagem profile"
-              src="https://media-exp1.licdn.com/dms/image/C4E03AQHpNLfFFHG9eA/profile-displayphoto-shrink_200_200/0/1623186716641?e=1642636800&v=beta&t=2pAzwLvcqtPHnERQZat1T4koNgl_Nd8GzHVA92ggtOA"
+              src="https://media-exp1.licdn.com/dms/image/C4D03AQHJZDutaMIViA/profile-displayphoto-shrink_200_200/0/1637250762775?e=1643241600&v=beta&t=Qc3-PM1ieUfJNp8aVtsRL31luFp-Xew10lsE2y5D3IQ"
             />
             <div className="about_team_card_name">Janice Caldeira</div>
             <div className="about_team_card_area">Back-End</div>

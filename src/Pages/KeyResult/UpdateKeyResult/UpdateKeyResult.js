@@ -44,18 +44,23 @@ export default function UpdateKeyResult({
     loadOwners();
   }, []);
 
-  useEffect(() => {}, []);
-
   const onSubmit = async (values, { resetForm }) => {
     console.log("values =", values);
 
     const owner = ownerId || selectedOption.value;
-    const done = newKr.done == "true" ? true : false;
+
+    const goal_value = values.goal_value
+    const initial_value = values.initial_value
+    const key_result = values.key_result
+    const comment = values.comment
 
     const payload = {
       ...newKr,
+      key_result,
       owner,
-      done,
+      goal_value,
+      initial_value,
+      comment,
     };
 
     const response = await Api.buildApiPatchRequest(
@@ -296,6 +301,8 @@ export default function UpdateKeyResult({
                       name="goal_value"
                       type="number"
                       className="field"
+                      value={newKr.goal_value}
+                      onChange={handleChange}
                     ></Field>
                     <ErrorMessage name="goal_value">
                       {(msg) => <span className="fieldError">{msg}</span>}

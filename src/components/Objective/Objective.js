@@ -8,7 +8,17 @@ import CardObjective2 from "../CardObjective2/CardObjective2";
 
 const Objective = (props) => {
   const id = localStorage.getItem("USER_ID");
-  const { loadTeams,teams,loadUniqueUser,getAllObjectives,error,years,loadYears,objectives,setObjectives } = useGlobalContext();
+  const { 
+    loadTeams,
+    teams,
+    loadUniqueUser,
+    getAllObjectives,
+    error,years,
+    loadYears,
+    objectives,
+    setObjectives,
+    getObjectivesByTeam,
+  } = useGlobalContext();
   const [team,setTeam] = useState('')
   const [ isMine,setIsMine] = useState(true);
   const [ isGeneral,setIsGeneral] = useState(false);
@@ -18,7 +28,7 @@ const Objective = (props) => {
     loadTeams();
     setTeam(teams[0]);
     loadYears()
-    getAllObjectives();
+    getObjectivesByTeam();
   }, []);
 
   if(error){
@@ -56,6 +66,7 @@ const handleChange = async (selectedOption)=>{
     }else{
       setIsMine(false);
       setIsGeneral(true);
+      getAllObjectives();
     }
   }
 

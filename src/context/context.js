@@ -33,7 +33,20 @@ const AppProvider = ({ children,props }) => {
     setRender(!render);
     
   }
- 
+ const getObjectivesByTeam = async()=>{
+      try{
+      const response = await Api.buildApiGetRequest(
+        Api.readObjectiveByTeam('419ac1f2-8496-4403-b03d-a2cf90045520'),
+        true
+      );
+      const data = await response.json();
+      console.log(data);
+      // setObjectives(data.objectives)
+      }catch(error){
+        setError(true);
+        console.log(error);
+      }
+ }
 
 const getAllObjectives = async () => {
 
@@ -151,7 +164,9 @@ const getAllObjectives = async () => {
         setQuarter,
         setObjectives,
         objectives,
+        getObjectivesByTeam,
         setTeams,
+        loadUniqueUser
           }}>
       {children}
     </AppContext.Provider>

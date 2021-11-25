@@ -26,13 +26,16 @@ const CardObjective2 = ({objective}) => {
              const response = await Api.buildApiGetRequest(Api.readKeyResultsByObjectivesId(id),true);
             const data = await response.json();
              let krLength = data.key_results?.length;
-            const quantity = data.key_results?.map((number)=>{
+            const krs= data.key_results;
+            if (krs){
+             const quantity=  krs.map((number)=>{
                 return number.done;
             })
-            
-            const teste= quantity?.reduce((total, numero) => total + numero, 0);
+            const teste= quantity.reduce((total, numero) => total + numero, 0);
             const calc = Math.round(teste/krLength * 100);
             setValue(calc);
+          }
+           
           } catch (error) {
             setError(true);
             console.log(error);

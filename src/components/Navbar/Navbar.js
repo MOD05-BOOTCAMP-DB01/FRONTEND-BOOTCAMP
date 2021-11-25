@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { AiFillHome } from "react-icons/ai";
+
 import {
-  SidebarData,
   SidebarLogged,
   SidebarNotLogged,
   SidebarManager,
@@ -12,7 +11,7 @@ import {
 } from "./SidebarData";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
-import { JwtHandler } from "../../jwt-handler/JwtHandler";
+
 import { useGlobalContext } from "../../context/context";
 import logo from "./../../Assets/logo-side.png";
 import navLogo from "./../../Assets/logo-nav.png";
@@ -38,7 +37,7 @@ export default function Navbar() {
           <Link to="#" className="menu-bars">
             <FaBars onClick={showSidebar} />
           </Link>
-          <img className="navbar-logo" src={navLogo} />
+          <img className="navbar-logo" src={navLogo} alt="imagem-logo" />
         </div>
 
         <nav className={sidebar ? "nav-menu active" : "nav-menu"}>

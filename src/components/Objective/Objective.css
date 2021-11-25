@@ -78,7 +78,14 @@ div.radio-group:nth-child(even) + label{
   color:#69006e!important;
 }
 
-
+.no-team{
+  padding:1rem;
+  display:flex;
+  flex-direction: column;
+  justify-content:center;
+  min-height: 20rem;
+  color:#484848;
+}
 
 @media (min-width: 769px) and (max-width: 945px) {
    .objective-container-heading{

@@ -13,6 +13,7 @@ const AppProvider = ({ children,props }) => {
   const [years,setYears] = useState([])
   const [objectives,setObjectives] = useState([])
   const [quarter,setQuarter] = useState([])
+  const [userTeam,setUserTeam] = useState('')
 
   const [showAddKr, setShowAddKr] = useState(false);
   
@@ -33,19 +34,15 @@ const AppProvider = ({ children,props }) => {
     setRender(!render);
     
   }
- const getObjectivesByTeam = async()=>{
-      try{
+ const getObjectivesByTeam = async (id)=>{
       const response = await Api.buildApiGetRequest(
-        Api.readObjectiveByTeam('419ac1f2-8496-4403-b03d-a2cf90045520'),
+        Api.readObjectiveByTeam(id),
         true
       );
       const data = await response.json();
-      console.log(data);
-      // setObjectives(data.objectives)
-      }catch(error){
-        setError(true);
-        console.log(error);
-      }
+      setObjectives(data[0]?.objectives);
+
+
  }
 
 const getAllObjectives = async () => {
@@ -96,6 +93,7 @@ const getAllObjectives = async () => {
       const response = await Api.buildApiGetRequest(Api.readUserbyId(id),true);
       const data = await response.json();
       setLoggedUser(data.user);
+      localStorage.setItem('team',data.user.team.id);
     }catch(error){
       setError(true);
       console.log(error);
@@ -166,7 +164,7 @@ const getAllObjectives = async () => {
         objectives,
         getObjectivesByTeam,
         setTeams,
-        loadUniqueUser
+        userTeam
           }}>
       {children}
     </AppContext.Provider>

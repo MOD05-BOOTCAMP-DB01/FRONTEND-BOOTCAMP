@@ -9,8 +9,6 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 import ViewMoreKr from "./ViewMoreKr";
 import UpdateKeyResult from "../../Pages/KeyResult/UpdateKeyResult/UpdateKeyResult";
 
-import { useGlobalContext } from "../../context/context";
-
 import "./cardKr.css";
 import DeleteKeyResult from "../../Pages/KeyResult/DeleteReyResult/DeleteKeyResult";
 
@@ -65,7 +63,6 @@ export default function CardKr({ kr, objectiveId }) {
               onClick={() => handleShowDeletekr()}
             />
           </div>
-
         </div>
 
         <div className="kr-body">

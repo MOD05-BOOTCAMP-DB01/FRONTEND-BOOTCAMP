@@ -53,11 +53,11 @@ export default function Login() {
   function validate(values) {
     const errors = {};
     if (!values.email) {
-      errors.email = "Digite um e-mail valido.";
+      errors.email = "Digite um e-mail válido.";
     }
 
     if (!values.password) {
-      errors.password = "Digite uma senha valida.";
+      errors.password = "Digite uma senha válida.";
     }
 
     if (!Object.keys(errors).length) {

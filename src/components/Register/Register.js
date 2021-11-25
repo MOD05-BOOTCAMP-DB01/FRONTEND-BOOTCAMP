@@ -90,10 +90,7 @@ export default function Register({ setRegister, props }) {
               <MdOutlineLockOpen />
             </span>
           </div>
-          <div>
-            <button onClick={() => setTeamModalVisible(true)}>Team</button>
-          </div>
-            {TeamModalVisible ? <div>Modal Massa</div> : null}
+          
           <div>
             <LinkButton
               type="submit" 

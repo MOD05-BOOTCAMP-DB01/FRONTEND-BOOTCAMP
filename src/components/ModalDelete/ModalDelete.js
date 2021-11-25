@@ -9,6 +9,7 @@ const ModalDelete = ({ id = "modal", setIsOpen,objective }) => {
   useEffect(() => {
     getAllObjectives()
   },[objectives])
+  
   const onClose = ()=>{
     setIsOpen(false)
   }
@@ -18,7 +19,6 @@ const ModalDelete = ({ id = "modal", setIsOpen,objective }) => {
   const handleDelete = async (e)=>{
     e.preventDefault();
     const response = await Api.buildApiDeleteRequest(Api.deleteObjectiveUrl(objective.id),true);
-    const data = await response.json();
     onClose()
 
     

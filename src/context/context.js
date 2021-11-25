@@ -11,7 +11,7 @@ const AppProvider = ({ children }) => {
   const [teamName,setTeamName] = useState([]);
   const [error,setError] = useState(false)
   const [years,setYears] = useState([])
-  const [objectives,setObjectives] = useState('')
+  const [objectives,setObjectives] = useState([])
   const [quarter,setQuarter] = useState([])
   const [oneObjective,setOneObjective] = useState('');
   const [showAddKr, setShowAddKr] = useState(false);
@@ -32,37 +32,69 @@ const AppProvider = ({ children }) => {
     
   }
  const getObjectivesByTeam = async (id)=>{
+   try{
       const response = await Api.buildApiGetRequest(
         Api.readObjectiveByTeam(id),
         true
       );
+       if(!response.ok){
+      const msg = `House um erro no banco ${response.status}`;
+      setError(true);
+      throw new Error(msg);
+    }
       const data = await response.json();
       setObjectives(data[0]?.objectives);
       setTeamName(data[0]?.team)
-      
+  }catch(error){
+    console.log(error);
+  }
  }
 
  const getObjectivesByQuarter = async(quarter)=>{
+   try{
    const response = await Api.buildApiGetRequest(
       Api.readObjectiveByQuarter(quarter),
       true
     );
+     if(!response.ok){
+      const msg = `House um erro no banco ${response.status}`;
+      setError(true);
+      throw new Error(msg);
+    }
     const data = await response.json();
-    setObjectives(data[0].objectives);
-    
+    setObjectives(data[0]?.objectives);
+   }catch(error){
+     console.log(error);
+   }
  }
 
  const getQuarterObjective = async (id)=>{
+   try{
    const response = await Api.buildApiGetRequest(Api.readObjectivesById(id),true);
+    if(!response.ok){
+      const msg = `House um erro no banco ${response.status}`;
+      setError(true);
+      throw new Error(msg);
+    }
    const data = await response.json();
    setOneObjective(data.objective);
-
+   }catch(error){
+     console.log(error);
+   }
  }
 
  const getObjectivesByQuarterTeam = async(quarter,id)=>{
+   try{
    const response = await Api.buildApiGetRequest(Api.readObjectivesByTeamQuarter(quarter,id),true)
+    if(!response.ok){
+      const msg = `House um erro no banco ${response.status}`;
+      setError(true);
+      throw new Error(msg);
+    }
    const results = await response.json()
-   setObjectives(results[0]?.objectives);
+   setObjectives(results[0]?.objectives)}catch{
+     console.log(error)
+   }
  }
 
 const getAllObjectives = async () => {
@@ -71,6 +103,11 @@ const getAllObjectives = async () => {
         Api.readAllObjectives(),
         true
       );
+      if(!response.ok){
+      const msg = `House um erro no banco ${response.status}`;
+      setError(true);
+      throw new Error(msg);
+    }
       const data = await response.json();
       setObjectives(data);
       }catch(error){
@@ -85,10 +122,16 @@ const getAllObjectives = async () => {
   }
  
   const loadYears = async()=>{
+    try{
     const response = await Api.buildApiGetRequest(Api.realAllYears(),true);
+    if(!response.ok){
+      const msg = `House um erro no banco ${response.status}`;
+      setError(true);
+      throw new Error(msg);
+    }
     const data = await response.json();
     const yearsList = [
-      data?.map((year)=>{
+      data.map((year)=>{
         return {
           value:year.id,
           label:year.year,
@@ -96,12 +139,21 @@ const getAllObjectives = async () => {
       })
     ]
     setYears(yearsList);
+  }catch(error){
+    setError(true);
+    console.log(error);
+  }
   }
   
 
   const loadUniqueUser = async(id)=>{
     try{
       const response = await Api.buildApiGetRequest(Api.readUserbyId(id),true);
+      if(!response.ok){
+      const msg = `House um erro no banco ${response.status}`;
+      setError(true);
+      throw new Error(msg);
+    }
       const data = await response.json();
       setLoggedUser(data.user);
       localStorage.setItem('team',data.user.team.id);
@@ -114,8 +166,13 @@ const getAllObjectives = async () => {
     
   const loadQuarter = async ()=>{
    const response = await Api.buildApiGetRequest(Api.readAllQuaters(),true);
+   if(!response.ok){
+      const msg = `House um erro no banco ${response.status}`;
+      setError(true);
+      throw new Error(msg);
+    }
    const data = await response.json();
-   const quarterList = data.map((quarter)=>{
+   const quarterList = data?.map((quarter)=>{
      return {
        value:quarter.id,
        label:quarter.quarter
@@ -129,6 +186,11 @@ const getAllObjectives = async () => {
     const loadTeams = async ()=>{
       try{
         const response = await Api.buildApiGetRequest(Api.readAllTeams(),true);
+        if(!response.ok){
+      const msg = `House um erro no banco ${response.status}`;
+      setError(true);
+      throw new Error(msg);
+    }
         const data = await response.json();
         const teamsOptions =[
          data.map((data) => {
@@ -141,9 +203,7 @@ const getAllObjectives = async () => {
         
         setTeams(teamsOptions);
       }catch(error){
-        if(!error.status){
-          setError(true)
-        }
+       setError(true);
         console.log(error.status)
       }
       }

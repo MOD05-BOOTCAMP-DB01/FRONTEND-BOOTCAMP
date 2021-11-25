@@ -22,6 +22,7 @@ const UpdateObjective = (props) => {
     setQuarter,
     setYears,
     setTeams,
+    setError
   } = useGlobalContext();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -36,9 +37,15 @@ const UpdateObjective = (props) => {
   useEffect(() => {
     const loadOwners = async () => {
       const response = await Api.buildApiGetRequest(Api.readAllUsers(), true);
+       if(!response.ok){
+      const msg = `House um erro no banco ${response.status}`;
+      setError(true);
+      throw new Error(msg);
+    }
       const data = await response.json();
+  
       const options = [
-        data.map((data) => {
+        data?.map((data) => {
           return {
             value: data,
             label: data.username,
@@ -57,7 +64,7 @@ const UpdateObjective = (props) => {
         true
       );
       const data = await response.json();
-      const obj = data.objective;
+      const obj = data?.objective;
       setObjective(obj);
       setSelectedUser({ value: obj.owner.id, label: obj.owner.username });
       setSelectedYear({ value: obj.year.id, label: obj.year.year });

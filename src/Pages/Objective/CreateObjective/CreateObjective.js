@@ -117,6 +117,7 @@ const CreateObjective = (props) => {
               options={typeOptions}
               onChange={handleChangeType}
               id="select"
+              placeholder="Selecione"
             />
           </div>
           <div className="form_container_objective-card--input">
@@ -125,6 +126,7 @@ const CreateObjective = (props) => {
               options={years[0]}
               onChange={handleChangeYears}
               id="select"
+              placeholder="Selecione"
             />
           </div>
           <div className="form_container_objective-card--input">
@@ -133,6 +135,7 @@ const CreateObjective = (props) => {
               options={quarter}
               onChange={handleChangeQuarter}
               id="select"
+              placeholder="Selecione"
             />
           </div>
           <div className="form_container_objective-card--input date">
@@ -165,6 +168,7 @@ const CreateObjective = (props) => {
               options={teams[0]}
               onChange={handleChangeTeams}
               id="select"
+              placeholder="Selecione"
             />
           </div>
           <div className="form_container_objective-card--input">
@@ -177,6 +181,7 @@ const CreateObjective = (props) => {
               options={usernames[0]}
               onChange={handleChange}
               id="select"
+              placeholder="Selecione"
             />
           </div>
         </div>

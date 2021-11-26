@@ -109,31 +109,25 @@ export default function ModalCk({ kr }) {
         {cks.map((ck) => (
           <div className="cardCk">
             {(() => {
-              if (ck.current_value >= 80 || ck.current_value === 100) {
+              if (ck.color === "verde") {
                 return (
                   <div className="checkin__status--green">
                     <AiFillPushpin />
                   </div>
                 );
-              } else if (ck.current_value >= 70) {
+              } else if (ck.color === "amarelo") {
                 return (
                   <div className="checkin__status--yellow">
                     <AiFillPushpin />
                   </div>
                 );
-              } else if (ck.current_value <= 70) {
+              } else{
                 return (
                   <div className="checkin__status--red">
                     <AiFillPushpin />
                   </div>
                 );
-              } else {
-                return (
-                  <div className="checkin__status--felling">
-                    <AiFillPushpin />
-                  </div>
-                );
-              }
+              } 
             })()}
 
             <div className="cardCK-date">

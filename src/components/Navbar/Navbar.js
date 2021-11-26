@@ -26,8 +26,7 @@ export default function Navbar() {
     if(isLogged){
    loadUniqueUser(id)
     }
- 
-  });
+  },[id]);
 
   return (
     <>

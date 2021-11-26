@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { Api } from "../Api/Api";
-import useLocalStorage from 'react-use-localstorage';
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
 
@@ -17,7 +16,7 @@ const AppProvider = ({ children }) => {
   const [oneObjective,setOneObjective] = useState('');
   const [showAddKr, setShowAddKr] = useState(false);
   const [statusError,setStatusError] = useState('');
-  const [teamLocal, setTeamLocal] = useLocalStorage('team','team');
+
   
     const typeOptions = [
     { value: 'Pessoas',
@@ -153,13 +152,14 @@ const getAllObjectives = async () => {
       throw new Error(msg);
     }
       const data = await response.json();
-      setLoggedUser(data?.user)
+      setLoggedUser(data?.user);
       if(data.user.team){
- setTeamLocal('team',data.user.team);
+      localStorage.setItem('team',data.user.team?.id);
       }else{
-        setTeamLocal('team',null)
+        localStorage.setItem('team',null);
       }
-     
+      
+
     }catch(error){
       setError(true);
       console.log(error);
@@ -242,8 +242,7 @@ const getAllObjectives = async () => {
         getObjectivesByQuarter,
         getQuarterObjective,
         oneObjective,
-        getObjectivesByQuarterTeam,
-        teamLocal
+        getObjectivesByQuarterTeam
           }}>
       {children}
     </AppContext.Provider>

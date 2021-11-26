@@ -23,7 +23,10 @@ export default function DeleteCheckin({ckId, closeDeleteCk}) {
       // Navigate to home page
       handleRender()
       closeDeleteCk()
-    } else {
+    }else if (response.status === 403) { 
+      toast.error('Você não possível permissão para excluir esse check-in.',{theme: "colored",position: toast.POSITION.TOP_CENTER})
+      closeDeleteCk()
+    }else  {
       toast.error('Não foi possível excluir esse check-in.',{theme: "colored",position: toast.POSITION.TOP_CENTER})
       closeDeleteCk()
     }

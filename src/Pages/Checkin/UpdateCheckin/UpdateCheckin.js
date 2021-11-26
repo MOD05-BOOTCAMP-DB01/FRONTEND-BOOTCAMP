@@ -31,6 +31,10 @@ export default function UpdateCheckin({ closeUpdateCheckin, ck }) {
       });
       handleRender();
       closeUpdateCheckin();
+    }else if (response.status === 403) { 
+      toast.error('Você não possível permissão para editar esse check-in.',{theme: "colored",position: toast.POSITION.TOP_CENTER})
+      closeUpdateCheckin();
+
     }
   };
 
@@ -86,7 +90,7 @@ export default function UpdateCheckin({ closeUpdateCheckin, ck }) {
                   <Field
                     name="date"
                     type="date"
-                    min={initialDate}
+                    value={format(addDays(new Date(ck.date), 1), "yyyy-MM-dd")}
                     className="field"
                   />
                   <ErrorMessage name="date" className="field">
@@ -121,6 +125,33 @@ export default function UpdateCheckin({ closeUpdateCheckin, ck }) {
                     {(msg) => <span className="fieldError">{msg}</span>}
                   </ErrorMessage>
                 </div>
+
+                <div className="formKr-Items">
+                    <label>
+                      Cor
+                      {errors.color && (
+                        <abbr className="fieldError" title={errors.type}>
+                          *
+                        </abbr>
+                      )}
+                    </label>
+                    <Field
+                      as="select"
+                      name="color"
+                      type="text"
+                      className="field"
+                    >
+                      <option value="verde">Verde</option>
+                      <option value="amarelo">Amarelo</option>
+                      <option value="vermelho">Vermelho</option>
+                    </Field>
+                    <div className="formError">
+                      <ErrorMessage name="type" className="field">
+                        {(msg) => <span className="fieldError">{msg}</span>}
+                      </ErrorMessage>
+                    </div>
+                </div>
+
               </div>
 
               <div className="formKr-button">

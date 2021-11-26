@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import { toast } from "react-toastify";
@@ -11,12 +11,25 @@ import "./createCheckin.css";
 
 export default function CreateCheckin({ closeCreateCheckin, krId, kr }) {
   const { handleRender } = useGlobalContext();
-  let initialDate = format(new Date(), "yyyy-MM-dd");
+  // const [color, setColor] = useState("")
+
   const onSubmit = async (values) => {
+    let color = ""
+    let x = ((values.current_value* 100)/kr.goal_value)
+    console.log("x=",x)
+    if (values.current_value >= kr.goal_value){
+      color = "verde"
+    } else if( ((values.current_value* 100)/kr.goal_value) < 80){
+      color = "vermelho"
+    }else{
+      color = "amarelo"
+    }
+    console.log("color", color)
     const payload = {
       ...values,
+      color,
     };
-
+    console.log("payload", payload)
     const response = await Api.buildApiPostRequest(
       Api.createCkUrl(),
       payload,
@@ -89,7 +102,6 @@ export default function CreateCheckin({ closeCreateCheckin, krId, kr }) {
                   <Field
                     name="date"
                     type="date"
-                    min={initialDate}
                     className="field"
                   />
                   <div className="formError">
@@ -130,6 +142,7 @@ export default function CreateCheckin({ closeCreateCheckin, krId, kr }) {
                     </ErrorMessage>
                   </div>
                 </div>
+
               </div>
 
               <div className="formKr-button">

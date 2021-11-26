@@ -139,13 +139,12 @@
   align-items: flex-end;
   /* color: black; */
 }
-.icon-edit {
+.icon-edit, .icon-delete {
   cursor: pointer;
   font-size: 1.6em;
 }
-.icon-delete {
-  cursor: pointer;
-  font-size: 1.6em;
+.icon-edit:hover, .icon-delete:hover {
+  color: #00335E;
 }
 
 /* Inicio comment */

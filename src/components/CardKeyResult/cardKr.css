@@ -67,6 +67,10 @@
   font-size: 1.5em;
   color: #87008b;
 }
+.kr-header-icons:hover{
+  color: #00335E;
+}
+
 
 .kr-header-rating {
   width: 40%;

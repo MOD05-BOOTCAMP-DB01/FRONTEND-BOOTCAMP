@@ -91,7 +91,6 @@ export default function UpdateCheckin({ closeUpdateCheckin, ck }) {
                     name="date"
                     type="date"
                     value={format(addDays(new Date(ck.date), 1), "yyyy-MM-dd")}
-                    min={initialDate}
                     className="field"
                   />
                   <ErrorMessage name="date" className="field">

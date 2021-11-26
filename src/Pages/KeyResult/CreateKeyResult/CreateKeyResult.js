@@ -152,7 +152,7 @@ export default function CreateKeyResult({ objectiveId }) {
                       type="text"
                       className="field"
                     >
-                      <option></option>
+                      <option >Selecione</option>
                       <option value="Baixo">Baixo</option>
                       <option value="Médio">Médio</option>
                       <option value="Alto">Alto</option>
@@ -169,7 +169,7 @@ export default function CreateKeyResult({ objectiveId }) {
                       Moonshot
                       {errors.rating && (
                         <abbr className="fieldError" title={errors.moonshot}>
-                          *
+                        
                         </abbr>
                       )}
                     </label>
@@ -178,10 +178,11 @@ export default function CreateKeyResult({ objectiveId }) {
                       name="moonshot"
                       type="text"
                       className="field"
+                      placeholder="Selecione"
                     >
-                      <option value="Neutro"></option>
-                      <option value="yes">Sim</option>
-                      <option value="no">Não</option>
+                      <option value="Neutro">Sem moonshot</option>
+                      <option value="yes">Lebre</option>
+                      <option value="no">Tartaruga</option>
                     </Field>
                     <div className="formError">
                       <ErrorMessage name="moonshot">
@@ -205,6 +206,7 @@ export default function CreateKeyResult({ objectiveId }) {
                       type="text"
                       className="field"
                     >
+                      <option >Selecione</option>
                       <option value="inteiro">Inteiro</option>
                       <option value="decimal">Decimal</option>
                       <option value="porcentagem">Porcentagem</option>
@@ -301,6 +303,7 @@ export default function CreateKeyResult({ objectiveId }) {
                       options={username[0]}
                       className="formKr-Items-select"
                       onChange={handleOwnerChange}
+                      placeholder="Selecione"
                     />
                   </div>
                 </div>

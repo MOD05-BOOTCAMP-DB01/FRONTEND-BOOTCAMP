@@ -17,15 +17,17 @@ const CardObjective2 = ({objective,teamName}) => {
     const [isModalOpen,setIsModalOpen]= useState(false);
     const [value,setValue] = useState(0);
     const [isLoading,setIsLoading] = useState(false);
+    const [isProgressbar,setisProgressbar] = useState(false);
   
     useEffect(()=>{
         setIsLoading(true)
         const loadKrsbyObjective= async ()=>{
             try{
+              setisProgressbar(true);
             const response = await Api.buildApiGetRequest(Api.readKeyResultsByObjectivesId(id),true);
             if(!response.ok){
+            setisProgressbar(false);
             const msg = `Houve um erro no banco status:${response.status}`;
-            setStatusError(response.status);
             throw new Error(msg);
              }
             const data = await response.json();
@@ -40,6 +42,7 @@ const CardObjective2 = ({objective,teamName}) => {
             setValue((old)=>{
               return old + calc
             });
+            setisProgressbar(false);
           }catch(error){
             console.log(error);
           }
@@ -65,9 +68,6 @@ const CardObjective2 = ({objective,teamName}) => {
     </div>
     )
     }
-    if(statusError){
-      return <h1>Erro de servidor</h1>
-    }
 
     return (
          <div className="objective-card" key={id}>
@@ -77,7 +77,8 @@ const CardObjective2 = ({objective,teamName}) => {
                 {name}
               </h3>
               <div className="status-bar">
-              <ProgressBar size="medium" value={value} />
+              
+              {isProgressbar?<span><Spin width="20px" height="20px"/></span>:<ProgressBar size="medium" value={value} />}
               </div>
               </div>
               <div className="objective-container-body">

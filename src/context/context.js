@@ -9,7 +9,6 @@ const AppProvider = ({ children }) => {
   const [render, setRender] = useState(false);
   const [teams,setTeams] = useState([]);
   const [teamName,setTeamName] = useState([]);
-  const [error,setError] = useState(false)
   const [years,setYears] = useState([])
   const [objectives,setObjectives] = useState([])
   const [quarter,setQuarter] = useState([])
@@ -42,7 +41,6 @@ const AppProvider = ({ children }) => {
       );
        if(!response.ok){
       const msg = `House um erro na requisição status:${response.status}`;
-      setError(true);
       throw new Error(msg);
     }
       const data = await response.json();
@@ -61,7 +59,6 @@ const AppProvider = ({ children }) => {
     );
      if(!response.ok){
       const msg = `Houve um erro na requisição status:${response.status}`;
-      setStatusError(response.status); 
       throw new Error(msg);
     }
     const data = await response.json();
@@ -76,7 +73,6 @@ const AppProvider = ({ children }) => {
    const response = await Api.buildApiGetRequest(Api.readObjectivesById(id),true);
    if(!response.ok){
       const msg = `Houve um erro na requisição status:${response.status}`;
-      setStatusError(response.status);
       throw new Error(msg);
     }
    const data = await response.json();
@@ -91,11 +87,11 @@ const AppProvider = ({ children }) => {
    const response = await Api.buildApiGetRequest(Api.readObjectivesByTeamQuarter(quarter,id),true)
     if(!response.ok){
       const msg = `House um erro na requisição status:${response.status}`;
-      setStatusError(response.status);
       throw new Error(msg);
     }
    const results = await response.json()
-   setObjectives(results[0]?.objectives)}catch{
+   setObjectives(results[0]?.objectives)}
+   catch(error){
      console.log(error)
    }
  }
@@ -108,13 +104,12 @@ const getAllObjectives = async () => {
       );
       if(!response.ok){
       const msg = `House um erro na requisição ${response.status}`;
-      setStatusError(response.status);
+      setStatusError(response.status)
       throw new Error(msg);
     }
       const data = await response.json();
       setObjectives(data);
       }catch(error){
-        setStatusError(error);
         console.log(error);
       }
     };
@@ -129,7 +124,6 @@ const getAllObjectives = async () => {
     const response = await Api.buildApiGetRequest(Api.realAllYears(),true);
     if(!response.ok){
       const msg = `Houve um erro na requisição status:${response.status}`;
-      setError(true);
       throw new Error(msg);
     }
     const data = await response.json();
@@ -143,7 +137,6 @@ const getAllObjectives = async () => {
     ]
     setYears(yearsList);
   }catch(error){
-    setError(true);
     console.log(error);
   }
   }
@@ -166,7 +159,6 @@ const getAllObjectives = async () => {
       
 
     }catch(error){
-      setError(true);
       console.log(error);
     }
     }
@@ -176,7 +168,6 @@ const getAllObjectives = async () => {
    const response = await Api.buildApiGetRequest(Api.readAllQuaters(),true);
    if(!response.ok){
       const msg = `Houve um erro na requisição  status:${response.status}`;
-      setError(true);
       throw new Error(msg);
     }
    const data = await response.json();
@@ -196,7 +187,6 @@ const getAllObjectives = async () => {
         const response = await Api.buildApiGetRequest(Api.readAllTeams(),true);
         if(!response.ok){
       const msg = `Houve um erro na requisição status:${response.status}`;
-      setError(true);
       throw new Error(msg);
     }
         const data = await response.json();
@@ -211,7 +201,6 @@ const getAllObjectives = async () => {
         
         setTeams(teamsOptions);
       }catch(error){
-       setError(true);
         console.log(error.status)
       }
       }
@@ -231,8 +220,6 @@ const getAllObjectives = async () => {
         teams,
         loadTeams,
         typeOptions,
-        setError,
-        error,
         years,
         loadYears,
         setYears,
@@ -247,7 +234,8 @@ const getAllObjectives = async () => {
         getObjectivesByQuarter,
         getQuarterObjective,
         oneObjective,
-        getObjectivesByQuarterTeam
+        getObjectivesByQuarterTeam,
+        statusError
           }}>
       {children}
     </AppContext.Provider>

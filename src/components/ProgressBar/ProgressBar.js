@@ -11,7 +11,8 @@ const ProgressBar = (props) => {
         indicating
         size={props.size}
         style={{ "zIndex": "0" }}
-      />
+      >
+      {props.children}</Progress>
     </div>
   );
 };

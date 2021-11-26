@@ -39,13 +39,14 @@ const Objective = () => {
     loadYears();
     getAllObjectives();
     setIsLoading(false);
-  }, [id]);
+  },[id]);
 
 
   const teamId =localStorage.getItem('team');
 
  
 const handleChange = async (selectedOption)=>{
+   setIsLoading(true);
     const year=selectedOption?.label;
     if(year){
       try{
@@ -56,6 +57,7 @@ const handleChange = async (selectedOption)=>{
     }
     const results = await response?.json()
     setObjectives(results[0].objectives)
+    setIsLoading(false);
   }catch(error){
       console.log(error);
     }
@@ -68,10 +70,14 @@ const handleChange = async (selectedOption)=>{
     const quarter = e.target.id;
     if (quarter === "clear") {
       if(isGeneral){
+        setIsLoading(true);
         getAllObjectives()
+        setIsLoading(false);
         return
       }
+      setIsLoading(true);
       getObjectivesByTeam(teamId)
+      setIsLoading(false);
       return;
     }
     if(isGeneral){

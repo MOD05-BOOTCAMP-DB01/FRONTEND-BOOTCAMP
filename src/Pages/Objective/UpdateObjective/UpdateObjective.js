@@ -40,7 +40,6 @@ const UpdateObjective = (props) => {
       const response = await Api.buildApiGetRequest(Api.readAllUsers(), true);
        if(!response.ok){
       const msg = `Houve um erro no banco ${response.status}`;
-      setStatusError(response.status);
       throw new Error(msg);
     }
       const data = await response.json();

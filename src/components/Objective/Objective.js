@@ -22,10 +22,8 @@ const Objective = () => {
     setObjectives,
     getObjectivesByTeam,
     getObjectivesByQuarter,
-    getObjectivesByQuarterTeam,
-    setError,
+    getObjectivesByQuarterTeam, 
     statusError,
-    teamLocal
   } = useGlobalContext();
 
   const [isModalOpen,setIsModalOpen]= useState(false);
@@ -157,12 +155,12 @@ const handleChange = async (selectedOption)=>{
       objectives && (isGeneral? objectives?.map((objective) => {
       
         return (
-          <CardObjective2 key={objective.objective} objective={objective} teamName={loggedUser.team?.team}/>
+          <CardObjective2 key={objective.id} objective={objective} teamName={loggedUser.team?.team}/>
         );
       }):
       objectives?.map((objective) => {
         return (
-          <CardObjective2 key={objective.objective} objective={objective} teamName={loggedUser.team?.team}/>
+          <CardObjective2 key={objective.id} objective={objective} teamName={loggedUser.team?.team}/>
         );
       }))}
 

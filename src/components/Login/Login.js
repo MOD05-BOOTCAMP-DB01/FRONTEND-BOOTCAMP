@@ -12,9 +12,10 @@ import "./Login.css";
 // Formik
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import schemaLogin from "./schemaLogin";
+import Spin from "react-cssfx-loading/lib/Spin";
 
 export default function Login() {
-  const { setLogin } = useGlobalContext();
+  const { setLogin,login } = useGlobalContext();
 
   const [buttonVisbility, setButtonVisbility] = useState(false);
 
@@ -36,6 +37,7 @@ export default function Login() {
       const userID = body.userId;
       JwtHandler.setJwt(accessToken);
       localStorage.setItem("USER_ID", userID);
+      localStorage.setItem('IS_LOGGED','true');
       setLogin(false);
       toast.success("Bem-vindo", {
         theme: "colored",
@@ -129,6 +131,11 @@ export default function Login() {
                     id={buttonVisbility ? "mostrar" : "esconder"}
                   >
                     Entrar
+                    {login && <Spin duration="2s"
+                      width="15px"
+                      height= "15px"
+                      
+                      />}
                   </button>
                 </div>
               </Form>

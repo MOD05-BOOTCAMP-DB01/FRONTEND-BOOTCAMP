@@ -4,6 +4,7 @@ import { Api } from "./../../../Api/Api";
 import { FaCalendarAlt } from "react-icons/fa";
 import Button from "./../../../components/Button/Button";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import Select from "react-select";
 import "./UpdateObjective.css";
@@ -22,7 +23,7 @@ const UpdateObjective = (props) => {
     setQuarter,
     setYears,
     setTeams,
-    setError
+    setStatusError
   } = useGlobalContext();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -38,8 +39,8 @@ const UpdateObjective = (props) => {
     const loadOwners = async () => {
       const response = await Api.buildApiGetRequest(Api.readAllUsers(), true);
        if(!response.ok){
-      const msg = `House um erro no banco ${response.status}`;
-      setError(true);
+      const msg = `Houve um erro no banco ${response.status}`;
+      setStatusError(response.status);
       throw new Error(msg);
     }
       const data = await response.json();

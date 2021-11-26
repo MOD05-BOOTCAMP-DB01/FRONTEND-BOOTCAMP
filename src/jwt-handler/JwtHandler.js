@@ -2,6 +2,7 @@ export const JwtHandler = {
   JWT_KEY: "token",
   USER_ID: "USER_ID",
   TEAM:"team",
+  IS_LOGGED:"IS_LOGGED",
   onChangeEvent: new CustomEvent("onJwtChange"),
 
   onChange: () => {
@@ -18,6 +19,7 @@ export const JwtHandler = {
     localStorage.removeItem(JwtHandler.JWT_KEY);
     localStorage.removeItem(JwtHandler.USER_ID);
     localStorage.removeItem(JwtHandler.TEAM)
+    localStorage.removeItem(JwtHandler.IS_LOGGED)
 
     JwtHandler.onChange();
   },

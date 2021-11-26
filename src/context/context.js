@@ -16,6 +16,7 @@ const AppProvider = ({ children }) => {
   const [oneObjective,setOneObjective] = useState('');
   const [showAddKr, setShowAddKr] = useState(false);
   const [statusError,setStatusError] = useState('');
+  
 
   
     const typeOptions = [
@@ -40,7 +41,7 @@ const AppProvider = ({ children }) => {
         true
       );
        if(!response.ok){
-      const msg = `House um erro no banco ${response.status}`;
+      const msg = `House um erro na requisição status:${response.status}`;
       setError(true);
       throw new Error(msg);
     }
@@ -59,9 +60,8 @@ const AppProvider = ({ children }) => {
       true
     );
      if(!response.ok){
-      const msg = `Houve um erro no banco status:${response.status}`;
-      setError(true);
-      setStatusError(response.status);
+      const msg = `Houve um erro na requisição status:${response.status}`;
+      setStatusError(response.status); 
       throw new Error(msg);
     }
     const data = await response.json();
@@ -74,6 +74,11 @@ const AppProvider = ({ children }) => {
  const getQuarterObjective = async (id)=>{
    try{
    const response = await Api.buildApiGetRequest(Api.readObjectivesById(id),true);
+   if(!response.ok){
+      const msg = `Houve um erro na requisição status:${response.status}`;
+      setStatusError(response.status);
+      throw new Error(msg);
+    }
    const data = await response.json();
    setOneObjective(data?.objective);
    }catch(error){
@@ -85,8 +90,8 @@ const AppProvider = ({ children }) => {
    try{
    const response = await Api.buildApiGetRequest(Api.readObjectivesByTeamQuarter(quarter,id),true)
     if(!response.ok){
-      const msg = `House um erro no banco ${response.status}`;
-      setError(true);
+      const msg = `House um erro na requisição status:${response.status}`;
+      setStatusError(response.status);
       throw new Error(msg);
     }
    const results = await response.json()
@@ -102,14 +107,14 @@ const getAllObjectives = async () => {
         true
       );
       if(!response.ok){
-      const msg = `House um erro no banco ${response.status}`;
-      setError(true);
+      const msg = `House um erro na requisição ${response.status}`;
+      setStatusError(response.status);
       throw new Error(msg);
     }
       const data = await response.json();
       setObjectives(data);
       }catch(error){
-        setError(true);
+        setStatusError(error);
         console.log(error);
       }
     };
@@ -123,7 +128,7 @@ const getAllObjectives = async () => {
     try{
     const response = await Api.buildApiGetRequest(Api.realAllYears(),true);
     if(!response.ok){
-      const msg = `Houve um erro no banco ${response.status}`;
+      const msg = `Houve um erro na requisição status:${response.status}`;
       setError(true);
       throw new Error(msg);
     }
@@ -148,7 +153,7 @@ const getAllObjectives = async () => {
     try{
       const response = await Api.buildApiGetRequest(Api.readUserbyId(id),true);
       if(!response.ok){
-      const msg = `Houve um erro no banco ${response.status}`;
+      const msg = `Houve um erro na requisição ${response.status}`;
       throw new Error(msg);
     }
       const data = await response.json();
@@ -170,7 +175,7 @@ const getAllObjectives = async () => {
   const loadQuarter = async ()=>{
    const response = await Api.buildApiGetRequest(Api.readAllQuaters(),true);
    if(!response.ok){
-      const msg = `Houve um erro no banco ${response.status}`;
+      const msg = `Houve um erro na requisição  status:${response.status}`;
       setError(true);
       throw new Error(msg);
     }
@@ -190,7 +195,7 @@ const getAllObjectives = async () => {
       try{
         const response = await Api.buildApiGetRequest(Api.readAllTeams(),true);
         if(!response.ok){
-      const msg = `House um erro no banco ${response.status}`;
+      const msg = `Houve um erro na requisição status:${response.status}`;
       setError(true);
       throw new Error(msg);
     }

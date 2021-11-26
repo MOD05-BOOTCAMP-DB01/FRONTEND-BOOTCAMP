@@ -12,17 +12,22 @@ import Spin from "react-cssfx-loading/lib/Spin";
 import './CardObjective2.css'
 import ModalDelete from '../ModalDelete/ModalDelete';
 const CardObjective2 = ({objective,teamName}) => {
-    const {  objective:name, id, type,owner,year,quarter,team } = objective;
-    const {loggedUser,getQuarterObjective} = useGlobalContext();
+    const {  objective:name, id, type,owner,team } = objective;
+    const {loggedUser,getQuarterObjective,setStatusError,statusError} = useGlobalContext();
     const [isModalOpen,setIsModalOpen]= useState(false);
     const [value,setValue] = useState(0);
-    const [error,setError] = useState(false);
-    const [isLoading,setIsLoading]= useState(false);
+    const [isLoading,setIsLoading] = useState(false);
+  
     useEffect(()=>{
-        setIsLoading(true);
+        setIsLoading(true)
         const loadKrsbyObjective= async ()=>{
-          try {
+            try{
             const response = await Api.buildApiGetRequest(Api.readKeyResultsByObjectivesId(id),true);
+            if(!response.ok){
+            const msg = `Houve um erro no banco status:${response.status}`;
+            setStatusError(response.status);
+            throw new Error(msg);
+             }
             const data = await response.json();
             let krLength = data.key_results?.length;
             const quantity = data.key_results?.map((number)=>{
@@ -32,17 +37,16 @@ const CardObjective2 = ({objective,teamName}) => {
             
             const total= quantity?.reduce((total, numero) => total + numero, 0);
             const calc = Math.round(total/krLength * 100);
-            setValue(calc);
-            
-          } catch (error) {
-            setError(true);
+            setValue((old)=>{
+              return old + calc
+            });
+          }catch(error){
             console.log(error);
-          } 
-           
+          }
         }
         getQuarterObjective(id);
         loadKrsbyObjective();
-        setIsLoading(false)
+        setIsLoading(false);
     },[id])
  
     if(isLoading){
@@ -54,16 +58,16 @@ const CardObjective2 = ({objective,teamName}) => {
         height= "200px"
         direction="alternate"
         size="1000px"
-        primaryColor="#0099b7"
-        secondaryColor="#69006e"
+        primarycolor="#0099b7"
+        secondarycolor="#69006e"
         numberofrotationsinanimation={2}
         />;
     </div>
     )
     }
-    // if(statusError){
-    //   return <h1>Erro de servidor</h1>
-    // }
+    if(statusError){
+      return <h1>Erro de servidor</h1>
+    }
 
     return (
          <div className="objective-card" key={id}>
@@ -73,7 +77,7 @@ const CardObjective2 = ({objective,teamName}) => {
                 {name}
               </h3>
               <div className="status-bar">
-              <ProgressBar size="medium" value={value}  />
+              <ProgressBar size="medium" value={value} />
               </div>
               </div>
               <div className="objective-container-body">

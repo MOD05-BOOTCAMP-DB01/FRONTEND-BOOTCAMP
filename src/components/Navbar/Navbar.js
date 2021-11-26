@@ -17,19 +17,15 @@ import logo from "./../../Assets/logo-side.png";
 import navLogo from "./../../Assets/logo-nav.png";
 export default function Navbar() {
   const id = localStorage.getItem("USER_ID");
-  const { loggedUser, loadUniqueUser,isLogged } = useGlobalContext();
+  const { loggedUser, loadUniqueUser } = useGlobalContext();
   const [sidebar, setSidebar] = useState(false);
-
   const showSidebar = () => setSidebar(!sidebar);
 
   useEffect(() => {
-    if(isLogged){
+    if(id){
    loadUniqueUser(id)
     }
- 
   },[id]);
-
-  console.log("loggedUser", loggedUser)
 
   return (
     <>

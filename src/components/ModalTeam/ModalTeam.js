@@ -5,11 +5,11 @@ import  Button  from '../Button/Button'
 import { useGlobalContext } from '../../context/context'
 import Select from 'react-select';
 
-const ModalDelete = ({ name = "modal", setIsOpen }) => {
+const ModalDelete = ({ name = "modal", setIsOpen,setNewUser }) => {
   const id = localStorage.getItem("USER_ID");
   const [teamSelected,setTeamSelected] = useState({})
   const [teamId,setTeamId] = useState({})
-  const {loadUniqueUser,loadTeams,teams} = useGlobalContext()
+  const {loadUniqueUser,loadTeams,teams,getObjectivesByTeam} = useGlobalContext()
 
   useEffect(() => {
    loadUniqueUser(id)
@@ -28,6 +28,9 @@ const ModalDelete = ({ name = "modal", setIsOpen }) => {
         team:teamId,
     }
     const response = await Api.buildApiPatchRequest(Api.updateUsers(id),payload,true);
+    localStorage.setItem('team',teamId);
+    getObjectivesByTeam(teamId)
+    setNewUser(false);
     onClose()
   }
   const handleChange = (selectedOption)=>{

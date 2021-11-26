@@ -11,7 +11,6 @@ import ModalTeam from './../ModalTeam/ModalTeam'
 import CardObjective2 from "../CardObjective2/CardObjective2";
 
 const Objective = () => {
-  
   const id = localStorage.getItem("USER_ID");
   const {
     loadUniqueUser,
@@ -23,16 +22,15 @@ const Objective = () => {
     setObjectives,
     getObjectivesByTeam,
     getObjectivesByQuarter,
-    getObjectivesByQuarterTeam,
-    setError,
+    getObjectivesByQuarterTeam, 
     statusError,
-    teamLocal
   } = useGlobalContext();
 
   const [isModalOpen,setIsModalOpen]= useState(false);
   const [ isGeneral,setIsGeneral] = useState(true);
   const [ isMine,setIsMine] = useState(false);
   const [ isLoading,setIsLoading] = useState(false);
+  const [ newUser,setNewUser] = useState(false);
   
 
   useEffect(() => {
@@ -91,14 +89,15 @@ const handleChange = async (selectedOption)=>{
     if(id==="my-objectives"){
       setIsGeneral(false);
       setIsMine(true);
-      console.log(teamLocal)
-      if(teamLocal){
-        console.log('entrou',teamLocal)
-         getObjectivesByTeam(teamLocal)
+      if(teamId==='null' || !teamId){
+        setNewUser(true);
+        setObjectives('');
       }else{
-        setObjectives([]);
-      }
-    }else{
+          getObjectivesByTeam(teamId)
+          
+          }
+   }
+    else{
       setIsMine(false);
       setIsGeneral(true);
       getAllObjectives();
@@ -156,23 +155,29 @@ const handleChange = async (selectedOption)=>{
       objectives && (isGeneral? objectives?.map((objective) => {
       
         return (
-          <CardObjective2 key={objective.objective} objective={objective} teamName={loggedUser.team?.team}/>
+          <CardObjective2 key={objective.id} objective={objective} teamName={loggedUser.team?.team}/>
         );
       }):
       objectives?.map((objective) => {
         return (
-          <CardObjective2 key={objective.objective} objective={objective} teamName={loggedUser.team?.team}/>
+          <CardObjective2 key={objective.id} objective={objective} teamName={loggedUser.team?.team}/>
         );
       }))}
 
-      {!objectives && (
-
-        !localStorage.getItem('team')?
+      {newUser?
       <div className="no-team">
       <h2>Você não está vinculado a nenhum time</h2>
       <Button onClick={()=>setIsModalOpen(!isModalOpen)}>Selecionar Time</Button>
-      {isModalOpen && <ModalTeam setIsOpen={setIsModalOpen} ></ModalTeam>}
-      </div>:!objectives?.length && <div>Seu time não possui objetivos</div>)}
+      {isModalOpen && <ModalTeam setIsOpen={setIsModalOpen} setNewUser={setNewUser}></ModalTeam>}
+      </div>:!objectives && <div>
+      <h4>Não há objetivos cadastrados</h4>
+      </div>
+      }
+
+      {/* {!objectives && <div>
+      <h4>Não há objetivos cadastrados</h4>
+      </div>} */}
+
 
     </div>
   );

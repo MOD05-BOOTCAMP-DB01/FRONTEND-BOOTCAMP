@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import { toast } from "react-toastify";
@@ -6,12 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { useGlobalContext } from "../../../context/context";
 import { Api } from "../../../Api/Api";
 import schemaCheckin from "../schemaCheckin";
-import { format } from "date-fns";
 import "./createCheckin.css";
 
 export default function CreateCheckin({ closeCreateCheckin, krId, kr }) {
   const { handleRender } = useGlobalContext();
-  // const [color, setColor] = useState("")
 
   const onSubmit = async (values) => {
     let color = ""

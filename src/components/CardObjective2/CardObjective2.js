@@ -7,28 +7,33 @@ import {RiDeleteBin2Line} from 'react-icons/ri'
 import {BiEdit} from 'react-icons/bi'
 import {ViewMoreButton} from './../Button/Button';
 import { useGlobalContext } from "../../context/context";
+import Spin from "react-cssfx-loading/lib/Spin";
 
 import './CardObjective2.css'
 import ModalDelete from '../ModalDelete/ModalDelete';
-const CardObjective2 = ({objective,team}) => {
-    const {  objective:name, id, type,owner,year,quarter } = objective;
-    const {loggedUser,getQuarterObjective,oneObjective} = useGlobalContext();
+const CardObjective2 = ({objective,teamName}) => {
+    const {  objective:name, id, type,owner,year,quarter,team } = objective;
+    const {loggedUser,getQuarterObjective} = useGlobalContext();
     const [isModalOpen,setIsModalOpen]= useState(false);
     const [value,setValue] = useState(0);
     const [error,setError] = useState(false);
+    const [isLoading,setIsLoading]= useState(false);
     useEffect(()=>{
+        setIsLoading(true);
         const loadKrsbyObjective= async ()=>{
           try {
-             const response = await Api.buildApiGetRequest(Api.readKeyResultsByObjectivesId(id),true);
+            const response = await Api.buildApiGetRequest(Api.readKeyResultsByObjectivesId(id),true);
             const data = await response.json();
-             let krLength = data.key_results?.length;
+            let krLength = data.key_results?.length;
             const quantity = data.key_results?.map((number)=>{
                 return number.done;
+                
             })
             
             const total= quantity?.reduce((total, numero) => total + numero, 0);
             const calc = Math.round(total/krLength * 100);
             setValue(calc);
+            
           } catch (error) {
             setError(true);
             console.log(error);
@@ -37,12 +42,28 @@ const CardObjective2 = ({objective,team}) => {
         }
         getQuarterObjective(id);
         loadKrsbyObjective();
+        setIsLoading(false)
     },[id])
  
-    if(error){
-      return <h1>Erro de servidor</h1>
+    if(isLoading){
+    return (
+    <div className="area-spin">
+      <Spin
+        duration="2s"
+        width="200px"
+        height= "200px"
+        direction="alternate"
+        size="1000px"
+        primaryColor="#0099b7"
+        secondaryColor="#69006e"
+        numberofrotationsinanimation={2}
+        />;
+    </div>
+    )
     }
-
+    // if(statusError){
+    //   return <h1>Erro de servidor</h1>
+    // }
 
     return (
          <div className="objective-card" key={id}>
@@ -65,17 +86,8 @@ const CardObjective2 = ({objective,team}) => {
                 {type}
               </h4>
               <h4>
-                <span className="objective-info">Ano:</span>
-                {year?.year || oneObjective?.year.year}
-              </h4>
-              <h4>
-                <span className="objective-info">Quarter:</span>
-                {quarter?.quarter || oneObjective?.quarter.quarter}
-                
-              </h4>
-              <h4>
                 <span className="objective-info">Time:</span>
-                {team?.team || oneObjective?.team.team}
+                {team?.team || teamName}
               </h4>
               </div>
               <div className="objective-button-container">

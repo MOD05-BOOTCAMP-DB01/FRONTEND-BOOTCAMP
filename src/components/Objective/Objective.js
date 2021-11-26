@@ -4,17 +4,19 @@ import { Api } from "./../../Api/Api";
 import "./Objective.css";
 import { useGlobalContext } from "../../context/context";
 import  Page500 from "../../Pages/Page500/Page500";
+import  Page404 from "../../Pages/Page404/Page404";
 import Spin from "react-cssfx-loading/lib/Spin";
 import Button from './../Button/Button'
 import ModalTeam from './../ModalTeam/ModalTeam'
 import CardObjective2 from "../CardObjective2/CardObjective2";
 
-const Objective = (props) => {
+const Objective = () => {
+  
   const id = localStorage.getItem("USER_ID");
   const {
     loadUniqueUser,
+    loggedUser,
     getAllObjectives,
-    error,
     years,
     loadYears,
     objectives,
@@ -23,16 +25,22 @@ const Objective = (props) => {
     getObjectivesByQuarter,
     getObjectivesByQuarterTeam,
     setError,
+    statusError,
+    teamLocal
   } = useGlobalContext();
 
   const [isModalOpen,setIsModalOpen]= useState(false);
   const [ isGeneral,setIsGeneral] = useState(true);
   const [ isMine,setIsMine] = useState(false);
+  const [ isLoading,setIsLoading] = useState(false);
+  
 
   useEffect(() => {
+    setIsLoading(true);
     loadUniqueUser(id);
-    loadYears()
+    loadYears();
     getAllObjectives();
+    setIsLoading(false);
   }, [id]);
 
 
@@ -46,11 +54,11 @@ const handleChange = async (selectedOption)=>{
       const response = await Api.buildApiGetRequest(Api.readObjectiveByYear(year),true)
        if(!response.ok){
       const msg = `House um erro no banco ${response.status}`;
-      setError(true);
       throw new Error(msg);
     }
     const results = await response?.json()
-    setObjectives(results[0].objectives)}catch(error){
+    setObjectives(results[0].objectives)
+  }catch(error){
       console.log(error);
     }
     }else{
@@ -78,29 +86,35 @@ const handleChange = async (selectedOption)=>{
     
   };
 
-  const handleMyObjectives = (e) => {
-    const element = e.target.id;
-    if(element==="my-objectives"){
+
+  const handleMyObjectives = (id) => {
+    if(id==="my-objectives"){
       setIsGeneral(false);
       setIsMine(true);
-      if(teamId){
-         getObjectivesByTeam(localStorage.getItem('team'))
+      console.log(teamLocal)
+      if(teamLocal){
+        console.log('entrou',teamLocal)
+         getObjectivesByTeam(teamLocal)
       }else{
-        setObjectives(false);
+        setObjectives([]);
       }
-      
     }else{
       setIsMine(false);
       setIsGeneral(true);
       getAllObjectives();
     }
   };
-  // 
-    if(error){
+
+ 
+    if(statusError===500){
     return <Page500/>
+  }else if(statusError===404){
+    return <Page404></Page404>
+  }else{
+
   }
 
-   if (!objectives) {
+   if (isLoading) {
     return (
     <div className="area-spin">
       <Spin
@@ -122,8 +136,8 @@ const handleChange = async (selectedOption)=>{
   return (
     <div className="objective-container">
     <div className="objective-container-heading">
-    <h2 id="general-objectives" class={`${isGeneral && 'checked'}`} onClick={(e)=>handleMyObjectives(e)}>Objetivos Gerais</h2>   
-    <h2 id="my-objectives" class={`${isMine && 'checked'}`} onClick={(e)=>handleMyObjectives(e)}>Meus Objetivos</h2>
+    <h2 id="general-objectives" class={`${isGeneral && 'checked'}`} onClick={()=>handleMyObjectives('general-objectives')}>Objetivos Gerais</h2>   
+    <h2 id="my-objectives" class={`${isMine && 'checked'}`} onClick={()=>handleMyObjectives('my-objectives')}>Meus Objetivos</h2>
     <div className="objective-container_filter">
     <Select placeholder="Ano" options={years[0]} onChange={(e)=>handleChange(e)} isClearable></Select>
     <div className="quarter-container">
@@ -142,12 +156,12 @@ const handleChange = async (selectedOption)=>{
       objectives && (isGeneral? objectives?.map((objective) => {
       
         return (
-          <CardObjective2 key={objective.objective} objective={objective} team={objective.team}/>
+          <CardObjective2 key={objective.objective} objective={objective} teamName={loggedUser.team?.team}/>
         );
       }):
       objectives?.map((objective) => {
         return (
-          <CardObjective2 key={objective.objective} objective={objective} />
+          <CardObjective2 key={objective.objective} objective={objective} teamName={loggedUser.team?.team}/>
         );
       }))}
 

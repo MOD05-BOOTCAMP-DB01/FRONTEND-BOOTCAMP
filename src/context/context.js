@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Api } from "../Api/Api";
+import useLocalStorage from 'react-use-localstorage';
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
 
@@ -15,6 +16,8 @@ const AppProvider = ({ children }) => {
   const [quarter,setQuarter] = useState([])
   const [oneObjective,setOneObjective] = useState('');
   const [showAddKr, setShowAddKr] = useState(false);
+  const [statusError,setStatusError] = useState('');
+  const [teamLocal, setTeamLocal] = useLocalStorage('team','team');
   
     const typeOptions = [
     { value: 'Pessoas',
@@ -57,8 +60,9 @@ const AppProvider = ({ children }) => {
       true
     );
      if(!response.ok){
-      const msg = `House um erro no banco ${response.status}`;
+      const msg = `Houve um erro no banco status:${response.status}`;
       setError(true);
+      setStatusError(response.status);
       throw new Error(msg);
     }
     const data = await response.json();
@@ -120,7 +124,7 @@ const getAllObjectives = async () => {
     try{
     const response = await Api.buildApiGetRequest(Api.realAllYears(),true);
     if(!response.ok){
-      const msg = `House um erro no banco ${response.status}`;
+      const msg = `Houve um erro no banco ${response.status}`;
       setError(true);
       throw new Error(msg);
     }
@@ -149,8 +153,13 @@ const getAllObjectives = async () => {
       throw new Error(msg);
     }
       const data = await response.json();
-      setLoggedUser(data.user);
-      localStorage.setItem('team',data.user.team.id);
+      setLoggedUser(data?.user)
+      if(data.user.team){
+ setTeamLocal('team',data.user.team);
+      }else{
+        setTeamLocal('team',null)
+      }
+     
     }catch(error){
       setError(true);
       console.log(error);
@@ -161,7 +170,7 @@ const getAllObjectives = async () => {
   const loadQuarter = async ()=>{
    const response = await Api.buildApiGetRequest(Api.readAllQuaters(),true);
    if(!response.ok){
-      const msg = `House um erro no banco ${response.status}`;
+      const msg = `Houve um erro no banco ${response.status}`;
       setError(true);
       throw new Error(msg);
     }
@@ -233,7 +242,8 @@ const getAllObjectives = async () => {
         getObjectivesByQuarter,
         getQuarterObjective,
         oneObjective,
-        getObjectivesByQuarterTeam
+        getObjectivesByQuarterTeam,
+        teamLocal
           }}>
       {children}
     </AppContext.Provider>
